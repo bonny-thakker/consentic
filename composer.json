@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "venturedrake/laravel-boilerplate": "dev-master"
+        "venturedrake/laravel-boilerplate": "dev-master",
+        "laravel/nova": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -67,6 +68,10 @@
         {
             "type":"git",
             "url":"git@bitbucket.org:venturedrake/laravel-boilerplate.git"
+        },
+        {
+            "type": "path",
+            "url": "./nova"
         }
     ]
 }
