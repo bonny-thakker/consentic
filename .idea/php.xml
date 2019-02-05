@@ -94,11 +94,6 @@
       <path value="$PROJECT_DIR$/vendor/cakephp/chronos" />
       <path value="$PROJECT_DIR$/vendor/moontoast/math" />
       <path value="$PROJECT_DIR$/vendor/laravel/nova" />
-      <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
-      <path value="$PROJECT_DIR$/vendor/addgod/component-field" />
-      <path value="$PROJECT_DIR$/vendor/addgod/nova-cms" />
-      <path value="$PROJECT_DIR$/vendor/addgod/nova-translate-field" />
-      <path value="$PROJECT_DIR$/vendor/infinety-es/nova-filemanager" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

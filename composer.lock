@@ -4,135 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6f8162431818497f912f8458cddb10d",
+    "content-hash": "bcb7689edf08b78d8e03ae5c7f0d43c2",
     "packages": [
-        {
-            "name": "addgod/component-field",
-            "version": "v1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Addgod/nova-component-field.git",
-                "reference": "507d1a91005d9e3132e390bb68b1f6e6ae976e37"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Addgod/nova-component-field/zipball/507d1a91005d9e3132e390bb68b1f6e6ae976e37",
-                "reference": "507d1a91005d9e3132e390bb68b1f6e6ae976e37",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Addgod\\ComponentField\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Addgod\\ComponentField\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel nova field, that can be used to generate json, based on any nova compatible fields.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "time": "2019-01-31T09:55:59+00:00"
-        },
-        {
-            "name": "addgod/nova-cms",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Addgod/nova-cms.git",
-                "reference": "c2c255c5f78cb138e9207d252293ca10864c63c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Addgod/nova-cms/zipball/c2c255c5f78cb138e9207d252293ca10864c63c1",
-                "reference": "c2c255c5f78cb138e9207d252293ca10864c63c1",
-                "shasum": ""
-            },
-            "require": {
-                "addgod/component-field": "^1.0",
-                "addgod/nova-translate-field": "^1.0",
-                "infinety-es/nova-filemanager": "^1.1",
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Addgod\\NovaCms\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Addgod\\NovaCms\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A full CMS for nova, using nova resources.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "time": "2019-01-31T22:08:22+00:00"
-        },
-        {
-            "name": "addgod/nova-translate-field",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Addgod/nova-translate-field.git",
-                "reference": "e2f951abf6e4ad19e8c100aaef798f7be3d353c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Addgod/nova-translate-field/zipball/e2f951abf6e4ad19e8c100aaef798f7be3d353c2",
-                "reference": "e2f951abf6e4ad19e8c100aaef798f7be3d353c2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0",
-                "spatie/laravel-translatable": "^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Addgod\\NovaTranslateField\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Addgod\\NovaTranslateField\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova field.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "time": "2019-01-31T22:08:21+00:00"
-        },
         {
             "name": "cakephp/chronos",
             "version": "1.2.3",
@@ -732,66 +605,6 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
-        },
-        {
-            "name": "infinety-es/nova-filemanager",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/InfinetyES/Nova-Filemanager.git",
-                "reference": "d7135f712de3cf4b91501e65a2efe1f2ac47ec71"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/InfinetyES/Nova-Filemanager/zipball/d7135f712de3cf4b91501e65a2efe1f2ac47ec71",
-                "reference": "d7135f712de3cf4b91501e65a2efe1f2ac47ec71",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/nova": "*",
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.6",
-                "phpunit/phpunit": "7.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Infinety\\Filemanager\\FilemanagerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Infinety\\Filemanager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Eric Lagarda",
-                    "email": "eric@infinety.es",
-                    "role": "Developer"
-                },
-                {
-                    "name": "InfinetyEs",
-                    "email": "apps@infinety.es",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Filemanager tool for Laravel Nova",
-            "homepage": "https://github.com/krato/nova-filemanager",
-            "keywords": [
-                "filemanager",
-                "laravel",
-                "nova"
-            ],
-            "time": "2018-10-09T08:24:30+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2354,78 +2167,6 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
-        },
-        {
-            "name": "spatie/laravel-translatable",
-            "version": "3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-translatable.git",
-                "reference": "7268e499e5ee427d239d678c9065c5a1da6ba659"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/7268e499e5ee427d239d678c9065c5a1da6ba659",
-                "reference": "7268e499e5ee427d239d678c9065c5a1da6ba659",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "~5.5.0|~5.6.0|~5.7.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
-                "phpunit/phpunit": "^7.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\Translatable\\TranslatableServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\Translatable\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Mohamed Said",
-                    "email": "theMohamedSaid@gmail.com",
-                    "role": "Original idea"
-                }
-            ],
-            "description": "A trait to make an Eloquent model hold translations",
-            "homepage": "https://github.com/spatie/laravel-translatable",
-            "keywords": [
-                "eloquent",
-                "i8n",
-                "laravel-translatable",
-                "model",
-                "multilingual",
-                "spatie",
-                "translate"
-            ],
-            "time": "2018-12-19T09:46:29+00:00"
         },
         {
             "name": "spatie/once",
@@ -5474,8 +5215,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "venturedrake/laravel-boilerplate": 20,
-        "addgod/nova-cms": 20
+        "venturedrake/laravel-boilerplate": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

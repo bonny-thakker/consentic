@@ -13,8 +13,7 @@
         "laravel/framework": "5.7.*",
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",
-        "venturedrake/laravel-boilerplate": "dev-master",
-        "addgod/nova-cms": "dev-master"
+        "venturedrake/laravel-boilerplate": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
