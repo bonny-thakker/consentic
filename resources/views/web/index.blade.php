@@ -164,6 +164,206 @@
 
 @section('content')
 
-    // TBC
+    <main class="app-content">
+
+        <section class="section ui-sortable-handle" data-background-image="/images/index.jpg">
+            <div class="container">
+                <div class="columns rows ui-sortable"><div class="column">
+                        <div class="column-actions" style="display: none;">
+                            <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Edit Content" data-action="edit" data-toggle="modal" data-modal-id="#edit-content">
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            </button>
+                            <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Remove Column" data-action="remove">
+                            <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                            </button>
+                        </div>
+                        <div class="column-content"><div class="columns">
+                                <div class="column is-7">
+                                    <header class="section-header">
+                                        <h1 class="title">Medical, dental and financial consent made simple and more reassuring for patients, and less risky and faster for doctors.</h1>
+                                    </header>
+                                    <div class="section-body">
+                                        <div class="subtitle is-6">Consentic provides Australia’s first online platform of comprehensive, patient-tested medical and dental consent animations which have been reviewed by medico-legal experts.</div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <input id="main-email-input" class="input" type="text" placeholder="Email" name="email">
+                                                    </div>
+                                                </div>
+                                                <div class="field is-expanded">
+                                                    <div class="control">
+                                                        <button id="main-signup-button" class="button submit is-secondary is-fullwidth">Sign Up
+                                                        </button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <header class="section-header">
+                                        <h1 class="title has-text-centered">Created by doctors, for doctors.</h1>
+                                    </header>
+                                </div>
+                            </div></div>
+                    </div></div>
+                <div class="row-actions" style="display: none;">
+                    <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Settings" data-action="settings" data-toggle="modal" data-modal-id="#edit-property">
+                                <span class="icon is-small">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                    </button>
+                    <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Remove Row" data-action="remove">
+                                <span class="icon is-small">
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                    </button>
+                </div>
+            </div>
+        </section><section class="section ui-sortable-handle" data-background-image="" data-background-color="" style="background-image: url(" ");"="">
+        <div class="container">
+            <div class="columns rows ui-sortable"><div class="column">
+                    <div class="column-actions" style="display: none;">
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Edit Content" data-action="edit" data-toggle="modal" data-modal-id="#edit-content">
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                        </button>
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Remove Column" data-action="remove">
+                            <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="column-content">
+                        <h2 class="title is-spaced is-bold has-tint" style="text-align: center; ">Why Consentic?</h2>
+                        <div class="subtitle">
+                            <p style="text-align: center;">Time savings, comprehensive consent and peace of mind. Consentic provides the facilities to optimise and streamline the consent process, resulting in enhanced patient understanding, improved patient and clinician satisfaction, and increasing practice efficiency.</p>
+                            <br>
+                            <p style="text-align: center;">Informed medical consent is time consuming, poorly executed, unstandardised and a source of medicolegal risk. Medicolegal complaints are increasing in Australia each year, and proceduralists are at the highest risk. There is clear evidence from the literature that video consent increases patient understanding and improves both patient and clinician satisfaction.</p>
+                            <br>
+                            <p style="text-align: center;">Consentic provides consent videos for a wide range of medical and dental procedures. This saves clinicians time and money, and provides the peace of mind that comes from knowing you have adequately consented your patients.</p>
+                            <br>
+                            <p style="text-align: center;">We are testing our Consentic in formalised randomised clinical trials at a number of institutions. If you would like to take a part in our clinical research, please get in touch.</p>
+                        </div>
+                    </div>
+                </div></div>
+            <div class="row-actions" style="display: none;">
+                <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Settings" data-action="settings" data-toggle="modal" data-modal-id="#edit-property">
+                                <span class="icon is-small">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                </button>
+                <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Remove Row" data-action="remove">
+                                <span class="icon is-small">
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                </button>
+            </div>
+        </div>
+        </section><section class="section ui-sortable-handle" data-background-image="" data-background-color="" style="background-image: url(" ");"="">
+        <div class="container">
+            <div class="columns rows ui-sortable"><div class="column">
+                    <div class="column-actions" style="display: none;">
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Edit Content" data-action="edit" data-toggle="modal" data-modal-id="#edit-content">
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                        </button>
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Remove Column" data-action="remove">
+                            <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="column-content">
+                        <p class="subtitle">
+                            Informed medical consent is time consuming, poorly executed, unstandardised and a source of medicolegal risk. Medicolegal claims are increasing in Australia by 15% per annum, with proceduralists at the highest risk. There is clear evidence from the medical literature that video consent increases patient understanding and improves both patient and physician satisfaction.</p>
+                        <p class="subtitle">Consentic provides medical consent videos for a wide range of procedures, and also incorporates financial consent. This saves doctors time and money, and provides the peace of mind that comes from knowing you have adequately collected both medical and financial consent.</p></div>
+                </div><div class="column">
+                    <div class="column-actions" style="display: none;">
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Edit Content" data-action="edit" data-toggle="modal" data-modal-id="#edit-content">
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                        </button>
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Remove Column" data-action="remove">
+                            <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="column-content"><iframe src="https://www.youtube.com/embed/H7ZUhSB_6Xs" allowfullscreen="" width="100%" height="300px"></iframe></div>
+                </div></div>
+            <div class="row-actions" style="display: none;">
+                <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Settings" data-action="settings" data-toggle="modal" data-modal-id="#edit-property">
+                                <span class="icon is-small">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                </button>
+                <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Remove Row" data-action="remove">
+                                <span class="icon is-small">
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                </button>
+            </div>
+        </div>
+        </section><section class="section ui-sortable-handle" data-background-image="" data-background-color="" style="background-image: url(" ");"="">
+        <div class="container">
+            <div class="columns rows ui-sortable"><div class="column">
+                    <div class="column-actions" style="display: none;">
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Edit Content" data-action="edit" data-toggle="modal" data-modal-id="#edit-content">
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                        </button>
+                        <button class="button page-action is-circle is-primary is-outlined tooltip" data-tooltip="Remove Column" data-action="remove">
+                            <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="column-content"><header class="section-header">
+                            <div class="subtitle">
+                                <p style="text-align: center;">We are working with some of the biggest names in the medical and startup industries. By collaborating with these companies, we are able to deliver a robust and reliable system for medical professionals and their patients.</p>
+                            </div>
+                        </header>
+                        <div class="image-list" id="partner-image-list">
+                            <div class="image">
+                                <a target="__blank" href="https://www.hcf.com.au/">
+                                    <img alt="HCF" src="/images/logo_hcf1.png">
+                                </a>
+                            </div>
+                            <div class="image">
+                                <a target="__blank" href="http://slingshotters.com/">
+                                    <img alt="Slingshot" src="/images/slingshot.png">
+                                </a>
+                            </div>
+                        </div></div>
+                </div></div>
+            <div class="row-actions" style="display: none;">
+                <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Settings" data-action="settings" data-toggle="modal" data-modal-id="#edit-property">
+                                <span class="icon is-small">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                </button>
+                <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Remove Row" data-action="remove">
+                                <span class="icon is-small">
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                </button>
+            </div>
+        </div>
+        </section>
+
+
+    </main>
 
 @endsection
