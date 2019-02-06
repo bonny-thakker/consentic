@@ -19,33 +19,25 @@
             <div class="navbar-menu navbar-end" id="navbar-menu">
 
                {{-- Menu here --}}
+
+                @include('vendor.laravel-menu.custom.web-main-menu', array('items' => $webMainMenu->roots()))
                 
                 @if (! Auth::check())
                     <div class="navbar-item p-r-none">
                         <div class="field is-grouped">
                             <div class=control>
-                                <a href="/pages/pricing" class="button is-primary" id="button-signup">Join Now</a>
+                                <a href="{{ url('register') }}" class="button is-primary" id="button-signup">Join Now</a>
                             </div>
                             <div class=control> 
-                                <a href="https://portal.consentic.com/login" class="button" id="button-login">Login</a>
+                                <a href="{{ url('login') }}" class="button" id="button-login">Login</a>
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="navbar-item p-r-none">
-                        <div class="field is-grouped">
-                            <div class=control> 
-                                <a href="#" data-toggle="modal" data-modal-id="#sign-in" class="button" id="button-login">Login</a>
-                            </div>
-                            <div class=control>
-                                <a href="/pages/pricing" class="button is-primary" id="button-signup">Sign up now</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 @else
                     <div class="navbar-item">
                         <div class="field is-grouped">
-                            <div class="control"> <a href="//portal.consentic.com" class="button">My Portal</a> </div>
-                            <div class="control"> <a href="//portal.consentic.com/logout" class="button">Logout</a> </div>
+                            <div class="control"> <a href="#" class="button">My Portal</a> </div>
+                            <div class="control"> <a href="{{ url('logout') }}" class="button">Logout</a> </div>
                         </div>
                     </div>
                 @endif
