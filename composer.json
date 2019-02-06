@@ -14,6 +14,7 @@
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",
         "lavary/laravel-menu": "^1.7",
+        "spatie/laravel-newsletter": "^4.2",
         "venturedrake/laravel-boilerplate": "dev-master"
     },
     "require-dev": {
