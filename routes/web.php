@@ -15,5 +15,12 @@ Route::get('/home', function () {
     return redirect('/');
 })->name('home');
 
+/* Public */
 Route::get('/', 'PageController@index')->name('index');
+
+/* Forms */
+Route::post('/form/newsletter', 'MailchimpController@store')->name('mailchimp.store');
+
 Auth::routes();
+
+/* Private */

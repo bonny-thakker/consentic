@@ -31,7 +31,7 @@
             </div>
             <div class="column is-12-mobile is-6-tablet">
                 <h3 class="menu-label">Get our newsletter</h3>
-                <form action="#" method="post" id="newsletter-form">
+                <form action="/form/newsletter" method="post" id="newsletter-form">
                     {{ csrf_field() }}
                     <div class="field is-horizontal">
                         <div class="field-body">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="field is-expanded">
                                 <div class="control">
-                                    <button class="button button-subscribe submit is-borderless is-fullwidth is-medium" href="/inquire-as-employer">Subscribe</button> 
+                                    <button class="button button-subscribe submit is-borderless is-fullwidth is-medium">Subscribe</button>
                                 </div>
                             </div>
                         </div>

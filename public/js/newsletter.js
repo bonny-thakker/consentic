@@ -81,81 +81,92 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/newsletter.js":
+/*!************************************!*\
+  !*** ./resources/js/newsletter.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-// require('./bootstrap');
-// window.Vue = require('vue');
+var Newsletter = function () {
+  return {
+    // Execute js module 
+    init: function init() {
+      Newsletter.main();
+    },
+    // Main function of the module
+    main: function main() {
+      // Submit add form
+      $(document).on('submit', '#newsletter-form', function (e) {
+        event.preventDefault();
+        Newsletter.submitForm($(this));
+      });
+      $(document).on('click', '#submit-contact-us-form', function (e) {
+        e.preventDefault();
+        Newsletter.contact();
+      });
+    },
+    // Submit function
+    submitForm: function submitForm(form) {
+      var formData = new FormData(form[0]);
+      var url = form.attr('action');
+      var method = form.attr('method');
+      App.ajaxFile(url, method, 'json', formData).fail(function (jqXHR, textStatus) {
+        App.alertWithMessage("Oops ".concat(jqXHR.status), 'Internal server error!', 'error');
+      }).done(function (data, textStatus) {
+        App.alertWithMessage(App.capitalize(data.action), data.message, data.action);
+        form[0].reset();
+      });
+    },
+    contact: function contact() {
+      var form = $('#contact-us-form');
+      var data = {
+        name: form.find('[name="name"]').val(),
+        subject: form.find('[name="subject"]').val(),
+        phone: form.find('[name="phone"]').val(),
+        email: form.find('[name="email"]').val(),
+        company: form.find('[name="company"]').val(),
+        body: form.find('[name="body"]').val()
+      };
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $('#submit-contact-us-form').addClass('is-loading');
+      App.ajax('/contact', 'POST', 'json', data).fail(function (jqXHR, textStatus) {
+        App.alertWithMessage("Oops ".concat(jqXHR.status), 'Internal server error!', 'error');
+      }).done(function (data, textStatus) {
+        App.alertWithMessage(App.capitalize(data.action), data.message, data.action);
+        $('#submit-contact-us-form').removeClass('is-loading');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+        if (data.action != 'error') {
+          $('input, textarea').val('').text('');
+        }
+      });
+    }
+  };
+}();
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-/*const app = new Vue({
-    el: '#app'
-});*/
+$(document).ready(function () {
+  Newsletter.init();
+});
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/web.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/web.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!***************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/web.scss ***!
-  \***************************************************************************************/
+/***/ 2:
+/*!******************************************!*\
+  !*** multi ./resources/js/newsletter.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/consentic/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/consentic/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/consentic/resources/sass/web.scss */"./resources/sass/web.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/consentic/resources/js/newsletter.js */"./resources/js/newsletter.js");
 
 
 /***/ })
