@@ -30,85 +30,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ url('assets/plugins/animate.css/animate.min.css') }}">
-    <link href="/assets/css/app.css" rel=stylesheet />
-    <link href="/assets/css/pricing.css" rel="stylesheet">
-    <style>
-        .title {
-            font-size: {{ $settings->siteTitleSize }} !important;
-        }
-        .subtitle {
-            font-size: {{ $settings->siteSubtitleSize }} !important;
-        }
-        .title.is-1 {
-            font-size: {{ $settings->siteH1Size }} !important;
-        }
-        .title.is-2 {
-            font-size: {{ $settings->siteH2Size }} !important;
-        }
-        .title.is-3 {
-            font-size: {{ $settings->siteH3Size }} !important;
-        }
-        .title.is-4 {
-            font-size: {{ $settings->siteH4Size }} !important;
-        }
-        .title.is-5 {
-            font-size: {{ $settings->siteH5Size }} !important;
-        }
-        .title.is-6 {
-            font-size: {{ $settings->siteH6Size }} !important;
-        }
-        #navbar-menu {
-            font-size: {{ $settings->siteMenuSize }} !important;
-        }
-        .app-footer .menu-list {
-            font-size: {{ $settings->siteMenuSize }} !important;
-        }
-        .form-header-size {
-            font-size: {{ $settings->siteFormHeaderSize }} !important;
-        }
-        .site-input-size {
-            font-size: {{ $settings->siteInputSize }} !important;
-        }
-        .pricing-table .pricing-plan .plan-header {
-            font-size: 2rem;
-            padding: 0;
-        }
-        .pricing-table .pricing-plan .plan-item {
-            font-size: 1.25rem;
-        }
-    </style>
-    @yield('style')
+    <link rel="stylesheet" href="{{ mix('/css/web.css') }}">
+    @yield('styles')
 </head>
 
 <body>
 <div class=app-container>
-    @include('frontend.layouts.header')
+    @include('layouts.web.header')
     <main class=app-content>
         @yield('content')
     </main>
-    @include('frontend.layouts.footer')
+    @include('layouts.web.footer')
 </div>
-
-@if (! Auth::check())
-    @include('pages.login')
-@endif
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert2@7.15.1/dist/sweetalert2.all.min.js"></script>
-<script src="{{ url('assets/js/app.js') }}"></script>
-<script src="{{ url('assets/js/auth.js') }}"></script>
-<script src="{{ url('assets/js/newsletter.js') }}"></script>
-@yield('script')
+<script src="{{ url('assets/js/web.js') }}"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71767609-13"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-71767609-13');
-</script>
+@yield('scripts')
+@stack('jquery')
+@include('layouts.web.ga')
 
 </body>
 </html>

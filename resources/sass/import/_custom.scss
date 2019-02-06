@@ -5771,7 +5771,7 @@ print {
   top: 50%;
   margin-left: -40px;
   margin-top: -40px;
-  background: url("owl.video.play.png") no-repeat;
+  background: url("/images/owl.video.play.png") no-repeat;
   cursor: pointer;
   z-index: 1;
   -webkit-backface-visibility: hidden;
@@ -8982,3 +8982,48 @@ main.app-content {
 #terms-and-conditions-section li+li {
   margin-top: 1em;
 }
+
+.title {
+  font-size: 2rem !important;
+}
+.subtitle {
+  font-size: 1.5em !important;
+}
+.title.is-1 {
+  font-size: 2em !important;
+}
+.title.is-2 {
+  font-size: 1.75em !important;
+}
+.title.is-3 {
+  font-size: 1.5em !important;
+}
+.title.is-4 {
+  font-size: 1.5em !important;
+}
+.title.is-5 {
+  font-size: 1.5em !important;
+}
+.title.is-6 {
+  font-size: 1.5em !important;
+}
+#navbar-menu {
+  font-size: 1.2rem !important;
+}
+.app-footer .menu-list {
+  font-size: 1.2rem !important;
+}
+.form-header-size {
+  font-size: 1.3rem !important;
+}
+.site-input-size {
+  font-size: 1.2rem !important;
+}
+.pricing-table .pricing-plan .plan-header {
+  font-size: 2rem;
+  padding: 0;
+}
+.pricing-table .pricing-plan .plan-item {
+  font-size: 1.25rem;
+}
+

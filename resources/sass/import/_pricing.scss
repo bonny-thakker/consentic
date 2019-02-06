@@ -531,7 +531,7 @@
     display: none
   }
   .pricing-table.is-comparative .plan-item::before {
-    attr("data-feature");
+    content: attr(data-feature);
   }
   .pricing-table.is-horizontal .pricing-plan {
     display: -webkit-box;
