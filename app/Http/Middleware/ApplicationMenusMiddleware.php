@@ -22,7 +22,16 @@ class ApplicationMenusMiddleware
             $menu->add('Home', '');
             $menu->add('About', 'about');
             $menu->add('Features', 'features');
+
             $menu->add('Pricing', 'pricing');
+
+            if(in_array($request->route()->getName(),[
+                'web.individual-pricing',
+                'web.group-pricing',
+            ])){
+                $menu->get('pricing')->active();
+            }
+
             $menu->add('Contact Us', 'contact-cc');
 
         });

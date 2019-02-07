@@ -12,4 +12,44 @@ class PageController extends Controller
         return view('web.index');
     }
 
+    public function about()
+    {
+        return view('web.about');
+    }
+
+    public function features()
+    {
+        return view('web.features');
+    }
+
+    public function pricing()
+    {
+        return view('web.pricing');
+    }
+
+    public function contact()
+    {
+        return view('web.contact');
+    }
+
+    public function termsAndConditions()
+    {
+        return view('web.terms-and-conditions');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('web.privacy-policy');
+    }
+
+    public function individualPricing()
+    {
+        return view('web.individual-pricing');
+    }
+
+    public function groupPricing()
+    {
+        return view('web.group-pricing');
+    }
+
 }
