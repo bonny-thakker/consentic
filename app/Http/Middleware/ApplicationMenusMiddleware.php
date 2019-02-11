@@ -36,6 +36,16 @@ class ApplicationMenusMiddleware
 
         });
 
+        Menu::make('appMainMenu', function ($menu) use ($request) {
+
+            $menu->add('Dashboard', 'app/dashboard');
+            $menu->add('Patients', 'app/patients');
+            $menu->add('Consents', 'app/consents');
+            $menu->add('Settings', 'app/settings');
+            $menu->add('Subscription', 'app/subscription');
+
+        });
+
         return $next($request);
 
     }

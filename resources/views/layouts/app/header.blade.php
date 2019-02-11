@@ -13,7 +13,7 @@
             </div>
             <div class="navbar-menu navbar-end fadeInDown" id="navbar-menu">
 
-              {{--  MENU HERE--}}
+                @include('vendor.laravel-menu.custom.web-main-menu', array('items' => $appMainMenu->roots()))
 
                 <div class=navbar-item>
                     <div class="field is-grouped">

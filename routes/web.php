@@ -43,4 +43,20 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
         return view('app.dashboard');
     });
 
+    Route::get('patients', function () {
+        return view('app.patient.index');
+    });
+
+    Route::get('consents', function () {
+        return view('app.consent.index');
+    });
+
+    Route::get('settings', function () {
+        return view('app.setting.index');
+    });
+
+    Route::get('subscription', function () {
+        return view('app.subscription.index');
+    });
+
 });

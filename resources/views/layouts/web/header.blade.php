@@ -18,8 +18,6 @@
             </div>
             <div class="navbar-menu navbar-end" id="navbar-menu">
 
-               {{-- Menu here --}}
-
                 @include('vendor.laravel-menu.custom.web-main-menu', array('items' => $webMainMenu->roots()))
                 
                 @if (! Auth::check())
