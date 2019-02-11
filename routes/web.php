@@ -33,3 +33,14 @@ Route::post('/form/contact', 'ContactFormController@send')->name('web.form.conta
 Auth::routes();
 
 /* Private */
+Route::middleware(['auth'])->prefix('app')->group( function () {
+
+    Route::get('/', function () {
+        return redirect('/app/dashboard');
+    })->name('app.dashboard');
+
+    Route::get('dashboard', function () {
+        dd('test');
+    });
+
+});

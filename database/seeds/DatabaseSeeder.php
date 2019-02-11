@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -9,8 +10,23 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
+
         $this->call(RolesAndPermissionsSeeder::class);
+
+        if(config('app.env') == 'local') {
+
+            $user = \App\User::firstOrCreate([
+                'email' => 'cto@consentic.com',
+            ], [
+                'name' => 'Andrew Drake',
+                'email_verified_at' => now(),
+                'password' => bcrypt('dev'), // secret
+                'remember_token' => str_random(10),
+            ]);
+
+        }
+
     }
 }
