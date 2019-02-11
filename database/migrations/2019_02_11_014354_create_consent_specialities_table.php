@@ -14,8 +14,10 @@ class CreateConsentSpecialitiesTable extends Migration
     public function up()
     {
         Schema::create('consent_specialities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->smallIncrements('id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->smallInteger('order')->nullable();
         });
     }
 

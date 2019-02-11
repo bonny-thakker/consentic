@@ -6,5 +6,7 @@ use App\Model;
 
 class ConsentType extends Model
 {
-    //
+
+    public $timestamps = false;
+
 }

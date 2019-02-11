@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(RolesAndPermissionsSeeder::class);
+        $this->call(ConsentTypesTableSeeder::class);
+        $this->call(ConsentSpecialitiesTableSeeder::class);
 
         if(config('app.env') == 'local') {
 
