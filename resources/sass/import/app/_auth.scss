@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Brandon-Grot-W01-Light";
+  src: url("/assets/fonts/brandon-grot/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot");
+  src: url("/assets/fonts/brandon-grot/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot") format("eot"), url("/assets/fonts/brandon-grot/69b40392-453a-438a-a121-a49e5fbc9213.woff2") format("woff2"), url("/assets/fonts/brandon-grot/9362bca5-b362-4543-a051-2129e2def911.woff") format("woff"), url("/assets/fonts/brandon-grot/85060878-ca6c-43cc-ac31-7edccfdca71b.ttf") format("truetype"), url("/assets/fonts/brandon-grot/47f089a6-c8ce-46fa-b98f-03b8c0619d8a.svg") format("svg");
+}
+
+body {
+  font-size: 1.2rem !important;
+}
+
+body,
+button {
+  font-family: "brandon-grot-w01-light", sans-serif;
+}
+
+.interactive-bg {
+  height: 100vh;
+  background-color: #00d1b2;
+  -webkit-box-shadow: inset 24px 4px 64px -24px rgba(71, 71, 71, 1);
+  -moz-box-shadow: inset 24px 4px 64px -24px rgba(71, 71, 71, 1);
+  box-shadow: inset 24px 4px 64px -24px rgba(71, 71, 71, 1);
+  padding: 0px;
+}
+
+@media (max-width: 769px) {
+  .interactive-bg {
+    display: none
+  }
+}
+
+.button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  min-width: 150px;
+}
+
+.login-logo {
+  margin: 0 auto;
+  margin-bottom: 50px;
+  max-height: 100px;
+
+}
+
+.columns {
+  margin: 0px;
+}
+
+.swal2-popup .swal2-content {
+  font-size: 1.4rem !important;
+}
+
+/* Safari 9 fix */
+@supports (overflow:-webkit-marquee) and (justify-content:inherit)
+{
+    button {
+        display: block !important;
+        margin: 10px auto;
+    }
+}

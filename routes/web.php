@@ -40,7 +40,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
     })->name('app.dashboard');
 
     Route::get('dashboard', function () {
-        dd('test');
+        return view('app.dashboard');
     });
 
 });

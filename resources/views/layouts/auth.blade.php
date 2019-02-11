@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=no-js lang=en_US>
+<html class=no-js lang={{ str_replace('_', '-', app()->getLocale()) }}S>
 <head>
     <meta charset=utf-8 />
     <title>@yield('title') | Consentic</title>

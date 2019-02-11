@@ -37,12 +37,8 @@
                     <div class="navbar-item">
                         <div class="field is-grouped">
                             <div class="control"> <a href="#" class="button">My Portal</a> </div>
-                            <div class="control"> <a href="{{ route('logout') }}" class="button"  onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                            <div class="control">
+                                @include('layouts.partial.logout')
                             </div>
                         </div>
                     </div>
