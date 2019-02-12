@@ -30,7 +30,7 @@ Route::get('/group-pricing', 'PageController@groupPricing')->name('web.group-pri
 Route::post('/form/newsletter', 'MailchimpController@store')->name('web.form.mailchimp.store');
 Route::post('/form/contact', 'ContactFormController@send')->name('web.form.contact.send');
 
-Auth::routes();
+// Auth::routes();
 
 /* Private */
 Route::middleware(['auth'])->prefix('app')->group( function () {
