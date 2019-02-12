@@ -34,7 +34,7 @@
                 @else
                     <div class="navbar-item">
                         <div class="field is-grouped">
-                            <div class="control"> <a href="#" class="button">My Portal</a> </div>
+                            <div class="control"> <a href="{{ url('app') }}" class="button">My Portal</a> </div>
                             <div class="control">
                                 @include('layouts.partial.logout')
                             </div>
