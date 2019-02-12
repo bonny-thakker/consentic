@@ -11,9 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/web.js', 'public/js')
-    .js('resources/js/newsletter.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/web.scss', 'public/css')
-    .sass('resources/sass/auth.scss', 'public/css');
+// App
+mix.js('resources/js/app/app.js', 'public/assets/app/js')
+    .sass('resources/sass/app/app.scss', 'public/assets/app/css')
+
+// Web
+mix.js('resources/js/web/app.js', 'public/assets/web/js')
+    .sass('resources/sass/web/app.scss', 'public/assets/web/css')
+    .sass('resources/sass/web/auth.scss', 'public/assets/web/css');
+
+// Libs
+mix.js('resources/js/newsletter.js', 'public/js');

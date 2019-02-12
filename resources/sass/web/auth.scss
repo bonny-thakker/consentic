@@ -3,7 +3,7 @@
 // @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'import/app/variables';
+@import 'import/variables';
 
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
@@ -12,11 +12,7 @@
 @import "~bulma/bulma.sass";
 
 // Consentic
-@import "import/app/custom";
-@import "import/app/consent-details";
-@import "import/app/divider";
-@import "import/app/pricing";
-@import "import/app/modifier";
+@import "import/auth";
 
 /*
 .navbar-laravel {

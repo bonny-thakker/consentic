@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ url('assets/plugins/animate.css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ mix('/css/auth.css') }}">
+    <link rel="stylesheet" href="{{ mix('/assets/web/css/auth.css') }}">
     @yield('styles')
 </head>
 

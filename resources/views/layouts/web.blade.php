@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ url('assets/plugins/animate.css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ mix('/css/web.css') }}">
+    <link rel="stylesheet" href="{{ mix('/assets/web/css/app.css') }}">
     @yield('styles')
 </head>
 
@@ -47,7 +47,7 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert2@7.15.1/dist/sweetalert2.all.min.js"></script>
-<script src="{{ url('js/web.js') }}"></script>
+<script src="{{ url('assets/web/js/app.js') }}"></script>
 <script src="{{ url('js/newsletter.js') }}"></script>
 
 

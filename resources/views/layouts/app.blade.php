@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/badge.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-tooltip.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/materialdesignicons/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('/assets/app/css/app.css') }}">
     @yield('styles')
 
 </head>
@@ -46,8 +46,8 @@
 
 <script src="{{ url('assets/plugins/jquery/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ url('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
-<script src="{{ url('assets/js/app.js') }}"></script>
-<script src="{{ url('assets/js/newsletter.js') }}"></script>
+<script src="{{ url('assets/app/js/app.js') }}"></script>
+<script src="{{ url('js/newsletter.js') }}"></script>
 {{--<script src="{{ url('assets/js/socket.js') }}"></script>--}}
 
 @yield('scripts')
