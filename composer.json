@@ -80,8 +80,8 @@
           "url": "https://nova.laravel.com"
         },
         {
-          "type": "composer",
-          "url": "https://spark-satis.laravel.com"
+            "type": "path",
+            "url": "./spark"
         }
     ]
 }
