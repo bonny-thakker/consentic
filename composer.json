@@ -14,7 +14,7 @@
         "laravel/cashier": "~8.0",
         "laravel/framework": "5.7.*",
         "laravel/nova": "~1.0",
-        "laravel/spark": "*@dev",
+        "laravel/spark-aurelius": "~7.0",
         "laravel/tinker": "^1.0",
         "lavary/laravel-menu": "^1.7",
         "spatie/laravel-newsletter": "^4.2",
@@ -80,8 +80,8 @@
           "url": "https://nova.laravel.com"
         },
         {
-            "type": "path",
-            "url": "./spark"
+            "type": "composer",
+            "url": "https://spark-satis.laravel.com"
         }
     ]
 }

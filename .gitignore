@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+!vendor/laravel/spark-aurelius/
 .env
 .phpunit.result.cache
 Homestead.json
