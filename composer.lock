@@ -1359,17 +1359,12 @@
         },
         {
             "name": "laravel/spark-aurelius",
-            "version": "v7.1.6",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:laravel/spark-aurelius.git",
-                "reference": "33b0da89c57a6d85439cf0e19de555ac135b216e"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/spark-aurelius/zipball/33b0da89c57a6d85439cf0e19de555ac135b216e",
-                "reference": "33b0da89c57a6d85439cf0e19de555ac135b216e",
-                "shasum": ""
+                "type": "path",
+                "url": "./spark",
+                "reference": "94676e574eba34c957215b986490e257adf6e0c4",
+                "shasum": null
             },
             "require": {
                 "erusev/parsedown": "~1.0",
@@ -1413,11 +1408,7 @@
                 "saas",
                 "scaffolding",
                 "stripe"
-            ],
-            "support": {
-                "source": "https://github.com/laravel/spark-aurelius/tree/v7.1.6"
-            },
-            "time": "2019-02-11T12:27:47+00:00"
+            ]
         },
         {
             "name": "laravel/tinker",
