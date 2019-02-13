@@ -33,7 +33,7 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $developers = [
-        //
+        'cto@consentic.com'
     ];
 
     /**
@@ -50,17 +50,28 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
-        Spark::useStripe()->noCardUpFront()->trialDays(10);
+        Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
-        Spark::freePlan()
+        Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'
             ]);
 
-        Spark::plan('Basic', 'provider-id-1')
+        Spark::teamPlan('Basic', 'provider-id-1')
             ->price(10)
             ->features([
                 'First', 'Second', 'Third'
             ]);
     }
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        Spark::prefixTeamsAs('clinic');
+    }
+
+
 }

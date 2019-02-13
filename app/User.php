@@ -3,11 +3,13 @@
 namespace App;
 
 use Laravel\Spark\User as SparkUser;
+use Laravel\Spark\CanJoinTeams;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends SparkUser
 {
 
+    use CanJoinTeams;
     use HasRoles;
 
     /**
