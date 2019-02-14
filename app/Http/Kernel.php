@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Laravel\Spark\Http\Middleware\CreateFreshApiToken::class,
             \App\Http\Middleware\ApplicationMenusMiddleware::class,
+            \App\Http\Middleware\LandlordTeamMiddleware::class,
         ],
 
         'api' => [

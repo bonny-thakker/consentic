@@ -19,7 +19,8 @@
         "lavary/laravel-menu": "^1.7",
         "spatie/laravel-newsletter": "^4.2",
         "spatie/laravel-permission": "^2.31",
-        "venturedrake/laravel-boilerplate": "dev-master"
+        "venturedrake/laravel-boilerplate": "dev-master",
+        "hipsterjazzbo/landlord": "dev-laravel-57"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -82,6 +83,10 @@
         {
           "type": "path",
           "url": "./spark"
+        },
+        {
+          "type": "vcs",
+          "url":  "git@github.com:hmazter/Landlord.git"
         }
     ]
 }

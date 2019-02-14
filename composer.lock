@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "12aa95a7e3f0de0404f5cb93f9cbbe53",
+    "content-hash": "4e5073030c7efadddef4291aed263ecf",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -760,6 +760,66 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
+        },
+        {
+            "name": "hipsterjazzbo/landlord",
+            "version": "dev-laravel-57",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hmazter/Landlord.git",
+                "reference": "0d51286dd3f53907bbacb64bd701ac3f412044cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hmazter/Landlord/zipball/0d51286dd3f53907bbacb64bd701ac3f412044cb",
+                "reference": "0d51286dd3f53907bbacb64bd701ac3f412044cb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "laravel/framework": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "mockery/mockery": "~0.9|~1.0",
+                "phpunit/phpunit": "5.5.*|6.0.*|7.0.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "HipsterJazzbo\\Landlord\\LandlordServiceProvider"
+                    ],
+                    "aliases": {
+                        "Landlord": "HipsterJazzbo\\Landlord\\Facades\\Landlord"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HipsterJazzbo\\Landlord\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Fidecaro",
+                    "email": "calebfidecaro@gmail.com"
+                }
+            ],
+            "description": "A simple, single database multi-tenancy solution for Laravel 5.2+",
+            "keywords": [
+                "multitenancy",
+                "multitenant",
+                "tenancy",
+                "tenant"
+            ],
+            "support": {
+                "source": "https://github.com/hmazter/Landlord/tree/laravel-57"
+            },
+            "time": "2018-09-07T07:17:37+00:00"
         },
         {
             "name": "insenseanalytics/laravel-nova-permission",
@@ -2796,16 +2856,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.31.0",
+            "version": "2.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "5f9960854295c6aec1c706aaa3b146962d6ee905"
+                "reference": "a6ddad06f2d8899178a909f72cddfea497e1e9cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/5f9960854295c6aec1c706aaa3b146962d6ee905",
-                "reference": "5f9960854295c6aec1c706aaa3b146962d6ee905",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/a6ddad06f2d8899178a909f72cddfea497e1e9cf",
+                "reference": "a6ddad06f2d8899178a909f72cddfea497e1e9cf",
                 "shasum": ""
             },
             "require": {
@@ -2857,7 +2917,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2019-02-04T03:56:54+00:00"
+            "time": "2019-02-13T16:05:27+00:00"
         },
         {
             "name": "spatie/once",
@@ -4473,16 +4533,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "dc4f10b6b1148744facb784015e4b339d7feec23"
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/dc4f10b6b1148744facb784015e4b339d7feec23",
-                "reference": "dc4f10b6b1148744facb784015e4b339d7feec23",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
                 "shasum": ""
             },
             "require": {
@@ -4534,7 +4594,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2019-02-08T14:43:54+00:00"
+            "time": "2019-02-13T09:37:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5963,7 +6023,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "laravel/spark-aurelius": 20,
-        "venturedrake/laravel-boilerplate": 20
+        "venturedrake/laravel-boilerplate": 20,
+        "hipsterjazzbo/landlord": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
