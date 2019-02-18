@@ -169,6 +169,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Menu' => Lavary\Menu\Facade::class,
         'Landlord' => HipsterJazzbo\Landlord\Facades\Landlord::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
 
     ],
 
