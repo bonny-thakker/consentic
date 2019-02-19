@@ -50,6 +50,9 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
+
+        Spark::useTwoFactorAuth();
+
         Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
         Spark::freeTeamPlan()
@@ -62,6 +65,7 @@ class SparkServiceProvider extends ServiceProvider
             ->features([
                 'First', 'Second', 'Third'
             ]);
+
     }
     /**
      * Register any application services.
