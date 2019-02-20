@@ -30,7 +30,13 @@
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/bulma.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/badge.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-tooltip.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-switch.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/materialdesignicons/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/plugins/fontawesome/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/plugins/datatables/css/dataTables.bulma.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/plugins/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/plugins/datetimepicker/build/jquery.datetimepicker.min.css') }}">
+
     <link rel="stylesheet" href="{{ mix('/assets/app/css/app.css') }}">
     @yield('styles')
 
@@ -46,6 +52,14 @@
 
 <script src="{{ url('assets/plugins/jquery/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ url('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&libraries=places" async defer></script>
+<script src="/assets/plugins/jquery-mask/dist/jquery.mask.min.js"></script>
+<script src="/assets/plugins/datatables/dist/datatables.min.js"></script>
+<script src="/assets/plugins/datatables/js/dataTables.bulma.min.js"></script>
+<script src="/assets/plugins/select2/dist/js/select2.min.js"></script>
+<script src="/assets/plugins/momentjs/moment.js"></script>
+<script src="/assets/plugins/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+{{--<script src="/assets/js/patient.js"></script>--}}
 <script src="{{ url('assets/app/js/app.js') }}"></script>
 <script src="{{ url('js/newsletter.js') }}"></script>
 {{--<script src="{{ url('assets/js/socket.js') }}"></script>--}}

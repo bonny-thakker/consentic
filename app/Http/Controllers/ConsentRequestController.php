@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ConsentController extends Controller
+class ConsentRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+
+        $consentRequests = \App\ConsentRequest::all();
+
+        return view('app.consent-request.index',[
+            'consentRequests' => $consentRequests
+        ]);
 
     }
 

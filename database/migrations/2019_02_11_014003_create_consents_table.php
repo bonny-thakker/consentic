@@ -14,7 +14,7 @@ class CreateConsentsTable extends Migration
     public function up()
     {
         Schema::create('consents', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
             $table->string('name');
             $table->string('info_link')->nullable();
             $table->string('video_url')->nullable();

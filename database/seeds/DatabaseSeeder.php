@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(ConsentTypesTableSeeder::class);
         $this->call(ConsentSpecialitiesTableSeeder::class);
+        $this->call(ConsentsTableSeeder::class);
 
         if(in_array(config('app.env'), ['local','staging'])) {
 
@@ -77,8 +78,21 @@ class DatabaseSeeder extends Seeder
                 ],
             ]);
 
-            factory(App\User::class, 100)->create();
-            factory(App\Patient::class, 1000)->create();
+            factory(App\User::class, 25)->create();
+            factory(App\Patient::class, 100)->create();
+            factory(App\ConsentRequest::class, 500)->create();
+
+            $faker = Faker::create();
+
+            foreach(\App\Patient::all() as $patient){
+
+                $email = \App\Email::create([
+                    'address' => $faker->safeEmail
+                ]);
+
+                $patient->email()->save($email);
+
+            }
 
         }
 

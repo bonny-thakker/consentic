@@ -11,9 +11,15 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $patients = \App\Patient::all();
+
+        return view('app.patient.index',[
+            'patients' => $patients
+        ]);
+
     }
 
     /**

@@ -40,9 +40,9 @@ class ApplicationMenusMiddleware
 
             $menu->add('Dashboard', 'app/dashboard');
             $menu->add('Patients', 'app/patients');
-            $menu->add('Consents', 'app/consents');
-            $menu->add('Settings', 'app/settings');
-            $menu->add('Subscription', 'app/subscription');
+            $menu->add('Consent Requests', 'app/consent-requests');
+          /*  $menu->add('Settings', 'app/settings');
+            $menu->add('Subscription', 'app/subscription');*/
 
         });
 

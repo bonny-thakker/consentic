@@ -49,6 +49,7 @@
                 <div class="navbar-item">
                     <div class="field">
                         <div class="control">
+                            @include('layouts.partial.settings')
                             @include('layouts.partial.logout')
                         </div>
                     </div>

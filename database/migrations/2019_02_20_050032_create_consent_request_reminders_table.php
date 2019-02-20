@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmailsTable extends Migration
+class CreateConsentRequestRemindersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('emails', function (Blueprint $table) {
+        Schema::create('consent_request_reminders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('emailable_id')->nullable();
-            $table->string('emailable_type')->nullable();
-            $table->string('address');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emails');
+        Schema::dropIfExists('consent_request_reminders');
     }
 }
