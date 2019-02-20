@@ -69639,12 +69639,12 @@ module.exports = function(module) {
  | customize this script as you desire and load your own components.
  |
  */
-__webpack_require__(/*! spark-bootstrap */ "./vendor/laravel/spark-aurelius/resources/assets/js/spark-bootstrap.js");
+__webpack_require__(/*! spark-bootstrap */ "./spark/resources/assets/js/spark-bootstrap.js");
 
 __webpack_require__(/*! ./components/bootstrap */ "./resources/js/components/bootstrap.js");
 
 var app = new Vue({
-  mixins: [__webpack_require__(/*! spark */ "./vendor/laravel/spark-aurelius/resources/assets/js/spark.js")]
+  mixins: [__webpack_require__(/*! spark */ "./spark/resources/assets/js/spark.js")]
 });
 
 /***/ }),
@@ -69693,7 +69693,7 @@ Vue.component('home', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! auth/register-braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/auth/register-braintree.js");
+var base = __webpack_require__(/*! auth/register-braintree */ "./spark/resources/assets/js/auth/register-braintree.js");
 
 Vue.component('spark-register-braintree', {
   mixins: [base]
@@ -69708,7 +69708,7 @@ Vue.component('spark-register-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! auth/register-stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/auth/register-stripe.js");
+var base = __webpack_require__(/*! auth/register-stripe */ "./spark/resources/assets/js/auth/register-stripe.js");
 
 Vue.component('spark-register-stripe', {
   mixins: [base]
@@ -69871,7 +69871,7 @@ __webpack_require__(/*! ./kiosk/add-discount */ "./resources/js/spark-components
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! kiosk/add-discount */ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/add-discount.js");
+var base = __webpack_require__(/*! kiosk/add-discount */ "./spark/resources/assets/js/kiosk/add-discount.js");
 
 Vue.component('spark-kiosk-add-discount', {
   mixins: [base]
@@ -69886,7 +69886,7 @@ Vue.component('spark-kiosk-add-discount', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! kiosk/announcements */ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/announcements.js");
+var base = __webpack_require__(/*! kiosk/announcements */ "./spark/resources/assets/js/kiosk/announcements.js");
 
 Vue.component('spark-kiosk-announcements', {
   mixins: [base]
@@ -69901,7 +69901,7 @@ Vue.component('spark-kiosk-announcements', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! kiosk/kiosk */ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/kiosk.js");
+var base = __webpack_require__(/*! kiosk/kiosk */ "./spark/resources/assets/js/kiosk/kiosk.js");
 
 Vue.component('spark-kiosk', {
   mixins: [base]
@@ -69916,7 +69916,7 @@ Vue.component('spark-kiosk', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! kiosk/metrics */ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/metrics.js");
+var base = __webpack_require__(/*! kiosk/metrics */ "./spark/resources/assets/js/kiosk/metrics.js");
 
 Vue.component('spark-kiosk-metrics', {
   mixins: [base]
@@ -69931,7 +69931,7 @@ Vue.component('spark-kiosk-metrics', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! kiosk/profile */ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/profile.js");
+var base = __webpack_require__(/*! kiosk/profile */ "./spark/resources/assets/js/kiosk/profile.js");
 
 Vue.component('spark-kiosk-profile', {
   mixins: [base]
@@ -69946,7 +69946,7 @@ Vue.component('spark-kiosk-profile', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! kiosk/users */ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/users.js");
+var base = __webpack_require__(/*! kiosk/users */ "./spark/resources/assets/js/kiosk/users.js");
 
 Vue.component('spark-kiosk-users', {
   mixins: [base]
@@ -69961,7 +69961,7 @@ Vue.component('spark-kiosk-users', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! navbar/navbar */ "./vendor/laravel/spark-aurelius/resources/assets/js/navbar/navbar.js");
+var base = __webpack_require__(/*! navbar/navbar */ "./spark/resources/assets/js/navbar/navbar.js");
 
 Vue.component('spark-navbar', {
   mixins: [base]
@@ -69976,7 +69976,7 @@ Vue.component('spark-navbar', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! notifications/notifications */ "./vendor/laravel/spark-aurelius/resources/assets/js/notifications/notifications.js");
+var base = __webpack_require__(/*! notifications/notifications */ "./spark/resources/assets/js/notifications/notifications.js");
 
 Vue.component('spark-notifications', {
   mixins: [base]
@@ -69991,7 +69991,7 @@ Vue.component('spark-notifications', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/api */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/api.js");
+var base = __webpack_require__(/*! settings/api */ "./spark/resources/assets/js/settings/api.js");
 
 Vue.component('spark-api', {
   mixins: [base]
@@ -70006,7 +70006,7 @@ Vue.component('spark-api', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/api/create-token */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/api/create-token.js");
+var base = __webpack_require__(/*! settings/api/create-token */ "./spark/resources/assets/js/settings/api/create-token.js");
 
 Vue.component('spark-create-token', {
   mixins: [base]
@@ -70021,7 +70021,7 @@ Vue.component('spark-create-token', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/api/tokens */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/api/tokens.js");
+var base = __webpack_require__(/*! settings/api/tokens */ "./spark/resources/assets/js/settings/api/tokens.js");
 
 Vue.component('spark-tokens', {
   mixins: [base]
@@ -70036,7 +70036,7 @@ Vue.component('spark-tokens', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/invoices */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices.js");
+var base = __webpack_require__(/*! settings/invoices */ "./spark/resources/assets/js/settings/invoices.js");
 
 Vue.component('spark-invoices', {
   mixins: [base]
@@ -70051,7 +70051,7 @@ Vue.component('spark-invoices', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/invoices/invoice-list */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices/invoice-list.js");
+var base = __webpack_require__(/*! settings/invoices/invoice-list */ "./spark/resources/assets/js/settings/invoices/invoice-list.js");
 
 Vue.component('spark-invoice-list', {
   mixins: [base]
@@ -70066,7 +70066,7 @@ Vue.component('spark-invoice-list', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/invoices/update-extra-billing-information */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices/update-extra-billing-information.js");
+var base = __webpack_require__(/*! settings/invoices/update-extra-billing-information */ "./spark/resources/assets/js/settings/invoices/update-extra-billing-information.js");
 
 Vue.component('spark-update-extra-billing-information', {
   mixins: [base]
@@ -70081,7 +70081,7 @@ Vue.component('spark-update-extra-billing-information', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method-braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method-braintree.js");
+var base = __webpack_require__(/*! settings/payment-method-braintree */ "./spark/resources/assets/js/settings/payment-method-braintree.js");
 
 Vue.component('spark-payment-method-braintree', {
   mixins: [base]
@@ -70096,7 +70096,7 @@ Vue.component('spark-payment-method-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method-stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method-stripe.js");
+var base = __webpack_require__(/*! settings/payment-method-stripe */ "./spark/resources/assets/js/settings/payment-method-stripe.js");
 
 Vue.component('spark-payment-method-stripe', {
   mixins: [base]
@@ -70111,7 +70111,7 @@ Vue.component('spark-payment-method-stripe', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method/redeem-coupon */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/redeem-coupon.js");
+var base = __webpack_require__(/*! settings/payment-method/redeem-coupon */ "./spark/resources/assets/js/settings/payment-method/redeem-coupon.js");
 
 Vue.component('spark-redeem-coupon', {
   mixins: [base]
@@ -70126,7 +70126,7 @@ Vue.component('spark-redeem-coupon', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method/update-payment-method-braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-payment-method-braintree.js");
+var base = __webpack_require__(/*! settings/payment-method/update-payment-method-braintree */ "./spark/resources/assets/js/settings/payment-method/update-payment-method-braintree.js");
 
 Vue.component('spark-update-payment-method-braintree', {
   mixins: [base]
@@ -70141,7 +70141,7 @@ Vue.component('spark-update-payment-method-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method/update-payment-method-stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-payment-method-stripe.js");
+var base = __webpack_require__(/*! settings/payment-method/update-payment-method-stripe */ "./spark/resources/assets/js/settings/payment-method/update-payment-method-stripe.js");
 
 Vue.component('spark-update-payment-method-stripe', {
   mixins: [base]
@@ -70156,7 +70156,7 @@ Vue.component('spark-update-payment-method-stripe', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method/update-vat-id */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-vat-id.js");
+var base = __webpack_require__(/*! settings/payment-method/update-vat-id */ "./spark/resources/assets/js/settings/payment-method/update-vat-id.js");
 
 Vue.component('spark-update-vat-id', {
   mixins: [base]
@@ -70171,7 +70171,7 @@ Vue.component('spark-update-vat-id', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/profile */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile.js");
+var base = __webpack_require__(/*! settings/profile */ "./spark/resources/assets/js/settings/profile.js");
 
 Vue.component('spark-profile', {
   mixins: [base]
@@ -70186,7 +70186,7 @@ Vue.component('spark-profile', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/profile/update-contact-information */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile/update-contact-information.js");
+var base = __webpack_require__(/*! settings/profile/update-contact-information */ "./spark/resources/assets/js/settings/profile/update-contact-information.js");
 
 Vue.component('spark-update-contact-information', {
   mixins: [base]
@@ -70201,7 +70201,7 @@ Vue.component('spark-update-contact-information', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/profile/update-profile-photo */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile/update-profile-photo.js");
+var base = __webpack_require__(/*! settings/profile/update-profile-photo */ "./spark/resources/assets/js/settings/profile/update-profile-photo.js");
 
 Vue.component('spark-update-profile-photo', {
   mixins: [base]
@@ -70216,7 +70216,7 @@ Vue.component('spark-update-profile-photo', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/security */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security.js");
+var base = __webpack_require__(/*! settings/security */ "./spark/resources/assets/js/settings/security.js");
 
 Vue.component('spark-security', {
   mixins: [base]
@@ -70231,7 +70231,7 @@ Vue.component('spark-security', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/security/disable-two-factor-auth */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/disable-two-factor-auth.js");
+var base = __webpack_require__(/*! settings/security/disable-two-factor-auth */ "./spark/resources/assets/js/settings/security/disable-two-factor-auth.js");
 
 Vue.component('spark-disable-two-factor-auth', {
   mixins: [base]
@@ -70246,7 +70246,7 @@ Vue.component('spark-disable-two-factor-auth', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/security/enable-two-factor-auth */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/enable-two-factor-auth.js");
+var base = __webpack_require__(/*! settings/security/enable-two-factor-auth */ "./spark/resources/assets/js/settings/security/enable-two-factor-auth.js");
 
 Vue.component('spark-enable-two-factor-auth', {
   mixins: [base]
@@ -70261,7 +70261,7 @@ Vue.component('spark-enable-two-factor-auth', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/security/update-password */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/update-password.js");
+var base = __webpack_require__(/*! settings/security/update-password */ "./spark/resources/assets/js/settings/security/update-password.js");
 
 Vue.component('spark-update-password', {
   mixins: [base]
@@ -70276,7 +70276,7 @@ Vue.component('spark-update-password', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/settings */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/settings.js");
+var base = __webpack_require__(/*! settings/settings */ "./spark/resources/assets/js/settings/settings.js");
 
 Vue.component('spark-settings', {
   mixins: [base]
@@ -70291,7 +70291,7 @@ Vue.component('spark-settings', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription.js");
+var base = __webpack_require__(/*! settings/subscription */ "./spark/resources/assets/js/settings/subscription.js");
 
 Vue.component('spark-subscription', {
   mixins: [base]
@@ -70306,7 +70306,7 @@ Vue.component('spark-subscription', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription/cancel-subscription */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/cancel-subscription.js");
+var base = __webpack_require__(/*! settings/subscription/cancel-subscription */ "./spark/resources/assets/js/settings/subscription/cancel-subscription.js");
 
 Vue.component('spark-cancel-subscription', {
   mixins: [base]
@@ -70321,7 +70321,7 @@ Vue.component('spark-cancel-subscription', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription/resume-subscription */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/resume-subscription.js");
+var base = __webpack_require__(/*! settings/subscription/resume-subscription */ "./spark/resources/assets/js/settings/subscription/resume-subscription.js");
 
 Vue.component('spark-resume-subscription', {
   mixins: [base]
@@ -70336,7 +70336,7 @@ Vue.component('spark-resume-subscription', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription/subscribe-braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/subscribe-braintree.js");
+var base = __webpack_require__(/*! settings/subscription/subscribe-braintree */ "./spark/resources/assets/js/settings/subscription/subscribe-braintree.js");
 
 Vue.component('spark-subscribe-braintree', {
   mixins: [base]
@@ -70351,7 +70351,7 @@ Vue.component('spark-subscribe-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription/subscribe-stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/subscribe-stripe.js");
+var base = __webpack_require__(/*! settings/subscription/subscribe-stripe */ "./spark/resources/assets/js/settings/subscription/subscribe-stripe.js");
 
 Vue.component('spark-subscribe-stripe', {
   mixins: [base]
@@ -70366,7 +70366,7 @@ Vue.component('spark-subscribe-stripe', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription/update-subscription */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/update-subscription.js");
+var base = __webpack_require__(/*! settings/subscription/update-subscription */ "./spark/resources/assets/js/settings/subscription/update-subscription.js");
 
 Vue.component('spark-update-subscription', {
   mixins: [base]
@@ -70381,7 +70381,7 @@ Vue.component('spark-update-subscription', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams.js");
+var base = __webpack_require__(/*! settings/teams */ "./spark/resources/assets/js/settings/teams.js");
 
 Vue.component('spark-teams', {
   mixins: [base]
@@ -70396,7 +70396,7 @@ Vue.component('spark-teams', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/create-team */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/create-team.js");
+var base = __webpack_require__(/*! settings/teams/create-team */ "./spark/resources/assets/js/settings/teams/create-team.js");
 
 Vue.component('spark-create-team', {
   mixins: [base]
@@ -70411,7 +70411,7 @@ Vue.component('spark-create-team', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/current-teams */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/current-teams.js");
+var base = __webpack_require__(/*! settings/teams/current-teams */ "./spark/resources/assets/js/settings/teams/current-teams.js");
 
 Vue.component('spark-current-teams', {
   mixins: [base]
@@ -70426,7 +70426,7 @@ Vue.component('spark-current-teams', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/mailed-invitations */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/mailed-invitations.js");
+var base = __webpack_require__(/*! settings/teams/mailed-invitations */ "./spark/resources/assets/js/settings/teams/mailed-invitations.js");
 
 Vue.component('spark-mailed-invitations', {
   mixins: [base]
@@ -70441,7 +70441,7 @@ Vue.component('spark-mailed-invitations', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/pending-invitations */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/pending-invitations.js");
+var base = __webpack_require__(/*! settings/teams/pending-invitations */ "./spark/resources/assets/js/settings/teams/pending-invitations.js");
 
 Vue.component('spark-pending-invitations', {
   mixins: [base]
@@ -70456,7 +70456,7 @@ Vue.component('spark-pending-invitations', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/send-invitation */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/send-invitation.js");
+var base = __webpack_require__(/*! settings/teams/send-invitation */ "./spark/resources/assets/js/settings/teams/send-invitation.js");
 
 Vue.component('spark-send-invitation', {
   mixins: [base]
@@ -70471,7 +70471,7 @@ Vue.component('spark-send-invitation', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/team-members */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-members.js");
+var base = __webpack_require__(/*! settings/teams/team-members */ "./spark/resources/assets/js/settings/teams/team-members.js");
 
 Vue.component('spark-team-members', {
   mixins: [base]
@@ -70486,7 +70486,7 @@ Vue.component('spark-team-members', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/team-membership */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-membership.js");
+var base = __webpack_require__(/*! settings/teams/team-membership */ "./spark/resources/assets/js/settings/teams/team-membership.js");
 
 Vue.component('spark-team-membership', {
   mixins: [base]
@@ -70501,7 +70501,7 @@ Vue.component('spark-team-membership', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/team-profile */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-profile.js");
+var base = __webpack_require__(/*! settings/teams/team-profile */ "./spark/resources/assets/js/settings/teams/team-profile.js");
 
 Vue.component('spark-team-profile', {
   mixins: [base]
@@ -70516,7 +70516,7 @@ Vue.component('spark-team-profile', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/team-settings */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-settings.js");
+var base = __webpack_require__(/*! settings/teams/team-settings */ "./spark/resources/assets/js/settings/teams/team-settings.js");
 
 Vue.component('spark-team-settings', {
   mixins: [base]
@@ -70531,7 +70531,7 @@ Vue.component('spark-team-settings', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/update-team-name */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/update-team-name.js");
+var base = __webpack_require__(/*! settings/teams/update-team-name */ "./spark/resources/assets/js/settings/teams/update-team-name.js");
 
 Vue.component('spark-update-team-name', {
   mixins: [base]
@@ -70546,7 +70546,7 @@ Vue.component('spark-update-team-name', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/teams/update-team-photo */ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/update-team-photo.js");
+var base = __webpack_require__(/*! settings/teams/update-team-photo */ "./spark/resources/assets/js/settings/teams/update-team-photo.js");
 
 Vue.component('spark-update-team-photo', {
   mixins: [base]
@@ -70609,10 +70609,10 @@ Vue.component('spark-update-team-photo', {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/auth/register-braintree.js":
-/*!**************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/auth/register-braintree.js ***!
-  \**************************************************************************************/
+/***/ "./spark/resources/assets/js/auth/register-braintree.js":
+/*!**************************************************************!*\
+  !*** ./spark/resources/assets/js/auth/register-braintree.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -70620,7 +70620,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/braintree.js"), __webpack_require__(/*! ./../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/register */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/register.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/braintree */ "./spark/resources/assets/js/mixins/braintree.js"), __webpack_require__(/*! ./../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/register */ "./spark/resources/assets/js/mixins/register.js")],
 
   /**
    * The component's data.
@@ -70733,10 +70733,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/auth/register-stripe.js":
-/*!***********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/auth/register-stripe.js ***!
-  \***********************************************************************************/
+/***/ "./spark/resources/assets/js/auth/register-stripe.js":
+/*!***********************************************************!*\
+  !*** ./spark/resources/assets/js/auth/register-stripe.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -70744,7 +70744,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/register */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/register.js"), __webpack_require__(/*! ./../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/vat */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! ./../mixins/stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/stripe.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/register */ "./spark/resources/assets/js/mixins/register.js"), __webpack_require__(/*! ./../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/vat */ "./spark/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! ./../mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
 
   /**
    * The component's data.
@@ -70956,10 +70956,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/filters.js":
-/*!**********************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/filters.js ***!
-  \**********************************************************************/
+/***/ "./spark/resources/assets/js/filters.js":
+/*!**********************************************!*\
+  !*** ./spark/resources/assets/js/filters.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71024,10 +71024,10 @@ Vue.filter('currency', function (value) {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/bootstrap.js":
-/*!******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/forms/bootstrap.js ***!
-  \******************************************************************************/
+/***/ "./spark/resources/assets/js/forms/bootstrap.js":
+/*!******************************************************!*\
+  !*** ./spark/resources/assets/js/forms/bootstrap.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -71043,26 +71043,26 @@ Spark.forms = {
  * Load the SparkForm helper class.
  */
 
-__webpack_require__(/*! ./form */ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/form.js");
+__webpack_require__(/*! ./form */ "./spark/resources/assets/js/forms/form.js");
 /**
  * Define the SparkFormError collection class.
  */
 
 
-__webpack_require__(/*! ./errors */ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/errors.js");
+__webpack_require__(/*! ./errors */ "./spark/resources/assets/js/forms/errors.js");
 /**
  * Add additional HTTP / form helpers to the Spark object.
  */
 
 
-$.extend(Spark, __webpack_require__(/*! ./http */ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/http.js"));
+$.extend(Spark, __webpack_require__(/*! ./http */ "./spark/resources/assets/js/forms/http.js"));
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/errors.js":
-/*!***************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/forms/errors.js ***!
-  \***************************************************************************/
+/***/ "./spark/resources/assets/js/forms/errors.js":
+/*!***************************************************!*\
+  !*** ./spark/resources/assets/js/forms/errors.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71144,10 +71144,10 @@ window.SparkFormErrors = function () {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/form.js":
-/*!*************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/forms/form.js ***!
-  \*************************************************************************/
+/***/ "./spark/resources/assets/js/forms/form.js":
+/*!*************************************************!*\
+  !*** ./spark/resources/assets/js/forms/form.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71205,10 +71205,10 @@ window.SparkForm = function (data) {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/http.js":
-/*!*************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/forms/http.js ***!
-  \*************************************************************************/
+/***/ "./spark/resources/assets/js/forms/http.js":
+/*!*************************************************!*\
+  !*** ./spark/resources/assets/js/forms/http.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71262,10 +71262,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/add-discount.js":
-/*!*********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/add-discount.js ***!
-  \*********************************************************************************/
+/***/ "./spark/resources/assets/js/kiosk/add-discount.js":
+/*!*********************************************************!*\
+  !*** ./spark/resources/assets/js/kiosk/add-discount.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -71279,7 +71279,7 @@ function kioskAddDiscountForm() {
 }
 
 module.exports = {
-  mixins: [__webpack_require__(/*! ./../mixins/discounts */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/discounts.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/discounts */ "./spark/resources/assets/js/mixins/discounts.js")],
 
   /**
    * The component's data.
@@ -71326,10 +71326,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/announcements.js":
-/*!**********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/announcements.js ***!
-  \**********************************************************************************/
+/***/ "./spark/resources/assets/js/kiosk/announcements.js":
+/*!**********************************************************!*\
+  !*** ./spark/resources/assets/js/kiosk/announcements.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71442,10 +71442,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/kiosk.js":
-/*!**************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/kiosk.js ***!
-  \**************************************************************************/
+/***/ "./spark/resources/assets/js/kiosk/kiosk.js":
+/*!**************************************************!*\
+  !*** ./spark/resources/assets/js/kiosk/kiosk.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -71455,7 +71455,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/tab-state */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/tab-state.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/tab-state */ "./spark/resources/assets/js/mixins/tab-state.js")],
 
   /**
    * Prepare the component.
@@ -71482,10 +71482,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/metrics.js":
-/*!****************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/metrics.js ***!
-  \****************************************************************************/
+/***/ "./spark/resources/assets/js/kiosk/metrics.js":
+/*!****************************************************!*\
+  !*** ./spark/resources/assets/js/kiosk/metrics.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71749,10 +71749,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/profile.js":
-/*!****************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/profile.js ***!
-  \****************************************************************************/
+/***/ "./spark/resources/assets/js/kiosk/profile.js":
+/*!****************************************************!*\
+  !*** ./spark/resources/assets/js/kiosk/profile.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -71889,10 +71889,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/users.js":
-/*!**************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/kiosk/users.js ***!
-  \**************************************************************************/
+/***/ "./spark/resources/assets/js/kiosk/users.js":
+/*!**************************************************!*\
+  !*** ./spark/resources/assets/js/kiosk/users.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72005,10 +72005,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixin.js":
-/*!********************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixin.js ***!
-  \********************************************************************/
+/***/ "./spark/resources/assets/js/mixin.js":
+/*!********************************************!*\
+  !*** ./spark/resources/assets/js/mixin.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72043,10 +72043,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/braintree.js":
-/*!*******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/braintree.js ***!
-  \*******************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/braintree.js":
+/*!*******************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/braintree.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72101,10 +72101,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/discounts.js":
-/*!*******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/discounts.js ***!
-  \*******************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/discounts.js":
+/*!*******************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/discounts.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72181,10 +72181,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js":
-/*!***************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js ***!
-  \***************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/plans.js":
+/*!***************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/plans.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72322,10 +72322,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/register.js":
-/*!******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/register.js ***!
-  \******************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/register.js":
+/*!******************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/register.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72467,10 +72467,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/stripe.js":
-/*!****************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/stripe.js ***!
-  \****************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/stripe.js":
+/*!****************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/stripe.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72514,10 +72514,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js":
-/*!***********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js ***!
-  \***********************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/subscriptions.js":
+/*!***********************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/subscriptions.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72678,10 +72678,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/tab-state.js":
-/*!*******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/tab-state.js ***!
-  \*******************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/tab-state.js":
+/*!*******************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/tab-state.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72767,10 +72767,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/vat.js":
-/*!*************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/mixins/vat.js ***!
-  \*************************************************************************/
+/***/ "./spark/resources/assets/js/mixins/vat.js":
+/*!*************************************************!*\
+  !*** ./spark/resources/assets/js/mixins/vat.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72812,10 +72812,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/navbar/navbar.js":
-/*!****************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/navbar/navbar.js ***!
-  \****************************************************************************/
+/***/ "./spark/resources/assets/js/navbar/navbar.js":
+/*!****************************************************!*\
+  !*** ./spark/resources/assets/js/navbar/navbar.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72845,10 +72845,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/notifications/notifications.js":
-/*!******************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/notifications/notifications.js ***!
-  \******************************************************************************************/
+/***/ "./spark/resources/assets/js/notifications/notifications.js":
+/*!******************************************************************!*\
+  !*** ./spark/resources/assets/js/notifications/notifications.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72925,10 +72925,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/api.js":
-/*!***************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/api.js ***!
-  \***************************************************************************/
+/***/ "./spark/resources/assets/js/settings/api.js":
+/*!***************************************************!*\
+  !*** ./spark/resources/assets/js/settings/api.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72987,10 +72987,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/api/create-token.js":
-/*!****************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/api/create-token.js ***!
-  \****************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/api/create-token.js":
+/*!****************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/api/create-token.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73120,10 +73120,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/api/tokens.js":
-/*!**********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/api/tokens.js ***!
-  \**********************************************************************************/
+/***/ "./spark/resources/assets/js/settings/api/tokens.js":
+/*!**********************************************************!*\
+  !*** ./spark/resources/assets/js/settings/api/tokens.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73220,10 +73220,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices.js":
-/*!********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices.js ***!
-  \********************************************************************************/
+/***/ "./spark/resources/assets/js/settings/invoices.js":
+/*!********************************************************!*\
+  !*** ./spark/resources/assets/js/settings/invoices.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73271,10 +73271,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices/invoice-list.js":
-/*!*********************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices/invoice-list.js ***!
-  \*********************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/invoices/invoice-list.js":
+/*!*********************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/invoices/invoice-list.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73292,10 +73292,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices/update-extra-billing-information.js":
-/*!*****************************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/invoices/update-extra-billing-information.js ***!
-  \*****************************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/invoices/update-extra-billing-information.js":
+/*!*****************************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/invoices/update-extra-billing-information.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73339,10 +73339,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method-braintree.js":
-/*!************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method-braintree.js ***!
-  \************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/payment-method-braintree.js":
+/*!************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/payment-method-braintree.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -73352,7 +73352,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/discounts */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/discounts.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/discounts */ "./spark/resources/assets/js/mixins/discounts.js")],
 
   /**
    * The component's data.
@@ -73393,10 +73393,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method-stripe.js":
-/*!*********************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method-stripe.js ***!
-  \*********************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/payment-method-stripe.js":
+/*!*********************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/payment-method-stripe.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -73406,7 +73406,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/discounts */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/discounts.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/discounts */ "./spark/resources/assets/js/mixins/discounts.js")],
 
   /**
    * The component's data.
@@ -73439,10 +73439,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/redeem-coupon.js":
-/*!****************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/redeem-coupon.js ***!
-  \****************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/payment-method/redeem-coupon.js":
+/*!****************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/payment-method/redeem-coupon.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73485,10 +73485,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-payment-method-braintree.js":
-/*!**********************************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-payment-method-braintree.js ***!
-  \**********************************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/payment-method/update-payment-method-braintree.js":
+/*!**********************************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/payment-method/update-payment-method-braintree.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -73498,7 +73498,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/braintree.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/braintree */ "./spark/resources/assets/js/mixins/braintree.js")],
 
   /**
    * The component's data.
@@ -73586,10 +73586,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-payment-method-stripe.js":
-/*!*******************************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-payment-method-stripe.js ***!
-  \*******************************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/payment-method/update-payment-method-stripe.js":
+/*!*******************************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/payment-method/update-payment-method-stripe.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -73599,7 +73599,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/stripe.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
 
   /**
    * The component's data.
@@ -73768,10 +73768,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-vat-id.js":
-/*!****************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/payment-method/update-vat-id.js ***!
-  \****************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/payment-method/update-vat-id.js":
+/*!****************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/payment-method/update-vat-id.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73815,10 +73815,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile.js":
-/*!*******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile.js ***!
-  \*******************************************************************************/
+/***/ "./spark/resources/assets/js/settings/profile.js":
+/*!*******************************************************!*\
+  !*** ./spark/resources/assets/js/settings/profile.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73828,10 +73828,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile/update-contact-information.js":
-/*!**********************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile/update-contact-information.js ***!
-  \**********************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/profile/update-contact-information.js":
+/*!**********************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/profile/update-contact-information.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73871,10 +73871,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile/update-profile-photo.js":
-/*!****************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/profile/update-profile-photo.js ***!
-  \****************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/profile/update-profile-photo.js":
+/*!****************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/profile/update-profile-photo.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73934,10 +73934,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security.js":
-/*!********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/security.js ***!
-  \********************************************************************************/
+/***/ "./spark/resources/assets/js/settings/security.js":
+/*!********************************************************!*\
+  !*** ./spark/resources/assets/js/settings/security.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73967,10 +73967,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/disable-two-factor-auth.js":
-/*!********************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/disable-two-factor-auth.js ***!
-  \********************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/security/disable-two-factor-auth.js":
+/*!********************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/security/disable-two-factor-auth.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73999,10 +73999,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/enable-two-factor-auth.js":
-/*!*******************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/enable-two-factor-auth.js ***!
-  \*******************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/security/enable-two-factor-auth.js":
+/*!*******************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/security/enable-two-factor-auth.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74046,10 +74046,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/update-password.js":
-/*!************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/security/update-password.js ***!
-  \************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/security/update-password.js":
+/*!************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/security/update-password.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74078,10 +74078,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/settings.js":
-/*!********************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/settings.js ***!
-  \********************************************************************************/
+/***/ "./spark/resources/assets/js/settings/settings.js":
+/*!********************************************************!*\
+  !*** ./spark/resources/assets/js/settings/settings.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74091,7 +74091,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/tab-state */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/tab-state.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/tab-state */ "./spark/resources/assets/js/mixins/tab-state.js")],
 
   /**
    * The component's data.
@@ -74113,10 +74113,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription.js":
-/*!************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription.js ***!
-  \************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/subscription.js":
+/*!************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/subscription.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74126,7 +74126,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/subscriptions */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js")],
+  mixins: [__webpack_require__(/*! ./../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js")],
 
   /**
    * The component's data.
@@ -74167,10 +74167,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/cancel-subscription.js":
-/*!********************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/cancel-subscription.js ***!
-  \********************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/subscription/cancel-subscription.js":
+/*!********************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/subscription/cancel-subscription.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74216,10 +74216,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/resume-subscription.js":
-/*!********************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/resume-subscription.js ***!
-  \********************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/subscription/resume-subscription.js":
+/*!********************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/subscription/resume-subscription.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74229,7 +74229,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js")],
 
   /**
    * Prepare the component.
@@ -74260,10 +74260,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/subscribe-braintree.js":
-/*!********************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/subscribe-braintree.js ***!
-  \********************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/subscription/subscribe-braintree.js":
+/*!********************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/subscription/subscribe-braintree.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74273,7 +74273,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/braintree */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/braintree.js"), __webpack_require__(/*! ./../../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/braintree */ "./spark/resources/assets/js/mixins/braintree.js"), __webpack_require__(/*! ./../../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js")],
 
   /**
    * The component's data.
@@ -74360,10 +74360,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/subscribe-stripe.js":
-/*!*****************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/subscribe-stripe.js ***!
-  \*****************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/subscription/subscribe-stripe.js":
+/*!*****************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/subscription/subscribe-stripe.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74373,7 +74373,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js"), __webpack_require__(/*! ./../../mixins/vat */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! ./../../mixins/stripe */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/stripe.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js"), __webpack_require__(/*! ./../../mixins/vat */ "./spark/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! ./../../mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
 
   /**
    * The component's data.
@@ -74558,10 +74558,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/update-subscription.js":
-/*!********************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/subscription/update-subscription.js ***!
-  \********************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/subscription/update-subscription.js":
+/*!********************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/subscription/update-subscription.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74571,7 +74571,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/subscriptions.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js")],
 
   /**
    * The component's data.
@@ -74648,10 +74648,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams.js":
-/*!*****************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams.js ***!
-  \*****************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams.js":
+/*!*****************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74661,10 +74661,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/create-team.js":
-/*!*****************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/create-team.js ***!
-  \*****************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/create-team.js":
+/*!*****************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/create-team.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74793,10 +74793,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/current-teams.js":
-/*!*******************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/current-teams.js ***!
-  \*******************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/current-teams.js":
+/*!*******************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/current-teams.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74872,10 +74872,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/mailed-invitations.js":
-/*!************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/mailed-invitations.js ***!
-  \************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/mailed-invitations.js":
+/*!************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/mailed-invitations.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74897,10 +74897,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/pending-invitations.js":
-/*!*************************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/pending-invitations.js ***!
-  \*************************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/pending-invitations.js":
+/*!*************************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/pending-invitations.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74971,10 +74971,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/send-invitation.js":
-/*!*********************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/send-invitation.js ***!
-  \*********************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/send-invitation.js":
+/*!*********************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/send-invitation.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75104,10 +75104,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-members.js":
-/*!******************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-members.js ***!
-  \******************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/team-members.js":
+/*!******************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/team-members.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75238,10 +75238,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-membership.js":
-/*!*********************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-membership.js ***!
-  \*********************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/team-membership.js":
+/*!*********************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/team-membership.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75283,10 +75283,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-profile.js":
-/*!******************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-profile.js ***!
-  \******************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/team-profile.js":
+/*!******************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/team-profile.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75296,10 +75296,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-settings.js":
-/*!*******************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/team-settings.js ***!
-  \*******************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/team-settings.js":
+/*!*******************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/team-settings.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -75309,7 +75309,7 @@ module.exports = {
   /**
    * Load mixins for the component.
    */
-  mixins: [__webpack_require__(/*! ./../../mixins/tab-state */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixins/tab-state.js")],
+  mixins: [__webpack_require__(/*! ./../../mixins/tab-state */ "./spark/resources/assets/js/mixins/tab-state.js")],
 
   /**
    * The component's data.
@@ -75354,10 +75354,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/update-team-name.js":
-/*!**********************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/update-team-name.js ***!
-  \**********************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/update-team-name.js":
+/*!**********************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/update-team-name.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75396,10 +75396,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/update-team-photo.js":
-/*!***********************************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/settings/teams/update-team-photo.js ***!
-  \***********************************************************************************************/
+/***/ "./spark/resources/assets/js/settings/teams/update-team-photo.js":
+/*!***********************************************************************!*\
+  !*** ./spark/resources/assets/js/settings/teams/update-team-photo.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75467,10 +75467,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/spark-bootstrap.js":
-/*!******************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/spark-bootstrap.js ***!
-  \******************************************************************************/
+/***/ "./spark/resources/assets/js/spark-bootstrap.js":
+/*!******************************************************!*\
+  !*** ./spark/resources/assets/js/spark-bootstrap.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -75532,7 +75532,7 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 
 if ($('#spark-app').length > 0) {
-  __webpack_require__(/*! vue-bootstrap */ "./vendor/laravel/spark-aurelius/resources/assets/js/vue-bootstrap.js");
+  __webpack_require__(/*! vue-bootstrap */ "./spark/resources/assets/js/vue-bootstrap.js");
 }
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -75570,10 +75570,10 @@ window.axios.interceptors.response.use(function (response) {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/spark.js":
-/*!********************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/spark.js ***!
-  \********************************************************************/
+/***/ "./spark/resources/assets/js/spark.js":
+/*!********************************************!*\
+  !*** ./spark/resources/assets/js/spark.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -75832,10 +75832,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./vendor/laravel/spark-aurelius/resources/assets/js/vue-bootstrap.js":
-/*!****************************************************************************!*\
-  !*** ./vendor/laravel/spark-aurelius/resources/assets/js/vue-bootstrap.js ***!
-  \****************************************************************************/
+/***/ "./spark/resources/assets/js/vue-bootstrap.js":
+/*!****************************************************!*\
+  !*** ./spark/resources/assets/js/vue-bootstrap.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -75851,18 +75851,18 @@ if (window.Vue === undefined) {
  */
 
 
-Vue.mixin(__webpack_require__(/*! ./mixin */ "./vendor/laravel/spark-aurelius/resources/assets/js/mixin.js"));
+Vue.mixin(__webpack_require__(/*! ./mixin */ "./spark/resources/assets/js/mixin.js"));
 /**
  * Define the Vue filters.
  */
 
-__webpack_require__(/*! ./filters */ "./vendor/laravel/spark-aurelius/resources/assets/js/filters.js");
+__webpack_require__(/*! ./filters */ "./spark/resources/assets/js/filters.js");
 /**
  * Load the Spark form utilities.
  */
 
 
-__webpack_require__(/*! ./forms/bootstrap */ "./vendor/laravel/spark-aurelius/resources/assets/js/forms/bootstrap.js");
+__webpack_require__(/*! ./forms/bootstrap */ "./spark/resources/assets/js/forms/bootstrap.js");
 
 /***/ }),
 

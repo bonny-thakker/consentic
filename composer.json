@@ -21,7 +21,8 @@
         "lavary/laravel-menu": "^1.7",
         "spatie/laravel-newsletter": "^4.2",
         "spatie/laravel-permission": "^2.31",
-        "venturedrake/laravel-boilerplate": "dev-master"
+        "venturedrake/laravel-boilerplate": "dev-master",
+        "yoeunes/notify": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

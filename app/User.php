@@ -55,4 +55,12 @@ class User extends SparkUser
         'uses_two_factor_auth' => 'boolean',
     ];
 
+    /**
+     * Get the consent request for the user.
+     */
+    public function consentRequests()
+    {
+        return $this->hasMany('App\ConsentRequest');
+    }
+
 }

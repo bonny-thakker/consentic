@@ -103,4 +103,12 @@ class Patient extends Model
         return $this->morphOne(Email::class, 'emailable');
     }
 
+    /**
+     * Get the consent requests for the patient.
+     */
+    public function consentRequests()
+    {
+        return $this->hasMany('App\ConsentRequest');
+    }
+
 }

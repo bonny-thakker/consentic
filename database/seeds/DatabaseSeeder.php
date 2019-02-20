@@ -79,8 +79,8 @@ class DatabaseSeeder extends Seeder
             ]);
 
             factory(App\User::class, 25)->create();
-            factory(App\Patient::class, 100)->create();
-            factory(App\ConsentRequest::class, 500)->create();
+            factory(App\Patient::class, 50)->create();
+            factory(App\ConsentRequest::class, 100)->create();
 
             $faker = Faker::create();
 

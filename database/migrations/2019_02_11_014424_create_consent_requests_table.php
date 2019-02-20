@@ -15,6 +15,7 @@ class CreateConsentRequestsTable extends Migration
     {
         Schema::create('consent_requests', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('team_id')->index()->unsigned();
             $table->smallInteger('consent_id')->index()->unsigned();
             $table->integer('user_id')->index()->unsigned();
             $table->timestamp('user_signed_ts')->nullable();
@@ -25,6 +26,7 @@ class CreateConsentRequestsTable extends Migration
             $table->boolean('reminder')->default(false);
             $table->boolean('in_offce')->default(false);
             $table->boolean('video_watched')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
