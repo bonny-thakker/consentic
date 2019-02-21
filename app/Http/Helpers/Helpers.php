@@ -5,14 +5,12 @@ use Illuminate\Contracts\Encryption\DecryptException;
 
 function decryptField($value){
 
-
-
     try {
         $decrypted = decrypt($value);
     } catch (DecryptException $e) {
         //
     }
 
-    return $decrypted;
+    return $decrypted ?? null;
 
 }

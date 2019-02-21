@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             factory(App\Patient::class, 50)->create();
             factory(App\ConsentRequest::class, 100)->create();
 
-            $faker = Faker::create();
+            $faker = Faker::create(config('app.faker_locale'));
 
             foreach(\App\Patient::all() as $patient){
 
@@ -91,6 +91,21 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 $patient->email()->save($email);
+
+                $phoneNumber = \App\PhoneNumber::create([
+                    'number' => $faker->mobileNumber
+                ]);
+
+                $patient->phoneNumber()->save($phoneNumber);
+
+                $address = \App\Address::create([
+                    'line_1' => $faker->streetAddress,
+                    'postcode' =>  $faker->postcode,
+                    'suburb' =>  $faker->city,
+                    'state' =>  $faker->stateAbbr,
+                ]);
+
+                $patient->address()->save($address);
 
             }
 

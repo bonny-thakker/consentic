@@ -103,6 +103,16 @@ class Patient extends Model
         return $this->morphOne(Email::class, 'emailable');
     }
 
+    public function address()
+    {
+        return $this->morphOne(Address::class, 'addressable');
+    }
+
+    public function phoneNumber()
+    {
+        return $this->morphOne(PhoneNumber::class, 'phone_numberable');
+    }
+
     /**
      * Get the consent requests for the patient.
      */

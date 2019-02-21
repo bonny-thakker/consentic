@@ -39,11 +39,11 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
         return redirect('/app/dashboard');
     })->name('app.dashboard');
 
-    Route::get('dashboard', function () {
-        return view('app.dashboard');
-    });
+    Route::get('dashboard', 'DashboardController@index')->name('app.dashboard.index');
 
     Route::get('patients', 'PatientController@index')->name('app.patients.index');
+    Route::get('patients/{patient}', 'PatientController@show')->name('app.patients.show');
+
     Route::get('consent-requests', 'ConsentRequestController@index')->name('app.consent-requests.index');
 
    /* Route::get('settings', function () {

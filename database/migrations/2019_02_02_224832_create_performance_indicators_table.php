@@ -19,7 +19,6 @@ class CreatePerformanceIndicatorsTable extends Migration
             $table->decimal('daily_volume');
             $table->integer('new_users');
             $table->timestamps();
-
             $table->index('created_at');
         });
     }

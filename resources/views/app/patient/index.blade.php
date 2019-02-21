@@ -80,106 +80,111 @@
 
 @section('content')
 
-    <main class="app-content">
-        <section class="section">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <input id="patient-name-filter" type="text" class="input is-medium"
-                               placeholder="Search Patient Name">
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="field has-addons">
+                    <div class="control">
+                        <input id="patient-name-filter" type="text" class="input is-medium" placeholder="Enter Patient Name">
                     </div>
-                    <div class="column">
-                        <input id="patient-dob-filter" type="text" class="input is-medium list-filter is-hidden"
-                               placeholder="Date of Birth" readonly="">
-                    </div>
-                    <div class="column is-hidden">
-                        <div class="select is-fullwidth">
-                            <select id="health-fund-filter" class="list-filter">
-                                <option disabled="" selected="">Health Fund</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="column is-hidden">
-                        <div class="select is-fullwidth">
-                            <select id="filter-follow-up">
-                                <option disabled="" selected="">Follow Up Req.</option>
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <button id="add-patient-button" class="button is-medium is-primary is-fullwidth is-theme">Add
-                            Patient
+                    <div class="control">
+                        <button class="button is-medium is-theme">
+                            Search
                         </button>
                     </div>
                 </div>
-                <div class="dt-bulma no-footer">
-                    <div class="columns">
-                        <div class="column is-12">
-                            <table id="list-table" class="table is-hoverable is-striped is-fullwidth" style="width: 100%;">
-                                <thead>
-                                <tr>
-                                    <th class="is-hidden">Last Name</th>
-                                    <th>Patient Name</th>
-                                    {{-- <th>Health Fund</th> --}}
-                                    <th>Email</th>
-                                    <th>DOB</th>
-                                    {{-- <th class="has-text-centered">Follow Up Req.</th> --}}
-                                    <th class="has-text-centered">&nbsp;</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($patients as $patient)
-                                    <tr>
-                                        <th class="is-hidden">{{ $patient->last_name }}</th>
-                                        <td>{{ $patient->fullName() }}</td>
-                                        {{-- <td>Healtd Fund</td> --}}
-                                        <td>{{ $patient->email->address ?? null }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($patient->birthday)->format('d/m/Y') }}</td>
-                                        {{-- <td class="has-text-centered">Follow Up Req.</td> --}}
-                                        <td class="has-text-centered">
+            </div>
+            <div class="column">
 
-                                            <div class="field has-addons is-centered action">
-                                                <p class="control">
-                                                    <a href="/patients/profile/9bvHsrc0th" class="button is-info tooltip" data-tooltip="View Details">
-                                                <span class="icon">
-                                                    <i class="fas fa-eye"></i>
-                                                </span>
-                                                    </a>
-                                                </p>
-                                                <p class="control">
-                                                    <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" data-id="9bvHsrc0th">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                </p>
-                                                <p class="control">
-                                                    <a class="button is-success has-text-white tooltip add-consent-request-button" data-tooltip="Add Consent" data-id="9bvHsrc0th">
-                                                        <i class="fas fa-plus"></i>
-                                                    </a>
-                                                </p>
-                                                <p class="control">
-                                                    <a class="button is-danger has-text-white tooltip delete-button" data-tooltip="Delete" data-id="9bvHsrc0th" disabled="">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </p>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="columns">
-                        <div class="column is-5">
-                          {{-- PAGINATION --}}
-                        </div>
-                    </div>
+            </div>
+            <div class="column is-hidden">
+                <div class="select is-fullwidth">
+                    <select id="health-fund-filter" class="list-filter">
+                        <option disabled="" selected="">Health Fund</option>
+                    </select>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="column is-hidden">
+                <div class="select is-fullwidth">
+                    <select id="filter-follow-up">
+                        <option disabled="" selected="">Follow Up Req.</option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="column">
+                <button id="add-patient-button" class="button is-medium is-primary is-fullwidth is-theme">Add
+                    Patient
+                </button>
+            </div>
+        </div>
+        <div class="dt-bulma no-footer">
+            <div class="columns">
+                <div class="column is-12">
+                    <table id="list-table" class="table is-hoverable is-striped is-fullwidth" style="width: 100%;">
+                        <thead>
+                        <tr>
+                            <th class="is-hidden">Last Name</th>
+                            <th>Patient Name</th>
+                            {{-- <th>Health Fund</th> --}}
+                            <th>Email</th>
+                            <th>DOB</th>
+                            {{-- <th class="has-text-centered">Follow Up Req.</th> --}}
+                            <th class="has-text-centered">&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($patients as $patient)
+                            <tr>
+                                <th class="is-hidden">{{ $patient->last_name }}</th>
+                                <td>{{ $patient->fullName() }}</td>
+                                {{-- <td>Healtd Fund</td> --}}
+                                <td>{{ $patient->email->address ?? null }}</td>
+                                <td>{{ \Carbon\Carbon::parse($patient->birthday)->format('d/m/Y') }}</td>
+                                {{-- <td class="has-text-centered">Follow Up Req.</td> --}}
+                                <td class="has-text-right">
+
+                                    <div class="field has-addons is-pulled-right action">
+                                        <p class="control">
+                                            <a href="{{ url('app/patients/'.$patient->id) }}" class="button is-info tooltip" data-tooltip="View Details">
+                                        <span class="icon">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                            </a>
+                                        </p>
+                                        <p class="control">
+                                            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </p>
+                                        <p class="control">
+                                            <a class="button is-success has-text-white tooltip add-consent-request-button" data-tooltip="Add Consent">
+                                                <i class="fas fa-plus"></i>
+                                            </a>
+                                        </p>
+                                        <p class="control">
+                                            <a class="button is-danger has-text-white tooltip delete-button" data-tooltip="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-5">
+                  {{-- PAGINATION --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @endsection

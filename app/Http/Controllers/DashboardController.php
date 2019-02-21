@@ -13,7 +13,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+
+        $consentRequests = \App\ConsentRequest::latest()->limit(5)->get();
+        return view('app.dashboard', compact('consentRequests'));
+
     }
 
     /**

@@ -39,7 +39,15 @@ class ApplicationMenusMiddleware
         Menu::make('appMainMenu', function ($menu) use ($request) {
 
             $menu->add('Dashboard', 'app/dashboard');
+
             $menu->add('Patients', 'app/patients');
+
+            if(in_array($request->route()->getName(),[
+                'app.patients.show',
+            ])){
+                $menu->get('patients')->active();
+            }
+
             $menu->add('Consent Requests', 'app/consent-requests');
           /*  $menu->add('Settings', 'app/settings');
             $menu->add('Subscription', 'app/subscription');*/
