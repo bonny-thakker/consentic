@@ -94,13 +94,12 @@
             <div class="container">
                 <div class="columns">
 
-                        <div class="column">
-                            <input id="patient-name-filter" type="text" class="input is-medium list-filter" placeholder="Search Patient Name" />
-                        </div>
-                        <div class="column">
+                    <div class="column">
+                        <input id="patient-name-filter" type="text" class="input is-medium list-filter" placeholder="Search Patient Name" />
+                    </div>
+                       {{-- <div class="column">
                             <input id="patient-dob-filter" type="text" class="input is-medium list-filter" placeholder="Date of Birth" readonly />
-                        </div>
-
+                        </div>--}}
 
                     <div class="column">
                         <div class="select is-fullwidth">
