@@ -18,12 +18,21 @@ class DashboardController extends Controller
         $patientsCount = \App\Patient::all()->count();
         $consentRequestsCount = \App\ConsentRequest::all()->count();
         $consents = \App\Consent::all()->count();
+        $consentRequestPendingCount = \App\ConsentRequest::where([
+            'user_signed_ts' => null,
+            'patient_signed_ts' => null
+        ])->orWhere([
+            'revoked' => 1
+        ])
+            ->get()
+            ->count();
 
         return view('app.dashboard.index', compact(
             'consentRequests',
             'patientsCount',
             'consentRequestsCount',
-            'consents'
+            'consents',
+            'consentRequestPendingCount'
         ));
 
     }

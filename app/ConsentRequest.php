@@ -36,4 +36,12 @@ class ConsentRequest extends Model
         return $this->belongsTo('App\Patient');
     }
 
+    public function isSigned(){
+
+        if(($this->user_signed_ts || $this->patient_signed_ts) && $this->revoked != 1){
+            return true;
+        }
+
+    }
+
 }

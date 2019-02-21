@@ -26,14 +26,14 @@
         </a>
     </div>
     <div class="column">
-        <a id="unseen-consents" href="/consent-requests" class="box quick-stats has-background-danger has-text-white" style="background-color: #1C3D45 !important;">
+        <a id="unseen-consents" href="{{ url('app/consent-requests') }}" class="box quick-stats has-background-danger has-text-white" style="background-color: #1C3D45 !important;">
             <div class="quick-stats-icon">
                 <span class="icon is-large">
                     <i class="fas fa-tasks"></i>
                 </span>
             </div>
             <div class="quick-stats-content">
-                <h2 class="title">{{ $unseenConsents ?? 0 }}</h2>
+                <h2 class="title">{{ $consentRequestPendingCount ?? 0 }}</h2>
                 <p class="subtitle">Pending Consents</p>
             </div>
         </a>
