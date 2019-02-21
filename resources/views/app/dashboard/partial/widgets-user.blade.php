@@ -61,7 +61,7 @@
                 </span>
             </div>
             <div class="quick-stats-content">
-                <h2 class="title">{{ $animations ?? 0 }}</h2>
+                <h2 class="title">{{ $consents ?? 0 }}</h2>
                 <p class="subtitle">Animations</p>
             </div>
         </a>

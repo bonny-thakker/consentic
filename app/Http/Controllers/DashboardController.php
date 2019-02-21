@@ -17,11 +17,13 @@ class DashboardController extends Controller
         $consentRequests = \App\ConsentRequest::latest()->limit(5)->get();
         $patientsCount = \App\Patient::all()->count();
         $consentRequestsCount = \App\ConsentRequest::all()->count();
+        $consents = \App\Consent::all()->count();
 
         return view('app.dashboard.index', compact(
             'consentRequests',
             'patientsCount',
-            'consentRequestsCount'
+            'consentRequestsCount',
+            'consents'
         ));
 
     }
