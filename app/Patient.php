@@ -5,6 +5,7 @@ namespace App;
 use App\Model;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Patient extends Model
 {
@@ -15,6 +16,7 @@ class Patient extends Model
     public function setBirthdayAttribute($value)
     {
         if ($value) {
+            $value = Carbon::createFromFormat('d/m/Y', $value);
             $this->attributes['birthday'] = encrypt($value);
         } else {
             $this->attributes['birthday'] = null;
