@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ConsentRequest;
 
 class ConsentRequestController extends Controller
 {
@@ -49,9 +50,13 @@ class ConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ConsentRequest $consentRequest)
     {
-        //
+
+        parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
+        $videoId = $videoParams['v'] ?? '';
+
+        return view('app.consent-request.show', compact('consentRequest', 'videoId'));
     }
 
     /**
@@ -83,8 +88,10 @@ class ConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ConsentRequest $consentRequest)
     {
-        //
+        $consentRequest->delete();
+        notify()->success('Consent request deleted');
+        return back();
     }
 }

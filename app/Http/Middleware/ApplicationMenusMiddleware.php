@@ -51,8 +51,18 @@ class ApplicationMenusMiddleware
             }
 
             $menu->add('Consent Requests', 'app/consent-requests');
-          /*  $menu->add('Settings', 'app/settings');
-            $menu->add('Subscription', 'app/subscription');*/
+
+            if(in_array($request->route()->getName(),[
+                'app.consent-requests.create',
+                'app.consent-requests.show',
+                'app.consent-requests.edit',
+            ])){
+                $menu->get('consentRequests')->active();
+            }
+
+
+            /*  $menu->add('Settings', 'app/settings');
+              $menu->add('Subscription', 'app/subscription');*/
 
         });
 

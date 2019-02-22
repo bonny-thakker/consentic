@@ -51,7 +51,15 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
         Route::get('{patient}/delete', 'PatientController@destroy')->name('app.patients.destroy');
     });
 
-    Route::get('consent-requests', 'ConsentRequestController@index')->name('app.consent-requests.index');
+    Route::prefix('consent-requests')->group( function () {
+        Route::get('/', 'ConsentRequestController@index')->name('app.consent-requests.index');
+        Route::get('create', 'ConsentRequestController@create')->name('app.consent-requests.create');
+        Route::post('store', 'ConsentRequestController@store')->name('app.consent-requests.store');
+        Route::get('{consentRequest}', 'ConsentRequestController@show')->name('app.consent-requests.show');
+        Route::get('{consentRequest}/edit', 'ConsentRequestController@edit')->name('app.consent-requests.edit');
+        Route::post('{consentRequest}/update', 'ConsentRequestController@update')->name('app.consent-requests.update');
+        Route::get('{consentRequest}/delete', 'ConsentRequestController@destroy')->name('app.consent-requests.destroy');
+    });
 
    /* Route::get('settings', function () {
         return view('app.setting.index');

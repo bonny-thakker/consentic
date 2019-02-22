@@ -11597,3 +11597,8 @@ a.button.is-theme {
   font-size: 1.05rem;
 }
 
+.button.is-search {
+  border-size: 1px !important;
+  font-size: 1.29rem;
+}
+

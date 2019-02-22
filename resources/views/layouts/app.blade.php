@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="{{ url('assets/plugins/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/datetimepicker/build/jquery.datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/dropzone/dist/min/dropzone.min.css') }}">
+    <link href="/assets/plugins/summernote/dist/summernote-lite.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/plugins/bulma/extensions/bulma-checkradio.min.css">
+    <link rel="stylesheet" href="/assets/plugins/plyr/dist/plyr.css">
 
     <link rel="stylesheet" href="{{ mix('/assets/app/css/app.css') }}">
     @notify_css
@@ -63,6 +66,10 @@
 <script src="/assets/plugins/select2/dist/js/select2-searchInputPlaceholder.js"></script>
 <script src="/assets/plugins/momentjs/moment.js"></script>
 <script src="/assets/plugins/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+<script src="/assets/plugins/summernote/dist/summernote-lite.js"></script>
+<script src="/assets/plugins/jsignature/flashcanvas.js"></script>
+<script src="/assets/plugins/jsignature/jSignature.min.js"></script>
+<script src="/assets/plugins/plyr/dist/plyr.polyfilled.min.js"></script>
 {{--<script src="/assets/js/patient.js"></script>--}}
 <script src="{{ url('assets/app/js/app.js') }}"></script>
 <script src="{{ url('js/newsletter.js') }}"></script>

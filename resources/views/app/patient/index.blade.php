@@ -89,7 +89,7 @@
                         <input id="patient-name-filter" type="text" class="input is-medium" placeholder="Enter Patient Name">
                     </div>
                     <div class="control">
-                        <button class="button is-medium is-theme">
+                        <button class="button is-medium is-primary is-theme is-search">
                             Search
                         </button>
                     </div>
@@ -169,7 +169,7 @@
                                         </p>
                                     </div>
 
-                                    <span class="field has-addons is-pulled-right action delete-buttons is-hidden">
+                                    <div class="field has-addons is-pulled-right action delete-buttons is-hidden">
                                         <p class="control">
                                             <a class="button is-default tooltip control delete-button-cancel is-hidden" data-tooltip="Delete Confirm">
                                                 Cancel
@@ -180,7 +180,7 @@
                                                 Yes, delete?
                                             </a>
                                         </p>
-                                    </span>
+                                    </div>
 
                                 </td>
                             </tr>

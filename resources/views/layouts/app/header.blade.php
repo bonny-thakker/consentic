@@ -49,6 +49,9 @@
                 <div class="navbar-item">
                     <div class="field">
                         <div class="control">
+                            @if(Spark::usesTeams())
+                                <a class="button" href="#"> <span class="fa fa-bank"></span>{{ Auth::user()->currentTeam->shortname ?? Auth::user()->currentTeam->name }}</a>
+                            @endif
                             @include('layouts.partial.settings')
                             @include('layouts.partial.logout')
                         </div>
