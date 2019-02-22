@@ -81,6 +81,9 @@
                                <a href="#">Animation</a>
                            </li>
                            <li>
+                               <a href="#">Files</a>
+                           </li>
+                           <li>
                                <a href="#">Doctor Questions</a>
                            </li>
                            <li>
