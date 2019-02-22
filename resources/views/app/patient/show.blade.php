@@ -153,7 +153,7 @@
 
     <section class="section">
         <div class="container">
-            <h5 class="title is-5">Patient Profile</h5>
+            <h1 class="title is-5">Patient Profile</h1>
             <div class="columns is-variable is-8">
                 <div class="column is-4 patient-profile-card">
                     <div class="p-lg" style="border: 2px solid #47525E; border-radius: 6px; min-height: 400px;">

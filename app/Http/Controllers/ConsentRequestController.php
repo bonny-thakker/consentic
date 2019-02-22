@@ -56,7 +56,13 @@ class ConsentRequestController extends Controller
         parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
         $videoId = $videoParams['v'] ?? '';
 
-        return view('app.consent-request.show', compact('consentRequest', 'videoId'));
+        $patient = $consentRequest->patient;
+
+        return view('app.consent-request.show', compact(
+            'consentRequest',
+            'videoId',
+            'patient'
+        ));
     }
 
     /**
