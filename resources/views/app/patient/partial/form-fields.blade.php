@@ -38,7 +38,7 @@
 </div>
 <div class="field columns is-variable is-3">
     <div class="control column p-b-none">
-        <input id="dob" type="text" name="birthday" class="input is-medium{{ $errors->has('birthday') ? ' is-danger' : '' }}" placeholder="DD/MM/YYYY" value="{{ old('birthday') ?? $patient->birthday ?? null }}" autocomplete="off">
+        <input id="dob" type="text" name="birthday" class="input is-medium{{ $errors->has('birthday') ? ' is-danger' : '' }}" placeholder="DD/MM/YYYY" value="{{ old('birthday') ?? ((isset($patient->birthday)) ? \Carbon\Carbon::parse($patient->birthday)->format('d/m/Y') : '') ?? null }}" autocomplete="off">
         @if ($errors->has('birthday'))
             <p class="help is-danger">{{ $errors->first('birthday') }}</p>
         @endif

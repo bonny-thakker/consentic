@@ -9,6 +9,6 @@ $factory->define(App\Patient::class, function (Faker $faker) {
         'last_name' => $faker->lastName,
         'team_id' => 1,
         'user_id' => $faker->randomElement([1 ,2, 3]),
-        'birthday' => $faker->dateTimeThisCentury->format('Y-m-d'),
+        'birthday' => $faker->dateTimeThisCentury->format('d/m/Y'),
     ];
 });

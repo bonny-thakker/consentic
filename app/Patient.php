@@ -16,7 +16,7 @@ class Patient extends Model
     public function setBirthdayAttribute($value)
     {
         if ($value) {
-            $value = Carbon::createFromFormat('d/m/Y', $value);
+            $value = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
             $this->attributes['birthday'] = encrypt($value);
         } else {
             $this->attributes['birthday'] = null;
