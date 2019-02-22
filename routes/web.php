@@ -41,8 +41,15 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
 
     Route::get('dashboard', 'DashboardController@index')->name('app.dashboard.index');
 
-    Route::get('patients', 'PatientController@index')->name('app.patients.index');
-    Route::get('patients/{patient}', 'PatientController@show')->name('app.patients.show');
+    Route::prefix('patients')->group( function () {
+        Route::get('/', 'PatientController@index')->name('app.patients.index');
+        Route::get('create', 'PatientController@create')->name('app.patients.create');
+        Route::post('store', 'PatientController@store')->name('app.patients.store');
+        Route::get('{patient}', 'PatientController@show')->name('app.patients.show');
+        Route::get('{patient}/edit', 'PatientController@edit')->name('app.patients.edit');
+        Route::post('{patient}/update', 'PatientController@update')->name('app.patients.update');
+        Route::get('{patient}/delete', 'PatientController@destroy')->name('app.patients.destroy');
+    });
 
     Route::get('consent-requests', 'ConsentRequestController@index')->name('app.consent-requests.index');
 

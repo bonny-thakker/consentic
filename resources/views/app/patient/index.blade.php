@@ -115,9 +115,9 @@
                 </div>
             </div>
             <div class="column">
-                <button id="add-patient-button" class="button is-medium is-primary is-fullwidth is-theme">Add
+                <a href="{{ url('app/patients/create') }}" id="add-patient-button" class="button is-medium is-primary is-fullwidth is-theme">Add
                     Patient
-                </button>
+                </a>
             </div>
         </div>
         <div class="dt-bulma no-footer">
@@ -126,7 +126,6 @@
                     <table id="list-table" class="table is-hoverable is-striped is-fullwidth" style="width: 100%;">
                         <thead>
                         <tr>
-                            <th class="is-hidden">Last Name</th>
                             <th>Patient Name</th>
                             {{-- <th>Health Fund</th> --}}
                             <th>Email</th>
@@ -138,15 +137,14 @@
                         <tbody>
                         @foreach($patients as $patient)
                             <tr>
-                                <th class="is-hidden">{{ $patient->last_name }}</th>
                                 <td>{{ $patient->fullName() }}</td>
                                 {{-- <td>Healtd Fund</td> --}}
                                 <td>{{ $patient->email->address ?? null }}</td>
                                 <td>{{ \Carbon\Carbon::parse($patient->birthday)->format('d/m/Y') }}</td>
                                 {{-- <td class="has-text-centered">Follow Up Req.</td> --}}
-                                <td class="has-text-right">
+                                <td class="has-text-right actions">
 
-                                    <div class="field has-addons is-pulled-right action">
+                                    <div class="field has-addons is-pulled-right action" style="margin-bottom: 0">
                                         <p class="control">
                                             <a href="{{ url('app/patients/'.$patient->id) }}" class="button is-info tooltip" data-tooltip="View Details">
                                         <span class="icon">
@@ -155,7 +153,7 @@
                                             </a>
                                         </p>
                                         <p class="control">
-                                            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit">
+                                            <a href="{{ url('app/patients/'.$patient->id.'/edit') }}" class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </p>
@@ -170,6 +168,19 @@
                                             </a>
                                         </p>
                                     </div>
+
+                                    <span class="field has-addons is-pulled-right action delete-buttons is-hidden">
+                                        <p class="control">
+                                            <a class="button is-default tooltip control delete-button-cancel is-hidden" data-tooltip="Delete Confirm">
+                                                Cancel
+                                            </a>
+                                        </p>
+                                        <p class="control">
+                                            <a href="{{ url('app/patients/'.$patient->id.'/delete') }}" class="button is-danger has-text-white tooltip delete-button-confirm is-hidden" data-tooltip="Delete Cancel">
+                                                Yes, delete?
+                                            </a>
+                                        </p>
+                                    </span>
 
                                 </td>
                             </tr>

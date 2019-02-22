@@ -11589,3 +11589,11 @@ a.ytp-watermark {
   padding: 0.75em 0em;
 }
 
+a.button.is-theme {
+  height: 2.9em;
+}
+
+.help.is-danger {
+  font-size: 1.05rem;
+}
+

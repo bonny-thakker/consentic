@@ -44,16 +44,16 @@ class Patient extends Model
 
     }
 
-    public function setNameAttribute($value)
+    public function setFirstNameAttribute($value)
     {
         if ($value) {
-            $this->attributes['name'] = encrypt($value);
+            $this->attributes['first_name'] = encrypt($value);
         } else {
-            $this->attributes['name'] = null;
+            $this->attributes['first_name'] = null;
         }
     }
 
-    public function getNameAttribute($value)
+    public function getFirstNameAttribute($value)
     {
 
         return \App\Http\Helpers\decryptField($value);
@@ -94,7 +94,7 @@ class Patient extends Model
 
     public function fullName($middle = false){
 
-        return trim($this->name.' '.(($middle) ? $this->middle_name.' ' : null).$this->last_name);
+        return trim($this->first_name.' '.(($middle) ? $this->middle_name.' ' : null).$this->last_name);
 
     }
 

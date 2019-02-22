@@ -12,7 +12,7 @@ class Address extends Model
         return $this->morphTo();
     }
 
-    public function setLine_1Attribute($value)
+    public function setLine1Attribute($value)
     {
         if ($value) {
             $this->attributes['line_1'] = encrypt($value);
@@ -21,14 +21,14 @@ class Address extends Model
         }
     }
 
-    public function getLine_1Attribute($value)
+    public function getLine1Attribute($value)
     {
 
         return \App\Http\Helpers\decryptField($value);
 
     }
 
-    public function setLine_2Attribute($value)
+    public function setLine2Attribute($value)
     {
         if ($value) {
             $this->attributes['line_2'] = encrypt($value);
@@ -37,14 +37,14 @@ class Address extends Model
         }
     }
 
-    public function getLine_2Attribute($value)
+    public function getLine2Attribute($value)
     {
 
         return \App\Http\Helpers\decryptField($value);
 
     }
 
-    public function setLine_3Attribute($value)
+    public function setLine3Attribute($value)
     {
         if ($value) {
             $this->attributes['line_3'] = encrypt($value);
@@ -53,7 +53,7 @@ class Address extends Model
         }
     }
 
-    public function getLine_3Attribute($value)
+    public function getLine3Attribute($value)
     {
 
         return \App\Http\Helpers\decryptField($value);

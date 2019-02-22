@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use PhpParser\ParserAbstract;
 
 class PatientController extends Controller
 {
@@ -30,7 +31,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.patient.create');
     }
 
     /**
@@ -41,7 +42,59 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthday' => 'required',
+            'address' => 'required',
+            'suburb' => 'required',
+            'state' => 'required',
+            'postcode' => 'required',
+        ]);
+
+        $patient = \App\Patient::create([
+            'user_id' => auth()->user()->id,
+            'title' => $request->title,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'birthday' => $request->birthday
+        ]);
+
+        if( $request->email){
+
+            $email = \App\Email::create([
+                'address' => $request->email
+            ]);
+
+            $patient->email()->save($email);
+
+        }
+
+        if( $request->mobile){
+
+            $phoneNumber = \App\PhoneNumber::create([
+                'number' => $request->mobile
+            ]);
+
+            $patient->phoneNumber()->save($phoneNumber);
+
+        }
+
+        $address = \App\Address::create([
+            'line_1' => $request->address,
+            'suburb' => $request->suburb,
+            'state' => $request->state,
+            'postcode' => $request->postcode,
+        ]);
+
+        $patient->address()->save($address);
+
+        notify()->success('Patient created');
+
+        return redirect('app/patients');
+
     }
 
     /**
@@ -63,9 +116,11 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient)
     {
-        //
+
+        return view('app.patient.edit',compact('patient'));
+
     }
 
     /**
@@ -75,9 +130,58 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patient $patient)
     {
-        //
+
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthday' => 'required',
+            'address' => 'required',
+            'suburb' => 'required',
+            'state' => 'required',
+            'postcode' => 'required',
+        ]);
+
+        $patient->update([
+            'title' => $request->title,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'birthday' => $request->birthday
+        ]);
+
+        if( $request->email){
+
+            $patient->email->update([
+                'address' => $request->email
+            ]);
+
+        }else{
+            $patient->email->delete();
+        }
+
+        if( $request->mobile){
+
+            $patient->phoneNumber->update([
+                'number' => $request->mobile
+            ]);
+
+        }else{
+            $patient->phoneNumber->delete();
+        }
+
+        $patient->address->update([
+            'line_1' => $request->address,
+            'suburb' => $request->suburb,
+            'state' => $request->state,
+            'postcode' => $request->postcode,
+        ]);
+
+        notify()->success('Patient Updated');
+
+        return redirect('app/patients');
+
     }
 
     /**
@@ -86,8 +190,16 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Patient $patient)
     {
-        //
+
+        $patient->delete();
+        notify()->success('Patient deleted');
+        return back();
+
+    }
+
+    public function createOrUpdate(){
+
     }
 }

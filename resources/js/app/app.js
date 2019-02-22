@@ -78,6 +78,53 @@ const App = function() {
                 $(modalId).trigger('hidden.modal');
             });
 
+            // Delete/Confirm buttons
+            $(document).on('click','.action .delete-button', function(e) {
+                $(this).addClass('is-hidden');
+                $(this).closest('.actions').find('.button').addClass('is-hidden');
+                $(this).closest('.actions').find('.delete-buttons, .delete-button-confirm, .delete-button-cancel').removeClass('is-hidden')
+                e.preventDefault();
+            });
+
+            $(document).on('click','.delete-button-cancel', function(e) {
+                $(this).closest('.actions').find('.button').removeClass('is-hidden');
+                $(this).closest('.actions').find('.delete-buttons, .delete-button-confirm, .delete-button-cancel').addClass('is-hidden')
+                e.preventDefault();
+            });
+
+            // Load google map places api
+            let address = document.getElementById('address');
+            let autocompleteAddress = new google.maps.places.Autocomplete(address);
+
+            let componentForm = {
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                postal_code: 'short_name'
+            };
+
+            google.maps.event.addListener(autocompleteAddress, 'place_changed', function(e) {
+                // Get the place details from the autocomplete object.
+                let place = autocompleteAddress.getPlace();
+
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
+
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType]) {
+                        var val = place.address_components[i][componentForm[addressType]];
+                        document.getElementById(addressType).value = val;
+                    }
+                }
+            });
+
+            // Load jquery-mask
+            $('input[name="birthday"]').mask('00/00/0000', {placeholder: "__/__/____"});
+
             App.handleNavbar();
             App.handleDropdown();
         },

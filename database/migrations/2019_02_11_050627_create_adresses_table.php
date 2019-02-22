@@ -17,9 +17,9 @@ class CreateAdressesTable extends Migration
             $table->increments('id');
             $table->integer('addressable_id')->nullable();
             $table->string('addressable_type')->nullable();
-            $table->string('line_1')->nullable();
-            $table->string('line_2')->nullable();
-            $table->string('line_3')->nullable();
+            $table->text('line_1')->nullable();
+            $table->text('line_2')->nullable();
+            $table->text('line_3')->nullable();
             $table->string('suburb')->nullable();
             $table->string('state')->nullable();
             $table->string('postcode')->nullable();

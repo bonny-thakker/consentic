@@ -54,7 +54,7 @@
 
 <script src="{{ url('assets/plugins/jquery/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ url('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&libraries=places" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1SJaISGLfa8fgasd2b_JhYkQC6LadL9Q&libraries=places   " async defer></script>
 <script src="/assets/plugins/jquery-mask/dist/jquery.mask.min.js"></script>
 <script src="/assets/plugins/datatables/dist/datatables.min.js"></script>
 <script src="/assets/plugins/datatables/js/dataTables.bulma.min.js"></script>

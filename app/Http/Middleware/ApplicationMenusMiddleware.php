@@ -43,7 +43,9 @@ class ApplicationMenusMiddleware
             $menu->add('Patients', 'app/patients');
 
             if(in_array($request->route()->getName(),[
+                'app.patients.create',
                 'app.patients.show',
+                'app.patients.edit',
             ])){
                 $menu->get('patients')->active();
             }

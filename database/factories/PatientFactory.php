@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Patient::class, function (Faker $faker) {
 
     return [
-        'name' => $faker->firstName,
+        'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'team_id' => 1,
         'user_id' => $faker->randomElement([1 ,2, 3]),
