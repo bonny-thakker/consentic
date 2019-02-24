@@ -52,13 +52,21 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
     });
 
     Route::prefix('consent-requests')->group( function () {
+
         Route::get('/', 'ConsentRequestController@index')->name('app.consent-requests.index');
-        Route::get('create', 'ConsentRequestController@create')->name('app.consent-requests.create');
+        Route::get('create/{patient?}', 'ConsentRequestController@create')->name('app.consent-requests.create');
         Route::post('store', 'ConsentRequestController@store')->name('app.consent-requests.store');
         Route::get('{consentRequest}', 'ConsentRequestController@show')->name('app.consent-requests.show');
         Route::get('{consentRequest}/edit', 'ConsentRequestController@edit')->name('app.consent-requests.edit');
         Route::post('{consentRequest}/update', 'ConsentRequestController@update')->name('app.consent-requests.update');
         Route::get('{consentRequest}/delete', 'ConsentRequestController@destroy')->name('app.consent-requests.destroy');
+
+        Route::get('/{consentRequest}/files', 'ConsentRequestFileController@index')->name('app.consent-requests.files.index');
+        Route::get('/{consentRequest}/doctor-questions', 'ConsentRequestDoctorQuestionController@index')->name('app.consent-requests.doctor-questions.index');
+        Route::get('/{consentRequest}/patient-questions', 'ConsentRequestPatientQuestionController@index')->name('app.consent-requests.patient-questions.index');
+        Route::get('/{consentRequest}/comments', 'ConsentRequestCommentController@index')->name('app.consent-requests.comments.index');
+        Route::get('/{consentRequest}/signed', 'ConsentRequestSignedController@index')->name('app.consent-requests.signed.index');
+
     });
 
    /* Route::get('settings', function () {

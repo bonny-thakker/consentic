@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\ConsentRequest;
-use App\Patient;
+use Illuminate\Http\Request;
 
-class ConsentRequestController extends Controller
+class ConsentRequestFileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ConsentRequest $consentRequest)
     {
 
-        $consentRequests = \App\ConsentRequest::all();
+        $patient = $consentRequest->patient;
 
-        return view('app.consent-request.index',[
-            'consentRequests' => $consentRequests
-        ]);
-
+        return view('app.consent-request.file.index' , compact(
+            'consentRequest',
+            'patient'
+        ));
     }
 
     /**
@@ -29,11 +28,9 @@ class ConsentRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Patient $patient)
+    public function create()
     {
-        return view('app.consent-request.create', [
-            'createForPatient' => $patient
-        ]);
+        //
     }
 
     /**
@@ -53,19 +50,9 @@ class ConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ConsentRequest $consentRequest)
+    public function show($id)
     {
-
-        parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
-        $videoId = $videoParams['v'] ?? '';
-
-        $patient = $consentRequest->patient;
-
-        return view('app.consent-request.show', compact(
-            'consentRequest',
-            'videoId',
-            'patient'
-        ));
+        //
     }
 
     /**
@@ -74,11 +61,9 @@ class ConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ConsentRequest $consentRequest)
+    public function edit($id)
     {
-        return view('app.consent-request.edit', compact(
-            'consentRequest'
-        ));
+        //
     }
 
     /**
@@ -99,10 +84,8 @@ class ConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ConsentRequest $consentRequest)
+    public function destroy($id)
     {
-        $consentRequest->delete();
-        notify()->success('Consent request deleted');
-        return back();
+        //
     }
 }

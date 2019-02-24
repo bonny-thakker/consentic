@@ -77,10 +77,10 @@
 
                    <div class="tabs is-toggle is-fullwidth">
                        <ul>
-                           <li class="is-active">
+                           <li>
                                <a href="{{ url('app/consent-requests/'.$consentRequest->id) }}">Animation</a>
                            </li>
-                           <li>
+                           <li class="is-active">
                                <a href="{{ url('app/consent-requests/'.$consentRequest->id.'/files') }}">Files</a>
                            </li>
                            <li>
@@ -100,7 +100,7 @@
 
                    <div class="tab-content">
                        <div>
-                        <p>VIDEO HERE</p>
+
                        </div>
                    </div>
 

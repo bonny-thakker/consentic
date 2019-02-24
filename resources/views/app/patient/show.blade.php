@@ -153,7 +153,7 @@
 
     <section class="section">
         <div class="container">
-            <h1 class="title is-5">Patient Profile</h1>
+            <h1 class="title">Patient Profile</h1>
             <div class="columns is-variable is-8">
                 <div class="column is-4 patient-profile-card">
                     <div class="p-lg" style="border: 2px solid #47525E; border-radius: 6px; min-height: 400px;">
@@ -251,30 +251,9 @@
                                             </span>
                                             @endif
                                         </td>
-                                        <td class="has-text-centered">
-                                            <div class="field has-addons is-centered action">
-                                                <p class="control">
-                                                    <a class="button is-info tooltip" data-tooltip="View Details" href="#">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </p>
-                                                <p class="control">
-                                                    <a class="button is-secondary tooltip " data-tooltip="Download" data-id="" disabled="">
-                                                        <i class="fas fa-file-alt"></i>
-                                                    </a>
-                                                </p>
-                                                <p class="control">
-                                                    <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" data-id="dFWmgr6QqE">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                </p>
-                                                <p class="control">
-                                                    <a class="button is-danger tooltip action-delete" data-tooltip="Delete" data-id="dFWmgr6QqE">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </td>
+                                        @include('app.consent-request.partial.actions', [
+                                'consentRequest' => $consentRequest
+                            ])
                                     </tr>
                                 @endforeach
                                 </tbody>
