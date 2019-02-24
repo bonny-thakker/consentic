@@ -21,47 +21,12 @@
 
             <form id="add-consent-request-form" action="/app/consent-requests/store" method="POST"
                   enctype="multipart/form-data">
+                {{ csrf_field() }}
 
                 <div class="columns is-variable is-8">
                     <div class="column is-4">
                         <h4 class="title is-4">New Consent</h4>
-                        <div class="select is-fullwidth">
-                            <select name="patient" id="patient-list">
-                                <option disabled {{ (!isset($createForPatient) ? 'selected' : null) }}>Select Patient</option>
-                                @foreach (\App\Patient::all() as $patient)
-                                    <option value="{{ $patient->id }}" {{ ($createForPatient->id == $patient->id) ? 'selected' : null }}>{{ $patient->fullName() }}
-                                        - {{ \Carbon\Carbon::parse($patient->birthday)->format('d/m/Y') }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="select is-fullwidth m-t-md">
-                            <select name="procedure" id="procedure-list">
-                                <option disabled selected>Select Procedure</option>
-                                @foreach (\App\Consent::all() as $consent)
-                                    <option
-                                            value="{{ $consent->id }}"
-                                            data-video="{{ $consent->video_url }}"
-                                    >{{ $consent->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="select is-fullwidth m-t-md is-hidden">
-                            <select name="reminder">
-                                <option disabled selected>Set Reminder</option>
-                                <option value="0">No Reminder</option>
-                                <option value="1">1 Day</option>
-                                <option value="7">1 Week</option>
-                                <option value="14">2 Weeks</option>
-                            </select>
-                        </div>
-                        <div class="m-t-md is-hidden">
-                            <label for="consentInOffice">Consent Patient Now</label>
-                            <div class="field m-t-md">
-                                <input id="consentInOffice" type="checkbox" name="consentInOffice"
-                                       class="switch is-rounded is-outlined is-medium" value="true">
-                                <label for="consentInOffice"></label>
-                            </div>
-                        </div>
+                        @include('app.consent-request.partial.form-fields')
                     </div>
                     <div class="column">
                         <h4 class="title is-4">Preview</h4>
@@ -78,26 +43,29 @@
 
                         <div class="file is-boxed consent-file">
                             <label class="file-label">
-                                <input id="consent-files" class="file-input" type="file" name="consentFile[]" multiple>
+                                <input id="consent-files" class="file-input" type="file" name="consent_file[]" multiple>
                                 <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                            Drag and drop files or click here to select
-                        </span>
-                    </span>
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Drag and drop files or click here to select
+                                    </span>
+                                </span>
                             </label>
                         </div>
 
                         <div class="field m-t-lg">
                             <div class="columns">
                                 <div class="column">
-                                    <button id="email-consent" class="button is-medium submit is-primary is-fullwidth" disabled="">Email Consent to Patient</button>
+                                    <button id="email-consent" class="button is-medium submit is-primary is-fullwidth">
+                                        Email Consent to Patient
+                                    </button>
                                 </div>
                                 <div class="is-divider-vertical" data-content="OR"></div>
                                 <div class="column">
-                                    <button id="consent-now" class="button is-medium submit is-primary is-fullwidth">Consent Patient Now</button>
+                                    <a href="#" id="consent-now"
+                                       class="button is-medium submit is-primary is-fullwidth">Consent Patient Now</a>
                                 </div>
                             </div>
                             <a href="{{ url()->previous() }}" class="button is-medium is-fullwidth is-theme m-t-md">Cancel</a>

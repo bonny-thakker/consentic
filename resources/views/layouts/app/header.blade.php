@@ -49,11 +49,10 @@
                 <div class="navbar-item">
                     <div class="field">
                         <div class="control">
-                            @if(Spark::usesTeams())
+                            {{--@if(Spark::usesTeams())
                                 <a class="button" href="#"> <span class="fa fa-bank"></span>{{ Auth::user()->currentTeam->shortname ?? Auth::user()->currentTeam->name }}</a>
-                            @endif
-                            @include('layouts.partial.settings')
-                            @include('layouts.partial.logout')
+                            @endif--}}
+                            @include('layouts.partial.spark-menu')
                         </div>
                     </div>
                 </div>

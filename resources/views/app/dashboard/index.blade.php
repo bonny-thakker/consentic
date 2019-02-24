@@ -83,30 +83,7 @@
                                     @endif
 
                                 </td>
-                                <td class="has-text-right">
-                                    <div class="field has-addons is-pulled-right action">
-                                        <p class="control">
-                                            <a class="button is-info tooltip" data-tooltip="View Details" href="#">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </p>
-                                        <p class="control">
-                                            <a class="button is-secondary tooltip " data-tooltip="Download" data-id="" disabled="">
-                                                <i class="fas fa-file-alt"></i>
-                                            </a>
-                                        </p>
-                                        <p class="control">
-                                            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" data-id="dFWmgr6QqE">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        </p>
-                                        <p class="control">
-                                            <a class="button is-danger tooltip action-delete" data-tooltip="Delete" data-id="dFWmgr6QqE">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </p>
-                                    </div>
-                                </td>
+                               @include('app.consent-request.partial.actions')
                             </tr>
                         @endforeach
                         </tbody>

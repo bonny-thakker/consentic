@@ -16,7 +16,7 @@ class ConsentRequestController extends Controller
     public function index()
     {
 
-        $consentRequests = \App\ConsentRequest::all();
+        $consentRequests = \App\ConsentRequest::orderBy('created_at', 'DESC')->get();
 
         return view('app.consent-request.index',[
             'consentRequests' => $consentRequests
@@ -44,7 +44,27 @@ class ConsentRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'patient' => 'required',
+            'consent' => 'required'
+        ]);
+
+        $patient = \App\Patient::find($request->patient);
+        $consent = \App\Patient::find($request->patient);
+
+        $consentRequest = \App\ConsentRequest::create([
+            'user_id' => auth()->user()->id,
+            'patient_id' => $patient->id,
+            'consent_id' => $consent->id,
+        ]);
+
+        // TBC: Send consent email
+
+        notify()->success('Patient consent request created');
+
+        return redirect('app/consent-requests');
+
     }
 
     /**
@@ -90,7 +110,27 @@ class ConsentRequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validatedData = $request->validate([
+            'patient' => 'required',
+            'consent' => 'required'
+        ]);
+
+        $patient = \App\Patient::find($request->patient);
+        $consent = \App\Patient::find($request->patient);
+
+        $consentRequest = \App\ConsentRequest::create([
+            'user_id' => auth()->user()->id,
+            'patient_id' => $patient->id,
+            'consent_id' => $consent->id,
+        ]);
+
+        // TBC: Send consent email
+
+        notify()->success('Patient consent request updated');
+
+        return redirect('app/consent-requests');
+
     }
 
     /**
