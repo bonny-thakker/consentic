@@ -1,4 +1,4 @@
-<div class="dropdown is-active">
+<div class="dropdown">
     <div class="dropdown-trigger spark-nav-profile-dropdown">
         <img src="{{ Auth::user()->photo_url }}" class="dropdown-toggle-image spark-nav-profile-photo" alt="{{__('User Photo')}}" />
             <span class="spark-nav-profile-name">{{ Auth::user()->name }}</span>
