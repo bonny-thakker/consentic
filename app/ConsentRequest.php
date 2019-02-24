@@ -5,12 +5,14 @@ namespace App;
 use App\Model;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravelista\Comments\Commentable;
 
 class ConsentRequest extends Model
 {
 
     use BelongsToTenants;
     use SoftDeletes;
+    use Commentable;
 
     /**
      * Get the consent that owns the consent request.

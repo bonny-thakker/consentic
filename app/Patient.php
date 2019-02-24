@@ -5,6 +5,7 @@ namespace App;
 use App\Model;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravelista\Comments\Commenter;
 use Carbon\Carbon;
 
 class Patient extends Model
@@ -12,6 +13,7 @@ class Patient extends Model
 
     use BelongsToTenants;
     use SoftDeletes;
+    use Commenter;
 
     public function setBirthdayAttribute($value)
     {

@@ -100,7 +100,8 @@
 
                    <div class="tab-content">
                        <div>
-
+                           @comments(['model' => $consentRequest])
+                           @endcomments
                        </div>
                    </div>
 
