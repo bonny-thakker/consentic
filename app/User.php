@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Laravel\Spark\User as SparkUser;
 use Laravel\Spark\CanJoinTeams;
 use Spatie\Permission\Traits\HasRoles;
@@ -64,6 +65,20 @@ class User extends SparkUser
     public function consentRequests()
     {
         return $this->hasMany('App\ConsentRequest');
+    }
+
+    public function consentsSinceLastLogin(){
+
+        if($this->last_login_ts){
+            return $this->consentRequests()
+                ->whereNotNull('patient_signed_ts')
+                ->where('patient_signed_ts', '>', Carbon::parse($this->last_login_ts)->toDayDateTimeString())
+                ->get()
+                ->count();
+        }
+
+        return 0;
+
     }
 
 }

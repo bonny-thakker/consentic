@@ -29,7 +29,7 @@
             <h2 class="title">Dashboard</h2>
             <h4 class="subtitle is-4 m-b-none">Welcome back {{ auth()->user()->name }}</h4>
             <h4 class="subtitle is-4 m-b-none">Since your last login, you've had
-                XXXXXX patients give their consent.
+                {{ auth()->user()->consentsSinceLastLogin() }} patients give their consent.
             </h4>
         </div>
     </section>
