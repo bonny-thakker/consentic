@@ -200,23 +200,40 @@ var App = function () {
         placeholder: "__/__/____"
       });
       App.handleNavbar();
-      App.handleDropdown();
-      $(document).on('click', '.file-remove', function (e) {
-        var key = $(this).data('file-key');
+      App.handleDropdown(); // Check for uploaded files
 
-        if (fileList[key].hasOwnProperty('uploaded')) {
-          var id = $(this).closest('form').data('id');
-          App.removeFile(id, key);
+      $('#consent-files').closest('.file').find('.file-cta .file-label a').each(function () {
+        var key = $(this).data('file-key');
+        var fileName = $(this).data('filename');
+        fileList[key] = {
+          name: fileName,
+          uploaded: true
+        };
+      });
+      App.handleConsentFiles();
+      $(document).on('click', '.file-remove', function (e) {
+        if ($(this).data('file-key').length > 0) {
+          var key = $(this).data('file-key');
+
+          if (fileList[key].hasOwnProperty('uploaded')) {
+            var id = $(this).closest('form').data('id');
+            App.removeFile(id, key);
+          }
+
+          fileList.splice(key, 1);
         }
 
-        fileList.splice(key, 1);
         App.renderFileList();
         e.stopPropagation();
         e.preventDefault();
       });
-      App.handleConsentFiles();
       $(document).on('change', '[name="consent_file[]"]', function () {
         App.handleConsentFiles();
+      });
+      $(document).on('change', 'select[name="consent"]', function () {
+        var videoURL = $(this).find('option:selected').data('video');
+        var consentVideo = modal.find('#consent-video');
+        consentVideo.empty().append("<iframe height=\"350px\" width=\"100%\" height=\"auto\" src=\"".concat(videoURL.replace('watch?v=', 'embed/'), "\" allowfullscreen></iframe>"));
       });
       $('#patient-list').select2({
         searchInputPlaceholder: 'Type to search patients'

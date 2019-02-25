@@ -129,15 +129,34 @@ const App = function() {
             App.handleNavbar();
             App.handleDropdown();
 
-            $(document).on('click', '.file-remove', function(e) {
-                let key = $(this).data('file-key');
+            // Check for uploaded files
+            $('#consent-files').closest('.file')
+                .find('.file-cta .file-label a')
+                .each(function() {
+                    let key = $(this).data('file-key');
+                    let fileName = $(this).data('filename');
 
-                if (fileList[key].hasOwnProperty('uploaded')) {
-                    let id = $(this).closest('form').data('id');
-                    App.removeFile(id, key);
+                    fileList[key] = {
+                        name: fileName,
+                        uploaded: true
+                    };
+                });
+
+            App.handleConsentFiles();
+
+            $(document).on('click', '.file-remove', function(e) {
+
+                if($(this).data('file-key').length > 0){
+                    let key = $(this).data('file-key');
+
+                    if (fileList[key].hasOwnProperty('uploaded')) {
+                        let id = $(this).closest('form').data('id');
+                        App.removeFile(id, key);
+                    }
+
+                    fileList.splice(key, 1);
                 }
 
-                fileList.splice(key, 1);
                 App.renderFileList();
 
                 e.stopPropagation();
@@ -145,10 +164,16 @@ const App = function() {
 
             });
 
-            App.handleConsentFiles();
-
             $(document).on('change', '[name="consent_file[]"]', function() {
                 App.handleConsentFiles();
+            });
+
+            $(document).on('change', 'select[name="consent"]', function() {
+                let videoURL = $(this).find('option:selected').data('video');
+                let consentVideo = modal.find('#consent-video');
+
+                consentVideo.empty()
+                    .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
             });
 
             $('#patient-list').select2({

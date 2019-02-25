@@ -46,4 +46,9 @@ class ConsentRequest extends Model
 
     }
 
+    public function files()
+    {
+        return $this->morphMany(FIle::class, 'fileable');
+    }
+
 }

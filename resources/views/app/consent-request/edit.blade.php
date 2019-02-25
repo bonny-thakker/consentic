@@ -58,9 +58,23 @@
                                     <span class="file-icon">
                                         <i class="fas fa-upload"></i>
                                     </span>
-                                    <span class="file-label">
-                                        Drag and drop files or click here to select
-                                    </span>
+                                    @if (empty($consentRequest->files))
+                                        <span class="file-label">
+                                            Drag and drop files or click here to select
+                                        </span>
+                                    @else
+                                        @foreach ($consentRequest->files as $file)
+                                            <span class="file-label">
+                                                {{ preg_replace('/^[^_]+[_]/', '', $file->name) }} <br>
+                                                <a
+                                                        class="file-remove"
+                                                        href="#"
+                                                        data-filename="{{ preg_replace('/^[^_]+[_]/', '', $file->name) }}"
+                                                        data-uploaded="true"
+                                                        data-file-key="{{ $file->id }}">Remove</a>
+                                            </span>
+                                        @endforeach
+                                    @endif
                                 </span>
                             </label>
                         </div>

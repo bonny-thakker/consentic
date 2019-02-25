@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use App\ConsentRequest;
 use App\Patient;
+use Illuminate\Support\Facades\Storage;
 
 class ConsentRequestController extends Controller
 {
@@ -61,6 +62,26 @@ class ConsentRequestController extends Controller
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
         ]);
+
+        // Check uploaded file
+        if ($request->consent_file) {
+
+            foreach ($request->consent_file as $consent_file) {
+
+                $fileName =  str_replace(' ', '-', $consent_file->getClientOriginalName()) ?? 'file.' . $consent_file->extension();
+                $filepath = $consent_file->path();
+                $uploadedFile = Storage::putFile('consent-requests/'.$consentRequest->id, $consent_file);
+
+                $file = \App\File::create([
+                    'name' => $fileName,
+                    'file' => $uploadedFile
+                ]);
+
+                $consentRequest->files()->save($file);
+
+            }
+
+        }
 
         $signedLink = URL::signedRoute('public.consent-request.show', [
             'consentRequest' => $consentRequest->id
@@ -131,6 +152,26 @@ class ConsentRequestController extends Controller
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
         ]);
+
+        // Check uploaded file
+        if ($request->consent_file) {
+
+            foreach ($request->consent_file as $consent_file) {
+
+                $fileName =  str_replace(' ', '-', $consent_file->getClientOriginalName()) ?? 'file.' . $consent_file->extension();
+                $filepath = $consent_file->path();
+                $uploadedFile = Storage::putFile('consent-requests/'.$consentRequest->id, $consent_file);
+
+                $file = \App\File::create([
+                    'name' => $fileName,
+                    'file' => $uploadedFile
+                ]);
+
+                $consentRequest->files()->save($file);
+
+            }
+
+        }
 
         $signedLink = URL::signedRoute('public.consent-request.show', [
             'consentRequest' => $consentRequest->id
