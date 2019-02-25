@@ -6,6 +6,17 @@
 
     @include('app.partial.styles')
 
+    <style>
+
+        .consent-file .file-cta .file-label{
+            z-index: 2;
+            text-align: center;
+            padding: .5rem;
+        }
+
+    </style>
+
+
 @endsection
 
 @section('scripts')
@@ -57,7 +68,7 @@
                         <div class="field m-t-lg">
                             <div class="columns">
                                 <div class="column">
-                                    <button id="email-consent" class="button is-medium submit is-primary is-fullwidth">Email Consent to Patient</button>
+                                    <button id="email-consent" class="button is-medium submit is-primary is-fullwidth">Email Updated Consent to Patient</button>
                                 </div>
                                 <div class="is-divider-vertical" data-content="OR"></div>
                                 <div class="column">

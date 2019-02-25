@@ -124,6 +124,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     el: '#app'
 });*/
 var html = $('html');
+var fileList = [];
 
 var App = function () {
   return {
@@ -169,38 +170,58 @@ var App = function () {
       }); // Load google map places api
 
       var address = document.getElementById('address');
-      var autocompleteAddress = new google.maps.places.Autocomplete(address);
-      var componentForm = {
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        postal_code: 'short_name'
-      };
-      google.maps.event.addListener(autocompleteAddress, 'place_changed', function (e) {
-        // Get the place details from the autocomplete object.
-        var place = autocompleteAddress.getPlace();
-
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        } // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-
-
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-          }
-        }
-      }); // Load jquery-mask
+      /* let autocompleteAddress = new google.maps.places.Autocomplete(address);
+        let componentForm = {
+           locality: 'long_name',
+           administrative_area_level_1: 'short_name',
+           postal_code: 'short_name'
+       };
+        google.maps.event.addListener(autocompleteAddress, 'place_changed', function(e) {
+           // Get the place details from the autocomplete object.
+           let place = autocompleteAddress.getPlace();
+            for (var component in componentForm) {
+               document.getElementById(component).value = '';
+               document.getElementById(component).disabled = false;
+           }
+            // Get each component of the address from the place details
+           // and fill the corresponding field on the form.
+           for (var i = 0; i < place.address_components.length; i++) {
+               var addressType = place.address_components[i].types[0];
+               if (componentForm[addressType]) {
+                   var val = place.address_components[i][componentForm[addressType]];
+                   document.getElementById(addressType).value = val;
+               }
+           }
+       });
+      */
+      // Load jquery-mask
 
       $('input[name="birthday"]').mask('00/00/0000', {
         placeholder: "__/__/____"
       });
       App.handleNavbar();
       App.handleDropdown();
+      $(document).on('click', '.file-remove', function () {
+        var key = $(this).data('file-key');
+
+        if (fileList[key].hasOwnProperty('uploaded')) {
+          var id = $(this).closest('form').data('id');
+          App.removeFile(id, key);
+        }
+
+        fileList.splice(key, 1);
+        App.renderFileList();
+      });
+      App.handleConsentFiles();
+      $(document).on('change', '[name="consent_file[]"]', function () {
+        App.handleConsentFiles();
+      });
+      $('#patient-list').select2({
+        searchInputPlaceholder: 'Type to search patients'
+      });
+      $('#procedure-list').select2({
+        searchInputPlaceholder: 'Type to search procedures'
+      });
     },
     handleNavbar: function handleNavbar() {
       // Get all "navbar-burger" elements
@@ -329,6 +350,44 @@ var App = function () {
     },
     titleToSlug: function titleToSlug(text) {
       return Text.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+    },
+    handleConsentFiles: function handleConsentFiles(files) {
+      var element = $('#consent-files');
+      Array.from(element[0].files).forEach(function (file) {
+        fileList.push(file);
+      });
+      App.renderFileList();
+    },
+    renderFileList: function renderFileList() {
+      var element = $('#consent-files');
+      var fileNames = [];
+      fileList.forEach(function (file) {
+        fileNames.push(file.name);
+      });
+      element.closest('.file').find('.file-cta > .file-label').remove();
+
+      if (!fileNames.length) {
+        element.closest('.file').find('.file-cta').append("\n                        <span class=\"file-label\">Drag and drop files or click here to select</span>\n                    ");
+        return;
+      }
+
+      fileNames.forEach(function (name, key) {
+        element.closest('.file').find('.file-cta').append("\n                        <span class=\"file-label\">\n                            ".concat(name, " <br>\n                            <a class=\"file-remove\" href=\"#\" data-file-key=\"").concat(key, "\">Remove</a>\n                        </span>\n                    "));
+      });
+    },
+    removeFile: function removeFile(consentId, fileIndex) {
+      // Execute ajax request
+      App.ajax("/consent-requests/delete-file/".concat(consentId), 'post', 'json', {
+        fileIndex: fileIndex
+      }).fail(function (jqXHR, textStatus) {
+        App.alertWithMessage("Oops ".concat(jqXHR.status), 'Internal server error!', 'error');
+      }).done(function (data, textStatus) {
+        if (data.status) {
+          App.alertWithMessage('Success', data.message, 'success');
+        } else {
+          App.alertWithMessage('Oops', data.message, 'error');
+        }
+      });
     }
   };
 }();

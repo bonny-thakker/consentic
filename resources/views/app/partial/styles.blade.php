@@ -39,7 +39,7 @@
     }
 
     .consent-file {
-        height: 150px;
+        min-height: 150px;
     }
 
     .consent-file label {

@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \App\Patient::observe(\App\Observers\PatientObserver::class);
+        \App\ConsentRequest::observe(\App\Observers\ConsentRequestObserver::class);
     }
 
     /**

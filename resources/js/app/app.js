@@ -33,6 +33,7 @@
 });*/
 
 var html = $('html');
+var fileList = [];
 
 const App = function() {
 
@@ -94,7 +95,7 @@ const App = function() {
 
             // Load google map places api
             let address = document.getElementById('address');
-            let autocompleteAddress = new google.maps.places.Autocomplete(address);
+           /* let autocompleteAddress = new google.maps.places.Autocomplete(address);
 
             let componentForm = {
                 locality: 'long_name',
@@ -121,12 +122,42 @@ const App = function() {
                     }
                 }
             });
-
+*/
             // Load jquery-mask
             $('input[name="birthday"]').mask('00/00/0000', {placeholder: "__/__/____"});
 
             App.handleNavbar();
             App.handleDropdown();
+
+            $(document).on('click', '.file-remove', function(e) {
+                let key = $(this).data('file-key');
+
+                if (fileList[key].hasOwnProperty('uploaded')) {
+                    let id = $(this).closest('form').data('id');
+                    App.removeFile(id, key);
+                }
+
+                fileList.splice(key, 1);
+                App.renderFileList();
+
+                e.preventDefault();
+
+            });
+
+            App.handleConsentFiles();
+
+            $(document).on('change', '[name="consent_file[]"]', function() {
+                App.handleConsentFiles();
+            });
+
+            $('#patient-list').select2({
+                searchInputPlaceholder: 'Type to search patients'
+            });
+
+            $('#procedure-list').select2({
+                searchInputPlaceholder: 'Type to search procedures'
+            });
+
         },
 
         handleNavbar: function() {
@@ -301,8 +332,67 @@ const App = function() {
                 .toLowerCase()
                 .replace(/[^\w ]+/g,'')
                 .replace(/ +/g,'-');
-        }
+        },
 
+        handleConsentFiles: function(files) {
+            let element = $('#consent-files');
+
+            Array.from(element[0].files).forEach(file => {
+                fileList.push(file);
+            });
+
+            App.renderFileList();
+        },
+
+        renderFileList: function() {
+            let element = $('#consent-files');
+            let fileNames = [];
+
+            fileList.forEach(file => {
+                fileNames.push(file.name);
+            })
+
+            element.closest('.file')
+                .find('.file-cta > .file-label')
+                .remove();
+
+            if (!fileNames.length) {
+                element.closest('.file')
+                    .find('.file-cta')
+                    .append(`
+                        <span class="file-label">Drag and drop files or click here to select</span>
+                    `);
+                return;
+            }
+
+            fileNames.forEach((name, key) => {
+                element.closest('.file')
+                    .find('.file-cta')
+                    .append(`
+                        <span class="file-label">
+                            ${name} <br>
+                            <a class="file-remove" href="#" data-file-key="${key}">Remove</a>
+                        </span>
+                    `);
+            });
+        },
+
+        removeFile: function(consentId, fileIndex) {
+            // Execute ajax request
+            App.ajax(`/consent-requests/delete-file/${consentId}`, 'post', 'json', { fileIndex })
+
+                .fail((jqXHR, textStatus) => {
+                    App.alertWithMessage(`Oops ${jqXHR.status}`, 'Internal server error!', 'error');
+                })
+
+                .done((data, textStatus) => {
+                    if (data.status) {
+                        App.alertWithMessage('Success', data.message, 'success');
+                    } else {
+                        App.alertWithMessage('Oops', data.message, 'error');
+                    }
+                })
+        }
     }
 
 }();

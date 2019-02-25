@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConsentRequestMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Mail;
 use App\ConsentRequest;
 use App\Patient;
 
@@ -59,7 +62,11 @@ class ConsentRequestController extends Controller
             'consent_id' => $consent->id,
         ]);
 
-        // TBC: Send consent email
+        $signedLink = URL::signedRoute('public.consent-request.show', [
+            'consentRequest' => $consentRequest->id
+        ]);
+
+        Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestMail($consentRequest, $signedLink));
 
         notify()->success('Patient consent request created');
 
@@ -125,7 +132,11 @@ class ConsentRequestController extends Controller
             'consent_id' => $consent->id,
         ]);
 
-        // TBC: Send consent email
+        $signedLink = URL::signedRoute('public.consent-request.show', [
+            'consentRequest' => $consentRequest->id
+        ]);
+
+        Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestUpdatedMail($consentRequest, $signedLink));
 
         notify()->success('Patient consent request updated');
 

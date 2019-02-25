@@ -1,5 +1,5 @@
 <div class="select is-fullwidth{{ $errors->has('patient') ? ' is-danger' : '' }}">
-    <select name="patient_id" id="patient-list">
+    <select name="patient" id="patient-list">
         <option disabled selected>Select Patient</option>
         @foreach (\App\Patient::all() as $patient)
             <option value="{{ $patient->id }}" {{ (old('patient') == $patient->id || (isset($consentRequest) && $consentRequest->patient->id == $patient->id) || (isset($createForPatient) && $createForPatient->id == $patient->id)) ? 'selected' : null }}>{{ $patient->fullName() }}

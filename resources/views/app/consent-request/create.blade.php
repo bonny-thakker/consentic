@@ -6,6 +6,16 @@
 
     @include('app.partial.styles')
 
+    <style>
+
+        .consent-file .file-cta .file-label{
+            z-index: 2;
+            text-align: center;
+            padding: .5rem;
+        }
+
+    </style>
+
 @endsection
 
 @section('scripts')
