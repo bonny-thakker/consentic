@@ -201,7 +201,7 @@ var App = function () {
       });
       App.handleNavbar();
       App.handleDropdown();
-      $(document).on('click', '.file-remove', function () {
+      $(document).on('click', '.file-remove', function (e) {
         var key = $(this).data('file-key');
 
         if (fileList[key].hasOwnProperty('uploaded')) {
@@ -211,6 +211,8 @@ var App = function () {
 
         fileList.splice(key, 1);
         App.renderFileList();
+        e.stopPropagation();
+        e.preventDefault();
       });
       App.handleConsentFiles();
       $(document).on('change', '[name="consent_file[]"]', function () {

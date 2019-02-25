@@ -140,6 +140,7 @@ const App = function() {
                 fileList.splice(key, 1);
                 App.renderFileList();
 
+                e.stopPropagation();
                 e.preventDefault();
 
             });
