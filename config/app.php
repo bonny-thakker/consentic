@@ -175,10 +175,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\NovaServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
         Laravel\Spark\Providers\SparkServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
         App\Providers\SparkServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 

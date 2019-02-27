@@ -55,7 +55,7 @@ class ConsentRequestController extends Controller
         ]);
 
         $patient = \App\Patient::find($request->patient);
-        $consent = \App\Patient::find($request->patient);
+        $consent = \App\Consent::find($request->consent);
 
         $consentRequest = \App\ConsentRequest::create([
             'user_id' => auth()->user()->id,
@@ -136,7 +136,7 @@ class ConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ConsentRequest $consentRequest)
     {
 
         $validatedData = $request->validate([
@@ -145,10 +145,9 @@ class ConsentRequestController extends Controller
         ]);
 
         $patient = \App\Patient::find($request->patient);
-        $consent = \App\Patient::find($request->patient);
+        $consent = \App\Consent::find($request->consent);
 
-        $consentRequest = \App\ConsentRequest::create([
-            'user_id' => auth()->user()->id,
+        $consentRequest->update([
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
         ]);

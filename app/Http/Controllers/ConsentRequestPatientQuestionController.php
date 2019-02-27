@@ -17,7 +17,7 @@ class ConsentRequestPatientQuestionController extends Controller
 
         $patient = $consentRequest->patient;
 
-        return view('app.consent-request.comment.index' , compact(
+        return view('app.consent-request.patient-question.index' , compact(
             'consentRequest',
             'patient'
         ));

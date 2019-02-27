@@ -11666,3 +11666,15 @@ a.button.is-theme {
   font-size: 1.29rem;
 }
 
+ul.list-unstyled li.media {
+  border-top: none;
+}
+
+a {
+  color: #16B1BA;
+}
+
+ul.list-unstyled .comment-link {
+  font-size: 0.85rem !important;
+}
+

@@ -99,9 +99,29 @@
                    </div>
 
                    <div class="tab-content">
-                       <div>
+                       @if ($consentRequest->files->count() > 0)
 
-                       </div>
+                           <div class="consent-request-file content">
+                               @foreach ($consentRequest->files as $file)
+                                   <div class="file-item">
+                                    <span class="icon is-medium">
+                                        <i class="far fa-file-alt"></i>
+                                    </span>
+                                       <span class="filename" title="{{ $file->name }}">{{ preg_replace('/^[^_]+[_]/', '', $file->name) }}<br>
+                                        <a
+                                                href="#"
+                                                class="has-text-secondary consent-file-download"
+                                        >Download</a>
+                                    </span>
+                                   </div>
+                               @endforeach
+                           </div>
+
+                       @else
+                           <div class="consent-request-file has-text-centered">
+                               <span>No files uploaded</span>
+                           </div>
+                       @endif
                    </div>
 
                </div>

@@ -56,6 +56,11 @@ class ApplicationMenusMiddleware
                 'app.consent-requests.create',
                 'app.consent-requests.show',
                 'app.consent-requests.edit',
+                'app.consent-requests.files.index',
+                'app.consent-requests.doctor-questions.index',
+                'app.consent-requests.patient-questions.index',
+                'app.consent-requests.comments.index',
+                'app.consent-requests.signed.index',
             ])){
                 $menu->get('consentRequests')->active();
             }

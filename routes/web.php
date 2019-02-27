@@ -42,6 +42,8 @@ Route::prefix('p')->group( function () {
 });
 
 // Auth::routes();
+// Overwrite logout route
+/*Route::get('logout', 'App\Http\Controllers\Auth\LogoutController@logout')->name('logout');*/
 
 /* Private */
 Route::middleware(['auth'])->prefix('app')->group( function () {

@@ -1,24 +1,26 @@
 @inject('markdown', 'Parsedown')
-
+<article class="media">
 @if(isset($reply) && $reply === true)
   <div id="comment-{{ $comment->id }}" class="media">
 @else
   <li id="comment-{{ $comment->id }}" class="media">
 @endif
-    <img class="mr-3" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email) }}.jpg?s=64" alt="{{ $comment->commenter->name }} Avatar">
-    <div class="media-body">
+   <figure class="media-left">
+    <img class="image is-64x64" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email) }}.jpg?s=64" alt="{{ $comment->commenter->name }} Avatar">
+   </figure>
+      <div class="media-content">
         <h5 class="mt-0 mb-1">{{ $comment->commenter->name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
         <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
 
         <p>
             @can('reply-to-comment', $comment)
-                <button data-toggle="modal" data-target="#reply-modal-{{ $comment->id }}" class="btn btn-sm btn-link text-uppercase">Reply</button>
+                <a data-toggle="modal" data-target="#reply-modal-{{ $comment->id }}" class="comment-link">Reply</a>
             @endcan
             @can('edit-comment', $comment)
-                <button data-toggle="modal" data-target="#comment-modal-{{ $comment->id }}" class="btn btn-sm btn-link text-uppercase">Edit</button>
+                    <a data-toggle="modal" data-target="#comment-modal-{{ $comment->id }}" class="comment-link">Edit</a> <span class="comment-link">|</span>
             @endcan
             @can('delete-comment', $comment)
-                <a href="{{ url('comments/' . $comment->id) }}" onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->id }}').submit();" class="btn btn-sm btn-link text-danger text-uppercase">Delete</a>
+                <a href="{{ url('comments/' . $comment->id) }}" onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->id }}').submit();" class="comment-link">Delete</a>
                 <form id="comment-delete-form-{{ $comment->id }}" action="{{ url('comments/' . $comment->id) }}" method="POST" style="display: none;">
                     @method('DELETE')
                     @csrf
@@ -85,7 +87,7 @@
             </div>
         @endcan
 
-        <br />{{-- Margin bottom --}}
+       {{-- <br />--}}{{-- Margin bottom --}}
 
         @foreach($comment->children as $child)
             @include('comments::_comment', [
@@ -99,3 +101,4 @@
 @else
   </li>
 @endif
+</article>
