@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ConsentTypesTableSeeder::class);
         $this->call(ConsentSpecialitiesTableSeeder::class);
         $this->call(ConsentsTableSeeder::class);
+        $this->call(UserQuestionsTableSeeder::class);
+        $this->call(PatientQuestionsTableSeeder::class);
 
         if(in_array(config('app.env'), ['local','staging'])) {
 
