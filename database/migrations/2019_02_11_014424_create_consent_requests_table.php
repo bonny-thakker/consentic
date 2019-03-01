@@ -23,8 +23,9 @@ class CreateConsentRequestsTable extends Migration
             $table->boolean('moderation')->default(false);
             $table->integer('patient_id')->index()->unsigned();
             $table->timestamp('patient_signed_ts')->nullable();
+            $table->string('patient_signature')->nullable();
             $table->boolean('reminder')->default(false);
-            $table->boolean('in_offce')->default(false);
+            $table->boolean('in_office')->default(false);
             $table->boolean('video_watched')->default(false);
             $table->softDeletes();
             $table->timestamps();

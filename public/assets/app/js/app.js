@@ -169,32 +169,36 @@ var App = function () {
         e.preventDefault();
       }); // Load google map places api
 
-      var address = document.getElementById('address');
-      /* let autocompleteAddress = new google.maps.places.Autocomplete(address);
-        let componentForm = {
-           locality: 'long_name',
-           administrative_area_level_1: 'short_name',
-           postal_code: 'short_name'
-       };
-        google.maps.event.addListener(autocompleteAddress, 'place_changed', function(e) {
-           // Get the place details from the autocomplete object.
-           let place = autocompleteAddress.getPlace();
-            for (var component in componentForm) {
-               document.getElementById(component).value = '';
-               document.getElementById(component).disabled = false;
-           }
-            // Get each component of the address from the place details
-           // and fill the corresponding field on the form.
-           for (var i = 0; i < place.address_components.length; i++) {
-               var addressType = place.address_components[i].types[0];
-               if (componentForm[addressType]) {
-                   var val = place.address_components[i][componentForm[addressType]];
-                   document.getElementById(addressType).value = val;
-               }
-           }
-       });
-      */
-      // Load jquery-mask
+      if ($("input#address").length > 0) {
+        var address = document.getElementById('address');
+        var autocompleteAddress = new google.maps.places.Autocomplete(address);
+        var componentForm = {
+          locality: 'long_name',
+          administrative_area_level_1: 'short_name',
+          postal_code: 'short_name'
+        };
+        google.maps.event.addListener(autocompleteAddress, 'place_changed', function (e) {
+          // Get the place details from the autocomplete object.
+          var place = autocompleteAddress.getPlace();
+
+          for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+          } // Get each component of the address from the place details
+          // and fill the corresponding field on the form.
+
+
+          for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+
+            if (componentForm[addressType]) {
+              var val = place.address_components[i][componentForm[addressType]];
+              document.getElementById(addressType).value = val;
+            }
+          }
+        });
+      } // Load jquery-mask
+
 
       $('input[name="birthday"]').mask('00/00/0000', {
         placeholder: "__/__/____"
@@ -241,6 +245,7 @@ var App = function () {
       $('#procedure-list').select2({
         searchInputPlaceholder: 'Type to search procedures'
       });
+      App.loadVideo();
     },
     handleNavbar: function handleNavbar() {
       // Get all "navbar-burger" elements
@@ -276,6 +281,57 @@ var App = function () {
             $el.classList.remove('is-active');
           });
         });
+      }
+    },
+    loadVideo: function loadVideo() {
+      var videosWatched = $('#consent-video-player-container').data('videos-watched');
+      var consentId = $('#consent-video-player-container').data('id');
+      plyrCurrentTime = 0;
+      plyr = new Plyr("#consent-video-player", {
+        ratio: '16:9',
+        listeners: {
+          seek: function customSeekBehavior(e) {
+            // If video already watched
+            // enable fast forward
+            if (videosWatched) {
+              return true;
+            }
+
+            var newTime = _getTargetTime(plyr, e);
+
+            if (newTime > plyrCurrentTime) {
+              e.preventDefault();
+              return false;
+            }
+
+            return true;
+          }
+        }
+      });
+      plyr.on('enterfullscreen', function (event) {
+        $('.plyr').css('height', 'initial');
+      });
+      plyr.on('exitfullscreen', function (event) {// $('.plyr').css('height', '400px');
+      });
+      plyr.on('timeupdate', function (event) {
+        plyrCurrentTime = Math.max(plyrCurrentTime, plyr.currentTime);
+        /* if (!videosWatched && plyr.duration  - plyr.currentTime <= 10) {
+             ConsentDetails.videosWatched(consentId);
+         }*/
+      });
+      plyr.on('ended', function (event) {
+        /*   if (!videosWatched) {
+               ConsentDetails.videosWatched(consentId);
+           }*/
+      });
+
+      function _getTargetTime(plyr, input) {
+        if (_typeof(input) === "object" && (input.type === "input" || input.type === "change")) {
+          return input.target.value / input.target.max * plyr.media.duration;
+        } else {
+          // We're assuming its a number
+          return Number(input);
+        }
       }
     },
     toggleModal: function toggleModal(modalId) {
@@ -371,11 +427,13 @@ var App = function () {
       return Text.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
     },
     handleConsentFiles: function handleConsentFiles(files) {
-      var element = $('#consent-files');
-      Array.from(element[0].files).forEach(function (file) {
-        fileList.push(file);
-      });
-      App.renderFileList();
+      if ($('#consent-files').length > 0) {
+        var element = $('#consent-files');
+        Array.from(element[0].files).forEach(function (file) {
+          fileList.push(file);
+        });
+        App.renderFileList();
+      }
     },
     renderFileList: function renderFileList() {
       var element = $('#consent-files');

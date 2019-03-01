@@ -87,9 +87,9 @@
 
                    <div class="tab-content">
                        <div>
-                         <span id="consent-video-player-container">
-                        <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
-                        </span>
+                         <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}">
+                            <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
+                         </span>
                        </div>
                    </div>
 

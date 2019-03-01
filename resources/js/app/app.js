@@ -94,35 +94,39 @@ const App = function() {
             });
 
             // Load google map places api
-            let address = document.getElementById('address');
-           /* let autocompleteAddress = new google.maps.places.Autocomplete(address);
+            if($("input#address").length > 0){
 
-            let componentForm = {
-                locality: 'long_name',
-                administrative_area_level_1: 'short_name',
-                postal_code: 'short_name'
-            };
+                let address = document.getElementById('address');
+                let autocompleteAddress = new google.maps.places.Autocomplete(address);
 
-            google.maps.event.addListener(autocompleteAddress, 'place_changed', function(e) {
-                // Get the place details from the autocomplete object.
-                let place = autocompleteAddress.getPlace();
+                let componentForm = {
+                    locality: 'long_name',
+                    administrative_area_level_1: 'short_name',
+                    postal_code: 'short_name'
+                };
 
-                for (var component in componentForm) {
-                    document.getElementById(component).value = '';
-                    document.getElementById(component).disabled = false;
-                }
+                google.maps.event.addListener(autocompleteAddress, 'place_changed', function(e) {
+                    // Get the place details from the autocomplete object.
+                    let place = autocompleteAddress.getPlace();
 
-                // Get each component of the address from the place details
-                // and fill the corresponding field on the form.
-                for (var i = 0; i < place.address_components.length; i++) {
-                    var addressType = place.address_components[i].types[0];
-                    if (componentForm[addressType]) {
-                        var val = place.address_components[i][componentForm[addressType]];
-                        document.getElementById(addressType).value = val;
+                    for (var component in componentForm) {
+                        document.getElementById(component).value = '';
+                        document.getElementById(component).disabled = false;
                     }
-                }
-            });
-*/
+
+                    // Get each component of the address from the place details
+                    // and fill the corresponding field on the form.
+                    for (var i = 0; i < place.address_components.length; i++) {
+                        var addressType = place.address_components[i].types[0];
+                        if (componentForm[addressType]) {
+                            var val = place.address_components[i][componentForm[addressType]];
+                            document.getElementById(addressType).value = val;
+                        }
+                    }
+                });
+
+            }
+
             // Load jquery-mask
             $('input[name="birthday"]').mask('00/00/0000', {placeholder: "__/__/____"});
 
@@ -184,6 +188,8 @@ const App = function() {
                 searchInputPlaceholder: 'Type to search procedures'
             });
 
+            App.loadVideo();
+
         },
 
         handleNavbar: function() {
@@ -228,6 +234,64 @@ const App = function() {
                         $el.classList.remove('is-active');
                     });
                 });
+            }
+        },
+
+        loadVideo: function() {
+
+            let videosWatched = $('#consent-video-player-container').data('videos-watched');
+            let consentId = $('#consent-video-player-container').data('id');
+
+            plyrCurrentTime = 0;
+            plyr = new Plyr("#consent-video-player", {
+                ratio: '16:9',
+                listeners: {
+                    seek: function customSeekBehavior(e) {
+                        // If video already watched
+                        // enable fast forward
+                        if (videosWatched) {
+                            return true;
+                        }
+
+                        let newTime = _getTargetTime(plyr, e);
+
+                        if (newTime > plyrCurrentTime) {
+                            e.preventDefault();
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+            });
+
+            plyr.on('enterfullscreen', function(event) {
+                $('.plyr').css('height', 'initial');
+            });
+
+            plyr.on('exitfullscreen', function(event) {
+                // $('.plyr').css('height', '400px');
+            });
+
+            plyr.on('timeupdate', function(event) {
+                plyrCurrentTime = Math.max(plyrCurrentTime, plyr.currentTime);
+               /* if (!videosWatched && plyr.duration  - plyr.currentTime <= 10) {
+                    ConsentDetails.videosWatched(consentId);
+                }*/
+            });
+
+            plyr.on('ended', function(event) {
+             /*   if (!videosWatched) {
+                    ConsentDetails.videosWatched(consentId);
+                }*/
+            });
+
+            function _getTargetTime(plyr, input) {
+                if (typeof input === "object" && (input.type === "input" || input.type === "change")) {
+                    return input.target.value / input.target.max * plyr.media.duration;
+                } else {
+                    // We're assuming its a number
+                    return Number(input);
+                }
             }
         },
 
@@ -361,13 +425,17 @@ const App = function() {
         },
 
         handleConsentFiles: function(files) {
-            let element = $('#consent-files');
 
-            Array.from(element[0].files).forEach(file => {
-                fileList.push(file);
-            });
+            if($('#consent-files').length > 0){
+                let element = $('#consent-files');
 
-            App.renderFileList();
+                Array.from(element[0].files).forEach(file => {
+                    fileList.push(file);
+                });
+
+                App.renderFileList();
+            }
+
         },
 
         renderFileList: function() {
