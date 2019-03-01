@@ -15,7 +15,52 @@ class ConsentRequestObserver
      */
     public function created(ConsentRequest $consentRequest)
     {
+
         event(new \App\Events\ConsentRequestCreated($consentRequest));
+
+        foreach(\App\UserQuestion::all() as $userQuestion){
+
+            $consentRequestQuestion = \App\ConsentRequestQuestion::create([
+                'consent_request_id' => $consentRequest->id,
+                'consent_request_questionable_id' => $userQuestion->id,
+                'consent_request_questionable_type' => 'App\UserQuestion'
+            ]);
+
+            \App\ConsentRequestQuestionAnswer::create([
+                'consent_request_question_id' => $consentRequestQuestion->id
+            ]);
+
+        }
+
+        foreach(\App\PatientQuestion::all() as $patientQuestion){
+
+            $consentRequestQuestion = \App\ConsentRequestQuestion::create([
+                'consent_request_id' => $consentRequest->id,
+                'consent_request_questionable_id' => $patientQuestion->id,
+                'consent_request_questionable_type' => 'App\PatientQuestion'
+            ]);
+
+            \App\ConsentRequestQuestionAnswer::create([
+                'consent_request_question_id' => $consentRequestQuestion->id
+            ]);
+
+        }
+
+        // TBC, consent questions
+        /*foreach(\App\Question::all() as $question){
+
+            $consentRequestQuestion \App\ConsentRequestQuestion::create([
+                'consent_request_id' => $consentRequest->id,
+                'consent_request_questionable_id' => $question->id,
+                'consent_request_questionable_type' => 'App\Question'
+            ]);
+
+        \App\ConsentRequestQuestionAnswer::create([
+                'consent_request_question_id' => $consentRequestQuestion->id
+            ]);
+
+        }*/
+
     }
 
 

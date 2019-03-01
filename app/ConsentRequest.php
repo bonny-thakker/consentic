@@ -48,7 +48,15 @@ class ConsentRequest extends Model
 
     public function files()
     {
-        return $this->morphMany(FIle::class, 'fileable');
+        return $this->morphMany(File::class, 'fileable');
+    }
+
+    /**
+     * Get the consent request for the consent.
+     */
+    public function consentRequestQuestions()
+    {
+        return $this->hasMany('App\ConsentRequestQuestion');
     }
 
 }

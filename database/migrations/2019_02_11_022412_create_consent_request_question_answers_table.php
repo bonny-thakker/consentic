@@ -15,6 +15,9 @@ class CreateConsentRequestQuestionAnswersTable extends Migration
     {
         Schema::create('consent_request_question_answers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('consent_request_question_id')->index('crqa_crq_id')->unsigned();
+            $table->boolean('yes')->nullable();
+            $table->integer('answer_id')->index('crqa_a_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

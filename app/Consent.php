@@ -12,7 +12,7 @@ class Consent extends Model
      */
     public function consentRequests()
     {
-        return $this->hasMany('App\cCnsentRequest');
+        return $this->hasMany('App\ConsentRequest');
     }
 
     /**

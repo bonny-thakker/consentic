@@ -99,9 +99,12 @@
                    </div>
 
                    <div class="tab-content">
-                       <div>
-
-                       </div>
+                       @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\UserQuestion')->get() as $consentRequestQuestion)
+                           @include('app.partial.question', [
+                            'consentRequestQuestion' => $consentRequestQuestion,
+                            'consentRequestQuestionAnswer' => null
+                           ])
+                       @endforeach
                    </div>
 
                </div>

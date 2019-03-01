@@ -10,4 +10,9 @@ class Answer extends Model
 
     use SoftDeletes;
 
+    public function answerable()
+    {
+        return $this->morphTo();
+    }
+
 }

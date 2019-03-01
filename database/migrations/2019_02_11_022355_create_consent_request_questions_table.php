@@ -15,6 +15,9 @@ class CreateConsentRequestQuestionsTable extends Migration
     {
         Schema::create('consent_request_questions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('consent_request_id')->index()->unsigned();
+            $table->integer('consent_request_questionable_id')->nullable();
+            $table->string('consent_request_questionable_type')->nullable();
             $table->timestamps();
         });
     }

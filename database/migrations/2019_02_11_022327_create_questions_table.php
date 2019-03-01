@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
                 'single',
                 'multiple',
             ])->default('boolean');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

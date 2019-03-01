@@ -17,8 +17,12 @@ class PatientQuestionsTableSeeder extends Seeder
                 'text' => 'I do / do not consent to a blood transfusion',
                 'type' => 'multiple',
                 'answers' => [
-                    [ 'I do consent to a blood transfusion, if required',],
-                    ['I do not consent to a blood transfusion, if required']
+                    [
+                        'text' => 'I do consent to a blood transfusion, if required'
+                    ],
+                    [
+                        'text' => 'I do not consent to a blood transfusion, if required'
+                    ]
                 ]
             ],
             [
@@ -45,7 +49,11 @@ class PatientQuestionsTableSeeder extends Seeder
             if($insert['type'] == 'multiple' && isset($answers)){
                 foreach($answers as $answer){
 
-                    // TBC
+                    \App\Answer::create([
+                        'answerable_id' => $patientQuestion->id,
+                        'answerable_type' => 'App\PatientQuestion',
+                        'text' => $answer['text']
+                    ]);
 
                 }
             }
