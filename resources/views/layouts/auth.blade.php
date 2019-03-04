@@ -27,25 +27,42 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ url('assets/plugins/animate.css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ mix('/assets/web/css/auth.css') }}">
+    <link rel="stylesheet" href="{{ mix('/assets/web/css/app.css') }}">
+   {{-- <link rel="stylesheet" href="{{ mix('/assets/web/css/auth.css') }}">--}}
     @yield('styles')
+
+    <!-- Global Spark Object -->
+    <script>
+        window.Spark = @json(array_merge(Spark::scriptVariables(), []));
+    </script>
+
+
 </head>
 
 <body>
-<div class=app-container>
-    <main>
+<div class=app-container id="spark-app" v-cloak>
+    @include('layouts.web.header')
+    <main class=app-content>
         @yield('content')
     </main>
+    @include('layouts.web.footer')
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/sweetalert2@7.15.1/dist/sweetalert2.all.min.js"></script>
+<script src="{{ url('assets/web/js/app.js') }}"></script>
+<script src="{{ url('js/newsletter.js') }}"></script>
+
+<script src="{{ mix('js/app.js') }}"></script>
+<script src="/js/sweetalert.min.js"></script>
 
 @yield('scripts')
+@stack('spark-scripts')
 @stack('jquery')
 @include('layouts.web.ga')
 
