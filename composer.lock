@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fab17a214a209d948f03f611276b8d0",
+    "content-hash": "35ce93e07da612a4d87d47cad22d342e",
     "packages": [
         {
             "name": "bugsnag/bugsnag",
@@ -1705,16 +1705,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "dev-master",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "fe09fa31786dfc95edf9b9a1fe6caef701fddf71"
+                "reference": "925386780c756d6aa7c18ae185bb7a756c122460"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/fe09fa31786dfc95edf9b9a1fe6caef701fddf71",
-                "reference": "fe09fa31786dfc95edf9b9a1fe6caef701fddf71",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/925386780c756d6aa7c18ae185bb7a756c122460",
+                "reference": "925386780c756d6aa7c18ae185bb7a756c122460",
                 "shasum": ""
             },
             "require": {
@@ -1731,7 +1731,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1764,7 +1764,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2019-02-26 20:38:25"
+            "time": "2019-02-18T22:02:39+00:00"
         },
         {
             "name": "laravel/tinker",
