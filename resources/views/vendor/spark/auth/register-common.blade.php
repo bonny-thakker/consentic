@@ -124,11 +124,11 @@
         <div class="card card-default">
             <div class="card-header">
                 <span v-if="paidPlans.length > 0">
-                    {{__('Profile')}}
+                    <h1 class="title">{{__('Profile')}}</h1>
                 </span>
 
                 <span v-else>
-                    {{__('Register')}}
+                    <h1 class="title">{{__('Register')}}</h1>
                 </span>
             </div>
 

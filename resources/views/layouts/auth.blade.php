@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ url('assets/plugins/animate.css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ mix('/assets/web/css/app.css') }}">
-   {{-- <link rel="stylesheet" href="{{ mix('/assets/web/css/auth.css') }}">--}}
+    <link rel="stylesheet" href="{{ mix('/assets/web/css/auth.css') }}">
     @yield('styles')
 
     <!-- Global Spark Object -->
@@ -47,7 +47,7 @@
 <body>
 <div class=app-container id="spark-app" v-cloak>
     @include('layouts.web.header')
-    <main class=app-content>
+    <main class=app-content id="auth-form">
         @yield('content')
     </main>
     @include('layouts.web.footer')

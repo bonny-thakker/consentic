@@ -70184,12 +70184,49 @@ Vue.component('spark-profile', {
   !*** ./resources/js/spark-components/settings/profile/update-contact-information.js ***!
   \**************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var base = __webpack_require__(/*! settings/profile/update-contact-information */ "./spark/resources/assets/js/settings/profile/update-contact-information.js");
-
+/*var base = require('settings/profile/update-contact-information');*/
 Vue.component('spark-update-contact-information', {
-  mixins: [base]
+  props: ['user'],
+
+  /**
+   * The component's data.
+   */
+  data: function data() {
+    return {
+      form: $.extend(true, new SparkForm({
+        name: '',
+        email: '',
+        title: '',
+        first_name: '',
+        last_name: '',
+        phone_number: ''
+      }), Spark.forms.updateContactInformation)
+    };
+  },
+
+  /**
+   * Bootstrap the component.
+   */
+  mounted: function mounted() {
+    this.form.name = this.user.name;
+    this.form.email = this.user.email;
+    this.form.title = this.user.title;
+    this.form.first_name = this.user.first_name;
+    this.form.last_name = this.user.last_name;
+    this.form.phone_number = this.user.phone_number;
+  },
+  methods: {
+    /**
+     * Update the user's contact information.
+     */
+    update: function update() {
+      Spark.put('/app/user/settings', this.form).then(function () {
+        Bus.$emit('updateUser');
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -73824,49 +73861,6 @@ module.exports = {
 
 module.exports = {
   props: ['user']
-};
-
-/***/ }),
-
-/***/ "./spark/resources/assets/js/settings/profile/update-contact-information.js":
-/*!**********************************************************************************!*\
-  !*** ./spark/resources/assets/js/settings/profile/update-contact-information.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  props: ['user'],
-
-  /**
-   * The component's data.
-   */
-  data: function data() {
-    return {
-      form: $.extend(true, new SparkForm({
-        name: '',
-        email: ''
-      }), Spark.forms.updateContactInformation)
-    };
-  },
-
-  /**
-   * Bootstrap the component.
-   */
-  mounted: function mounted() {
-    this.form.name = this.user.name;
-    this.form.email = this.user.email;
-  },
-  methods: {
-    /**
-     * Update the user's contact information.
-     */
-    update: function update() {
-      Spark.put('/settings/contact', this.form).then(function () {
-        Bus.$emit('updateUser');
-      });
-    }
-  }
 };
 
 /***/ }),

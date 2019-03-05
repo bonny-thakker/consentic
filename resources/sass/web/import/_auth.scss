@@ -4,16 +4,16 @@
   src: url("/assets/fonts/brandon-grot/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot") format("eot"), url("/assets/fonts/brandon-grot/69b40392-453a-438a-a121-a49e5fbc9213.woff2") format("woff2"), url("/assets/fonts/brandon-grot/9362bca5-b362-4543-a051-2129e2def911.woff") format("woff"), url("/assets/fonts/brandon-grot/85060878-ca6c-43cc-ac31-7edccfdca71b.ttf") format("truetype"), url("/assets/fonts/brandon-grot/47f089a6-c8ce-46fa-b98f-03b8c0619d8a.svg") format("svg");
 }
 
-body {
+#auth-form {
   font-size: 1.2rem !important;
 }
 
-body,
-button {
+#auth-form ,
+#auth-form button {
   font-family: "brandon-grot-w01-light", sans-serif;
 }
 
-.interactive-bg {
+#auth-form .interactive-bg {
   height: 100vh;
   background-color: #00d1b2;
   -webkit-box-shadow: inset 24px 4px 64px -24px rgba(71, 71, 71, 1);
@@ -23,43 +23,91 @@ button {
 }
 
 @media (max-width: 769px) {
-  .interactive-bg {
+  #auth-form .interactive-bg {
     display: none
   }
 }
 
-.button {
+#auth-form .button {
   margin-top: 20px;
   margin-bottom: 20px;
   min-width: 150px;
 }
 
-.login-logo {
+#auth-form .login-logo {
   margin: 0 auto;
   margin-bottom: 50px;
   max-height: 100px;
 
 }
 
-.columns {
+#auth-form .columns {
   margin: 0px;
 }
 
-.swal2-popup .swal2-content {
+#auth-form .swal2-popup .swal2-content {
   font-size: 1.4rem !important;
 }
 
 /* Safari 9 fix */
 @supports (overflow:-webkit-marquee) and (justify-content:inherit)
 {
-  button {
+  #auth-form button {
     display: block !important;
     margin: 10px auto;
   }
 }
 
-.help {
+#auth-form .help {
   display: block;
   font-size: 1rem;
   margin-top: 0.25rem
 }
+
+#auth-form .control.has-icons-left .input,
+#auth-form .control.has-icons-left .select select {
+  padding-left: 2.25em !important;
+  padding-bottom: calc(.375em - 1px) !important;
+  padding-right: calc(.625em - 1px) !important;
+  padding-top: calc(.375em - 1px) !important;
+}
+
+#auth-form .input.is-medium, #auth-form .textarea.is-medium {
+  font-size: 1.25rem !important;
+}
+
+#auth-form .section {
+  padding: 3rem 1.5rem !important;
+}
+
+#auth-form .button.is-primary.is-outlined {
+  background-color: transparent !important;
+  border-color: #00d1b2 !important;
+  color: #00d1b2 !important;
+  border-width: 1px;
+}
+
+#auth-form .button.is-primary.is-outlined:hover {
+  background-color: #00d1b2 !important;
+  border-color: #00d1b2 !important;
+  color: #ffffff !important;
+}
+
+#auth-form .button.is-medium {
+  font-size: 1.25rem !important;
+}
+
+#auth-form .input,
+#auth-form .select,
+#auth-form .select select,
+#auth-form div.select,
+#auth-form .button.submit {
+  height: 2.25em !important;
+}
+#auth-form .button.submit {
+  margin-top: 8px !important;
+}
+#auth-form a{
+  color: #3273dc !important;
+}
+

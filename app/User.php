@@ -24,6 +24,10 @@ class User extends SparkUser
     protected $fillable = [
         'name',
         'email',
+        'title',
+        'first_name',
+        'last_name',
+        'phone_number'
     ];
 
     /**

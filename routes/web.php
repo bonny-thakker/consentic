@@ -42,11 +42,14 @@ Route::prefix('p')->group( function () {
 });
 
 // Auth::routes();
-// Overwrite logout route
+// Overwrite spark routes
 /*Route::get('logout', 'App\Http\Controllers\Auth\LogoutController@logout')->name('logout');*/
 
 /* Private */
 Route::middleware(['auth'])->prefix('app')->group( function () {
+
+    // Spark
+    Route::put('user/settings', 'UserController@update')->name('app.user.settings.update');
 
     Route::get('/', function () {
         return redirect('/app/dashboard');

@@ -19,13 +19,11 @@
                         <div class="columns">
                             <div class="column is-4 is-offset-4">
                                 <section class="section">
-                                    <div class="has-text-centered">
-                                        <img class="login-logo" src="images/logo-dark-sm.png">
-                                    </div>
+
                                     <div class="field">
                                         <label for="email" class="label is-medium">{{ __('Email') }}</label>
                                         <div class="control has-icons-left">
-                                            <input class="input is-medium{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" type="email" id="email" value="{{ old('email') }}" required autofocus>
+                                            <input class="input is-medium{{ $errors->has('email') ? ' is-invalid is-danger' : '' }}" type="text" name="email" type="email" id="email" value="{{ old('email') }}" required autofocus>
                                             <span class="icon is-small is-left">
                                             <i class="fa fa-envelope"></i>
                                         </span>
@@ -38,7 +36,7 @@
                                     <div class="field">
                                         <label for="password" class="label is-medium">{{ __('Password') }}</label>
                                         <div class="control has-icons-left">
-                                            <input class="input is-medium{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" required>
+                                            <input class="input is-medium{{ $errors->has('password') ? ' is-invalid is-danger' : '' }}" type="password" name="password" required>
                                             <span class="icon is-small is-left">
                                             <i class="fa fa-lock"></i>
                                         </span>

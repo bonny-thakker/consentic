@@ -13,11 +13,11 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $details = [
-        'vendor' => 'Your Company',
-        'product' => 'Your Product',
-        'street' => 'PO Box 111',
-        'location' => 'Your Town, NY 12345',
-        'phone' => '555-555-5555',
+        'vendor' => 'Consentic',
+        'product' => 'Medical Consent Requests',
+        'street' => '',
+        'location' => '',
+        'phone' => '',
     ];
 
     /**
@@ -25,7 +25,7 @@ class SparkServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $sendSupportEmailsTo = null;
+    protected $sendSupportEmailsTo = 'info@consentic.com';
 
     /**
      * All of the application developer e-mail addresses.
@@ -33,7 +33,7 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $developers = [
-        'cto@consentic.com'
+      /*  'cto@consentic.com'*/
     ];
 
     /**
@@ -41,7 +41,7 @@ class SparkServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $usesApi = true;
+    protected $usesApi = false;
 
     /**
      * Finish configuring Spark for the application.
@@ -53,17 +53,33 @@ class SparkServiceProvider extends ServiceProvider
 
         Spark::useTwoFactorAuth();
 
-        Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
+        Spark::useStripe()->noCardUpFront()->teamTrialDays(30);
 
-        Spark::freeTeamPlan()
+      /*  Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'
+            ]);*/
+
+        Spark::teamPlan('Individual Starter', 'individual-starter')
+            ->price(10)
+            ->maxTeamMembers(1)
+            ->features([
+                'Single Account User',
+                '10 Consents',
             ]);
 
-        Spark::teamPlan('Basic', 'provider-id-1')
-            ->price(10)
+        Spark::teamPlan('Individual Standard', 'individual-standard')
+            ->price(20)
+            ->maxTeamMembers(1)
             ->features([
-                'First', 'Second', 'Third'
+                'Single Account User',
+                '20 Consents',
+            ]);
+
+        Spark::teamPlan('Clinic Standard', 'clinic-standard')
+            ->price(100)
+            ->features([
+                'Unlimited Account Users',
             ]);
 
     }
@@ -77,6 +93,5 @@ class SparkServiceProvider extends ServiceProvider
         Spark::prefixTeamsAs('clinic');
         Spark::afterLoginRedirectTo('/app');
     }
-
 
 }
