@@ -15,6 +15,7 @@
         "insenseanalytics/laravel-nova-permission": "^0.1.2",
         "laravel/cashier": "~8.0",
         "laravel/framework": "5.7.*",
+        "laravel/horizon": "^3.0",
         "laravel/nova": "~1.0",
         "laravel/spark-aurelius": "@dev",
         "laravel/tinker": "^1.0",
