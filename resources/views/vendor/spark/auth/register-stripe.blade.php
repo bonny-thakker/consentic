@@ -1,6 +1,10 @@
-@extends('spark::layouts.app')
+@extends('layouts.auth')
 
-@push('scripts')
+@section('title', 'Join Now')
+
+@section('styles')
+
+@push('spark-scripts')
     <script src="https://js.stripe.com/v3/"></script>
 @endpush
 
