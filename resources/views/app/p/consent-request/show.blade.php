@@ -14,8 +14,16 @@
 
 @section('content')
 
-   <section class="section">
+   <section class="section section-public">
        <div class="container">
+           <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+               <ul>
+                   <li><a href="#">Bulma</a></li>
+                   <li><a href="#">Documentation</a></li>
+                   <li><a href="#">Components</a></li>
+                   <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+               </ul>
+           </nav>
            <h1 class="title">Consent Request - {{ $consentRequest->consent->name }}</h1>
            <div class="columns">
                <div class="column">

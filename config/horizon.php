@@ -134,6 +134,13 @@ return [
                 'processes' => 10,
                 'tries' => 3,
             ],
+            'supervisor-2' => [
+                'connection' => 'redis',
+                'queue' => ['tntindex'],
+                'balance' => 'simple',
+                'processes' => 1,
+                'tries' => 3,
+            ],
         ],
 
         'local' => [

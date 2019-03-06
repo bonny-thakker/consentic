@@ -12101,3 +12101,38 @@ pre {
   border-radius: 50%;
 }
 
+@font-face {
+  font-family: "Consentic";
+  src: url("/assets/fonts/brandon-grot/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot");
+  src: url("/assets/fonts/brandon-grot/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot") format("eot"), url("/assets/fonts/brandon-grot/69b40392-453a-438a-a121-a49e5fbc9213.woff2") format("woff2"), url("/assets/fonts/brandon-grot/9362bca5-b362-4543-a051-2129e2def911.woff") format("woff"), url("/assets/fonts/brandon-grot/85060878-ca6c-43cc-ac31-7edccfdca71b.ttf") format("truetype"), url("/assets/fonts/brandon-grot/47f089a6-c8ce-46fa-b98f-03b8c0619d8a.svg") format("svg");
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Consentic", sans-serif !important;
+}
+
+body {
+  color: #666;
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #f5f5f5;
+}
+
+#spark-app .card {
+  background-color: #fff !important;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  border-radius: 0 !important;
+}
+
+#spark-app .card-header {
+  background-color: #ffffff;
+  color: #363636;
+  border-bottom: 1px solid #dbdbdb;
+  font-weight: bold;
+}
+

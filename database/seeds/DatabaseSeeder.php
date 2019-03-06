@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PatientQuestionsTableSeeder::class);
 
         if(in_array(config('app.env'), ['local','staging'])) {
+
+            // Remove the patients.index
+            Storage::delete(storage_path('patients.index'));
 
             $team = \App\Team::firstOrCreate([
                 'id' => 1,

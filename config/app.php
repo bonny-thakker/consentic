@@ -181,6 +181,8 @@ return [
         Laravel\Cashier\CashierServiceProvider::class,
         App\Providers\SparkServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
 
     ],
 

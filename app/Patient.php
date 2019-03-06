@@ -7,6 +7,7 @@ use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravelista\Comments\Commenter;
 use Carbon\Carbon;
+use Laravel\Scout\Searchable;
 
 class Patient extends Model
 {
@@ -14,6 +15,7 @@ class Patient extends Model
     use BelongsToTenants;
     use SoftDeletes;
     use Commenter;
+    use Searchable;
 
     public function setBirthdayAttribute($value)
     {
@@ -93,6 +95,27 @@ class Patient extends Model
     {
 
         return \App\Http\Helpers\decryptField($value);
+
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+
+        // $array = $this->toArray();
+
+        $array = [
+            $this->getKeyName() => $this->getKey(),
+            'team_id' => $this->team_id,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name
+        ];
+
+        return $array;
 
     }
 

@@ -52,6 +52,7 @@ class SparkServiceProvider extends ServiceProvider
     {
 
         Spark::useTwoFactorAuth();
+        Spark::collectBillingAddress();
 
         Spark::useStripe()->noCardUpFront()->teamTrialDays(30);
 
@@ -60,7 +61,7 @@ class SparkServiceProvider extends ServiceProvider
                 'First', 'Second', 'Third'
             ]);*/
 
-        Spark::teamPlan('Individual Starter', 'individual-starter')
+      /*  Spark::teamPlan('Individual Starter', 'individual-starter')
             ->price(10)
             ->maxTeamMembers(1)
             ->features([
@@ -80,7 +81,7 @@ class SparkServiceProvider extends ServiceProvider
             ->price(100)
             ->features([
                 'Unlimited Account Users',
-            ]);
+            ]);*/
 
     }
     /**

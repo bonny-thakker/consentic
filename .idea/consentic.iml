@@ -36,6 +36,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/horizon" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/nexmo-notification-channel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/nova" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/scout" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/slack-notification-channel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/spark-aurelius" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/telescope" />
@@ -107,6 +108,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/routing" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/teamtnt/laravel-scout-tntsearch-driver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/teamtnt/tntsearch" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/venturedrake/laravel-boilerplate" />
