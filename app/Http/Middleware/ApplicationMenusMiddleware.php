@@ -46,6 +46,7 @@ class ApplicationMenusMiddleware
                 'app.patients.create',
                 'app.patients.show',
                 'app.patients.edit',
+                'app.patients.search',
             ])){
                 $menu->get('patients')->active();
             }
@@ -61,6 +62,7 @@ class ApplicationMenusMiddleware
                 'app.consent-requests.patient-questions.index',
                 'app.consent-requests.comments.index',
                 'app.consent-requests.signed.index',
+                'app.consent-requests.search',
             ])){
                 $menu->get('consentRequests')->active();
             }

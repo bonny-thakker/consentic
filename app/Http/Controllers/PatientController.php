@@ -25,6 +25,27 @@ class PatientController extends Controller
     }
 
     /**
+     * Search customers
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+
+        if(!$request->input('search')){
+            return redirect('app/patients');
+        }
+
+        $patients = \App\Patient::search($request->input('search'))
+            ->get();
+
+        return view('app.patient.index',[
+            'patients' => $patients
+        ]);
+
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

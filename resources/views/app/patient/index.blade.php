@@ -82,11 +82,13 @@
 
 <section class="section">
     <div class="container">
+        <form role="search" method="post" action="{{ url('app/patients/search') }}">
+            {{ csrf_field() }}
         <div class="columns">
             <div class="column">
                 <div class="field has-addons">
                     <div class="control">
-                        <input id="patient-name-filter" type="text" class="input is-medium" placeholder="Enter Patient Name">
+                        <input id="patient-name-filter" type="text" class="input is-medium" placeholder="Enter Patient Name" name="search" value="{{ old('search') ?? Request::input('search') }}">
                     </div>
                     <div class="control">
                         <button class="button is-medium is-primary is-theme is-search">
@@ -120,6 +122,7 @@
                 </a>
             </div>
         </div>
+        </form>
         <div class="dt-bulma no-footer">
             <div class="columns">
                 <div class="column is-12">

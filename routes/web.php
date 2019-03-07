@@ -59,6 +59,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
 
     Route::prefix('patients')->group( function () {
         Route::get('/', 'PatientController@index')->name('app.patients.index');
+        Route::post('/search', 'PatientController@search')->name('app.patients.search');
         Route::get('create', 'PatientController@create')->name('app.patients.create');
         Route::post('store', 'PatientController@store')->name('app.patients.store');
         Route::get('{patient}', 'PatientController@show')->name('app.patients.show');
