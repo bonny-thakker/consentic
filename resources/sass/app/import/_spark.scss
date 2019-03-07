@@ -31,13 +31,15 @@ img.spark-profile-photo-xs {
   width: 35px;
   border-radius: 100%;
   margin-right: 0;
+  position:relative;
+  top: 4px;
 
 }
 
 .spark-nav-profile-name {
   position: relative;
-  top: -8px;
-  font-size: 1rem;
+  top: -6px;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-left: 7px;
 }

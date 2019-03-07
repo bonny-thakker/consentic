@@ -18,11 +18,11 @@
             </button>
 
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav">
                     @includeIf('spark::nav.user-left')
                 </ul>
 
-                <a @click="showNotifications" class="notification-pill mx-auto mb-3 mb-md-0 mr-md-0 ml-md-auto">
+                <a @click="showNotifications" class="notification-pill mb-3 mb-md-0 mr-md-0">
                 <svg class="mr-2" width="18px" height="20px" viewBox="0 0 18 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
                         <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
