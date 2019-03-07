@@ -97,7 +97,7 @@
             <div class="column">
                 <div class="select is-fullwidth">
                     <select id="procedure-filter" class="list-filter" name="consent">
-                        <option disabled selected>Procedure</option>
+                        <option value="all" selected>All Procedures</option>
                         @foreach (\App\Consent::all() as $consent)
                             <option value="{{ $consent->id }}" {{ (isset($filter_consent) && $filter_consent == $consent->id) ? 'selected':null }}>{{ $consent->name }}</option>
                         @endforeach
@@ -108,7 +108,7 @@
             <div class="column">
                 <div class="select is-fullwidth">
                     <select id="type-filter" class="list-filter" name="consent_type">
-                        <option disabled selected>Type</option>
+                        <option value="all" selected>All Types</option>
                         @foreach (\App\ConsentType::all() as $consentType)
                             <option value="{{ $consentType->id }}" {{ (isset($filter_consent_type) && $filter_consent_type == $consentType->id) ? 'selected':null }}>{{ $consentType->name }}</option>
                         @endforeach
