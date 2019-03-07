@@ -11681,10 +11681,14 @@ ul.list-unstyled .comment-link {
 }
 
 .section-public {
-  padding-top: 2rem;
+  padding-top: 0.5rem;
 }
 
 .section-with-title {
   padding-top: 1rem;
+}
+
+.breadcrumb:not(:last-child) {
+  margin-bottom: 0.3rem;
 }
 

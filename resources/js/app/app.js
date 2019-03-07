@@ -241,6 +241,7 @@ const App = function() {
 
             let videosWatched = $('#consent-video-player-container').data('videos-watched');
             let consentId = $('#consent-video-player-container').data('id');
+            let urlSignature = $('#consent-video-player-container').data('url-signature');
 
             plyrCurrentTime = 0;
             plyr = new Plyr("#consent-video-player", {
@@ -274,15 +275,15 @@ const App = function() {
 
             plyr.on('timeupdate', function(event) {
                 plyrCurrentTime = Math.max(plyrCurrentTime, plyr.currentTime);
-               /* if (!videosWatched && plyr.duration  - plyr.currentTime <= 10) {
-                    ConsentDetails.videosWatched(consentId);
-                }*/
+                if (!videosWatched && plyr.duration  - plyr.currentTime <= 10) {
+                    App.videosWatched(consentId, urlSignature);
+                }
             });
 
             plyr.on('ended', function(event) {
-             /*   if (!videosWatched) {
-                    ConsentDetails.videosWatched(consentId);
-                }*/
+                if (!videosWatched) {
+                    App.videosWatched(consentId, urlSignature);
+                }
             });
 
             function _getTargetTime(plyr, input) {
@@ -293,6 +294,20 @@ const App = function() {
                     return Number(input);
                 }
             }
+        },
+
+        videosWatched: function(id,signature) {
+            $('.discussion-container').removeClass('is-hidden');
+            $('.question-container').removeClass('is-hidden');
+            $('.button-signature-container').removeClass('is-hidden');
+
+            // Prepare data
+            let url = `/p/consent-request/${id}?signature=${signature}`;
+            let method = 'POST';
+
+            // Execute ajax request
+            App.ajax(url, method, 'json', { video_watched: 1 });
+
         },
 
         toggleModal: function(modalId) {

@@ -286,6 +286,7 @@ var App = function () {
     loadVideo: function loadVideo() {
       var videosWatched = $('#consent-video-player-container').data('videos-watched');
       var consentId = $('#consent-video-player-container').data('id');
+      var urlSignature = $('#consent-video-player-container').data('url-signature');
       plyrCurrentTime = 0;
       plyr = new Plyr("#consent-video-player", {
         ratio: '16:9',
@@ -315,14 +316,15 @@ var App = function () {
       });
       plyr.on('timeupdate', function (event) {
         plyrCurrentTime = Math.max(plyrCurrentTime, plyr.currentTime);
-        /* if (!videosWatched && plyr.duration  - plyr.currentTime <= 10) {
-             ConsentDetails.videosWatched(consentId);
-         }*/
+
+        if (!videosWatched && plyr.duration - plyr.currentTime <= 10) {
+          App.videosWatched(consentId, urlSignature);
+        }
       });
       plyr.on('ended', function (event) {
-        /*   if (!videosWatched) {
-               ConsentDetails.videosWatched(consentId);
-           }*/
+        if (!videosWatched) {
+          App.videosWatched(consentId, urlSignature); // Redirect to questions, TBC
+        }
       });
 
       function _getTargetTime(plyr, input) {
@@ -333,6 +335,18 @@ var App = function () {
           return Number(input);
         }
       }
+    },
+    videosWatched: function videosWatched(id, signature) {
+      $('.discussion-container').removeClass('is-hidden');
+      $('.question-container').removeClass('is-hidden');
+      $('.button-signature-container').removeClass('is-hidden'); // Prepare data
+
+      var url = "/p/consent-request/".concat(id, "?signature=").concat(signature);
+      var method = 'POST'; // Execute ajax request
+
+      App.ajax(url, method, 'json', {
+        video_watched: 1
+      });
     },
     toggleModal: function toggleModal(modalId) {
       var modal = $(modalId);

@@ -52,7 +52,7 @@ class PublicConsentRequestController extends Controller
 
         $patient = $consentRequest->patient;
 
-        return view('app.p.consent-request.show',compact(
+        return view('app.p.consent-request.questions',compact(
             'consentRequest',
             'videoId',
             'patient'

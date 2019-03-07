@@ -18,19 +18,21 @@
        <div class="container">
            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
                <ul>
-                   <li><a href="#">Bulma</a></li>
-                   <li><a href="#">Documentation</a></li>
-                   <li><a href="#">Components</a></li>
-                   <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+                   <li><a href="#">Consent Request</a></li>
+                   <li class="is-active"><a href="#">Consent Questions</a></li>
+                   <li class="is-active"><a href="#" aria-current="page">Sign Consent</a></li>
                </ul>
            </nav>
-           <h1 class="title">Consent Request - {{ $consentRequest->consent->name }}</h1>
+           <h1 class="title">Hi <strong>{{ $patient->fullName() }}</strong>,</h1>
+           <p class="subtitle is-4">
+               Please complete the consent request <strong>{{ $consentRequest->consent->name }}</strong> requested by <strong>{{ $consentReqeust->user->title ?? null }} {{ $consentRequest->user->name }}</strong>.
+           </p>
            <div class="columns">
                <div class="column">
                    <div class="tab-content">
                        <div>
-                         <span id="consent-video-player-container">
-                        <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
+                         <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}" data-url-signature="{{ request()->input('signature') }}">
+                            <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
                         </span>
                        </div>
                    </div>

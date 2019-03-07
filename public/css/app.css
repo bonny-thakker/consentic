@@ -12142,7 +12142,7 @@ body {
 }
 
 #spark-app .navbar-light .navbar-nav .nav-link {
-  font-weight: bold;
+  font-weight: normal;
   align-items: center;
   color: #666;
   line-height: 1.5;
