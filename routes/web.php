@@ -71,6 +71,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
     Route::prefix('consent-requests')->group( function () {
 
         Route::get('/', 'ConsentRequestController@index')->name('app.consent-requests.index');
+        Route::post('/search', 'ConsentRequestController@search')->name('app.consent-requests.search');
         Route::get('create/{patient?}', 'ConsentRequestController@create')->name('app.consent-requests.create');
         Route::post('store', 'ConsentRequestController@store')->name('app.consent-requests.store');
         Route::get('{consentRequest}', 'ConsentRequestController@show')->name('app.consent-requests.show');

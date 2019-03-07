@@ -91,13 +91,36 @@
 <section class="section">
 
     <div class="container">
+        <form role="search" method="post" action="{{ url('app/consent-requests/search') }}">
+            {{ csrf_field() }}
         <div class="columns">
+            <div class="column">
+                <div class="select is-fullwidth">
+                    <select id="procedure-filter" class="list-filter" name="consent">
+                        <option disabled selected>Procedure</option>
+                        @foreach (\App\Consent::all() as $consent)
+                            <option value="{{ $consent->id }}" {{ (isset($filter_consent) && $filter_consent == $consent->id) ? 'selected':null }}>{{ $consent->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="select is-fullwidth">
+                    <select id="type-filter" class="list-filter" name="consent_type">
+                        <option disabled selected>Type</option>
+                        @foreach (\App\ConsentType::all() as $consentType)
+                            <option value="{{ $consentType->id }}" {{ (isset($filter_consent_type) && $filter_consent_type == $consentType->id) ? 'selected':null }}>{{ $consentType->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
             <div class="column">
 
                 <div class="field has-addons">
                     <div class="control">
-                        <input id="patient-name-filter" type="text" class="input is-medium is-search" placeholder="Enter Patient Name">
+                        <input id="patient-name-filter" type="text" class="input is-medium is-search" placeholder="Enter Patient Name" name="search" value="{{ old('search') ?? Request::input('search') }}">
                     </div>
                     <div class="control">
                         <button class="button is-medium is-primary is-theme is-search">
@@ -107,33 +130,13 @@
                 </div>
 
             </div>
-            <div class="column">
-                <div class="select is-fullwidth">
-                    <select id="procedure-filter" class="list-filter">
-                        <option disabled selected>Procedure</option>
-                        @foreach (\App\Consent::all() as $consent)
-                            <option value="{{ $consent->id }}">{{ $consent->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="select is-fullwidth">
-                    <select id="type-filter" class="list-filter">
-                        <option disabled selected>Type</option>
-                        @foreach (\App\ConsentType::all() as $consentType)
-                            <option value="{{ $consentType->id }}">{{ $consentType->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
 
             <div class="column">
                 <a href="{{ url('app/consent-requests/create') }}" id="add-consent-request-button" class="button is-medium is-primary is-fullwidth is-theme">Add Consent</a>
             </div>
 
         </div>
+        </form>
         <div class="dt-bulma no-footer">
             <div class="columns">
                 <div class="column is-12">

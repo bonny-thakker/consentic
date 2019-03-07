@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Mail;
 use App\ConsentRequest;
 use App\Patient;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\SearchFilters;
 
 class ConsentRequestController extends Controller
 {
+
+    use SearchFilters;
+
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +28,53 @@ class ConsentRequestController extends Controller
 
         return view('app.consent-request.index',[
             'consentRequests' => $consentRequests
+        ]);
+
+    }
+
+    /**
+     * Search consent requests
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+
+        $this->setFilters($request, class_basename($request->route()->getAction()['controller']));
+
+        if(!$request->input('search')){
+            $consentRequests = \App\ConsentRequest::select('consent_requests.*')
+                ->leftJoin('consents', 'consent_requests.consent_id', '=', 'consents.id')
+                ->when($this->filter_consent && $this->filter_consent != 'all', function ($query) {
+                    return $query->where('consent_id',$this->filter_consent);
+                })
+                ->when($this->filter_consent_type && $this->filter_consent_type != 'all', function ($query) {
+                    return $query->where('consents.consent_type_id',$this->filter_consent_type);
+                })
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        }else{
+
+            $consentRequests = \App\ConsentRequest::search($request->input('search'))
+                ->when($this->filter_consent && $this->filter_consent != 'all', function ($query) {
+                    return $query->where('consent_id',$this->filter_consent);
+                })
+                ->when($this->filter_consent_type && $this->filter_consent_type != 'all', function ($query)  {
+
+                    $constraint = \App\ConsentRequest::whereHas('consent', function ($query) {
+                        return $query->where('consent_type_id', $this->filter_consent_type);
+                    });
+
+                    return $query->constrain($constraint);
+                })
+                ->get();
+
+        }
+
+        return view('app.consent-request.index',[
+            'consentRequests' => $consentRequests,
+            'filter_consent' => $this->filter_consent,
+            'filter_consent_type' => $this->filter_consent_type,
         ]);
 
     }

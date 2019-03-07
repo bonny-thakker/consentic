@@ -25,7 +25,7 @@ class PatientController extends Controller
     }
 
     /**
-     * Search customers
+     * Search patients
      *
      * @return \Illuminate\Http\Response
      */

@@ -6,6 +6,7 @@ use App\Model;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravelista\Comments\Commentable;
+use Laravel\Scout\Searchable;
 
 class ConsentRequest extends Model
 {
@@ -13,6 +14,28 @@ class ConsentRequest extends Model
     use BelongsToTenants;
     use SoftDeletes;
     use Commentable;
+    use Searchable;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+
+        // $array = $this->toArray();
+
+        $array = [
+            $this->getKeyName() => $this->getKey(),
+            'team_id' => $this->team_id,
+            'first_name' => $this->patient->first_name,
+            'last_name' => $this->patient->last_name,
+        ];
+
+        return $array;
+
+    }
 
     /**
      * Get the consent that owns the consent request.

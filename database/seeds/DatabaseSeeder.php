@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
             // Remove the patients.index
             Storage::delete(storage_path('patients.index'));
+            Storage::delete(storage_path('consent_requests.index'));
 
             $team = \App\Team::firstOrCreate([
                 'id' => 1,
