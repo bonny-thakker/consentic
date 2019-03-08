@@ -36,6 +36,7 @@ Route::prefix('p')->group( function () {
     Route::middleware(['signed'])->prefix('consent-request')->group( function () {
 
         Route::get('{consentRequest}', 'PublicConsentRequestController@show')->name('public.consent-request.show');
+        Route::post('{consentRequest}', 'PublicConsentRequestController@update')->name('public.consent-request.update');
 
     });
 

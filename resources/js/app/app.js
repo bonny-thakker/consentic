@@ -190,6 +190,46 @@ const App = function() {
 
             App.loadVideo();
 
+            $(document).on('click', 'form[name="publicConsentRequestQuestions"]', function(e) {
+
+                $('#consent-request-tab').addClass('is-hidden');
+                $('#consent-questions-tab').addClass('is-hidden');
+                $('#consent-sign-tab').removeClass('is-hidden');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+            });
+
+            // Load jquery signature
+            if( $('#signature').length > 0){
+
+                $('#signature').jSignature();
+
+                // Add listener to clear button
+                $('#clear-signature').click(function(e) {
+                    e.preventDefault();
+                    $('#signature').jSignature("reset");
+                });
+
+                $('#signature').on('change', function() {
+                    let datapair = $('#signature').jSignature('getData', 'svg');
+                    $('[name="consentPatientSignature"]').html(datapair[1]);
+                });
+
+                $('#agreement').on('change', function() {
+                    let value = $(this).is(':checked');
+                    let submit = $('#submit-signature');
+
+                    if (!value) {
+                        submit.attr('disabled', true);
+                        return;
+                    }
+                    submit.attr('disabled', false);
+                });
+
+            }
+
         },
 
         handleNavbar: function() {
@@ -284,6 +324,8 @@ const App = function() {
                 if (!videosWatched) {
                     App.videosWatched(consentId, urlSignature);
                 }
+                $('#consent-request-tab').addClass('is-hidden');
+                $('#consent-questions-tab').removeClass('is-hidden');
             });
 
             function _getTargetTime(plyr, input) {
@@ -297,9 +339,6 @@ const App = function() {
         },
 
         videosWatched: function(id,signature) {
-            $('.discussion-container').removeClass('is-hidden');
-            $('.question-container').removeClass('is-hidden');
-            $('.button-signature-container').removeClass('is-hidden');
 
             // Prepare data
             let url = `/p/consent-request/${id}?signature=${signature}`;

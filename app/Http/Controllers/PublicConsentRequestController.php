@@ -52,7 +52,7 @@ class PublicConsentRequestController extends Controller
 
         $patient = $consentRequest->patient;
 
-        return view('app.p.consent-request.questions',compact(
+        return view('app.p.consent-request.show',compact(
             'consentRequest',
             'videoId',
             'patient'
@@ -78,9 +78,13 @@ class PublicConsentRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ConsentRequest $consentRequest)
     {
-        //
+
+        $consentRequest->update([
+            'video_watched' => $request->video_watched
+        ]);
+
     }
 
     /**
