@@ -246,37 +246,38 @@ var App = function () {
         searchInputPlaceholder: 'Type to search procedures'
       });
       App.loadVideo();
-      $(document).on('click', 'form[name="publicConsentRequestQuestions"]', function (e) {
+      $(document).on('click', 'form[name="publicConsentRequestQuestions"] button[type="submit"]', function (e) {
+        $('#consent-request-tab').addClass('is-hidden');
+        $('#consent-questions-tab').addClass('is-hidden');
+        $('#consent-sign-tab').removeClass('is-hidden');
+        setTimeout(function () {
+          App.loadSignature();
+        }, 1000);
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      $(document).on('click', '.video-link', function (e) {
+        $('#consent-request-tab').removeClass('is-hidden');
+        $('#consent-questions-tab').addClass('is-hidden');
+        $('#consent-sign-tab').addClass('is-hidden');
+        App.loadVideo(true);
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      $(document).on('click', '.questions-link', function (e) {
+        $('#consent-request-tab').addClass('is-hidden');
+        $('#consent-questions-tab').removeClass('is-hidden');
+        $('#consent-sign-tab').addClass('is-hidden');
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      $(document).on('click', '.sign-link', function (e) {
         $('#consent-request-tab').addClass('is-hidden');
         $('#consent-questions-tab').addClass('is-hidden');
         $('#consent-sign-tab').removeClass('is-hidden');
         e.stopPropagation();
         e.preventDefault();
-      }); // Load jquery signature
-
-      if ($('#signature').length > 0) {
-        $('#signature').jSignature(); // Add listener to clear button
-
-        $('#clear-signature').click(function (e) {
-          e.preventDefault();
-          $('#signature').jSignature("reset");
-        });
-        $('#signature').on('change', function () {
-          var datapair = $('#signature').jSignature('getData', 'svg');
-          $('[name="consentPatientSignature"]').html(datapair[1]);
-        });
-        $('#agreement').on('change', function () {
-          var value = $(this).is(':checked');
-          var submit = $('#submit-signature');
-
-          if (!value) {
-            submit.attr('disabled', true);
-            return;
-          }
-
-          submit.attr('disabled', false);
-        });
-      }
+      });
     },
     handleNavbar: function handleNavbar() {
       // Get all "navbar-burger" elements
@@ -315,6 +316,7 @@ var App = function () {
       }
     },
     loadVideo: function loadVideo() {
+      var restart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var videosWatched = $('#consent-video-player-container').data('videos-watched');
       var consentId = $('#consent-video-player-container').data('id');
       var urlSignature = $('#consent-video-player-container').data('url-signature');
@@ -340,6 +342,11 @@ var App = function () {
           }
         }
       });
+
+      if (restart) {
+        plyr.restart();
+      }
+
       plyr.on('enterfullscreen', function (event) {
         $('.plyr').css('height', 'initial');
       });
@@ -377,6 +384,29 @@ var App = function () {
 
       App.ajax(url, method, 'json', {
         video_watched: 1
+      });
+    },
+    loadSignature: function loadSignature() {
+      $('#signature').jSignature(); // Add listener to clear button
+
+      $('#clear-signature').click(function (e) {
+        e.preventDefault();
+        $('#signature').jSignature("reset");
+      });
+      $('#signature').on('change', function () {
+        var datapair = $('#signature').jSignature('getData', 'svg');
+        $('[name="consentPatientSignature"]').html(datapair[1]);
+      });
+      $('#agreement').on('change', function () {
+        var value = $(this).is(':checked');
+        var submit = $('#submit-signature');
+
+        if (!value) {
+          submit.attr('disabled', true);
+          return;
+        }
+
+        submit.attr('disabled', false);
       });
     },
     toggleModal: function toggleModal(modalId) {

@@ -19,7 +19,7 @@
            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
                <ul>
                    <li><a href="#" id="video-link">Consent Request</a></li>
-                   <li class="is-active"><a href="#" id="video-link">Consent Questions</a></li>
+                   <li class="is-active"><a href="#" id="questions-link">Consent Questions</a></li>
                    <li class="is-active" ><a href="#" aria-current="page" id="sign-link">Sign Consent</a></li>
                </ul>
            </nav>
@@ -37,7 +37,7 @@
                         </span>
                        </div>
                        <div id="consent-questions-tab" class="is-hidden">
-                           <form method="POST" action="{{ url()->current() }}" name="publicConsentRequestQuestions">
+                           <form method="POST" action="{{ url()->current() }}" name="publicConsentRequestQuestions" id="publicConsentRequestQuestions">
                            TBC, Consent specific questions to be imported
                            @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
                                @include('app.partial.question', [
@@ -68,8 +68,16 @@
                                </div>
                                <nav class="level">
                                    <div class="level-left">
-                                       <div class="level-item">
-                                           <button type="submit" class="button is-info">Submit</button>
+                                       <div class="columns">
+                                           <div class="column">
+                                               <button type="submit" class="button is-medium submit is-primary m-t-md">Submit Answers &amp; Continue</button>
+                                           </div>
+                                           <div class="is-divider-vertical m-t-md" data-content="OR"></div>
+                                           <div class="column">
+                                               <div class="level-item">
+                                                   <a class="button is-medium is-fullwidth is-theme m-t-md video-link" href="#">&laquo; Watch Video Again</a>
+                                               </div>
+                                           </div>
                                        </div>
                                    </div>
                                </nav>
@@ -91,8 +99,21 @@
                                    </label>
                                </div>
 
-                               <button id="clear-signature" class="button is-medium is-warning" style="height: 3em;">Clear</button>
-                               <button id="submit-signature" class="button is-medium submit is-primary" disabled>Sign Consent</button>
+                               <nav class="level">
+                                   <div class="level-center">
+                                       <div class="columns">
+                                           <div class="column">
+                                               <button id="clear-signature" class="button is-medium is-warning m-t-md" style="height: 3em;">Clear</button>
+                                               <a href="#" id="submit-signature" class="button is-medium submit is-primary m-t-md" disabled>Sign Consent</a></div>
+                                           <div class="is-divider-vertical m-t-md" data-content="OR"></div>
+                                           <div class="column">
+                                               <div class="level-item">
+                                                   <a class="button is-medium is-fullwidth is-theme m-t-md questions-link" href="#">&laquo; Back to consent questions</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </nav>
                            </form>
                        </div>
                    </div>

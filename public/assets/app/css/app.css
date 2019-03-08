@@ -11692,3 +11692,7 @@ ul.list-unstyled .comment-link {
   margin-bottom: 0.3rem;
 }
 
+#publicConsentRequestQuestions .is-divider-vertical {
+  padding: 1rem !important;
+}
+
