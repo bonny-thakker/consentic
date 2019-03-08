@@ -326,6 +326,7 @@ const App = function() {
                 }
                 $('#consent-request-tab').addClass('is-hidden');
                 $('#consent-questions-tab').removeClass('is-hidden');
+                $('.questions-link').parent().removeClass('is-active')
             });
 
             function _getTargetTime(plyr, input) {
