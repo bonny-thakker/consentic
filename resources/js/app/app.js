@@ -190,7 +190,46 @@ const App = function() {
 
             App.loadVideo();
 
-            $(document).on('click', 'form[name="publicConsentRequestQuestions"]', function(e) {
+            $(document).on('click', 'form[name="publicConsentRequestQuestions"] button[type="submit"]', function(e) {
+
+                $('#consent-request-tab').addClass('is-hidden');
+                $('#consent-questions-tab').addClass('is-hidden');
+                $('#consent-sign-tab').removeClass('is-hidden');
+
+                setTimeout(function (){
+
+                    App.loadSignature();
+
+                }, 1000);
+
+                e.stopPropagation();
+                e.preventDefault();
+
+            });
+
+            $(document).on('click', '.video-link', function(e) {
+
+                $('#consent-request-tab').removeClass('is-hidden');
+                $('#consent-questions-tab').addClass('is-hidden');
+                $('#consent-sign-tab').addClass('is-hidden');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+            });
+
+            $(document).on('click', '.questions-link', function(e) {
+
+                $('#consent-request-tab').addClass('is-hidden');
+                $('#consent-questions-tab').removeClass('is-hidden');
+                $('#consent-sign-tab').addClass('is-hidden');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+            });
+
+            $(document).on('click', '.sign-link', function(e) {
 
                 $('#consent-request-tab').addClass('is-hidden');
                 $('#consent-questions-tab').addClass('is-hidden');
@@ -201,34 +240,7 @@ const App = function() {
 
             });
 
-            // Load jquery signature
-            if( $('#signature').length > 0){
 
-                $('#signature').jSignature();
-
-                // Add listener to clear button
-                $('#clear-signature').click(function(e) {
-                    e.preventDefault();
-                    $('#signature').jSignature("reset");
-                });
-
-                $('#signature').on('change', function() {
-                    let datapair = $('#signature').jSignature('getData', 'svg');
-                    $('[name="consentPatientSignature"]').html(datapair[1]);
-                });
-
-                $('#agreement').on('change', function() {
-                    let value = $(this).is(':checked');
-                    let submit = $('#submit-signature');
-
-                    if (!value) {
-                        submit.attr('disabled', true);
-                        return;
-                    }
-                    submit.attr('disabled', false);
-                });
-
-            }
 
         },
 
@@ -277,7 +289,7 @@ const App = function() {
             }
         },
 
-        loadVideo: function() {
+        loadVideo: function(restart = false) {
 
             let videosWatched = $('#consent-video-player-container').data('videos-watched');
             let consentId = $('#consent-video-player-container').data('id');
@@ -346,6 +358,34 @@ const App = function() {
 
             // Execute ajax request
             App.ajax(url, method, 'json', { video_watched: 1 });
+
+        },
+
+        loadSignature: function() {
+
+            $('#signature').jSignature();
+
+            // Add listener to clear button
+            $('#clear-signature').click(function(e) {
+                e.preventDefault();
+                $('#signature').jSignature("reset");
+            });
+
+            $('#signature').on('change', function() {
+                let datapair = $('#signature').jSignature('getData', 'svg');
+                $('[name="consentPatientSignature"]').html(datapair[1]);
+            });
+
+            $('#agreement').on('change', function() {
+                let value = $(this).is(':checked');
+                let submit = $('#submit-signature');
+
+                if (!value) {
+                    submit.attr('disabled', true);
+                    return;
+                }
+                submit.attr('disabled', false);
+            });
 
         },
 
