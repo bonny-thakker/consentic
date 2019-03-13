@@ -8,7 +8,7 @@ class Consent extends Model
 {
 
     /**
-     * Get the consent request for the consent.
+     * Get the consent requests for the consent.
      */
     public function consentRequests()
     {
@@ -21,6 +21,14 @@ class Consent extends Model
     public function consentType()
     {
         return $this->belongsTo('App\ConsentType');
+    }
+
+    /**
+     * Get the questions for the consent.
+     */
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
     }
 
 }

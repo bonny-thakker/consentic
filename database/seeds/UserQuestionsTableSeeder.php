@@ -43,7 +43,23 @@ class UserQuestionsTableSeeder extends Seeder
         ];
 
         foreach($inserts as $insert){
-            \App\UserQuestion::firstOrCreate($insert);
+
+            $userQuestion = \App\UserQuestion::firstOrCreate($insert);
+
+            \App\Answer::create([
+                'answerable_id' => $userQuestion->id,
+                'answerable_type' => 'App\UserQuestion',
+                'text' => 'Yes',
+                'correct' => 1
+            ]);
+
+            \App\Answer::create([
+                'answerable_id' => $userQuestion->id,
+                'answerable_type' => 'App\UserQuestion',
+                'text' => 'No',
+                'correct' => 0
+            ]);
+
         }
 
     }

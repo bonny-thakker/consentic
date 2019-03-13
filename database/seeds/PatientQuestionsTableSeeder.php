@@ -18,7 +18,8 @@ class PatientQuestionsTableSeeder extends Seeder
                 'type' => 'multiple',
                 'answers' => [
                     [
-                        'text' => 'I do consent to a blood transfusion, if required'
+                        'text' => 'I do consent to a blood transfusion, if required',
+                        'correct' => 1
                     ],
                     [
                         'text' => 'I do not consent to a blood transfusion, if required'
@@ -52,10 +53,27 @@ class PatientQuestionsTableSeeder extends Seeder
                     \App\Answer::create([
                         'answerable_id' => $patientQuestion->id,
                         'answerable_type' => 'App\PatientQuestion',
-                        'text' => $answer['text']
+                        'text' => $answer['text'],
+                        'correct' => $answer['correct'] ?? 0
                     ]);
 
                 }
+            }elseif($insert['type'] == 'boolean'){
+
+                \App\Answer::create([
+                    'answerable_id' => $patientQuestion->id,
+                    'answerable_type' => 'App\PatientQuestion',
+                    'text' => 'Yes',
+                    'correct' => 1
+                ]);
+
+                \App\Answer::create([
+                    'answerable_id' => $patientQuestion->id,
+                    'answerable_type' => 'App\PatientQuestion',
+                    'text' => 'No',
+                    'correct' => 0
+                ]);
+
             }
 
         }

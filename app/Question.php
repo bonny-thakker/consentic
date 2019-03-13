@@ -20,4 +20,12 @@ class Question extends Model
         return $this->morphMany(Answer::class, 'answerable');
     }
 
+    /**
+     * Get the consent that owns the question.
+     */
+    public function consent()
+    {
+        return $this->belongsTo('App\Consent');
+    }
+
 }

@@ -15,12 +15,15 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('parse_id')->nullable();
             $table->text('text');
             $table->enum('type', [
                 'boolean',
                 'single',
                 'multiple',
             ])->default('boolean');
+            $table->smallInteger('order')->nullable();
+            $table->smallInteger('consent_id')->index()->unsigned();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -20,6 +20,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'dTwhoxquC1'
             ],
             [
                 'name' => 'Metatarsophalangeal Joint Fusion - Right',
@@ -28,6 +29,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'Z9IRpAAPKS'
             ],
             [
                 'name' => 'Total Hip Replacement - Left',
@@ -36,6 +38,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'MURzfM4Mvo'
             ],
             [
                 'name' => 'Total Hip Replacement - Right',
@@ -44,6 +47,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'T6Wuk2mqxh'
             ],
             [
                 'name' => 'Cataract Procedure - Left',
@@ -52,6 +56,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 5,
+                'parse_id' => 'R43uSxJkOl'
             ],
             [
                 'name' => 'Cataract Procedure - Right',
@@ -60,6 +65,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 5,
+                'parse_id' => 'JdaaGWTRPq'
             ],
             [
                 'name' => 'Ankle Arthroscopy - Left',
@@ -68,6 +74,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'PexsqBrkGt'
             ],
             [
                 'name' => 'Ankle Arthroscopy - Right',
@@ -76,6 +83,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'l2jgnawmrU'
             ],
             [
                 'name' => 'Knee Arthroscopy - Left',
@@ -84,6 +92,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'ZOCjpIl2GY'
             ],
             [
                 'name' => 'Knee Arthroscopy - Right',
@@ -92,6 +101,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'DPv2UK7aoo'
             ],
             [
                 'name' => 'Knee Replacement - Left',
@@ -100,6 +110,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'd2DFINGLbp'
             ],
             [
                 'name' => 'Knee Replacement - Right',
@@ -108,6 +119,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'MaInJFcz16'
             ],
             [
                 'name' => 'Total Hip Replacement - Bilateral',
@@ -116,6 +128,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'rGP19MtzW7'
             ],
             [
                 'name' => 'Knee Replacement - Bilateral',
@@ -124,6 +137,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'VMvsjDuqmi'
             ],
             [
                 'name' => 'Ankle Arthroscopy - Bilateral',
@@ -132,6 +146,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'C1ZGYQ0tBD'
             ],
             [
                 'name' => 'Metatarsophalangeal Joint Fusion - Bilateral',
@@ -140,6 +155,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => 'QQ0gJYdl5w'
             ],
             [
                 'name' => 'Angiogram',
@@ -148,6 +164,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 6,
+                'parse_id' => 'nDjxBZnyZJ'
             ],
             [
                 'name' => 'Gastroscopy',
@@ -156,6 +173,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 3,
+                'parse_id' => 'k0fHbGAoxm'
             ],
             [
                 'name' => 'Colonoscopy',
@@ -164,6 +182,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 3,
+                'parse_id' => 'jCoI7XA8nT'
             ],
             [
                 'name' => 'Skin Excision',
@@ -172,6 +191,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 4,
+                'parse_id' => '9eGFKGU5Zc'
             ],
             [
                 'name' => 'Cataract Procedure - Bilateral',
@@ -180,6 +200,7 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 5,
+                'parse_id' => 'CvqltmxbIo'
             ],
             [
                 'name' => 'Knee Arthroscopy - Bilateral',
@@ -188,6 +209,16 @@ class ConsentsTableSeeder extends Seeder
                 'patient_questions' => 1,
                 'consent_type_id' => 1,
                 'consent_speciality_id' => 2,
+                'parse_id' => '9v2OTY51eU'
+            ],
+            [
+                'name' => 'Mohs Micrographic Surgery',
+                'info_link' => 'hhttps://www.dermcoll.edu.au/atoz/mohs-micrographic-surgery/',
+                'video_url' => 'https://www.youtube.com/watch?v=0e6dyYZ_7Gg',
+                'patient_questions' => 1,
+                'consent_type_id' => 1,
+                'consent_speciality_id' => 4,
+                'parse_id' => '3TYNo2KA1L'
             ],
 
         ];

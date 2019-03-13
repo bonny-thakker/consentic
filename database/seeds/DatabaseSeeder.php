@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConsentsTableSeeder::class);
         $this->call(UserQuestionsTableSeeder::class);
         $this->call(PatientQuestionsTableSeeder::class);
+        $this->call(QuestionsTableSeeder::class);
 
         if(in_array(config('app.env'), ['local','staging'])) {
 

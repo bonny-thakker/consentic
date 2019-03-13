@@ -15,12 +15,14 @@ class CreateConsentsTable extends Migration
     {
         Schema::create('consents', function (Blueprint $table) {
             $table->smallIncrements('id');
+            $table->string('parse_id')->nullable();
             $table->string('name');
             $table->string('info_link')->nullable();
             $table->string('video_url')->nullable();
             $table->boolean('patient_questions')->default(true);
             $table->smallInteger('consent_type_id')->index()->unsigned();
             $table->smallInteger('consent_speciality_id')->index()->unsigned();
+            $table->smallInteger('order')->nullable();
             $table->timestamps();
         });
     }

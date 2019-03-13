@@ -21,6 +21,7 @@ class CreateUserQuestionsTable extends Migration
                 'single',
                 'multiple',
             ])->default('boolean');
+            $table->smallInteger('order')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
