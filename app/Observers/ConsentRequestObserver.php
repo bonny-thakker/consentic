@@ -46,20 +46,19 @@ class ConsentRequestObserver
 
         }
 
-        // TBC, consent questions
-        /*foreach(\App\Question::all() as $question){
+        foreach($consentRequest->consent->questions as $question){
 
-            $consentRequestQuestion \App\ConsentRequestQuestion::create([
+            $consentRequestQuestion = \App\ConsentRequestQuestion::create([
                 'consent_request_id' => $consentRequest->id,
                 'consent_request_questionable_id' => $question->id,
                 'consent_request_questionable_type' => 'App\Question'
             ]);
 
-        \App\ConsentRequestQuestionAnswer::create([
-                'consent_request_question_id' => $consentRequestQuestion->id
-            ]);
+            \App\ConsentRequestQuestionAnswer::create([
+                    'consent_request_question_id' => $consentRequestQuestion->id
+                ]);
 
-        }*/
+            }
 
     }
 

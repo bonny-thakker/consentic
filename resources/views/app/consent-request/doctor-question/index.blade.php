@@ -102,7 +102,8 @@
                        @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\UserQuestion')->get() as $consentRequestQuestion)
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
-                            'consentRequestQuestionAnswer' => null
+                            'consentRequestQuestionAnswer' => null,
+                            'isDisabledQuestion' => true
                            ])
                        @endforeach
                    </div>

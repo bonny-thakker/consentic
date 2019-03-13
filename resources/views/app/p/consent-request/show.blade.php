@@ -18,9 +18,9 @@
        <div class="container">
            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
                <ul>
-                   <li><a href="#" id="video-link">Consent Request</a></li>
-                   <li class="is-active"><a href="#" id="questions-link">Consent Questions</a></li>
-                   <li class="is-active" ><a href="#" aria-current="page" id="sign-link">Sign Consent</a></li>
+                   <li><a href="#" class="video-link">Consent Request</a></li>
+                   <li class="{{ ($consentRequest->video_watched == 1) ? '' : 'is-active' }}"><a href="#" class="questions-link">Consent Questions</a></li>
+                   <li class="{{ ($consentRequest->hasPatientAnsweredCorrectly()) ? '' : 'is-active' }}" ><a href="#" aria-current="page" class="sign-link">Sign Consent</a></li>
                </ul>
            </nav>
            <h1 class="title">Hi <strong>{{ $patient->fullName() }}</strong>,</h1>
@@ -31,31 +31,34 @@
            <div class="columns">
                <div class="column">
                    <div class="tab-content">
-                       <div id="consent-request-tab" class="tab-pane active">
+                       <div id="consent-request-tab" class="{{ (\Session::get('consentRequestStage') == null) ? '' : 'is-hidden' }}">
                          <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}" data-url-signature="{{ request()->input('signature') }}">
                             <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
                         </span>
                        </div>
-                       <div id="consent-questions-tab" class="is-hidden">
-                           <form method="POST" action="{{ url()->current() }}" name="publicConsentRequestQuestions" id="publicConsentRequestQuestions">
-                           TBC, Consent specific questions to be imported
+                       <div id="consent-questions-tab" class="{{ (\Session::get('consentRequestStage') == 'questions') ? '' : 'is-hidden' }}">
+                           <form method="POST" action="{{ url()->current() }}?signature={{ request()->input('signature') }}" name="publicConsentRequestQuestions" id="publicConsentRequestQuestions">
+
                            @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
                                @include('app.partial.question', [
                                 'consentRequestQuestion' => $consentRequestQuestion,
-                                'consentRequestQuestionAnswer' => null
+                                'consentRequestQuestionAnswer' => $consentRequestQuestion->consentRequestQuestionAnswer->answer ?? null
                                ])
                            @endforeach
                            <hr >
                            @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\PatientQuestion')->get() as $consentRequestQuestion)
                                @include('app.partial.question', [
                                 'consentRequestQuestion' => $consentRequestQuestion,
-                                'consentRequestQuestionAnswer' => null
+                                'consentRequestQuestionAnswer' => $consentRequestQuestion->consentRequestQuestionAnswer->answer ?? null
                                ])
                            @endforeach
-                           <h2 class="subtitle is-4">If you have any questions that have not been answered, please enter these in the box below.</h2>
+                           <h2 class="subtitle is-4">Comments</h2>
+                           <h2 class="subtitle is-5">If you have any questions that have not been answered, please enter these in the box below.</h2>
                                @csrf
-                               <input type="hidden" name="commentable_type" value="\App\Patient" />
-                               <input type="hidden" name="commentable_id" value="{{ $consentRequest->patient->id }}" />
+                               <input type="hidden" name="form" value="publicConsentRequestQuestions" />
+                               <input type="hidden" name="commenter_id" value="{{ $consentRequest->patient->id }}" />
+                               <input type="hidden" name="commentable_type" value="\App\ConsentRequest" />
+                               <input type="hidden" name="commentable_id" value="{{ $consentRequest->id }}" />
                                <div class="field">
                                    <p class="control">
                                        <label for="message">Enter your comment here:</label>
@@ -83,14 +86,16 @@
                                </nav>
                            </form>
                        </div>
-                       <div id="consent-sign-tab" class="is-hidden">
-                           <form action="#" method="POST" id="add-signature-form" class="has-text-centered">
+                       <div id="consent-sign-tab" class="{{ (\Session::get('consentRequestStage') == 'sign') ? '' : 'is-hidden' }}">
+                           <form action="{{ url()->current() }}?signature={{ request()->input('signature') }}" method="POST" id="add-signature-form" class="has-text-centered">
                                {{-- <p>"I {{ $consentRequest->patient->fullName }} consent to undergo a {{ $consentRequest->procedure->consentName }} performed by {{ $consentRequest->doctor->fullName }}." </p> --}}
                                <p>I confirm that I am "{{ trim($consentRequest->patient->fullName()) }}" or I am the legal guardian of {{ trim($consentRequest->patient->fullName()) }}, born on the {{ \Carbon\Carbon::parse($consentRequest->patient->birthday)->format('jS F Y') }} and am able to consent for the medical procedure.</p>
                                <div id="signature" class="m-b-md"></div>
 
                                <textarea class="textarea is-hidden" name="consentPatientSignature"></textarea>
                                {{ csrf_field() }}
+
+                               <input type="hidden" name="form" value="publicConsentPatientSignature" />
 
                                <div class="field m-b-md">
                                    <input class="is-checkradio" id="agreement" type="checkbox" name="agreement" required="">

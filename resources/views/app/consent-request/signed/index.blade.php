@@ -99,9 +99,9 @@
                    </div>
 
                    <div class="tab-content">
-                       <div>
-
-                       </div>
+                       <h3>By Doctor</h3>
+                       <hr />
+                       <h3>By Patient</h3>
                    </div>
 
                </div>

@@ -61,14 +61,6 @@ class ConsentRequest extends Model
         return $this->belongsTo('App\Patient');
     }
 
-    public function isSigned(){
-
-        if(($this->user_signed_ts || $this->patient_signed_ts) && $this->revoked != 1){
-            return true;
-        }
-
-    }
-
     public function files()
     {
         return $this->morphMany(File::class, 'fileable');
@@ -80,6 +72,72 @@ class ConsentRequest extends Model
     public function consentRequestQuestions()
     {
         return $this->hasMany('App\ConsentRequestQuestion');
+    }
+
+    public function isSigned(){
+
+        if(($this->user_signed_ts || $this->patient_signed_ts) && $this->revoked != 1){
+            return true;
+        }
+
+    }
+
+    public function isUserSigned(){
+
+        if($this->user_signed_ts && $this->revoked != 1){
+            return true;
+        }
+
+    }
+
+    public function isPatientSigned(){
+
+        if($this->patient_signed_ts && $this->revoked != 1){
+            return true;
+        }
+
+    }
+
+    public function hasPatientAnsweredCorrectly(){
+
+        foreach($this->consentRequestQuestions()->where([
+            'consent_request_questionable_type' => 'App\PatientQuestion'
+        ])->get() as $consentRequestQuestion){
+
+            if(!isset($consentRequestQuestion->consentRequestQuestionAnswer->answer) || $consentRequestQuestion->consentRequestQuestionAnswer->answer->correct == 0){
+                return false;
+            }
+
+        }
+
+        foreach($this->consentRequestQuestions()->where([
+            'consent_request_questionable_type' => 'App\Question'
+        ])->get() as $consentRequestQuestion){
+
+            if(!isset($consentRequestQuestion->consentRequestQuestionAnswer->answer) || $consentRequestQuestion->consentRequestQuestionAnswer->answer->correct == 0){
+                return false;
+            }
+
+        }
+
+        return true;
+
+    }
+
+    public function hasUserAnsweredCorrectly(){
+
+        foreach($this->consentRequestQuestions()->where([
+            'consent_request_questionable_type' => 'App\UserQuestion'
+        ])->get() as $consentRequestQuestion){
+
+            if(!isset($consentRequestQuestion->consentRequestQuestionAnswer->answer) || $consentRequestQuestion->consentRequestQuestionAnswer->answer->correct == 0){
+                return false;
+            }
+
+        }
+
+        return true;
+
     }
 
 }

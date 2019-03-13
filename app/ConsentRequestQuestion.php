@@ -20,4 +20,12 @@ class ConsentRequestQuestion extends Model
         return $this->morphTo();
     }
 
+    /**
+     * Get the consent request question answer for the consent request question.
+     */
+    public function consentRequestQuestionAnswer()
+    {
+        return $this->hasOne('App\ConsentRequestQuestionAnswer');
+    }
+
 }

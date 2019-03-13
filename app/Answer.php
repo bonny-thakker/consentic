@@ -15,4 +15,12 @@ class Answer extends Model
         return $this->morphTo();
     }
 
+    /**
+     * Get the consent request answers for the consent type.
+     */
+    public function consentRequestQuestionAnswers()
+    {
+        return $this->hasMany('App\ConsentRequestQuestionAnswers');
+    }
+
 }

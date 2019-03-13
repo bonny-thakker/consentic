@@ -99,18 +99,19 @@
                    </div>
 
                    <div class="tab-content">
-                       TBC, Consent specific questions to be imported
                        @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
-                            'consentRequestQuestionAnswer' => null
+                            'consentRequestQuestionAnswer' => null,
+                            'isDisabledQuestion' => true
                            ])
                        @endforeach
                        <hr >
                        @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\PatientQuestion')->get() as $consentRequestQuestion)
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
-                            'consentRequestQuestionAnswer' => null
+                            'consentRequestQuestionAnswer' => null,
+                             'isDisabledQuestion' => true
                            ])
                        @endforeach
                </div>

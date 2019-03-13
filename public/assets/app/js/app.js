@@ -247,20 +247,19 @@ var App = function () {
       });
       App.loadVideo();
       $(document).on('click', 'form[name="publicConsentRequestQuestions"] button[type="submit"]', function (e) {
-        $('#consent-request-tab').addClass('is-hidden');
-        $('#consent-questions-tab').addClass('is-hidden');
-        $('#consent-sign-tab').removeClass('is-hidden');
-        setTimeout(function () {
-          App.loadSignature();
-        }, 1000);
-        e.stopPropagation();
-        e.preventDefault();
+        /* $('#consent-request-tab').addClass('is-hidden');
+         $('#consent-questions-tab').addClass('is-hidden');
+         $('#consent-sign-tab').removeClass('is-hidden');
+          setTimeout(function (){
+              App.loadSignature();
+          }, 1000);
+          e.stopPropagation();
+         e.preventDefault();*/
       });
       $(document).on('click', '.video-link', function (e) {
         $('#consent-request-tab').removeClass('is-hidden');
         $('#consent-questions-tab').addClass('is-hidden');
         $('#consent-sign-tab').addClass('is-hidden');
-        App.loadVideo(true);
         e.stopPropagation();
         e.preventDefault();
       });
@@ -342,11 +341,6 @@ var App = function () {
           }
         }
       });
-
-      if (restart) {
-        plyr.restart();
-      }
-
       plyr.on('enterfullscreen', function (event) {
         $('.plyr').css('height', 'initial');
       });
@@ -366,6 +360,7 @@ var App = function () {
 
         $('#consent-request-tab').addClass('is-hidden');
         $('#consent-questions-tab').removeClass('is-hidden');
+        $('.questions-link').parent().removeClass('is-active');
       });
 
       function _getTargetTime(plyr, input) {

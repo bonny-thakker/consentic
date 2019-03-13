@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\ConsentRequest;
 use Illuminate\Http\Request;
+use Validator;
 
 class PublicConsentRequestController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -81,9 +83,74 @@ class PublicConsentRequestController extends Controller
     public function update(Request $request, ConsentRequest $consentRequest)
     {
 
-        $consentRequest->update([
-            'video_watched' => $request->video_watched
-        ]);
+        if(isset($request->video_watched)){
+
+            $consentRequest->update([
+                'video_watched' => $request->video_watched
+            ]);
+
+        }
+
+        if(isset($request->form) && $request->form == 'publicConsentRequestQuestions'){
+
+            $validator = Validator::make($request->all(),[]);
+
+            $requestData = $request->all();
+
+
+            $validator->after(function ($validator) use ($requestData) {
+
+                foreach($requestData['question'] as $questionId => $questionAnswer){
+
+                    if(!is_numeric($questionAnswer)) {
+                        $validator->errors()->add('question['.$questionId.']', 'Answer is required');
+                    }elseif(\App\Answer::find($questionAnswer)->correct == 0){
+                        $validator->errors()->add('question['.$questionId.']', 'Your answer to this question is incorrect');
+                    }
+
+                }
+
+            });
+
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('consentRequestStage', 'questions');
+            }
+
+            // Process form
+            foreach($requestData['question'] as $questionId => $questionAnswer){
+
+                $consentRequestQuestion = \App\ConsentRequestQuestion::find($questionId);
+
+                $consentRequestQuestion->consentRequestQuestionAnswer->update([
+                    'answer_id' => $questionAnswer
+                ]);
+
+            }
+
+            // Submit comment
+            \App\Comment::create([
+                'commenter_id' => $request->commenter_id,
+                'commentable_type' => 'App\ConsentRequest',
+                'commentable_id' => $request->commentable_id,
+                'comment' => $request->message
+            ]);
+
+            return back()->with('consentRequestStage', 'sign');
+
+        }
+
+        if(isset($request->form) && $request->form == 'publicConsentPatientSignature'){
+
+            // Add validator
+
+            // Process form
+
+            // Add variable to load correct page
+
+        }
 
     }
 

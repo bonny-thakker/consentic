@@ -192,7 +192,7 @@ const App = function() {
 
             $(document).on('click', 'form[name="publicConsentRequestQuestions"] button[type="submit"]', function(e) {
 
-                $('#consent-request-tab').addClass('is-hidden');
+               /* $('#consent-request-tab').addClass('is-hidden');
                 $('#consent-questions-tab').addClass('is-hidden');
                 $('#consent-sign-tab').removeClass('is-hidden');
 
@@ -203,7 +203,7 @@ const App = function() {
                 }, 1000);
 
                 e.stopPropagation();
-                e.preventDefault();
+                e.preventDefault();*/
 
             });
 
