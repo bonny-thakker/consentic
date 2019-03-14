@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Laravel\Spark\User as SparkUser;
 use Laravel\Spark\CanJoinTeams;
 use Spatie\Permission\Traits\HasRoles;
-use Laravelista\Comments\Commenter;
 
 
 class User extends SparkUser
@@ -14,7 +13,6 @@ class User extends SparkUser
 
     use CanJoinTeams;
     use HasRoles;
-    use Commenter;
 
     /**
      * The attributes that are mass assignable.

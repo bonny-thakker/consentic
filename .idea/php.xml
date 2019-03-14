@@ -113,13 +113,15 @@
       <path value="$PROJECT_DIR$/vendor/bugsnag/bugsnag-psr-logger" />
       <path value="$PROJECT_DIR$/vendor/bugsnag/bugsnag-laravel" />
       <path value="$PROJECT_DIR$/vendor/yoeunes/notify" />
-      <path value="$PROJECT_DIR$/vendor/laravelista/comments" />
       <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
       <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
       <path value="$PROJECT_DIR$/vendor/laravel/scout" />
       <path value="$PROJECT_DIR$/vendor/teamtnt/tntsearch" />
       <path value="$PROJECT_DIR$/vendor/teamtnt/laravel-scout-tntsearch-driver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/laravelista/comments" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

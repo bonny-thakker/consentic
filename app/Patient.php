@@ -5,7 +5,6 @@ namespace App;
 use App\Model;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravelista\Comments\Commenter;
 use Carbon\Carbon;
 use Laravel\Scout\Searchable;
 
@@ -14,7 +13,6 @@ class Patient extends Model
 
     use BelongsToTenants;
     use SoftDeletes;
-    use Commenter;
     use Searchable;
 
     public function setBirthdayAttribute($value)

@@ -21,7 +21,6 @@
         "laravel/spark-aurelius": "@dev",
         "laravel/telescope": "^1.0",
         "laravel/tinker": "^1.0",
-        "laravelista/comments": "^2.1",
         "lavary/laravel-menu": "^1.7",
         "spatie/laravel-newsletter": "^4.2",
         "spatie/laravel-permission": "^2.31",
