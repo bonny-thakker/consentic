@@ -6,6 +6,8 @@ use App\ConsentRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
+use Mail;
+use Image;
 
 class PublicConsentRequestController extends Controller
 {
@@ -145,13 +147,22 @@ class PublicConsentRequestController extends Controller
             // Upload file
 
             // https://stackoverflow.com/questions/26785940/laravel-save-base64-png-file-to-public-folder-from-controller/26786683
-            // Image::make(file_get_contents($data->base64_image))->save($path);
+            /*Image::make(file_get_contents($request->consentPatientSignature))
+                ->save(public_path('consent-requests/'.uniqid().'.png'));*/
 
             // Process form
             $consentRequest->update([
                 'patient_signed_ts' => Carbon::now()->toDateTimeString(),
                 'patient_signature' => $request->consentPatientSignature
             ]);
+
+            // Send notification TBC
+            Mail::to($consentRequest->patient->email->address, $consentRequest->patient->fullName())
+                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'patient'));
+
+            Mail::to($consentRequest->user->email, $consentRequest->user->name)
+                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor'));
+
 
             return view('app.p.consent-request.complete',compact(
                 'consentRequest',
