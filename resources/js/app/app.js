@@ -235,12 +235,16 @@ const App = function() {
                 $('#consent-questions-tab').addClass('is-hidden');
                 $('#consent-sign-tab').removeClass('is-hidden');
 
+                setTimeout(function (){
+                    App.loadSignature();
+                }, 1000);
+
                 e.stopPropagation();
                 e.preventDefault();
 
             });
 
-
+            App.loadSignature();
 
         },
 

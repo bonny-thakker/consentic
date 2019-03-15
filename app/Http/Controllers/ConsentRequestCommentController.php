@@ -39,9 +39,17 @@ class ConsentRequestCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ConsentRequest $consentRequest)
     {
-        //
+
+        $validatedData = $request->validate([
+            'message' => 'required',
+        ]);
+
+        auth()->user()->comment($consentRequest,$request->message);
+        notify()->success('Comment addded to consent request');
+        return back();
+
     }
 
     /**

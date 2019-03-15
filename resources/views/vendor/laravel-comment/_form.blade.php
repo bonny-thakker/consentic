@@ -1,4 +1,4 @@
-<br /><form method="POST" action="{{ url('comments') }}">
+<br /><form method="POST" action="{{ url()->current() }}">
     @csrf
     <input type="hidden" name="commentable_type" value="\{{ get_class($model) }}" />
     <input type="hidden" name="commentable_id" value="{{ $model->id }}" />

@@ -17,7 +17,9 @@
                     <option selected>Select Answer</option>
                     @foreach($consentRequestQuestion->consentRequestQuestionable->answers as $answer)
                         <option
-                                @if ($consentRequestQuestionAnswer)
+                                @if(old('question.'.$consentRequestQuestion->id))
+                                {{ (old('question.'.$consentRequestQuestion->id) == $answer->id) ? 'selected' : '' }}
+                                @elseif ($consentRequestQuestionAnswer)
                                 {{ ($consentRequestQuestionAnswer->id == $answer->id) ? 'selected' : '' }}
                                 @endif
                                 value="{{ $answer->id }}">{{ $answer->text }}
@@ -45,7 +47,9 @@
                     <option selected>Select Answer</option>
                     @foreach($consentRequestQuestion->consentRequestQuestionable->answers as $answer)
                         <option
-                                @if ($consentRequestQuestionAnswer)
+                                @if(old('question.'.$consentRequestQuestion->id))
+                                {{ (old('question.'.$consentRequestQuestion->id) == $answer->id) ? 'selected' : '' }}
+                                @elseif ($consentRequestQuestionAnswer)
                                 {{ ($consentRequestQuestionAnswer->id == $answer->id) ? 'selected' : '' }}
                                 @endif
                                 value="{{ $answer->id }}">{{ $answer->text }}

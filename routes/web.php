@@ -84,6 +84,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
         Route::get('/{consentRequest}/doctor-questions', 'ConsentRequestDoctorQuestionController@index')->name('app.consent-requests.doctor-questions.index');
         Route::get('/{consentRequest}/patient-questions', 'ConsentRequestPatientQuestionController@index')->name('app.consent-requests.patient-questions.index');
         Route::get('/{consentRequest}/comments', 'ConsentRequestCommentController@index')->name('app.consent-requests.comments.index');
+        Route::post('/{consentRequest}/comments', 'ConsentRequestCommentController@store')->name('app.consent-requests.comments.store');
         Route::get('/{consentRequest}/signed', 'ConsentRequestSignedController@index')->name('app.consent-requests.signed.index');
 
     });

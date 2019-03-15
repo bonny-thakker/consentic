@@ -1,4 +1,4 @@
-@inject('markdown', 'Parsedown')
+
 <article class="media">
 @if(isset($reply) && $reply === true)
   <div id="comment-{{ $comment->id }}" class="media">
@@ -6,12 +6,17 @@
   <li id="comment-{{ $comment->id }}" class="media">
 @endif
    <figure class="media-left">
-    <img class="image is-64x64" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email) }}.jpg?s=64" alt="{{ $comment->commenter->name }} Avatar">
+       @if(isset($comment->commented->photo_url))
+           <img class="image is-64x64" src="{{ $comment->commented->photo_url }}" alt="{{ $comment->commented->name }} Avatar">
+       @elseif($comment->commented->email->address)
+        <img class="image is-64x64" src="https://www.gravatar.com/avatar/{{ md5($comment->commented->email) }}.jpg?s=64" alt="{{ $comment->commented->name }} Avatar">
+       @else
+           {{-- TBC --}}
+       @endif
    </figure>
       <div class="media-content">
-        <h5 class="mt-0 mb-1">{{ $comment->commenter->name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
-        <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
-
+        <h5 class="mt-0 mb-1">{{ $comment->commented->name ?? $comment->commented->fullName() }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
+        <div style="white-space: pre-wrap;">{!! $comment->comment !!}</div>
         <p>
             @can('reply-to-comment', $comment)
                 <a data-toggle="modal" data-target="#reply-modal-{{ $comment->id }}" class="comment-link">Reply</a>
@@ -89,12 +94,12 @@
 
        {{-- <br />--}}{{-- Margin bottom --}}
 
-        @foreach($comment->children as $child)
+       {{-- @foreach($comment->children as $child)
             @include('comments::_comment', [
                 'comment' => $child,
                 'reply' => true
             ])
-        @endforeach
+        @endforeach--}}
     </div>
 @if(isset($reply) && $reply === true)
   </div>

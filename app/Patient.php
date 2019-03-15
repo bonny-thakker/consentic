@@ -7,6 +7,7 @@ use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use Laravel\Scout\Searchable;
+use Actuallymab\LaravelComment\CanComment;
 
 class Patient extends Model
 {
@@ -14,6 +15,7 @@ class Patient extends Model
     use BelongsToTenants;
     use SoftDeletes;
     use Searchable;
+    use CanComment;
 
     public function setBirthdayAttribute($value)
     {

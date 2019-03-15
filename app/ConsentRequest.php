@@ -6,13 +6,16 @@ use App\Model;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
+use Actuallymab\LaravelComment\Contracts\Commentable;
+use Actuallymab\LaravelComment\HasComments;
 
-class ConsentRequest extends Model
+class ConsentRequest extends Model implements Commentable
 {
 
     use BelongsToTenants;
     use SoftDeletes;
     use Searchable;
+    use HasComments;
 
     /**
      * Get the indexable data array for the model.

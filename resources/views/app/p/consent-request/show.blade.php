@@ -38,7 +38,8 @@
                        </div>
                        <div id="consent-questions-tab" class="{{ (\Session::get('consentRequestStage') == 'questions') ? '' : 'is-hidden' }}">
                            <form method="POST" action="{{ url()->current() }}?signature={{ request()->input('signature') }}" name="publicConsentRequestQuestions" id="publicConsentRequestQuestions">
-
+                               @csrf
+                               <input type="hidden" name="form" value="publicConsentRequestQuestions" />
                            @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
                                @include('app.partial.question', [
                                 'consentRequestQuestion' => $consentRequestQuestion,
@@ -54,16 +55,12 @@
                            @endforeach
                            <h2 class="subtitle is-4">Comments</h2>
                            <h2 class="subtitle is-5">If you have any questions that have not been answered, please enter these in the box below.</h2>
-                               @csrf
-                               <input type="hidden" name="form" value="publicConsentRequestQuestions" />
-                               <input type="hidden" name="commenter_id" value="{{ $consentRequest->patient->id }}" />
-                               <input type="hidden" name="commentable_type" value="\App\ConsentRequest" />
-                               <input type="hidden" name="commentable_id" value="{{ $consentRequest->id }}" />
+
                                <div class="field">
                                    <p class="control">
                                        <label for="message">Enter your comment here:</label>
-                                       <textarea class="textarea @if($errors->has('message')) is-danger @endif" name="message"></textarea>
-                                   @if ($errors->has('message'))
+                                       <textarea class="textarea @if($errors->has('message')) is-danger @endif" name="message">{{ old('message') }}</textarea>
+                                         @if ($errors->has('message'))
                                        <p class="help is-danger invalid-feedback">{{ $errors->first('message') }}</p>
                                        @endif
                                        {{-- <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>--}}
@@ -100,7 +97,7 @@
                                <div class="field m-b-md">
                                    <input class="is-checkradio" id="agreement" type="checkbox" name="agreement" required="">
                                    <label for="agreement" id="agreement-confirmation" style="font-size: 1.2rem;">
-                                       I confirm that I have read and agree to the Consentic <a href="https://consentic.com/pages/privacy-policy" target="_blank">Privacy Policy</a> and <a href="https://consentic.com/pages/terms-and-conditions" target="_blank">Terms &amp; Conditions</a>
+                                       I confirm that I have read and agree to the Consentic <a href="/privacy-policy" target="_blank">Privacy Policy</a> and <a href="/terms-and-conditions" target="_blank">Terms &amp; Conditions</a>
                                    </label>
                                </div>
 
@@ -109,7 +106,7 @@
                                        <div class="columns">
                                            <div class="column">
                                                <button id="clear-signature" class="button is-medium is-warning m-t-md" style="height: 3em;">Clear</button>
-                                               <a href="#" id="submit-signature" class="button is-medium submit is-primary m-t-md" disabled>Sign Consent</a></div>
+                                               <button type="input" href="#" id="submit-signature" class="button is-medium submit is-primary m-t-md" disabled>Sign Consent</button></div>
                                            <div class="is-divider-vertical m-t-md" data-content="OR"></div>
                                            <div class="column">
                                                <div class="level-item">

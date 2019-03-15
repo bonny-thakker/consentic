@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ConsentRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -131,12 +132,9 @@ class PublicConsentRequestController extends Controller
             }
 
             // Submit comment
-            \App\Comment::create([
-                'commenter_id' => $request->commenter_id,
-                'commentable_type' => 'App\ConsentRequest',
-                'commentable_id' => $request->commentable_id,
-                'comment' => $request->message
-            ]);
+            if($request->message){
+                $consentRequest->patient->comment($consentRequest,$request->message);
+            }
 
             return back()->with('consentRequestStage', 'sign');
 
@@ -144,11 +142,21 @@ class PublicConsentRequestController extends Controller
 
         if(isset($request->form) && $request->form == 'publicConsentPatientSignature'){
 
-            // Add validator
+            // Upload file
+
+            // https://stackoverflow.com/questions/26785940/laravel-save-base64-png-file-to-public-folder-from-controller/26786683
+            // Image::make(file_get_contents($data->base64_image))->save($path);
 
             // Process form
+            $consentRequest->update([
+                'patient_signed_ts' => Carbon::now()->toDateTimeString(),
+                'patient_signature' => $request->consentPatientSignature
+            ]);
 
-            // Add variable to load correct page
+            return view('app.p.consent-request.complete',compact(
+                'consentRequest',
+                'patient'
+            ));
 
         }
 

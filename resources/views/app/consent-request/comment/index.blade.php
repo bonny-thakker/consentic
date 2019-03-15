@@ -100,6 +100,10 @@
 
                    <div class="tab-content">
 
+                       @include('vendor.laravel-comment.components.comments',[
+                        'model' => $consentRequest
+                       ])
+
                    </div>
 
                </div>
