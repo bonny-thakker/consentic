@@ -235,9 +235,9 @@ const App = function() {
                 $('#consent-questions-tab').addClass('is-hidden');
                 $('#consent-sign-tab').removeClass('is-hidden');
 
-                setTimeout(function (){
+                /*setTimeout(function (){
                     App.loadSignature();
-                }, 1000);
+                }, 1000);*/
 
                 e.stopPropagation();
                 e.preventDefault();
@@ -377,8 +377,10 @@ const App = function() {
             });
 
             $('#signature').on('change', function() {
+
                 let datapair = $('#signature').jSignature('getData', 'svg');
                 $('[name="consentPatientSignature"]').html(datapair[1]);
+
             });
 
             $('#agreement').on('change', function() {

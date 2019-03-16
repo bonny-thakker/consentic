@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Mail;
 use Image;
+use Storage;
 
 class PublicConsentRequestController extends Controller
 {
@@ -103,14 +104,16 @@ class PublicConsentRequestController extends Controller
 
             $validator->after(function ($validator) use ($requestData) {
 
-                foreach($requestData['question'] as $questionId => $questionAnswer){
+                if(isset($requestData['question'])){
+                    foreach($requestData['question'] as $questionId => $questionAnswer){
 
-                    if(!is_numeric($questionAnswer)) {
-                        $validator->errors()->add('question['.$questionId.']', 'Answer is required');
-                    }elseif(\App\Answer::find($questionAnswer)->correct == 0){
-                        $validator->errors()->add('question['.$questionId.']', 'Your answer to this question is incorrect');
+                        if(!is_numeric($questionAnswer)) {
+                            $validator->errors()->add('question['.$questionId.']', 'Answer is required');
+                        }elseif(\App\Answer::find($questionAnswer)->correct == 0){
+                            $validator->errors()->add('question['.$questionId.']', 'Your answer to this question is incorrect');
+                        }
+
                     }
-
                 }
 
             });
@@ -123,14 +126,16 @@ class PublicConsentRequestController extends Controller
             }
 
             // Process form
-            foreach($requestData['question'] as $questionId => $questionAnswer){
+            if(isset($requestData['question'])) {
+                foreach ($requestData['question'] as $questionId => $questionAnswer) {
 
-                $consentRequestQuestion = \App\ConsentRequestQuestion::find($questionId);
+                    $consentRequestQuestion = \App\ConsentRequestQuestion::find($questionId);
 
-                $consentRequestQuestion->consentRequestQuestionAnswer->update([
-                    'answer_id' => $questionAnswer
-                ]);
+                    $consentRequestQuestion->consentRequestQuestionAnswer->update([
+                        'answer_id' => $questionAnswer
+                    ]);
 
+                }
             }
 
             // Submit comment
@@ -145,10 +150,7 @@ class PublicConsentRequestController extends Controller
         if(isset($request->form) && $request->form == 'publicConsentPatientSignature'){
 
             // Upload file
-
-            // https://stackoverflow.com/questions/26785940/laravel-save-base64-png-file-to-public-folder-from-controller/26786683
-            /*Image::make(file_get_contents($request->consentPatientSignature))
-                ->save(public_path('consent-requests/'.uniqid().'.png'));*/
+            Storage::put('public/consent-requests/'.$consentRequest->id.'/'.uniqid().'.svg', $request->consentPatientSignature);
 
             // Process form
             $consentRequest->update([

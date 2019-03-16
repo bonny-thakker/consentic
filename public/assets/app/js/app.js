@@ -274,9 +274,10 @@ var App = function () {
         $('#consent-request-tab').addClass('is-hidden');
         $('#consent-questions-tab').addClass('is-hidden');
         $('#consent-sign-tab').removeClass('is-hidden');
-        setTimeout(function () {
-          App.loadSignature();
-        }, 1000);
+        /*setTimeout(function (){
+            App.loadSignature();
+        }, 1000);*/
+
         e.stopPropagation();
         e.preventDefault();
       });
