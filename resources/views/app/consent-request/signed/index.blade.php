@@ -100,8 +100,31 @@
 
                    <div class="tab-content">
                        <h3>By Doctor</h3>
+                       @if ($consentRequest->user_signature)
+
+                       @else
+                           <span class="has-text-warning">Doctor signature pending</span>
+                       @endif
                        <hr />
                        <h3>By Patient</h3>
+                       @if ($consentRequest->patient_signature)
+
+                           @if ($consentRequest->revoked == 1 )
+                           <p>
+                               <span class="has-text-warning">(Revoked)</span>
+                           </p>
+                           @endif
+
+                           <figure class="has-text-centered m-t-lg image-signature-container">
+                               <img class="image-signature" src="{{ $consentRequest->patient_signature }}" alt="Patient Signature">
+                           </figure>
+
+                           <p>{{ $consentRequest->patient->fullName() }}</p>
+                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('F dS Y') }}</p>
+                       @else
+                           <span class="has-text-warning">Patient signature pending</span>
+                       @endif
+
                    </div>
 
                </div>

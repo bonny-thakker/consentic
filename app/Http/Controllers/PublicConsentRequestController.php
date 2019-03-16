@@ -150,12 +150,13 @@ class PublicConsentRequestController extends Controller
         if(isset($request->form) && $request->form == 'publicConsentPatientSignature'){
 
             // Upload file
-            Storage::put('public/consent-requests/'.$consentRequest->id.'/'.uniqid().'.svg', $request->consentPatientSignature);
+            $signatureUrl = 'public/consent-requests/'.$consentRequest->id.'/'.uniqid().'.svg';
+            Storage::put($signatureUrl, $request->consentPatientSignature);
 
             // Process form
             $consentRequest->update([
                 'patient_signed_ts' => Carbon::now()->toDateTimeString(),
-                'patient_signature' => $request->consentPatientSignature
+                'patient_signature' => str_replace('public','/storage',$signatureUrl)
             ]);
 
             // Send notification TBC

@@ -102,7 +102,7 @@
                        @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
-                            'consentRequestQuestionAnswer' => null,
+                             'consentRequestQuestionAnswer' => $consentRequestQuestion->consentRequestQuestionAnswer->answer ?? null,
                             'isDisabledQuestion' => true
                            ])
                        @endforeach
@@ -110,7 +110,7 @@
                        @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\PatientQuestion')->get() as $consentRequestQuestion)
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
-                            'consentRequestQuestionAnswer' => null,
+                             'consentRequestQuestionAnswer' => $consentRequestQuestion->consentRequestQuestionAnswer->answer ?? null,
                              'isDisabledQuestion' => true
                            ])
                        @endforeach
