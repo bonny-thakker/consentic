@@ -236,7 +236,7 @@ var App = function () {
       });
       $(document).on('change', 'select[name="consent"]', function () {
         var videoURL = $(this).find('option:selected').data('video');
-        var consentVideo = modal.find('#consent-video');
+        var consentVideo = $('#consent-video');
         consentVideo.empty().append("<iframe height=\"350px\" width=\"100%\" height=\"auto\" src=\"".concat(videoURL.replace('watch?v=', 'embed/'), "\" allowfullscreen></iframe>"));
       });
       $('#patient-list').select2({

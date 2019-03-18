@@ -174,7 +174,7 @@ const App = function() {
 
             $(document).on('change', 'select[name="consent"]', function() {
                 let videoURL = $(this).find('option:selected').data('video');
-                let consentVideo = modal.find('#consent-video');
+                let consentVideo = $('#consent-video');
 
                 consentVideo.empty()
                     .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
