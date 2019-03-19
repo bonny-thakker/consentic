@@ -75,62 +75,20 @@
                </div>
                <div class="column">
 
-                   <div class="tabs is-toggle is-fullwidth">
-                       <ul>
-                           <li>
-                               <a href="{{ url('app/consent-requests/'.$consentRequest->id) }}">Animation</a>
-                           </li>
-                           <li>
-                               <a href="{{ url('app/consent-requests/'.$consentRequest->id.'/files') }}">Files</a>
-                           </li>
-                           <li>
-                               <a href="{{ url('app/consent-requests/'.$consentRequest->id.'/doctor-questions') }}">Doctor Questions</a>
-                           </li>
-                           <li>
-                               <a href="{{ url('app/consent-requests/'.$consentRequest->id.'/patient-questions') }}">Patient Questions</a>
-                           </li>
-                           <li>
-                               <a href="{{ url('app/consent-requests/'.$consentRequest->id.'/comments') }}">Comments</a>
-                           </li>
-                           <li class="is-active">
-                               <a href="{{ url('app/consent-requests/'.$consentRequest->id.'/signed') }}">Signed</a>
-                           </li>
-                       </ul>
-                   </div>
-
                    <div class="tab-content">
-                       <h3>By Doctor</h3>
-                       @if ($consentRequest->user_signature)
 
-                           <figure class="has-text-centered m-t-lg image-signature-container">
-                               <img class="image-signature" src="{{ $consentRequest->user_signature }}" alt="Doctor Signature">
-                           </figure>
+                       <h3 class="title is-4">Your Signature</h3>
 
-                           <p>{{ $consentRequest->user->fullName() }}</p>
-                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->format('F dS Y') }}</p>
+                       <form action="/app/consent-requests/{{ $consentRequest->id }}/signed/update" method="POST" id="add-doctor-signature-form" class="has-text-centered">
+                           <div id="signature" class="m-b-lg"></div>
 
-                       @else
-                           <span class="has-text-warning">Doctor signature pending</span>
-                       @endif
-                       <hr />
-                       <h3>By Patient</h3>
-                       @if ($consentRequest->patient_signature)
+                           <textarea class="textarea is-hidden" name="consentDoctorSignature"></textarea>
+                           {{ csrf_field() }}
 
-                           @if ($consentRequest->revoked == 1 )
-                           <p>
-                               <span class="has-text-warning">(Revoked)</span>
-                           </p>
-                           @endif
+                           <button id="clear-signature" class="button is-warning" style="height: 3em;">Clear</button>
+                           <button class="button submit is-primary">Sign Consent</button>
 
-                           <figure class="has-text-centered m-t-lg image-signature-container">
-                               <img class="image-signature" src="{{ $consentRequest->patient_signature }}" alt="Patient Signature">
-                           </figure>
-
-                           <p>{{ $consentRequest->patient->fullName() }}</p>
-                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('F dS Y') }}</p>
-                       @else
-                           <span class="has-text-warning">Patient signature pending</span>
-                       @endif
+                       </form>
 
                    </div>
 

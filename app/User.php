@@ -85,4 +85,10 @@ class User extends SparkUser
 
     }
 
+    public function fullName($middle = false, $title = true){
+
+        return trim((($title) ? $this->title.' ' : null).' '.$this->name);
+
+    }
+
 }

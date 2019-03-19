@@ -245,6 +245,7 @@ const App = function() {
             });
 
             App.loadSignature();
+            App.animations();
 
         },
 
@@ -380,6 +381,7 @@ const App = function() {
 
                 let datapair = $('#signature').jSignature('getData', 'svg');
                 $('[name="consentPatientSignature"]').html(datapair[1]);
+                $('[name="consentDoctorSignature"]').html(datapair[1]);
 
             });
 
@@ -393,6 +395,49 @@ const App = function() {
                 }
                 submit.attr('disabled', false);
             });
+
+        },
+
+        animations: function() {
+
+            $('a.consent-video-modal').click(function(e) {
+
+                let modal = App.loadModal('large');
+                let modalTitle = modal.find('.modal-title');
+                let modalBody = modal.find('.modal-body');
+
+                // Set modal title
+                modalTitle.text('Animations');
+
+                // Show loader
+                modalBody.addClass('is-loading');
+
+                // Get modal content
+                App.ajax($(this).attr('href'), 'get', 'html')
+
+                    .fail(function(err) {
+                        modal.find('.modal-close').click();
+                    })
+
+                    .done(function(data) {
+                        modalBody.html(data);
+
+                        // Register event handler
+                        /* modal.on('change', '[name="procedure"]', function() {
+                             let videoURL = $(this).find('option:selected').data('video');
+                             let consentVideo = modal.find('#consent-video');
+
+                             consentVideo.empty()
+                                 .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
+                         });*/
+
+                        // Remove loader
+                        modalBody.removeClass('is-loading');
+                    });
+
+                e.preventDefault();
+            });
+
 
         },
 

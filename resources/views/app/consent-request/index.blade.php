@@ -149,7 +149,7 @@
                             <th class="has-text-centered">Watched</th>
                             <th class="has-text-centered">Answered</th>
                             <th class="has-text-centered">Signed</th>
-                            <th class="has-text-centered">Actions</th>
+                            <th class="has-text-right"></th>
                         </tr>
                         </thead>
                         <tbody>

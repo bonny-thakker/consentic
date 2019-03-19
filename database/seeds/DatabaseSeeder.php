@@ -49,6 +49,7 @@ class DatabaseSeeder extends Seeder
             $user = \App\User::firstOrCreate([
                 'email' => 'rebecca.saunderson@consentic.com',
             ], [
+                'title' => 'Doctor',
                 'name' => 'Rebecca Saunderson',
                 'email_verified_at' => now(),
                 'password' => bcrypt('demo2468'), // secret
@@ -60,6 +61,7 @@ class DatabaseSeeder extends Seeder
             $user = \App\User::firstOrCreate([
                 'email' => 'julia.rhodes@consentic.com',
             ], [
+                'title' => 'Doctor',
                 'name' => 'Julia Rhodes',
                 'email_verified_at' => now(),
                 'password' => bcrypt('demo2468'), // secret

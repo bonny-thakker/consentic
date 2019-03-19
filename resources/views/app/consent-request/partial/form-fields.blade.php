@@ -16,7 +16,7 @@
         @foreach (\App\Consent::all() as $consent)
             <option
                     value="{{ $consent->id }}"
-                    data-video="{{ $consent->video_url }}"  {{ (old('consent') == $consent->id || (isset($consentRequest) && $consentRequest->consent->id == $consent->id)) ? 'selected' : null }}
+                    data-video="{{ $consent->video_url }}"  {{ (old('consent') == $consent->id || (isset($consentRequest) && $consentRequest->consent->id == $consent->id) || (isset($createForConsent) && $createForConsent->id == $consent->id)) ? 'selected' : null }}
             >{{ $consent->name }}</option>
         @endforeach
     </select>

@@ -259,9 +259,9 @@
             <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
                 @switch ($recipient)
                     @case ('doctor')
-                    <p>Hi {{ $consentRequest->user->title ?? null }} {{ $consentRequest->user->name }}</p>
+                    <p>Hi {{ $consentRequest->user->fullName() }}</p>
 
-                    <p><b>{{ $consentRequest->patient->first_name }} {{ $consentRequest->patient->last_name }}</b> has now given their consent for their {{ $consentRequest->consent->name }}.</p>
+                    <p><b>{{ $consentRequest->patient->fullName() }}</b> has now given their consent for their {{ $consentRequest->consent->name }}.</p>
 
                     <p>A copy of the procedure explanation (video), your questions and answers, your discussions with your patient, your signature and your patient's signature have been attached to this email as a PDF.</p>
                     @break
@@ -314,7 +314,7 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                             <td style="padding: 40px; text-align: left; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #ffffff;">
-                                <p style="margin: 0;">You’re receiving this email because {{ $consentRequest->user->title ?? null . ' ' . $consentRequest->user->name }} has indicated that you are a patient of theirs. If you believe this is an error, please reply to this email letting us know and we’ll rectify the issue.</p>
+                                <p style="margin: 0;">You’re receiving this email because {{ $consentRequest->user->fullName() }} has indicated that you are a patient of theirs. If you believe this is an error, please reply to this email letting us know and we’ll rectify the issue.</p>
                             </td>
                         </tr>
                     </table>

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Consent;
 use Illuminate\Http\Request;
 use App\ConsentRequest;
+use Storage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Mail;
 
 class ConsentRequestSignedController extends Controller
 {
@@ -60,9 +65,14 @@ class ConsentRequestSignedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ConsentRequest $consentRequest)
     {
-        //
+        $patient = $consentRequest->patient;
+
+        return view('app.consent-request.signed.edit' , compact(
+            'consentRequest',
+            'patient'
+        ));
     }
 
     /**
@@ -72,9 +82,39 @@ class ConsentRequestSignedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ConsentRequest $consentRequest)
     {
-        //
+
+        $patient = $consentRequest->patient;
+
+        // Upload file
+        $signatureUrl = 'public/consent-requests/'.$consentRequest->id.'/doctor-'.uniqid().'.svg';
+        Storage::put($signatureUrl, $request->consentDoctorSignature);
+
+        // Process form
+        $consentRequest->update([
+            'user_signed_ts' => Carbon::now()->toDateTimeString(),
+            'user_signature' => str_replace('public','/storage',$signatureUrl)
+        ]);
+
+        $signedLink = URL::signedRoute('public.consent-request.show', [
+            'consentRequest' => $consentRequest->id
+        ]);
+
+        if($consentRequest->in_office == 1){
+
+            return redirect($signedLink);
+
+        }else{
+
+            Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestMail($consentRequest, $signedLink));
+
+        }
+
+        notify()->success('You have signed the consent request');
+
+        return redirect('/app/consent-requests/'.$consentRequest->id);
+
     }
 
     /**

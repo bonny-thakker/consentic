@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Consent;
 use App\Mail\ConsentRequestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -84,10 +85,11 @@ class ConsentRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Patient $patient)
+    public function create(Patient $patient, Consent $consent)
     {
         return view('app.consent-request.create', [
-            'createForPatient' => $patient
+            'createForPatient' => $patient ?? null,
+            'createForConsent' => $consent ?? null
         ]);
     }
 
@@ -112,6 +114,7 @@ class ConsentRequestController extends Controller
             'user_id' => auth()->user()->id,
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
+            'in_office' => $request->in_office,
         ]);
 
         // Check uploaded file
@@ -134,15 +137,9 @@ class ConsentRequestController extends Controller
 
         }
 
-        $signedLink = URL::signedRoute('public.consent-request.show', [
-            'consentRequest' => $consentRequest->id
-        ]);
-
-        Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestMail($consentRequest, $signedLink));
-
         notify()->success('Patient consent request created');
 
-        return redirect('app/consent-requests');
+        return redirect('app/consent-requests/'.$consentRequest->id.'/doctor-questions/edit');
 
     }
 
@@ -201,6 +198,7 @@ class ConsentRequestController extends Controller
         $consentRequest->update([
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
+            'in_office' => $request->in_office,
         ]);
 
         // Check uploaded file
@@ -223,15 +221,9 @@ class ConsentRequestController extends Controller
 
         }
 
-        $signedLink = URL::signedRoute('public.consent-request.show', [
-            'consentRequest' => $consentRequest->id
-        ]);
-
-        Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestUpdatedMail($consentRequest, $signedLink));
-
         notify()->success('Patient consent request updated');
 
-        return redirect('app/consent-requests');
+        return redirect('app/consent-requests/'.$consentRequest->id.'/doctor-questions/edit');
 
     }
 

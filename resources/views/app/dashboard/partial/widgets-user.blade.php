@@ -41,7 +41,7 @@
 </div>
 <div class="columns">
     <div class="column">
-        <a href="/" id="unseen-comments" class="box quick-stats has-text-white" style="background-color: #1C3D45">
+        <a href="#" id="unseen-comments" class="box quick-stats has-text-white" style="background-color: #1C3D45">
             <div class="quick-stats-icon">
                 <span class="icon is-large">
                     <i class="fas fa-comments"></i>
@@ -54,7 +54,7 @@
         </a>
     </div>
     <div class="column">
-        <a href="/" id="animations" class="box quick-stats has-text-white" style="background-color: #16B1BA;">
+        <a href="{{ url('app/consents') }}" id="animations" class="box quick-stats has-text-white" style="background-color: #16B1BA;">
             <div class="quick-stats-icon">
                 <span class="icon is-large">
                     <i class="fas fa-video"></i>
@@ -67,7 +67,7 @@
         </a>
     </div>
     <div class="column">
-        <a href="/settings?tab=subscription" class="box quick-stats has-background-primary has-text-white" style="background-color: #00d1b2 !important;">
+        <a href="#" class="box quick-stats has-background-primary has-text-white" style="background-color: #00d1b2 !important;">
             <div class="quick-stats-icon">
                 <span class="icon is-large">
                     <i class="fas fa-file-contract"></i>

@@ -24,6 +24,14 @@ class Consent extends Model
     }
 
     /**
+     * Get the speciality type that owns the consent.
+     */
+    public function consentSpeciality()
+    {
+        return $this->belongsTo('App\ConsentSpeciality');
+    }
+
+    /**
      * Get the questions for the consent.
      */
     public function questions()

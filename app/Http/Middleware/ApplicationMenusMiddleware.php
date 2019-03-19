@@ -39,7 +39,7 @@ class ApplicationMenusMiddleware
         Menu::make('appMainMenu', function ($menu) use ($request) {
 
             $menu->add('Dashboard', 'app/dashboard');
-
+            $menu->add('Consents', 'app/consents');
             $menu->add('Patients', 'app/patients');
 
             if(in_array($request->route()->getName(),[

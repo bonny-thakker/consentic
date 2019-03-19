@@ -258,7 +258,7 @@
         <tr>
             <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
 
-                <p style="margin: 0;"><strong>{{ $consentReqeust->user->title ?? null }} {{ $consentRequest->user->name }}</strong> has requested your consent for {{ $consentRequest->consent->name }}.</p>
+                <p style="margin: 0;"><strong>{{ $consentRequest->user->fullName() }}</strong> has requested your consent for {{ $consentRequest->consent->name }}.</p>
                 </p>
             </td>
         </tr>
@@ -295,7 +295,7 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                             <td style="padding: 40px; text-align: left; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #ffffff;">
-                                <p style="margin: 0;">You’re receiving this email because {{ $consentRequest->user->title ?? null . ' ' . $consentRequest->user->name }} has indicated that you are a patient of theirs. If you believe this is an error, please reply to this email letting us know and we’ll rectify the issue.</p>
+                                <p style="margin: 0;">You’re receiving this email because {{ $consentRequest->user->fullName() }} has indicated that you are a patient of theirs. If you believe this is an error, please reply to this email letting us know and we’ll rectify the issue.</p>
                             </td>
                         </tr>
                     </table>

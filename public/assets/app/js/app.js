@@ -282,6 +282,7 @@ var App = function () {
         e.preventDefault();
       });
       App.loadSignature();
+      App.animations();
     },
     handleNavbar: function handleNavbar() {
       // Get all "navbar-burger" elements
@@ -396,6 +397,7 @@ var App = function () {
       $('#signature').on('change', function () {
         var datapair = $('#signature').jSignature('getData', 'svg');
         $('[name="consentPatientSignature"]').html(datapair[1]);
+        $('[name="consentDoctorSignature"]').html(datapair[1]);
       });
       $('#agreement').on('change', function () {
         var value = $(this).is(':checked');
@@ -407,6 +409,34 @@ var App = function () {
         }
 
         submit.attr('disabled', false);
+      });
+    },
+    animations: function animations() {
+      $('a.consent-video-modal').click(function (e) {
+        var modal = App.loadModal('large');
+        var modalTitle = modal.find('.modal-title');
+        var modalBody = modal.find('.modal-body'); // Set modal title
+
+        modalTitle.text('Animations'); // Show loader
+
+        modalBody.addClass('is-loading'); // Get modal content
+
+        App.ajax($(this).attr('href'), 'get', 'html').fail(function (err) {
+          modal.find('.modal-close').click();
+        }).done(function (data) {
+          modalBody.html(data); // Register event handler
+
+          /* modal.on('change', '[name="procedure"]', function() {
+               let videoURL = $(this).find('option:selected').data('video');
+               let consentVideo = modal.find('#consent-video');
+                consentVideo.empty()
+                   .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
+           });*/
+          // Remove loader
+
+          modalBody.removeClass('is-loading');
+        });
+        e.preventDefault();
       });
     },
     toggleModal: function toggleModal(modalId) {

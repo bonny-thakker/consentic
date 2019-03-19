@@ -31,7 +31,8 @@
 
             <form id="add-consent-request-form" action="/app/consent-requests/store" method="POST"
                   enctype="multipart/form-data">
-                {{ csrf_field() }}
+                  {{ csrf_field() }}
+                <input type="hidden" name="in_office" value="0" />
 
                 <div class="columns is-variable is-8">
                     <div class="column is-4">
@@ -74,8 +75,11 @@
                                 </div>
                                 <div class="is-divider-vertical" data-content="OR"></div>
                                 <div class="column">
-                                    <a href="#" id="consent-now"
-                                       class="button is-medium submit is-primary is-fullwidth">Consent Patient Now</a>
+                                    {{--<a href="#" id="consent-now"
+                                       class="button is-medium submit is-primary is-fullwidth">Consent Patient Now</a>--}}
+                                    <button id="office-consent" class="button is-medium submit is-primary is-fullwidth">
+                                        Consent Patient Now
+                                    </button>
                                 </div>
                             </div>
                             <a href="{{ url()->previous() }}" class="button is-medium is-fullwidth is-theme m-t-md">Cancel</a>
@@ -94,8 +98,15 @@
     <script>
         $(document).ready(function () {
 
+            $('#office-consent').click(function(e){
+
+                $('input[name="in_office"]').val(1)
+                $(this).closest('form').submit()
+                e.preventDefault();
+
+            });
+
         });
     </script>
-
 
 @endpush

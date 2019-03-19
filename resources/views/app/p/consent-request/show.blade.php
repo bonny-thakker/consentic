@@ -25,7 +25,7 @@
            </nav>
            <h1 class="title">Hi <strong>{{ $patient->fullName() }}</strong>,</h1>
            <p class="subtitle is-4">
-               Please complete the consent request <strong>{{ $consentRequest->consent->name }}</strong> requested by <strong>{{ $consentReqeust->user->title ?? null }} {{ $consentRequest->user->name }}</strong>.
+               Please complete the consent request <strong>{{ $consentRequest->consent->name }}</strong> requested by <strong>{{ $consentRequest->user->fullName() }}</strong>.
            </p>
            <hr />
            <div class="columns">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Consent;
 use Illuminate\Http\Request;
 
 class ConsentController extends Controller
@@ -11,8 +12,13 @@ class ConsentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+
+        $consents = \App\Consent::all();
+        return view('app.consent.index', compact(
+            'consents'
+        ));
 
     }
 
@@ -43,9 +49,11 @@ class ConsentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Consent $consent)
     {
-        //
+        return view('app.consent.show', compact(
+            'consent'
+        ));
     }
 
     /**

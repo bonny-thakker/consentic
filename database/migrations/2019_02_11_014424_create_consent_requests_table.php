@@ -19,6 +19,7 @@ class CreateConsentRequestsTable extends Migration
             $table->smallInteger('consent_id')->index()->unsigned();
             $table->integer('user_id')->index()->unsigned();
             $table->timestamp('user_signed_ts')->nullable();
+            $table->text('user_signature')->nullable();
             $table->boolean('revoked')->default(false);
             $table->boolean('moderation')->default(false);
             $table->integer('patient_id')->index()->unsigned();
@@ -27,6 +28,7 @@ class CreateConsentRequestsTable extends Migration
             $table->boolean('reminder')->default(false);
             $table->boolean('in_office')->default(false);
             $table->boolean('video_watched')->default(false);
+            $table->text('pdf')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -61,14 +61,14 @@
                        <p>
                            <small><strong>Address</strong><br/>
                                <span class="patient-profile-card-address">
-                                        @if($patient->address)
+                                   @if($patient->address)
                                        {{ $patient->address->line_1 }}
                                        {{ ($patient->address->line_2) ? '<br />'.$patient->address->line_2 : null }}
                                        {{ ($patient->address->line_3) ? '<br />'.$patient->address->line_3 : null }}
                                        <br/>{{ $patient->address->suburb }}
                                        <br/>{{ $patient->address->state }} {{ $patient->address->postcode }}
                                    @endif
-                                    </span>
+                               </span>
                            </small>
                        </p>
                    </div>

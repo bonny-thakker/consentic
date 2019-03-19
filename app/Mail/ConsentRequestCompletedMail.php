@@ -14,16 +14,18 @@ class ConsentRequestCompletedMail extends Mailable
 
     public $consentRequest;
     public $recipient;
+    public $pdfFile;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(ConsentRequest $consentRequest, $recipient)
+    public function __construct(ConsentRequest $consentRequest, $recipient, $pdfFile)
     {
         $this->consentRequest = $consentRequest;
         $this->recipient = $recipient;
+        $this->pdfFile = $pdfFile;
     }
 
     /**
@@ -34,6 +36,10 @@ class ConsentRequestCompletedMail extends Mailable
     public function build()
     {
         return $this->subject('Consent Request Completed')
-            ->view('emails.consent-request-completed');
+            ->view('emails.consent-request-completed')
+            ->attach($this->pdfFile, [
+                'as' => basename($this->pdfFile),
+                'mime' => 'application/pdf',
+            ]);
     }
 }

@@ -11,12 +11,12 @@
             </a>
         </p>
         <p class="control">
-            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" href="{{ url('app/consent-requests/'.$consentRequest->id.'/edit') }}">
+            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" href="{{ ($consentRequest->isPatientSigned()) ? '#' : url('app/consent-requests/'.$consentRequest->id.'/edit') }}" {{ ($consentRequest->isPatientSigned()) ? 'disabled="disabled"' : null }}>
                 <i class="fas fa-edit"></i>
             </a>
         </p>
         <p class="control">
-            <a class="button is-danger tooltip action-delete delete-button" data-tooltip="Delete">
+            <a class="button is-danger tooltip {{ ($consentRequest->isPatientSigned()) ?  : 'action-delete delete-button' }} " data-tooltip="Delete" {{ ($consentRequest->isPatientSigned()) ? 'disabled="disabled"' : null }} >
                 <i class="fas fa-trash"></i>
             </a>
         </p>
