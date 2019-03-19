@@ -1,4 +1,5 @@
 <div id="consent-video">
-    <iframe height="350px" width="100%" height="auto"
-            src="{{ $consent->video_url }}" allowfullscreen></iframe>
+    <span id="consent-video-player-container">
+        <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
+    </span>
 </div>

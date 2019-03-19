@@ -51,8 +51,12 @@ class ConsentController extends Controller
      */
     public function show(Consent $consent)
     {
+
+        parse_str( parse_url( $consent->video_url, PHP_URL_QUERY ), $videoParams );
+        $videoId = $videoParams['v'] ?? '';
+
         return view('app.consent.show', compact(
-            'consent'
+            'videoId'
         ));
     }
 

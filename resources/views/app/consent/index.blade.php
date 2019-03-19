@@ -130,6 +130,7 @@
                         <table id="list-table" class="table is-hoverable is-striped is-fullwidth" style="width: 100%;">
                             <thead>
                             <tr>
+                                <th>Animation</th>
                                 <th>Name</th>
                                 <th>Speciality</th>
                                {{-- <th>Info</th>--}}
@@ -139,6 +140,13 @@
                             <tbody>
                             @foreach($consents as $consent)
                                <tr>
+                                   <td>
+                                       <a target="_blank" href="{{ url('app/consents/'.$consent->id) }}" class="consent-video-modal">
+                                           <figure class="image is-4by3">
+                                           <img width="100%" height="400" src="{{ $consent->videoThumbnail() }}">
+                                           </figure>
+                                       </a>
+                                   </td>
                                    <td>
                                        {{ $consent->name }}
                                    </td>

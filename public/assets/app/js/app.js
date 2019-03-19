@@ -432,7 +432,8 @@ var App = function () {
                 consentVideo.empty()
                    .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
            });*/
-          // Remove loader
+
+          App.loadVideo(); // Remove loader
 
           modalBody.removeClass('is-loading');
         });

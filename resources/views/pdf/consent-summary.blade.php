@@ -128,7 +128,7 @@
                     <td colspan="2" style="padding: 0px; padding-bottom: 20px;" align="center">
                         <br>
                         <a target="_blank" href="{{ $consentRequest->consent->video_url }}">
-                            <img width="100%" height="400" src="#">
+                            <img width="100%" height="400" src="{{ $consentRequest->consent->videoThumbnail() }}">
                         </a>
                         <p style="text-align: center;">
                             <a target="_blank" href="{{ $consentRequest->consent->video_url }}">Click to open video</a>

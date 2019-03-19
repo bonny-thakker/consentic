@@ -431,6 +431,8 @@ const App = function() {
                                  .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
                          });*/
 
+                        App.loadVideo()
+
                         // Remove loader
                         modalBody.removeClass('is-loading');
                     });
