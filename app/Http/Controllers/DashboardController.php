@@ -19,7 +19,6 @@ class DashboardController extends Controller
         $consentRequestsCount = \App\ConsentRequest::all()->count();
         $consents = \App\Consent::all()->count();
         $consentRequestPendingCount = \App\ConsentRequest::where([
-            'user_signed_ts' => null,
             'patient_signed_ts' => null
         ])->orWhere([
             'revoked' => 1

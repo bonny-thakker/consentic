@@ -21,7 +21,7 @@
             </div>
             <div class="quick-stats-content">
                 <h2 class="title">{{ $consentRequestsCount ?? 0 }}</h2>
-                <p class="subtitle">Consents</p>
+                <p class="subtitle">Consent Requests</p>
             </div>
         </a>
     </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="quick-stats-content">
                 <h2 class="title">{{ $consents ?? 0 }}</h2>
-                <p class="subtitle">Animations</p>
+                <p class="subtitle">Consent Animations</p>
             </div>
         </a>
     </div>
