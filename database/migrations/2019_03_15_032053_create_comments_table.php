@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->longText('comment');
             $table->boolean('approved')->default(true);
             $table->double('rate', 15, 8)->nullable();
+            $table->timestamp('user_seen_ts')->nullable();
             $table->timestamps();
         });
     }

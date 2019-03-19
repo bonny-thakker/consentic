@@ -172,8 +172,8 @@ class PublicConsentRequestController extends Controller
             $fontData = $defaultFontConfig['fontdata'];
 
             $mpdf = new Mpdf([
-               /* 'fontDir' => array_merge($fontDirs, [
-                    __DIR__ . '/custom/font/directory',
+                'fontDir' => array_merge($fontDirs, [
+                    public_path('assets/fonts'),
                 ]),
                 'fontdata' => $fontData + [
                         'helvetica' => [
@@ -183,7 +183,7 @@ class PublicConsentRequestController extends Controller
                             'R' => 'fa-solid-900.ttf'
                         ]
                     ],
-                'default_font' => 'helvetica',*/
+                'default_font' => 'helvetica',
                 'tempDir' => storage_path('app/mpdf')
             ]);
 

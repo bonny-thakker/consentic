@@ -70,6 +70,18 @@ class DatabaseSeeder extends Seeder
                 'current_team_id' => 1
             ]);
 
+            $user = \App\User::firstOrCreate([
+                'email' => 'rod.sprenger@dhhs.vic.gov.au ',
+            ], [
+                'title' => 'Doctor',
+                'name' => 'Rod Sprenger',
+                'email_verified_at' => now(),
+                'password' => bcrypt('demo2468'), // secret
+                'remember_token' => str_random(10),
+                'email_verified_at' => now(),
+                'current_team_id' => 1
+            ]);
+
             DB::table('team_users')->insert([
                 [
                     'team_id' => 1,
