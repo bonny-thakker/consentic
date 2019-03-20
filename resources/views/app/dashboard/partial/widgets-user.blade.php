@@ -49,7 +49,7 @@
             </div>
             <div class="quick-stats-content">
                 <h2 class="title">{{ $consentRequestUnseenCommentsCount ?? 0 }}</h2>
-                <p class="subtitle">Unseen Comments</p>
+                <p class="subtitle">Unseen Patient Comments</p>
             </div>
         </a>
     </div>

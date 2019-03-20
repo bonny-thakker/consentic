@@ -43,7 +43,8 @@ class ConsentRequestController extends Controller
     {
 
         $consentRequests = \App\ConsentRequest::whereHas('comments', function($q){
-            $q->whereNull('user_seen_ts');
+            $q->whereNull('user_seen_ts')
+                ->where('commented_type','App\Patient');
         })->get();
 
         return view('app.consent-request.unseencomments',[
