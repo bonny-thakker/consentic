@@ -9,7 +9,7 @@
        @if(isset($comment->commented->photo_url))
            <img class="image is-64x64" src="{{ $comment->commented->photo_url }}" alt="{{ $comment->commented->name }} Avatar">
        @elseif($comment->commented->email->address)
-        <img class="image is-64x64" src="https://www.gravatar.com/avatar/{{ md5($comment->commented->email) }}.jpg?s=64" alt="{{ $comment->commented->name }} Avatar">
+        <img class="image is-64x64" src="https://www.gravatar.com/avatar/{{ md5($comment->commented->email) }}.jpg?s=64&d=mp" alt="{{ $comment->commented->name }} Avatar">
        @else
            {{-- TBC --}}
        @endif

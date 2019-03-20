@@ -33,6 +33,26 @@ class ConsentRequestController extends Controller
 
     }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function unseencomments()
+    {
+
+        $consentRequests = \App\ConsentRequest::whereHas('comments', function($q){
+            $q->whereNull('user_seen_ts');
+        })->get();
+
+        return view('app.consent-request.unseencomments',[
+            'consentRequests' => $consentRequests
+        ]);
+
+    }
+
+
     /**
      * Search consent requests
      *

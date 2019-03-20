@@ -54,6 +54,7 @@ class ApplicationMenusMiddleware
                 'app.consent-requests.signed.index',
                 'app.consent-requests.signed.edit',
                 'app.consent-requests.search',
+                'app.consent-requests.unseencomments'
             ])){
                 $menu->get('consentRequests')->active();
             }

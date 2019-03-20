@@ -244,7 +244,7 @@
                             @if(isset($comment->commented->photo_url))
                                 <img class="ser-avatar" src="{{ $comment->commented->photo_url }}" alt="{{ $comment->commented->name ?? $comment->commented->fullName() }} Avatar">
                             @elseif($comment->commented->email->address)
-                                <img class="user-avatar" src="https://www.gravatar.com/avatar/{{ md5($comment->commented->email) }}.jpg?s=64" alt="User Profile Picture">
+                                <img class="user-avatar" src="https://www.gravatar.com/avatar/{{ md5($comment->commented->email) }}.jpg?s=64&d=mp" alt="User Profile Picture">
                             @else
                                 {{-- TBC --}}
                             @endif

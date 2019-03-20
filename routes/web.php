@@ -77,6 +77,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
     Route::prefix('consent-requests')->group( function () {
 
         Route::get('/', 'ConsentRequestController@index')->name('app.consent-requests.index');
+        Route::get('/unseencomments', 'ConsentRequestController@unseencomments')->name('app.consent-requests.unseencomments');
         Route::post('/search', 'ConsentRequestController@search')->name('app.consent-requests.search');
         Route::get('create/consent/{consent?}', 'ConsentRequestController@create')->name('app.consent-requests.create');
         Route::get('create/{patient?}', 'ConsentRequestController@create')->name('app.consent-requests.create');

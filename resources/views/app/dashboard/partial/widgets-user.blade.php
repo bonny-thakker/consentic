@@ -41,14 +41,14 @@
 </div>
 <div class="columns">
     <div class="column">
-        <a href="#" id="unseen-comments" class="box quick-stats has-text-white" style="background-color: #1C3D45">
+        <a href="{{ url('app/consent-requests/unseencomments') }}" id="unseen-comments" class="box quick-stats has-text-white" style="background-color: #1C3D45">
             <div class="quick-stats-icon">
                 <span class="icon is-large">
                     <i class="fas fa-comments"></i>
                 </span>
             </div>
             <div class="quick-stats-content">
-                <h2 class="title">{{ $unseenComments ?? 0 }}</h2>
+                <h2 class="title">{{ $consentRequestUnseenCommentsCount ?? 0 }}</h2>
                 <p class="subtitle">Unseen Comments</p>
             </div>
         </a>
