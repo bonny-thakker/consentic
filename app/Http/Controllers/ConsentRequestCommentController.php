@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\ConsentRequest;
 
@@ -16,6 +17,18 @@ class ConsentRequestCommentController extends Controller
     {
 
         $patient = $consentRequest->patient;
+
+        foreach($consentRequest->comments as $comment){
+
+            if($comment->commented_type == 'App\Patient' && $comment->commentable->user_id == auth()->user()->id){
+
+                $comment->update([
+                    'user_seen_ts' => Carbon::now()->toDateTimeString()
+                 ]);
+
+            }
+
+        }
 
         return view('app.consent-request.comment.index' , compact(
             'consentRequest',

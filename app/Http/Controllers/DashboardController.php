@@ -27,7 +27,8 @@ class DashboardController extends Controller
             ->count();
 
         $consentRequestUnseenCommentsCount = \App\ConsentRequest::whereHas('comments', function($q){
-            $q->whereNull('user_seen_ts');
+            $q->whereNull('user_seen_ts')
+            ->where('commented_type','App\Patient');
         })->get()->count();
 
         return view('app.dashboard.index', compact(
