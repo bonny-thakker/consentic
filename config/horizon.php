@@ -136,7 +136,7 @@ return [
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
-                'queue' => ['tntindex'],
+                'queue' => ['tntsearch'],
                 'balance' => 'simple',
                 'processes' => 1,
                 'tries' => 3,
