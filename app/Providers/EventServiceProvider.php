@@ -72,11 +72,52 @@ class EventServiceProvider extends ServiceProvider
             'Laravel\Spark\Listeners\Teams\CreateInvitationNotification',
         ],
 
+        'App\Events\UserLoggedIn' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\UserLoggedOut' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+
         'App\Events\ConsentRequestCreated' => [
             'App\Listeners\GenerateAuditLog',
         ],
 
         'App\Events\ConsentRequestUpdated' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\PasswordForgotten' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentPatientSigned' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentUserSigned' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentPatientCommented' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentUserCommented' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentPatientWatched' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentUserAnsweredQuestionsCorrectly' => [
+            'App\Listeners\GenerateAuditLog',
+        ],
+
+        'App\Events\ConsentPatientAnsweredQuestionsCorrectly' => [
             'App\Listeners\GenerateAuditLog',
         ],
 

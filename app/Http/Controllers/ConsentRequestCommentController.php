@@ -59,8 +59,9 @@ class ConsentRequestCommentController extends Controller
             'message' => 'required',
         ]);
 
-        auth()->user()->comment($consentRequest,$request->message);
-        notify()->success('Comment addded to consent request');
+        $comment = auth()->user()->comment($consentRequest,$request->message);
+        event(new \App\Events\ConsentUserCommented($comment));
+        notify()->success('Comment added to consent request');
         return back();
 
     }

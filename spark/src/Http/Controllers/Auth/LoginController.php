@@ -68,6 +68,8 @@ class LoginController extends Controller
             return $this->redirectForTwoFactorAuth($request, $user);
         }
 
+        event(new \App\Events\UserLoggedIn());
+
         return redirect()->intended($this->redirectPath());
     }
 
@@ -146,6 +148,9 @@ class LoginController extends Controller
      */
     public function logout()
     {
+
+        event(new \App\Events\UserLoggedOut());
+
         $this->guard()->logout();
 
         session()->flush();

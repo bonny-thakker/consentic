@@ -122,6 +122,8 @@ class ConsentRequestDoctorQuestionController extends Controller
             }
         }
 
+        event(new \App\Events\ConsentUserAnsweredQuestionsCorrectly($consentRequest));
+
         notify()->success('You have answered the consent request questions correctly');
 
         return redirect('app/consent-requests/'.$consentRequest->id.'/signed/edit');

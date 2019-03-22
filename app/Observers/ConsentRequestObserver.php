@@ -71,7 +71,9 @@ class ConsentRequestObserver
      */
     public function updated(ConsentRequest $consentRequest)
     {
+
         event(new \App\Events\ConsentRequestUpdated($consentRequest));
+
     }
 
     /**

@@ -94,6 +94,8 @@ class PublicConsentRequestController extends Controller
                 'video_watched' => $request->video_watched
             ]);
 
+            event(new \App\Events\ConsentPatientWatched($consentRequest));
+
         }
 
         if(isset($request->form) && $request->form == 'publicConsentRequestQuestions'){
@@ -140,8 +142,11 @@ class PublicConsentRequestController extends Controller
 
             // Submit comment
             if($request->message){
-                $consentRequest->patient->comment($consentRequest,$request->message);
+                $comment = $consentRequest->patient->comment($consentRequest,$request->message);
+                event(new \App\Events\ConsentPatientCommented($comment));
             }
+
+            event(new \App\Events\ConsentPatientAnsweredQuestionsCorrectly($consentRequest));
 
             return back()->with('consentRequestStage', 'sign');
 
@@ -204,6 +209,8 @@ class PublicConsentRequestController extends Controller
 
             Mail::to($consentRequest->user->email, $consentRequest->user->name)
                 ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));
+
+            event(new \App\Events\ConsentPatientSigned($consentRequest));
 
 
             return view('app.p.consent-request.complete',compact(

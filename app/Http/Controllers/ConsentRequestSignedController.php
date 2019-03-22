@@ -97,6 +97,8 @@ class ConsentRequestSignedController extends Controller
             'user_signature' => str_replace('public','/storage',$signatureUrl)
         ]);
 
+
+        event(new \App\Events\ConsentUserSigned($consentRequest));
         $signedLink = URL::signedRoute('public.consent-request.show', [
             'consentRequest' => $consentRequest->id
         ]);

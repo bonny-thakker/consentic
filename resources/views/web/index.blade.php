@@ -191,20 +191,18 @@
 
                                         <div class="field is-horizontal">
                                             <div class="field-body">
-                                                <div class="field">
+                                                {{--<div class="field">
                                                     <div class="control">
                                                         <input id="main-email-input" class="input" type="text" placeholder="Email" name="email">
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                                 <div class="field is-expanded">
                                                     <div class="control">
-                                                        <button id="main-signup-button" class="button submit is-secondary is-fullwidth">Sign Up
-                                                        </button></div>
+                                                        <a href="/register" id="main-signup-button" class="button submit is-secondary is-fullwidth" style="width: 300px">Sign Up
+                                                        </a></div>
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="column">

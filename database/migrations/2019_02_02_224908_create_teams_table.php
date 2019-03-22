@@ -33,7 +33,7 @@ class CreateTeamsTable extends Migration
             $table->text('extra_billing_information')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
             $table->smallInteger('credit')->default(0);
-            $table->string('abn')->default(0);
+            $table->string('abn')->nullable();
             $table->string('address')->nullable();
             $table->string('address_line_2')->nullable();
             $table->string('city')->nullable();

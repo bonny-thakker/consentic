@@ -52,7 +52,6 @@ class PasswordController extends Controller
         if (is_null($token)) {
             return $this->showLinkRequestForm();
         }
-
         return view('spark::auth.passwords.reset')
                 ->with(['token' => $token, 'email' => $request->email]);
     }
