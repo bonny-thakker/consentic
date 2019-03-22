@@ -51,6 +51,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
 
     // Spark
     Route::put('user/settings', 'UserController@update')->name('app.user.settings.update');
+    Route::put('user/settings/clinic/{team}/profile', 'TeamController@update')->name('app.team.profile.update');
 
     Route::get('/', function () {
         return redirect('/app/dashboard');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9941b74f67a5d9994058a729ae41bb30",
+    "content-hash": "3a48d23551f6ec383595a4fbc81343ef",
     "packages": [
         {
             "name": "actuallymab/laravel-comment",
@@ -3403,6 +3403,47 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "riclep/spark-single-payment",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RicLeP/spark-single-payment.git",
+                "reference": "caba25d5eafc7e6ea525ff8e3b4c95879bbeaaa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RicLeP/spark-single-payment/zipball/caba25d5eafc7e6ea525ff8e3b4c95879bbeaaa2",
+                "reference": "caba25d5eafc7e6ea525ff8e3b4c95879bbeaaa2",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RicLeP\\SparkSinglePayment\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Richard Le Poidevin",
+                    "email": "ric@wearebwi.com"
+                }
+            ],
+            "description": "Take single payments in Laravel Spark such as 'pay-as-you-go' payments",
+            "keywords": [
+                "braintree",
+                "laravel",
+                "laravel spark",
+                "payments",
+                "spark",
+                "stripe"
+            ],
+            "time": "2018-07-09T11:12:15+00:00"
         },
         {
             "name": "sabberworm/php-css-parser",

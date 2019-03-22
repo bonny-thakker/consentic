@@ -74,8 +74,13 @@
                 </span>
             </div>
             <div class="quick-stats-content">
-                <h2 class="title">{{ $remainingConsents ?? 0 }}</h2>
-                <p class="subtitle">Remaining Credits</p>
+                @if(Auth::user()->currentTeam->onGenericTrial())
+                    <h2 class="title">Free Trial</h2>
+                    <p class="subtitle">Unlimited Consent Requests</p>
+                @else
+                    <h2 class="title">{{ $remainingConsents ?? 0 }}</h2>
+                    <p class="subtitle">Remaining Credits</p>
+                @endif
             </div>
         </a>
     </div>

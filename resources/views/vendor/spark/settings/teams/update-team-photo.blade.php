@@ -17,7 +17,7 @@
                         </div>
                         <div class="spark-uploader mr-4">
                             <input ref="photo" type="file" class="spark-uploader-control" name="photo" @change="update" :disabled="form.busy">
-                            <div class="btn btn-outline-dark">{{__('Update Photo')}}</div>
+                            <div class="btn btn-outline-dark">{{__('Update Logo')}}</div>
                         </div>
                     </div>
                 </div>

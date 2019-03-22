@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Laravel\Spark\Spark;
 use Laravel\Spark\Providers\AppServiceProvider as ServiceProvider;
+use Carbon\Carbon;
 
 class SparkServiceProvider extends ServiceProvider
 {
@@ -82,6 +83,38 @@ class SparkServiceProvider extends ServiceProvider
             ->features([
                 'Unlimited Account Users',
             ]);*/
+
+        Spark::validateUsersWith(function () {
+            return [
+                'first_name' => 'required|max:255',
+                'last_name' => 'required|max:255',
+                'title' => 'required',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+             /*   'vat_id' => 'max:50|vat_id',*/
+                'terms' => 'required|accepted',
+            ];
+        });
+
+        Spark::createUsersWith(function ($request) {
+            $user = Spark::user();
+
+            $data = $request->all();
+
+            $user->forceFill([
+                'name' => trim($data['first_name'].' '.$data['last_name']),
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'phone_number' => $data['phone_number'],
+                'title' => $data['title'],
+                'password' => bcrypt($data['password']),
+                'last_read_announcements_at' => Carbon::now(),
+                'trial_ends_at' => Carbon::now()->addDays(Spark::trialDays()),
+            ])->save();
+
+            return $user;
+        });
 
     }
     /**

@@ -19,7 +19,7 @@
                             <div class="login column">
                                 <div class="columns">
                                     <div class="column is-12">
-                                        <section class="section">
+                                        <section class="section-bulma">
                         @include('spark::auth.register-common')
                                         </section>
                                     </div>

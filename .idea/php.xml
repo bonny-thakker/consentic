@@ -124,6 +124,7 @@
       <path value="$PROJECT_DIR$/vendor/actuallymab/laravel-comment" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/vendor/riclep/spark-single-payment" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

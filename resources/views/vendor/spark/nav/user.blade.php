@@ -44,11 +44,18 @@
 
                 <ul class="navbar-nav ml-4">
                     <li class="nav-item dropdown">
+                        @if(Auth::user()->currentTeam)
                         <a href="#" class="d-block d-md-flex text-center nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <img src="{{ Auth::user()->currentTeam->photo_url }}" class="dropdown-toggle-image spark-nav-profile-photo" alt="{{__('User Photo')}}" />
                             <span class="d-none d-md-block">{{ Auth::user()->currentTeam->name }}</span>
                         </a>
+                        @else
+                            <a href="#" class="d-block d-md-flex text-center nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <span class="d-none d-md-block">{{ Auth::user()->name }}</span>
+                            </a>
+                        @endif
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <!-- Impersonation -->
                             @if (session('spark:impersonator'))

@@ -25,8 +25,8 @@
 <!-- Plan Selection -->
 <div class="row justify-content-center" v-if="paidPlans.length > 0 && !registerForm.invitation">
     <div class="col-lg-8">
-        <div class="card card-default">
-            <div class="card-header">
+        <div class="card-bulma">
+            <div class="card-header-bulma">
                 <div class="float-left" :class="{'btn-table-align': hasMonthlyAndYearlyPlans}">
                     {{__('Subscription')}}
                 </div>
@@ -120,15 +120,15 @@
 
 <!-- Basic Profile -->
 <div class="row justify-content-center">
-    <div class="col-lg-8">
-        <div class="card card-default">
-            <div class="card-header">
+    <div class="columns">
+        <div class="card-bulma card-default">
+            <div class="card-header-bulma" style="margin-bottom: 30px; display: none;">
                 <span v-if="paidPlans.length > 0">
                     <h1 class="title">{{__('Profile')}}</h1>
                 </span>
 
                 <span v-else>
-                    <h1 class="title">{{__('Register')}}</h1>
+                   {{-- <h1 class="title">{{__('Join Now')}}</h1>--}}
                 </span>
             </div>
 

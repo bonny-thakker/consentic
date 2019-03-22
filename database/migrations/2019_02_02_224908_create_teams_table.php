@@ -32,6 +32,14 @@ class CreateTeamsTable extends Migration
             $table->string('vat_id', 50)->nullable();
             $table->text('extra_billing_information')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
+            $table->smallInteger('credit')->default(0);
+            $table->string('abn')->default(0);
+            $table->string('address')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip', 25)->nullable();
+            $table->string('country', 2)->nullable();
             $table->timestamps();
         });
     }
