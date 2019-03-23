@@ -217,6 +217,7 @@ class PublicConsentRequestController extends Controller
 
             event(new \App\Events\ConsentPatientSigned($consentRequest));
 
+            $patient = $consentRequest->patient;
 
             return view('app.p.consent-request.complete',compact(
                 'consentRequest',
