@@ -13,7 +13,7 @@
 <div class="select is-fullwidth m-t-md{{ $errors->has('consent') ? ' is-danger' : '' }}">
     <select name="consent" id="procedure-list">
         <option disabled selected>Select Procedure</option>
-        @foreach (\App\Consent::all() as $consent)
+        @foreach (\App\Consent::orderBy('name', 'ASC')->get() as $consent)
             <option
                     value="{{ $consent->id }}"
                     data-video="{{ $consent->video_url }}"  {{ (old('consent') == $consent->id || (isset($consentRequest) && $consentRequest->consent->id == $consent->id) || (isset($createForConsent) && $createForConsent->id == $consent->id)) ? 'selected' : null }}

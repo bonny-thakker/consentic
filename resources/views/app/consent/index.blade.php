@@ -160,14 +160,14 @@
 
                                        <div class="field has-addons is-pulled-right action" style="margin-bottom: 0">
                                        <p class="control">
-                                           <a href="{{ url('app/consents/'.$consent->id) }}" class="button is-info tooltip consent-video-modal" data-tooltip="View Details">
+                                           <a href="{{ url('app/consents/'.$consent->id) }}" class="button is-info tooltip consent-video-modal" data-tooltip="Watch Animation">
                                         <span class="icon">
                                             <i class="fas fa-eye"></i>
                                         </span>
                                            </a>
                                        </p>
                                        <p class="control">
-                                           <a href="{{ url('app/consent-requests/create/consent/'.$consent->id) }}" class="button is-success has-text-white tooltip add-consent-request-button" data-tooltip="Add Consent">
+                                           <a href="{{ url('app/consent-requests/create/consent/'.$consent->id) }}" class="button is-success has-text-white tooltip add-consent-request-button" data-tooltip="Add Consent Request">
                                                <i class="fas fa-plus"></i>
                                            </a>
                                        </p>

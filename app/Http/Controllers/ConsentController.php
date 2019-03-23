@@ -15,7 +15,7 @@ class ConsentController extends Controller
     public function index()
     {
 
-        $consents = \App\Consent::all();
+        $consents = \App\Consent::orderBy('name', 'ASC')->get();
         return view('app.consent.index', compact(
             'consents'
         ));
