@@ -194,6 +194,11 @@ class PublicConsentRequestController extends Controller
 
             $pdfFileName = trim($consentRequest->patient->fullName()) . '_' . trim($consentRequest->consent->name) . '_' . date('dmY');
             $pdfFileName = str_replace(' ', '_', strtolower($pdfFileName)) . '.pdf';
+
+            if(!file_exists(storage_path('app/pdf'))){
+                mkdir(storage_path('app/pdf'));
+            }
+
             $pdfPath = storage_path('app/pdf/'.$pdfFileName);
 
             $mpdf->WriteHTML($html);
