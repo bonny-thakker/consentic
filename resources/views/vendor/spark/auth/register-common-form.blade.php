@@ -5,7 +5,7 @@
 
             <div class="field columns is-variable is-3">
                 <div class="control column is-6">
-                    <h1 class="title is-2">{{__('Join Now')}}</h1>
+                    <h1 class="title is-2">{{__('Join Now For A 30 Day Free Trial!')}}</h1>
                 </div>
 
             </div>

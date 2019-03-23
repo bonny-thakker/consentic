@@ -29,8 +29,8 @@
 
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/bulma.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/badge.min.css') }}">
-    {{--<link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-tooltip.min.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-switch.min.css') }}">--}}
+    <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-tooltip.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/plugins/bulma/extensions/bulma-switch.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/materialdesignicons/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/fontawesome/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/plugins/datatables/css/dataTables.bulma.css') }}">

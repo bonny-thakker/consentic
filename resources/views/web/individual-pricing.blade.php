@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="plan-footer">
-                                    <a class="button is-medium is-primary is-fullwidth" href="/register">Join Now</a>
+                                    <a class="button is-medium is-primary is-fullwidth" href="/register">30 Day Free Trial, Join Now!</a>
                                 </div>
                             </div>
                             <div class="pricing-plan column">
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div class="plan-footer">
-                                    <a class="button is-medium is-primary is-fullwidth" href="/register">Join Now</a>
+                                    <a class="button is-medium is-primary is-fullwidth" href="/register">30 Day Free Trial, Join Now!</a>
                                 </div>
                             </div>
                         </div></div>

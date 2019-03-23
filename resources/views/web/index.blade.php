@@ -198,7 +198,7 @@
                                                 </div>--}}
                                                 <div class="field is-expanded">
                                                     <div class="control">
-                                                        <a href="/register" id="main-signup-button" class="button submit is-secondary is-fullwidth" style="width: 300px">Sign Up
+                                                        <a href="/register" id="main-signup-button" class="button submit is-secondary is-fullwidth" style="width: 300px">Sign Up for a Free 30 Day Trial
                                                         </a></div>
                                                 </div>
                                             </div>
