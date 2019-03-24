@@ -14,12 +14,11 @@
 
                 <div class="control column p-b-none is-6">
                     <!-- Title  -->
-                    <div class="select is-medium is-fullwidth">
+                    <div class="contro">
+
                         {{--  <label class="label is-medium">{{__('Title')}}</label>--}}
 
-                        <div class="control">
-
-                            <select class="site-input-size" name="title" v-model="registerForm.title"
+                            <select class="input is-medium site-input-size" name="title" v-model="registerForm.title"
                                     :class="{'is-invalid': registerForm.errors.has('title')}" autofocus>
                                 <option value="" selected="" disabled="">Title</option>
                                 <option value="Doctor">Doctor</option>
@@ -34,10 +33,7 @@
                                   @{{ registerForm.errors.get('title') }}
                             </span>
 
-                            </span>
                         </div>
-                    </div>
-
 
                 </div>
 
@@ -144,10 +140,31 @@
                                     <label class="form-check-label" for="terms">
                                         {{--{!! __('I Accept :linkOpen The Terms Of Service :linkClose', ['linkOpen' => '<a href="/terms" target="_blank">', 'linkClose' => '</a>']) !!}--}}
                                         I consent that I have read and agree to be bound by the <a
-                                                href="{{ url('terms-and-conditions') }}" target="_blank">Terms & Conditions </a> of
+                                                href="#" data-modal-id="#modal-terms" data-toggle="modal">Terms & Conditions </a> of
                                         Consentic. I also agree that I have read and understand the <a
-                                                href="{{ url('privacy-policy') }}" target="_blank">Privacy Policy</a> and understand
+                                                href="#" data-modal-id="#modal-privacy" data-toggle="modal">Privacy Policy</a> and understand
                                         that both these agreements may change at any time without notice.
+
+                                        <div class="modal" id="modal-terms">
+                                            <div class="modal-background"></div>
+                                            <div class="modal-content">
+                                                <div class="box">
+                                                    @include('web.partial.terms')
+                                                </div>
+                                                @include('web.partial.terms')
+                                            </div>
+                                            <button class="modal-close is-large" aria-label="close" data-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal" id="modal-privacy">
+                                            <div class="modal-background"></div>
+                                            <div class="modal-content">
+                                                <div class="box">
+                                                @include('web.partial.privacy')
+                                                </div>
+                                            </div>
+                                            <button class="modal-close is-large" aria-label="close" data-dismiss="modal"></button>
+                                        </div>
 
                                     </label>
                                     <div class="invalid-feedback" v-show="registerForm.errors.has('terms')">

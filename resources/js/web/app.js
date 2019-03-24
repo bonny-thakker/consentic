@@ -63,10 +63,11 @@ const App = function() {
             });
 
             $(document).on('click', '[data-dismiss="modal"]', function(e) {
+
                 e.preventDefault();
 
                 // Get modal Id
-                let modalId = '#' + $(this).closest('.modal')[0].id;
+                let modalId = '#' + $(this).closest('.modal').attr('id');
 
                 // Trigger pre hide modal
                 $(modalId).trigger('hide.modal');
@@ -76,6 +77,7 @@ const App = function() {
 
                 // Trigger post hide modal
                 $(modalId).trigger('hidden.modal');
+
             });
 
             App.handleNavbar();

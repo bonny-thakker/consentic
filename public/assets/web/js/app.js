@@ -147,7 +147,7 @@ var App = function () {
       $(document).on('click', '[data-dismiss="modal"]', function (e) {
         e.preventDefault(); // Get modal Id
 
-        var modalId = '#' + $(this).closest('.modal')[0].id; // Trigger pre hide modal
+        var modalId = '#' + $(this).closest('.modal').attr('id'); // Trigger pre hide modal
 
         $(modalId).trigger('hide.modal'); // Hide the modal
 
