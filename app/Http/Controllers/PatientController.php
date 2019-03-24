@@ -68,7 +68,7 @@ class PatientController extends Controller
             'title' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'birthday' => 'required',
+            'birthday' => 'required|date_format:d/m/Y',
             'address' => 'required',
             'suburb' => 'required',
             'state' => 'required',
