@@ -13,7 +13,7 @@
                     @endif
             >
                 <select class="patient-input"
-                        name="question[{{ $consentRequestQuestion->id }}]" {{ ($consentRequest->isPatientSigned() || (isset($isDisabledQuestion) && $isDisabledQuestion)) ? 'disabled' : '' }} >
+                        name="question[{{ $consentRequestQuestion->id }}]" {{ (($consentRequest->isPatientSigned() && !isset($editEnabled)) || (isset($isDisabledQuestion) && $isDisabledQuestion)) ? 'disabled' : '' }} >
                     <option selected>Select Answer</option>
                     @foreach($consentRequestQuestion->consentRequestQuestionable->answers as $answer)
                         <option
@@ -43,7 +43,7 @@
                     @endif
             >
                 <select class="patient-input"
-                        name="question[{{ $consentRequestQuestion->id }}]" {{ ($consentRequest->isPatientSigned() || (isset($isDisabledQuestion) && $isDisabledQuestion)) ? 'disabled' : '' }}>
+                        name="question[{{ $consentRequestQuestion->id }}]" {{ (($consentRequest->isPatientSigned() && !isset($editEnabled)) || (isset($isDisabledQuestion) && $isDisabledQuestion)) ? 'disabled' : '' }}>
                     <option selected>Select Answer</option>
                     @foreach($consentRequestQuestion->consentRequestQuestionable->answers as $answer)
                         <option

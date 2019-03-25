@@ -86,6 +86,7 @@
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
                              'consentRequestQuestionAnswer' => $consentRequestQuestion->consentRequestQuestionAnswer->answer ?? null,
+                             'editEnabled' => true
                            ])
                        @endforeach
 

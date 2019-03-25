@@ -160,7 +160,21 @@ class ConsentRequestController extends Controller
 
         notify()->success('Patient consent request created');
 
-        return redirect('app/consent-requests/'.$consentRequest->id.'/doctor-questions/edit');
+        $signedLink = URL::signedRoute('public.consent-request.show', [
+            'consentRequest' => $consentRequest->id
+        ]);
+
+        if($consentRequest->in_office == 1){
+
+            return redirect($signedLink);
+
+        }else{
+
+            Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestMail($consentRequest, $signedLink));
+
+        }
+
+        return redirect('app/consent-requests/'.$consentRequest->id);
 
     }
 
@@ -244,7 +258,21 @@ class ConsentRequestController extends Controller
 
         notify()->success('Patient consent request updated');
 
-        return redirect('app/consent-requests/'.$consentRequest->id.'/doctor-questions/edit');
+        $signedLink = URL::signedRoute('public.consent-request.show', [
+            'consentRequest' => $consentRequest->id
+        ]);
+
+        if($consentRequest->in_office == 1){
+
+            return redirect($signedLink);
+
+        }else{
+
+            Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestMail($consentRequest, $signedLink));
+
+        }
+
+        return redirect('app/consent-requests/'.$consentRequest->id);
 
     }
 

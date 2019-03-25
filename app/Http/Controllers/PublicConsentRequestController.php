@@ -164,60 +164,11 @@ class PublicConsentRequestController extends Controller
                 'patient_signature' => str_replace('public','/storage',$signatureUrl)
             ]);
 
-            // Generate PDF
-            parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
-            $videoId = $videoParams['v'] ?? '';
+            $patient = $consentRequest->patient;
 
-            $html = view('pdf.consent-summary', compact('consentRequest', 'videoId'))->render();
-
-            $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
-            $fontDirs = $defaultConfig['fontDir'];
-
-            $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
-            $fontData = $defaultFontConfig['fontdata'];
-
-            $mpdf = new Mpdf([
-                'fontDir' => array_merge($fontDirs, [
-                    public_path('assets/fonts'),
-                ]),
-                'fontdata' => $fontData + [
-                        'helvetica' => [
-                            'R' => 'HelveticaNeue.ttf'
-                        ],
-                        'fontawesome' => [
-                            'R' => 'fa-solid-900.ttf'
-                        ]
-                    ],
-                'default_font' => 'helvetica',
-                'tempDir' => storage_path('app/mpdf')
-            ]);
-
-            $pdfFileName = trim($consentRequest->patient->fullName()) . '_' . trim($consentRequest->consent->name) . '_' . date('dmY');
-            $pdfFileName = str_replace(' ', '_', strtolower($pdfFileName)) . '.pdf';
-
-            if(!file_exists(storage_path('app/pdf'))){
-                mkdir(storage_path('app/pdf'));
-            }
-
-            $pdfPath = storage_path('app/pdf/'.$pdfFileName);
-
-            $mpdf->WriteHTML($html);
-            $mpdf->Output($pdfPath);
-
-            $consentRequest->update([
-                'pdf' => 'app/pdf/'.$pdfFileName,
-            ]);
-
-            // Send notification
-            Mail::to($consentRequest->patient->email->address, $consentRequest->patient->fullName())
-                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'patient', $pdfPath));
-
-            Mail::to($consentRequest->user->email, $consentRequest->user->name)
-                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));
+            Mail::to($consentRequest->user->email, $consentRequest->user->fullName())->send(new \App\Mail\ConsentRequestPatientCompleted($consentRequest));
 
             event(new \App\Events\ConsentPatientSigned($consentRequest));
-
-            $patient = $consentRequest->patient;
 
             return view('app.p.consent-request.complete',compact(
                 'consentRequest',

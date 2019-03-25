@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\ConsentRequest;
 use Storage;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Mail;
+use Mail;
+use Image;
+use Mpdf\Mpdf;
+use Validator;
 
 class ConsentRequestSignedController extends Controller
 {
@@ -97,21 +99,58 @@ class ConsentRequestSignedController extends Controller
             'user_signature' => str_replace('public','/storage',$signatureUrl)
         ]);
 
+        // Generate PDF
+        parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
+        $videoId = $videoParams['v'] ?? '';
 
-        event(new \App\Events\ConsentUserSigned($consentRequest));
-        $signedLink = URL::signedRoute('public.consent-request.show', [
-            'consentRequest' => $consentRequest->id
+        $html = view('pdf.consent-summary', compact('consentRequest', 'videoId'))->render();
+
+        $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
+
+        $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
+
+        $mpdf = new Mpdf([
+            'fontDir' => array_merge($fontDirs, [
+                public_path('assets/fonts'),
+            ]),
+            'fontdata' => $fontData + [
+                    'helvetica' => [
+                        'R' => 'HelveticaNeue.ttf'
+                    ],
+                    'fontawesome' => [
+                        'R' => 'fa-solid-900.ttf'
+                    ]
+                ],
+            'default_font' => 'helvetica',
+            'tempDir' => storage_path('app/mpdf')
         ]);
 
-        if($consentRequest->in_office == 1){
+        $pdfFileName = trim($consentRequest->patient->fullName()) . '_' . trim($consentRequest->consent->name) . '_' . date('dmY');
+        $pdfFileName = str_replace(' ', '_', strtolower($pdfFileName)) . '.pdf';
 
-            return redirect($signedLink);
-
-        }else{
-
-            Mail::to($patient->email->address, $patient->fullName())->send(new \App\Mail\ConsentRequestMail($consentRequest, $signedLink));
-
+        if(!file_exists(storage_path('app/pdf'))){
+            mkdir(storage_path('app/pdf'));
         }
+
+        $pdfPath = storage_path('app/pdf/'.$pdfFileName);
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output($pdfPath);
+
+        $consentRequest->update([
+            'pdf' => 'app/pdf/'.$pdfFileName,
+        ]);
+
+        // Send notification
+        Mail::to($consentRequest->patient->email->address, $consentRequest->patient->fullName())
+              ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'patient', $pdfPath));
+
+        Mail::to($consentRequest->user->email, $consentRequest->user->name)
+             ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));
+
+        event(new \App\Events\ConsentUserSigned($consentRequest));
 
         notify()->success('You have signed the consent request');
 

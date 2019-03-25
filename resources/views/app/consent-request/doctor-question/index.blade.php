@@ -103,7 +103,7 @@
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,
                              'consentRequestQuestionAnswer' => $consentRequestQuestion->consentRequestQuestionAnswer->answer ?? null,
-                            'isDisabledQuestion' => true
+                             'isDisabledQuestion' => true
                            ])
                        @endforeach
                    </div>

@@ -11696,3 +11696,7 @@ ul.list-unstyled .comment-link {
   padding: 1rem !important;
 }
 
+.select.is-success select[disabled] {
+  border-color: #23d160 !important;
+}
+

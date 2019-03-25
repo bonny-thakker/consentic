@@ -57,3 +57,7 @@ ul.list-unstyled .comment-link{
 #publicConsentRequestQuestions .is-divider-vertical{
   padding:1rem !important;
 }
+
+.select.is-success select[disabled]{
+  border-color: #23d160 !important;
+}
