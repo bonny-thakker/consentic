@@ -18,7 +18,7 @@ class ConsentRequestObserver
 
         event(new \App\Events\ConsentRequestCreated($consentRequest));
 
-        foreach(\App\UserQuestion::all() as $userQuestion){
+        foreach(\App\UserQuestion::orderBy('order', 'ASC')->get() as $userQuestion){
 
             $consentRequestQuestion = \App\ConsentRequestQuestion::create([
                 'consent_request_id' => $consentRequest->id,
