@@ -57,31 +57,28 @@ class SparkServiceProvider extends ServiceProvider
 
         Spark::useStripe()->noCardUpFront()->teamTrialDays(30);
 
-      /*  Spark::freeTeamPlan()
+       /* Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'
             ]);*/
 
-      /*  Spark::teamPlan('Individual Starter', 'individual-starter')
+       /* Spark::teamPlan('Individual Clinicians', 'individual-standard')
             ->price(10)
             ->maxTeamMembers(1)
             ->features([
                 'Single Account User',
-                '10 Consents',
+                '$2.50 Per Consent',
+                '24/7 Support',
+                'Purchase in blocks of 20-100'
             ]);
 
-        Spark::teamPlan('Individual Standard', 'individual-standard')
-            ->price(20)
-            ->maxTeamMembers(1)
-            ->features([
-                'Single Account User',
-                '20 Consents',
-            ]);
-
-        Spark::teamPlan('Clinic Standard', 'clinic-standard')
+        Spark::teamPlan('Group Practices', 'clinic-standard')
             ->price(100)
             ->features([
                 'Unlimited Account Users',
+                '$2.00 Per Consent',
+                '24/7 Support',
+                'Pay As You Go'
             ]);*/
 
         Spark::validateUsersWith(function () {

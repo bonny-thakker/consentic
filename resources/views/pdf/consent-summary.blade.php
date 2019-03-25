@@ -147,7 +147,7 @@
                 @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
 
                     <tr class="item">
-                        <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->text }}</td>
+                        <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->consentRequestQuestionable->text }}</td>
                     </tr>
 
                     @switch ($consentRequestQuestion->consentRequestQuestionable->type)
@@ -172,7 +172,7 @@
                 @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\PatientQuestion')->get() as $consentRequestQuestion)
 
                     <tr class="item">
-                        <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->text }}</td>
+                        <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->consentRequestQuestionable->text }}</td>
                     </tr>
 
                     @switch ($consentRequestQuestion->consentRequestQuestionable->type)
@@ -206,7 +206,7 @@
                 @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\PatientQuestion')->get() as $consentRequestQuestion)
 
                     <tr class="item">
-                        <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->text }}</td>
+                        <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->consentRequestQuestionable->text }}</td>
                     </tr>
 
                     @switch ($consentRequestQuestion->consentRequestQuestionable->type)
