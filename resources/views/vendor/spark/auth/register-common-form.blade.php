@@ -133,6 +133,48 @@
                 </div>
             </div>
 
+           @if (Spark::usesTeams() && Spark::onlyTeamPlans())
+
+
+                <div class="field columns is-variable">
+                    <div class="control column p-b-none" v-if=" ! invitation">
+
+                        <!-- Team Name -->
+                        <div class="control">
+                            <input type="text" class="input is-medium site-input-size" name="team"  placeholder="Practice Name" v-model="registerForm.team"
+                                   :class="{'is-invalid': registerForm.errors.has('team')}" autofocus>
+
+                            <span class="invalid-feedback" v-show="registerForm.errors.has('team')">
+                                    @{{ registerForm.errors.get('team') }}
+                                </span>
+                        </div>
+
+                    </div>
+
+                @if (Spark::teamsIdentifiedByPath())
+                    <!-- Team Slug (Only Shown When Using Paths For Teams) -->
+                        <div class="field" v-if=" ! invitation">
+                            <label class="label is-medium">{{ __('teams.team_slug') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="input is-medium site-input-size" name="team_slug" v-model="registerForm.team_slug"
+                                       :class="{'is-invalid': registerForm.errors.has('team_slug')}" autofocus>
+
+                                <small class="form-text text-muted" v-show="! registerForm.errors.has('team_slug')">
+                                    {{__('teams.slug_input_explanation')}}
+                                </small>
+
+                                <span class="invalid-feedback" v-show="registerForm.errors.has('team_slug')">
+                            @{{ registerForm.errors.get('team_slug') }}
+                        </span>
+                            </div>
+                        </div>
+                    @endif
+
+                </div>
+               
+            @endif
+
             <div class="field columns is-variable">
                 <div class="control column p-b-none">
 
@@ -203,43 +245,5 @@
         </div>
 
     </div>
-
-@if (Spark::usesTeams() && Spark::onlyTeamPlans())
-    <!-- Team Name -->
-        <div class="field" v-if=" ! invitation">
-            <label class="label is-medium">{{ __('teams.team_name') }}</label>
-
-            <div class="col-md-6">
-                <input type="text" class="input is-medium site-input-size" name="team" v-model="registerForm.team"
-                       :class="{'is-invalid': registerForm.errors.has('team')}" autofocus>
-
-                <span class="invalid-feedback" v-show="registerForm.errors.has('team')">
-                    @{{ registerForm.errors.get('team') }}
-                </span>
-            </div>
-        </div>
-
-    @if (Spark::teamsIdentifiedByPath())
-        <!-- Team Slug (Only Shown When Using Paths For Teams) -->
-            <div class="field" v-if=" ! invitation">
-                <label class="label is-medium">{{ __('teams.team_slug') }}</label>
-
-                <div class="col-md-6">
-                    <input type="text" class="input is-medium site-input-size" name="team_slug" v-model="registerForm.team_slug"
-                           :class="{'is-invalid': registerForm.errors.has('team_slug')}" autofocus>
-
-                    <small class="form-text text-muted" v-show="! registerForm.errors.has('team_slug')">
-                        {{__('teams.slug_input_explanation')}}
-                    </small>
-
-                    <span class="invalid-feedback" v-show="registerForm.errors.has('team_slug')">
-                        @{{ registerForm.errors.get('team_slug') }}
-                    </span>
-                </div>
-            </div>
-    @endif
-@endif
-
-
 
 </form>
