@@ -5,7 +5,13 @@
 
             <div class="field columns is-variable is-3">
                 <div class="control column is-6">
-                    <h1 class="title is-2">{{__('Join Now For A 30 Day Free Trial!')}}</h1>
+                    <h1 class="title is-2">
+                        @if(env('TRIAL_ENABLED'))
+                            {{__('Refister Now For A 30 Day Free Trial!')}}
+                        @else
+                            {{__('Registration')}}
+                        @endif
+                    </h1>
                 </div>
 
             </div>
@@ -14,7 +20,7 @@
 
                 <div class="control column p-b-none is-6">
                     <!-- Title  -->
-                    <div class="contro">
+                    <div class="control">
 
                         {{--  <label class="label is-medium">{{__('Title')}}</label>--}}
 
@@ -131,7 +137,7 @@
                 <div class="control column p-b-none">
 
                     <!-- Terms And Conditions -->
-                    <div v-if=" ! selectedPlan || selectedPlan.price == 0">
+                    <div>
                         <div class="field">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

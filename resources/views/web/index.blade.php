@@ -198,7 +198,12 @@
                                                 </div>--}}
                                                 <div class="field is-expanded">
                                                     <div class="control">
-                                                        <a href="/register" id="main-signup-button" class="button submit is-secondary is-fullwidth" style="width: 300px">Sign Up for a Free 30 Day Trial
+                                                        <a href="/register" id="main-signup-button" class="button submit is-secondary is-fullwidth" style="width: 300px">
+                                                            @if(env('TRIAL_ENABLED'))
+                                                                Sign Up for a Free 30 Day Trial
+                                                            @else
+                                                                Sign Up Now
+                                                            @endif
                                                         </a></div>
                                                 </div>
                                             </div>

@@ -1,7 +1,7 @@
 <div class="dropdown">
     <div class="dropdown-trigger spark-nav-profile-dropdown">
-        <img src="{{ Auth::user()->currentTeam->photo_url }}" class="dropdown-toggle-image spark-nav-profile-photo" alt="{{__('User Photo')}}" />
-            <span class="spark-nav-profile-name">{{ Auth::user()->currentTeam->name }}</span>
+        <img src="{{ Auth::user()->currentTeam->photo_url ?? Auth::user()->photo_url  }}" class="dropdown-toggle-image spark-nav-profile-photo" alt="{{__('User Photo')}}" />
+            <span class="spark-nav-profile-name">{{ Auth::user()->currentTeam->name ?? Auth::user()->name }}</span>
             <span class="icon is-small">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
       </span>

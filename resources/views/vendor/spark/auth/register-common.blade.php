@@ -23,7 +23,7 @@
 </div>
 
 <!-- Plan Selection -->
-<div class="row justify-content-center" v-if="paidPlans.length > 0 && !registerForm.invitation">
+<div class="row justify-content-center is-hidden" v-if="paidPlans.length > 0 && !registerForm.invitation">
     <div class="col-lg-8">
         <div class="card-bulma">
             <div class="card-header-bulma">

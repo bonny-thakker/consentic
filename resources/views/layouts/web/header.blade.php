@@ -24,7 +24,13 @@
                     <div class="navbar-item p-r-none">
                         <div class="field is-grouped">
                             <div class=control>
-                                <a href="{{ url('register') }}" class="button is-primary" id="button-signup">30 Day Free Trial, Join Now!</a>
+                                <a href="{{ url('register') }}" class="button is-primary" id="button-signup">
+                                    @if(env('TRIAL_ENABLED'))
+                                        30 Day Free Trial, Join Now!
+                                    @else
+                                        Sign Up Now
+                                    @endif
+                                </a>
                             </div>
                             <div class=control> 
                                 <a href="{{ url('login') }}" class="button" id="button-login">Login</a>

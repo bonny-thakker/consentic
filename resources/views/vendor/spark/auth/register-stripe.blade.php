@@ -28,7 +28,7 @@
                         </div>
 
                         <!-- Billing Information -->
-                        <div class="row justify-content-center" v-if="selectedPlan && selectedPlan.price > 0">
+                        <div class="row justify-content-center is-hidden" v-if="selectedPlan && selectedPlan.price > 0">
                             <div class="col-lg-8">
                                 <div class="card card-default">
                                     <div class="card-header">{{__('Billing Information')}}</div>

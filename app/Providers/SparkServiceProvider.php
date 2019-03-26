@@ -55,15 +55,19 @@ class SparkServiceProvider extends ServiceProvider
         Spark::useTwoFactorAuth();
         Spark::collectBillingAddress();
 
-        Spark::useStripe()->noCardUpFront()->teamTrialDays(14);
-        Spark::useStripe()->noCardUpFront()->trialDays(14);
+        if(env('TRIAL_ENABLED')){
+            Spark::useStripe()->noCardUpFront()->teamTrialDays(14);
+            // Spark::useStripe()->noCardUpFront()->trialDays(14);
+        }else{
+            Spark::useStripe()->noCardUpFront();
+        }
 
        /* Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'
             ]);*/
 
-        Spark::plan('Individual Clinicians - 10 Pack', 'individual-10')
+    /*    Spark::plan('Individual Clinicians - 10 Pack', 'individual-10')
             ->price(25)
             ->maxTeamMembers(1)
             ->features([
@@ -91,9 +95,9 @@ class SparkServiceProvider extends ServiceProvider
                 '50 Consent Requests',
                 '24/7 Support',
                 '$2.50 for each additional consent'
-            ]);
+            ]);*/
 
-        Spark::teamPlan('Group Practices - 10 Pack', 'group-10')
+        Spark::teamPlan('Practice - 10 Pack', 'practice-10')
             ->price(25)
             ->features([
                 'Unlimited Account Users',
@@ -102,7 +106,7 @@ class SparkServiceProvider extends ServiceProvider
                 '$2.50 for each additional consent'
             ]);
 
-        Spark::teamPlan('Group Practices - 30 Pack', 'group-30')
+        Spark::teamPlan('Practice - 30 Pack', 'practice-30')
             ->price(50)
             ->features([
                 'Unlimited Account Users',
@@ -111,7 +115,7 @@ class SparkServiceProvider extends ServiceProvider
                 '$2.50 for each additional consent'
             ]);
 
-        Spark::teamPlan('Group Practices - 50 Pack', 'group-50')
+        Spark::teamPlan('Practice - 50 Pack', 'practice-50')
             ->price(100)
             ->features([
                 'Unlimited Account Users',
@@ -160,7 +164,7 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Spark::prefixTeamsAs('clinic');
+        Spark::prefixTeamsAs('practice');
         Spark::afterLoginRedirectTo('/app');
     }
 

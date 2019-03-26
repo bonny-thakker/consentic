@@ -32,7 +32,7 @@
                 <h3 class="subtitle">The pricing models for group practices are outlined below.</h3>
             </div>
         </section>
-        <section class="section ui-sortable-handle" data-background-image="" data-background-color="" style="background-image: url(&quot;&quot;);" ");"="">
+        <section class="section ui-sortable-handle" data-background-image="" data-background-color="">
         <div class="container">
             <div class="columns rows ui-sortable"><div class="column" style="">
                     <div class="column-actions" style="display: none;">
@@ -73,7 +73,13 @@
                                     </div>
                                 </div>
                                 <div class="plan-footer">
-                                    <a class="button is-medium is-primary is-fullwidth" href="/register">30 Day Free Trial, Join Now!</a>
+                                    <a class="button is-medium is-primary is-fullwidth" href="/register">
+                                        @if(env('TRIAL_ENABLED'))
+                                            30 Day Free Trial, Join Now!
+                                        @else
+                                            Sign Up Now
+                                        @endif
+                                    </a>
                                 </div>
                             </div>
                             <div class="pricing-plan column">
@@ -98,7 +104,13 @@
                                     </div>
                                 </div>
                                 <div class="plan-footer">
-                                    <a class="button is-medium is-primary is-fullwidth" href="/register">30 Day Free Trial, Join Now!</a>
+                                    <a class="button is-medium is-primary is-fullwidth" href="/register">
+                                        @if(env('TRIAL_ENABLED'))
+                                            30 Day Free Trial, Join Now!
+                                        @else
+                                            Sign Up Now
+                                        @endif
+                                    </a>
                                 </div>
                             </div>
                         </div></div>
