@@ -81,9 +81,9 @@ return [
     */
 
     'trim' => [
-        'recent' => 10080,
-        'failed' => 20160,
-        'monitored' => 20160,
+        'recent' => 60,
+        'failed' => 10080,
+        'monitored' => 10080,
     ],
 
     /*
