@@ -55,31 +55,70 @@ class SparkServiceProvider extends ServiceProvider
         Spark::useTwoFactorAuth();
         Spark::collectBillingAddress();
 
-        Spark::useStripe()->noCardUpFront()->teamTrialDays(30);
+        Spark::useStripe()->noCardUpFront()->teamTrialDays(14);
+        Spark::useStripe()->noCardUpFront()->trialDays(14);
 
        /* Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'
             ]);*/
 
-       /* Spark::teamPlan('Individual Clinicians', 'individual-standard')
-            ->price(10)
+        Spark::plan('Individual Clinicians - 10 Pack', 'individual-10')
+            ->price(25)
             ->maxTeamMembers(1)
             ->features([
                 'Single Account User',
-                '$2.50 Per Consent',
+                '10 Consent Requests',
                 '24/7 Support',
-                'Purchase in blocks of 20-100'
+                '$2.50 for each additional consent'
             ]);
 
-        Spark::teamPlan('Group Practices', 'clinic-standard')
+        Spark::plan('Individual Clinicians - 30 Pack', 'individual-30')
+            ->price(50)
+            ->maxTeamMembers(1)
+            ->features([
+                'Single Account User',
+                '30 Consent Requests',
+                '24/7 Support',
+                '$2.50 for each additional consent'
+            ]);
+
+        Spark::plan('Individual Clinicians - 50 Pack', 'individual-50')
+            ->price(100)
+            ->maxTeamMembers(1)
+            ->features([
+                'Single Account User',
+                '50 Consent Requests',
+                '24/7 Support',
+                '$2.50 for each additional consent'
+            ]);
+
+        Spark::teamPlan('Group Practices - 10 Pack', 'group-10')
+            ->price(25)
+            ->features([
+                'Unlimited Account Users',
+                '10 Consent Requests',
+                '24/7 Support',
+                '$2.50 for each additional consent'
+            ]);
+
+        Spark::teamPlan('Group Practices - 30 Pack', 'group-30')
+            ->price(50)
+            ->features([
+                'Unlimited Account Users',
+                '30 Consent Requests',
+                '24/7 Support',
+                '$2.50 for each additional consent'
+            ]);
+
+        Spark::teamPlan('Group Practices - 50 Pack', 'group-50')
             ->price(100)
             ->features([
                 'Unlimited Account Users',
-                '$2.00 Per Consent',
+                '50 Consent Requests',
                 '24/7 Support',
-                'Pay As You Go'
-            ]);*/
+                '$2.50 for each additional consent'
+            ]);
 
         Spark::validateUsersWith(function () {
             return [

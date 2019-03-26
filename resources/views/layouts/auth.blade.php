@@ -41,6 +41,8 @@
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
 
+    @stack('spark-scripts')
+
 
 </head>
 
@@ -62,7 +64,6 @@
 <script src="/js/sweetalert.min.js"></script>
 
 @yield('scripts')
-@stack('spark-scripts')
 @stack('jquery')
 @include('layouts.web.ga')
 
