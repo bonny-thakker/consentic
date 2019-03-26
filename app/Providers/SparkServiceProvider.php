@@ -101,7 +101,7 @@ class SparkServiceProvider extends ServiceProvider
             ->price(25)
             ->features([
                 'Unlimited Account Users',
-                '10 Consent Requests',
+                '10 Consent Requests Per Month',
                 '24/7 Support',
                 '$2.50 for each additional consent'
             ]);
@@ -110,7 +110,7 @@ class SparkServiceProvider extends ServiceProvider
             ->price(50)
             ->features([
                 'Unlimited Account Users',
-                '30 Consent Requests',
+                '30 Consent Requests Per Month',
                 '24/7 Support',
                 '$2.50 for each additional consent'
             ]);
@@ -119,7 +119,7 @@ class SparkServiceProvider extends ServiceProvider
             ->price(100)
             ->features([
                 'Unlimited Account Users',
-                '50 Consent Requests',
+                '50 Consent Requests Per Month',
                 '24/7 Support',
                 '$2.50 for each additional consent'
             ]);

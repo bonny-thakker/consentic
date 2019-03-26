@@ -172,7 +172,7 @@
                     @endif
 
                 </div>
-               
+
             @endif
 
             <div class="field columns is-variable">
