@@ -146,9 +146,9 @@
 
                             <span class="invalid-feedback" v-show="registerForm.errors.has('team')">
                                     @{{ registerForm.errors.get('team') }}
-                                </span>
+                             </span>
                         </div>
-
+                        <p class="help">Please enter your practice or clinic name, clinic name or  if an individual simply enter your full name.</p>
                     </div>
 
                 @if (Spark::teamsIdentifiedByPath())
@@ -165,8 +165,8 @@
                                 </small>
 
                                 <span class="invalid-feedback" v-show="registerForm.errors.has('team_slug')">
-                            @{{ registerForm.errors.get('team_slug') }}
-                        </span>
+                                    @{{ registerForm.errors.get('team_slug') }}
+                                </span>
                             </div>
                         </div>
                     @endif
