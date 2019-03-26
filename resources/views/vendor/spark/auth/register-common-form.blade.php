@@ -35,7 +35,7 @@
 
                             </select>
 
-                            <span class="invalid-feedback" v-show="registerForm.errors.has('title')">
+                            <span class="invalid-feedback" v-show="registerForm.errors.has('title')" v-cloak>
                                   @{{ registerForm.errors.get('title') }}
                             </span>
 
@@ -54,7 +54,7 @@
                                v-model="registerForm.first_name"
                                :class="{'is-invalid': registerForm.errors.has('first_name')}" autofocus>
 
-                        <span class="invalid-feedback" v-show="registerForm.errors.has('first_name')">
+                        <span class="invalid-feedback" v-show="registerForm.errors.has('first_name')" v-cloak>
                             @{{ registerForm.errors.get('first_name') }}
                     </span>
                     </div>
@@ -67,7 +67,7 @@
                                v-model="registerForm.last_name"
                                :class="{'is-invalid': registerForm.errors.has('last_name')}" autofocus>
 
-                        <span class="invalid-feedback" v-show="registerForm.errors.has('last_name')">
+                        <span class="invalid-feedback" v-show="registerForm.errors.has('last_name')" v-cloak>
                         @{{ registerForm.errors.get('last_name') }}
                     </span>
                     </div>
@@ -82,7 +82,7 @@
                         <input type="email" class="input is-medium site-input-size" name="email" placeholder="Email Address" v-model="registerForm.email"
                                :class="{'is-invalid': registerForm.errors.has('email')}">
 
-                        <span class="invalid-feedback" v-show="registerForm.errors.has('email')">
+                        <span class="invalid-feedback" v-show="registerForm.errors.has('email')" v-cloak>
                         @{{ registerForm.errors.get('email') }}
                     </span>
                     </div>
@@ -97,7 +97,7 @@
                         <input type="text" class="input is-medium site-input-size" name="phone_number" placeholder="Mobile Number" v-model="registerForm.phone_number"
                                :class="{'is-invalid': registerForm.errors.has('phone_number')}" autofocus>
 
-                        <span class="invalid-feedback" v-show="registerForm.errors.has('phone_number')">
+                        <span class="invalid-feedback" v-show="registerForm.errors.has('phone_number')" v-cloak>
                          @{{ registerForm.errors.get('phone_number') }}
                     </span>
                     </div>
@@ -113,7 +113,7 @@
                         <input type="password" class="input is-medium site-input-size" name="password" placeholder="Password" v-model="registerForm.password"
                                :class="{'is-invalid': registerForm.errors.has('password')}">
 
-                        <span class="invalid-feedback" v-show="registerForm.errors.has('password')">
+                        <span class="invalid-feedback" v-show="registerForm.errors.has('password')" v-cloak>
                         @{{ registerForm.errors.get('password') }}
                     </span>
                     </div>
@@ -126,7 +126,7 @@
                                v-model="registerForm.password_confirmation"
                                :class="{'is-invalid': registerForm.errors.has('password_confirmation')}">
 
-                        <span class="invalid-feedback" v-show="registerForm.errors.has('password_confirmation')">
+                        <span class="invalid-feedback" v-show="registerForm.errors.has('password_confirmation')" v-cloak>
                             @{{ registerForm.errors.get('password_confirmation') }}
                         </span>
                     </div>
@@ -144,7 +144,7 @@
                             <input type="text" class="input is-medium site-input-size" name="team"  placeholder="Practice Name" v-model="registerForm.team"
                                    :class="{'is-invalid': registerForm.errors.has('team')}" autofocus>
 
-                            <span class="invalid-feedback" v-show="registerForm.errors.has('team')">
+                            <span class="invalid-feedback" v-show="registerForm.errors.has('team')" v-cloak>
                                     @{{ registerForm.errors.get('team') }}
                              </span>
                         </div>
@@ -164,7 +164,7 @@
                                     {{__('teams.slug_input_explanation')}}
                                 </small>
 
-                                <span class="invalid-feedback" v-show="registerForm.errors.has('team_slug')">
+                                <span class="invalid-feedback" v-show="registerForm.errors.has('team_slug')" v-cloak>
                                     @{{ registerForm.errors.get('team_slug') }}
                                 </span>
                             </div>
@@ -215,7 +215,7 @@
                                         </div>
 
                                     </label>
-                                    <div class="invalid-feedback" v-show="registerForm.errors.has('terms')">
+                                    <div class="invalid-feedback" v-show="registerForm.errors.has('terms')" v-cloak>
                                         <strong>@{{ registerForm.errors.get('terms') }}</strong>
                                     </div>
                                 </div>
