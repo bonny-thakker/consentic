@@ -148,7 +148,7 @@
                                     @{{ registerForm.errors.get('team') }}
                              </span>
                         </div>
-                        <p class="help">Please enter your practice or clinic name, clinic name or  if an individual simply enter your full name.</p>
+                        <p class="help">Please enter your full practice or clinic name. If an individual simply enter your full name.</p>
                     </div>
 
                 @if (Spark::teamsIdentifiedByPath())
