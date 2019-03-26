@@ -184,10 +184,10 @@
                         <div class="column-content"><div class="columns">
                                 <div class="column is-7">
                                     <header class="section-header">
-                                        <h1 class="title">Medical, dental and financial consent made simple and more reassuring for patients, and less risky and faster for doctors.</h1>
+                                        <h1 class="title">Medical, dental and financial consent made simple and reassuring for patients, and less risky and faster for doctors</h1>
                                     </header>
                                     <div class="section-body">
-                                        <div class="subtitle is-6">Consentic provides Australia’s first online platform of comprehensive, patient-tested medical and dental consent animations which have been reviewed by medico-legal experts.</div>
+                                        <div class="subtitle is-6">Consentic is an online platform of comprehensive, medicolegally reviewed, and patient-tested video animations that assist medical, dental and financial consent.</div>
 
                                         <div class="field is-horizontal">
                                             <div class="field-body">
@@ -217,7 +217,7 @@
                                 </div>
                             </div></div>
                     </div></div>
-                <div class="row-actions" style="display: none;">
+                <div class="row-actions is-hidden">
                     <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Settings" data-action="settings" data-toggle="modal" data-modal-id="#edit-property">
                                 <span class="icon is-small">
                                     <i class="fa fa-cog"></i>
@@ -248,13 +248,13 @@
                     <div class="column-content">
                         <h2 class="title is-spaced is-bold has-tint" style="text-align: center; ">Why Consentic?</h2>
                         <div class="subtitle">
-                            <p style="text-align: center;">Time savings, comprehensive consent and peace of mind. Consentic provides the facilities to optimise and streamline the consent process, resulting in enhanced patient understanding, improved patient and clinician satisfaction, and increasing practice efficiency.</p>
+                            <p style="text-align: center;">Informed medical consent is time consuming, and a source of medicolegal risk. Medicolegal complaints are increasing in Australia each year, and doctors who perform procedures are at the highest risk. However, evidence shows that video consent for medical procedures increases patient understanding, and improves both patient and clinician satisfaction.</p>
                             <br>
-                            <p style="text-align: center;">Informed medical consent is time consuming, poorly executed, unstandardised and a source of medicolegal risk. Medicolegal complaints are increasing in Australia each year, and proceduralists are at the highest risk. There is clear evidence from the literature that video consent increases patient understanding and improves both patient and clinician satisfaction.</p>
+                            <p style="text-align: center;">Consentic optimises and streamlines medical, dental and financial consent, resulting in enhanced patient understanding, improved patient and clinician satisfaction, and increased practice efficiency.</p>
                             <br>
-                            <p style="text-align: center;">Consentic provides consent videos for a wide range of medical and dental procedures. This saves clinicians time and money, and provides the peace of mind that comes from knowing you have adequately consented your patients.</p>
+                            <p style="text-align: center;">Our comprehensive consent videos for a wide range of medical and dental procedures saves clinicians time and money, and provide the peace of mind that comes from knowing you have adequately consented your patients. </p>
                             <br>
-                            <p style="text-align: center;">We are testing our Consentic in formalised randomised clinical trials at a number of institutions. If you would like to take a part in our clinical research, please get in touch.</p>
+                            <p style="text-align: center;">We are trialing Consentic in formal randomised controlled trials at a number of institutions. <a href="{{ url('about') }}">Find out more</a> </p>
                         </div>
                     </div>
                 </div></div>
