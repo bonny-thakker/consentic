@@ -55,6 +55,14 @@ class ConsentRequest extends Model implements Commentable
     }
 
     /**
+     * Get the team that owns the consent request.
+     */
+    public function team()
+    {
+        return $this->belongsTo('App\Team');
+    }
+
+    /**
      * Get the patient that owns the consent request.
      */
     public function patient()
