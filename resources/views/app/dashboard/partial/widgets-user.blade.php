@@ -79,7 +79,7 @@
                     <p class="subtitle">{{ \Carbon\Carbon::parse(Auth::user()->currentTeam->trial_ends_at)->format('F jS, Y') }}</p>
                 @else
                     <h2 class="title">
-                        {{ (auth()->user()->currentTeam->credit > 0) ? auth()->user()->currentTeam->credit : 0 }}
+                        Your trial will expire on {{ (auth()->user()->currentTeam->credit > 0) ? auth()->user()->currentTeam->credit : 0 }}
                     </h2>
                     <p class="subtitle">Remaining Credits</p>
                 @endif
