@@ -44,11 +44,13 @@ class PageController extends Controller
 
     public function individualPricing()
     {
+        return redirect('pricing', 301);
         return view('web.individual-pricing');
     }
 
     public function groupPricing()
     {
+        return redirect('pricing', 301);
         return view('web.group-pricing');
     }
 

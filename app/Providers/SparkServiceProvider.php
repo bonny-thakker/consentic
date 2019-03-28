@@ -97,7 +97,7 @@ class SparkServiceProvider extends ServiceProvider
                 '$2.50 for each additional consent'
             ]);*/
 
-        Spark::teamPlan('Practice - 10 Pack', 'practice-10')
+        Spark::teamPlan('Consent 10', 'consent-10')
             ->price(25)
             ->features([
                 'Unlimited Account Users',
@@ -106,7 +106,7 @@ class SparkServiceProvider extends ServiceProvider
                 '$2.50 for each additional consent'
             ]);
 
-        Spark::teamPlan('Practice - 30 Pack', 'practice-30')
+        Spark::teamPlan('Consent 30', 'consent-30')
             ->price(50)
             ->features([
                 'Unlimited Account Users',
@@ -115,7 +115,7 @@ class SparkServiceProvider extends ServiceProvider
                 '$2.50 for each additional consent'
             ]);
 
-        Spark::teamPlan('Practice - 50 Pack', 'practice-50')
+        Spark::teamPlan('Consent 50', 'consent-50')
             ->price(100)
             ->features([
                 'Unlimited Account Users',
