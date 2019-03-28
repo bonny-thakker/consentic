@@ -62,6 +62,8 @@ class SparkServiceProvider extends ServiceProvider
             Spark::useStripe()->noCardUpFront();
         }
 
+       /* Spark::promotion('demo2019');*/
+
        /* Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'

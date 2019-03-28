@@ -78,7 +78,7 @@
                     <h2 class="title">Free Trial</h2>
                     <p class="subtitle">Unlimited Consent Requests</p>
                 @else
-                    <h2 class="title">{{ $remainingConsents ?? 0 }}</h2>
+                    <h2 class="title">{{ auth()->user()->currentTeam->credit ?? 0 }}</h2>
                     <p class="subtitle">Remaining Credits</p>
                 @endif
             </div>
