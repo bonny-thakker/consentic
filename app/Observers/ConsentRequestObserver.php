@@ -60,6 +60,10 @@ class ConsentRequestObserver
 
             }
 
+
+        auth()->user()->currentTeam->credit = auth()->user()->currentTeam->credit - 1;
+        auth()->user()->currentTeam->save();
+
     }
 
 
@@ -96,6 +100,9 @@ class ConsentRequestObserver
     public function deleted(ConsentRequest $consentRequest)
     {
 
+        auth()->user()->currentTeam->credit = auth()->user()->currentTeam->credit + 1;
+        auth()->user()->currentTeam->save();
+
     }
 
     /**
@@ -106,7 +113,8 @@ class ConsentRequestObserver
      */
     public function restored(ConsentRequest $consentRequest)
     {
-        //
+        auth()->user()->currentTeam->credit = auth()->user()->currentTeam->credit - 1;
+        auth()->user()->currentTeam->save();
     }
 
     /**
@@ -117,7 +125,8 @@ class ConsentRequestObserver
      */
     public function forceDeleted(ConsentRequest $consentRequest)
     {
-        //
+        auth()->user()->currentTeam->credit = auth()->user()->currentTeam->credit + 1;
+        auth()->user()->currentTeam->save();
     }
 
 }
