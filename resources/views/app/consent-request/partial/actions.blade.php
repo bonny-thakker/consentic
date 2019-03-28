@@ -6,9 +6,15 @@
             </a>
         </p>
         <p class="control">
-            <a class="button is-secondary tooltip " data-tooltip="Download" data-id="" disabled="">
-                <i class="fas fa-file-alt"></i>
-            </a>
+            @if($consentRequest->isPatientSigned())
+                <a class="button is-secondary tooltip " href="/app/consent-requests/{{ $consentRequest->id }}/download" data-tooltip="Download" data-id="">
+                    <i class="fas fa-file-alt"></i>
+                </a>
+            @else
+                <a class="button is-secondary tooltip " data-tooltip="Download" data-id="" disabled="">
+                    <i class="fas fa-file-alt"></i>
+                </a>
+            @endif
         </p>
         <p class="control">
             <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" href="{{ ($consentRequest->isPatientSigned()) ? '#' : url('app/consent-requests/'.$consentRequest->id.'/edit') }}" {{ ($consentRequest->isPatientSigned()) ? 'disabled="disabled"' : null }}>

@@ -288,4 +288,15 @@ class ConsentRequestController extends Controller
         notify()->success('Consent request deleted');
         return back();
     }
+
+    public function download(ConsentRequest $consentRequest){
+
+        if(!file_exists(storage_path('app/public/pdf/'))){
+            mkdir(storage_path('app/public/pdf/'));
+        }
+
+        \File::copy(storage_path('app/pdf/').basename($consentRequest->pdf),storage_path('app/public/pdf/').basename($consentRequest->pdf));
+        return response()->download(storage_path('app/public/pdf/').basename($consentRequest->pdf), basename($consentRequest->pdf));
+
+    }
 }

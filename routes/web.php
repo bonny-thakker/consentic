@@ -99,6 +99,8 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
         Route::get('/{consentRequest}/signed/edit', 'ConsentRequestSignedController@edit')->name('app.consent-requests.signed.edit');
         Route::post('/{consentRequest}/signed/update', 'ConsentRequestSignedController@update')->name('app.consent-requests.signed.update');
 
+        Route::get('/{consentRequest}/download', 'ConsentRequestController@download')->name('app.consent-requests.download');
+
     });
 
    /* Route::get('settings', function () {
