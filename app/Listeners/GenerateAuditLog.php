@@ -19,7 +19,6 @@ use App\Events\ConsentPatientWatched;
 use App\Events\ConsentPatientAnsweredQuestionsCorrectly;
 use App\Events\ConsentUserAnsweredQuestionsCorrectly;
 
-
 use App\AuditLog;
 
 class GenerateAuditLog

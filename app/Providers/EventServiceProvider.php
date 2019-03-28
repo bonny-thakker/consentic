@@ -122,6 +122,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\GenerateAuditLog',
         ],
 
+        'Laravel\Spark\Events\Auth\UserRegistered' => [
+            'App\Listeners\SendWelcomeEmail',
+        ],
 
     ];
 
