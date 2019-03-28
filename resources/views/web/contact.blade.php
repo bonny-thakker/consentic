@@ -28,8 +28,8 @@
 
         <section class="section section-title is-highlight">
             <div class="container">
-                <h2 class="title">Contact Us</h2>
-                <h3 class="subtitle">We encourage you to contact us with any queries. Please get in touch using one of the methods below and we will be sure to help as best we can.</h3>
+                <h2 class="title">We’d love to hear from you</h2>
+                <h3 class="subtitle">Please contact us using any of the methods below with your query, and we’ll get back to you as soon as possible</h3>
             </div>
         </section>
         <section class="section ui-sortable-handle" data-background-image="" data-background-color="" style="background-image: url(&quot;&quot;);" ");"="">
@@ -47,7 +47,8 @@
                             </span>
                         </button>
                     </div>
-                    <div class="column-content"><h1 class="title">Get In Touch</h1>
+                    <div class="column-content">
+					<!--<h1 class="title">Get In Touch</h1>-->
                         <br>
                         <div class="columns is-mobile">
                             <div class="column">
