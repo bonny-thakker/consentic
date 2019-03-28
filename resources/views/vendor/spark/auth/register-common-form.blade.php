@@ -7,7 +7,7 @@
                 <div class="control column is-6">
                     <h1 class="title is-2">
                         @if(env('TRIAL_ENABLED'))
-                            {{__('Refister Now For A 30 Day Free Trial!')}}
+                            {{__('Register Now For A 14 Day Free Trial!')}}
                         @else
                             {{__('Registration')}}
                         @endif

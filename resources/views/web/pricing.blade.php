@@ -62,7 +62,7 @@
                                     Consent 10
                                 </div>
                                 <div class="plan-price">
-                                    <span class="plan-price-amount"><span class="plan-price-currency">$</span>20</span>/ month
+                                    <span class="plan-price-amount"><span class="plan-price-currency">$</span>25</span>/ month
                                 </div>
                                 <div class="plan-items">
                                     <div class="plan-item">
