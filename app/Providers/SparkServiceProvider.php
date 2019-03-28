@@ -34,7 +34,7 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $developers = [
-      /*  'cto@consentic.com'*/
+       'cto@consentic.com'
     ];
 
     /**
@@ -64,7 +64,7 @@ class SparkServiceProvider extends ServiceProvider
 
        /* Spark::promotion('demo2019');*/
 
-       /* Spark::freeTeamPlan()
+      /*  Spark::freeTeamPlan()
             ->features([
                 'First', 'Second', 'Third'
             ]);*/
