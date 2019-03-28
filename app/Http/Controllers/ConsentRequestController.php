@@ -128,9 +128,8 @@ class ConsentRequestController extends Controller
             'consent' => 'required'
         ]);
 
-        auth()->user()->currentTeam->update([
-            'credit' => (auth()->user()->currentTeam->credit - 1)
-        ]);
+        auth()->user()->currentTeam->credit = auth()->user()->currentTeam->credit - 1;
+        auth()->user()->currentTeam->save();
         
         $patient = \App\Patient::find($request->patient);
         $consent = \App\Consent::find($request->consent);
