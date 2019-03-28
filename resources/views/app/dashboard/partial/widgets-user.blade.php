@@ -67,7 +67,7 @@
         </a>
     </div>
     <div class="column">
-        <a href="#" class="box quick-stats has-background-primary has-text-white" style="background-color: #00d1b2 !important;">
+        <a href="/settings/practice/{{ auth()->user()->currentTeam->id }}#/subscription" class="box quick-stats has-background-primary has-text-white" style="background-color: #00d1b2 !important;">
             <div class="quick-stats-icon">
                 <span class="icon is-large">
                     <i class="fas fa-file-contract"></i>
