@@ -1,6 +1,6 @@
 @extends('layouts.web')
 
-@section('title', 'Individual Pricing')
+@section('title', 'Pricing')
 
 @section('styles')
 
