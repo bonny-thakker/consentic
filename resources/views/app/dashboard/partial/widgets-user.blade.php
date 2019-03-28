@@ -75,7 +75,7 @@
             </div>
             <div class="quick-stats-content">
                 @if(Auth::user()->currentTeam && Auth::user()->currentTeam->onGenericTrial())
-                    <h2 class="title">Free Trial</h2>
+                    <h2 class="title">14 Day Free Trial</h2>
                     <p class="subtitle">Unlimited Consent Requests</p>
                 @else
                     <h2 class="title">
