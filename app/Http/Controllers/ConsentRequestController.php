@@ -108,6 +108,11 @@ class ConsentRequestController extends Controller
      */
     public function create(Patient $patient, Consent $consent)
     {
+
+        if(!auth()->user()->currentTeam->subscribed() && !auth()->user()->currentTeam->onGenericTrial()){
+            return view('app.consent-request.subscribe');
+        }
+
         return view('app.consent-request.create', [
             'createForPatient' => $patient ?? null,
             'createForConsent' => $consent ?? null
