@@ -76,7 +76,7 @@
             <div class="quick-stats-content">
                 @if(Auth::user()->currentTeam && Auth::user()->currentTeam->onGenericTrial())
                     <h2 class="title">14 Day Free Trial</h2>
-                    <p class="subtitle">Unlimited Consent Requests</p>
+                    <p class="subtitle">{{ \Carbon\Carbon::parse(Auth::user()->currentTeam->trial_ends_at)->format('F jS, Y') }}</p>
                 @else
                     <h2 class="title">
                         {{ (auth()->user()->currentTeam->credit > 0) ? auth()->user()->currentTeam->credit : 0 }}
