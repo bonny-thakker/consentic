@@ -1,4 +1,5 @@
 <!doctype html>
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -203,7 +204,7 @@
                     </td>
                 </tr>
 
-                @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\PatientQuestion')->get() as $consentRequestQuestion)
+                @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\UserQuestion')->get() as $consentRequestQuestion)
 
                     <tr class="item">
                         <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->consentRequestQuestionable->text }}</td>
