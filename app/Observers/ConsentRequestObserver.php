@@ -35,7 +35,7 @@ class ConsentRequestObserver
         foreach(\App\PatientQuestion::all() as $patientQuestion){
 
             // Remove blood transfusion from skin exclusion
-            if($patientQuestion->id == 1 && in_array($consentRequest->consent->id, [20])){
+            if($patientQuestion->id == 1 && in_array($consentRequest->consent->id, [20,23,24])){
 
                 // Do nothing, needs work.
 
