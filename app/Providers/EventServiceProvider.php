@@ -56,17 +56,20 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         'Laravel\Spark\Events\Teams\Subscription\TeamSubscribed' => [
-            'Laravel\Spark\Listeners\Teams\Subscription\UpdateActiveSubscription',
+            /*'Laravel\Spark\Listeners\Teams\Subscription\UpdateActiveSubscription',*/
+            'App\Listeners\UpdateActiveTeamSubscription',
             'Laravel\Spark\Listeners\Teams\Subscription\UpdateTrialEndingDate',
-            'App\Listeners\NewTeamSubscriptionCredits',
+           /* 'App\Listeners\NewTeamSubscriptionCredits',*/
         ],
 
         'Laravel\Spark\Events\Teams\Subscription\SubscriptionUpdated' => [
-            'Laravel\Spark\Listeners\Teams\Subscription\UpdateActiveSubscription',
+            /*'Laravel\Spark\Listeners\Teams\Subscription\UpdateActiveSubscription',*/
+            'App\Listeners\UpdateActiveTeamSubscription'
         ],
 
         'Laravel\Spark\Events\Teams\Subscription\SubscriptionCancelled' => [
-            'Laravel\Spark\Listeners\Teams\Subscription\UpdateActiveSubscription',
+           /* 'Laravel\Spark\Listeners\Teams\Subscription\UpdateActiveSubscription',*/
+            'App\Listeners\UpdateActiveTeamSubscription'
         ],
 
         'Laravel\Spark\Events\Teams\UserInvitedToTeam' => [
