@@ -98,7 +98,7 @@
                 <div class="select is-fullwidth">
                     <select id="procedure-filter" class="list-filter" name="consent">
                         <option value="all" selected>All Procedures</option>
-                        @foreach (\App\Consent::all() as $consent)
+                        @foreach (\App\Consent::orderBy('name', 'ASC')->get() as $consent)
                             <option value="{{ $consent->id }}" {{ (isset($filter_consent) && $filter_consent == $consent->id) ? 'selected':null }}>{{ $consent->name }}</option>
                         @endforeach
                     </select>

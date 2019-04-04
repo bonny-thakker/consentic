@@ -112,7 +112,12 @@ class PublicConsentRequestController extends Controller
                         if(!is_numeric($questionAnswer)) {
                             $validator->errors()->add('question['.$questionId.']', 'Answer is required');
                         }elseif(\App\Answer::find($questionAnswer)->correct == 0){
-                            $validator->errors()->add('question['.$questionId.']', 'Your answer to this question is incorrect');
+
+                            // Check if there is a correct answer
+                            if(\App\Answer::find($questionAnswer)->answerable->answers()->where('answers.correct',1)->first()){
+                                $validator->errors()->add('question['.$questionId.']', 'Your answer to this question is incorrect');
+                            }
+
                         }
 
                     }
