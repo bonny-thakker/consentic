@@ -29,17 +29,18 @@
         <section class="section section-title is-highlight">
             <div class="container">
                 <h1 class="title">Online medical consent for practitioners and patients</h1>
-                <h3 class="subtitle">Gaining adequate medical consent from your patients can be time-consuming and stressful.</br></br> 
+                <h3 class="subtitle">
+				<p>Gaining adequate medical consent from your patients can be time-consuming and stressful.</p>
 
-	Discussing medical procedures and explaining them in a way the patient understands can be difficult when you’re running a busy practice, or if English isn’t your patient’s first language.</br></br>
+	<p>Discussing medical procedures and explaining them in a way the patient understands can be difficult when you’re running a busy practice, or if English isn’t your patient’s first language.</p>
 
-Obtaining informed consent is essential, but medical consent is not standardised between practitioners, practices and institutions. The challenges involved in gaining consent may have you wondering if you’ve consented your patients properly, and whether you’re at risk of medical litigation.</br></br>
+<p>Obtaining informed consent is essential, but medical consent is not standardised between practitioners, practices and institutions. The challenges involved in gaining consent may have you wondering if you’ve consented your patients properly, and whether you’re at risk of medical litigation.</p>
 
-And then there’s the awkward task of discussing fees…</br></br>
+<p>And then there’s the awkward task of discussing fees…</p>
 
-That’s why we’ve developed <b>Consentic</b>.</br></br>
+<p>That’s why we’ve developed <b>Consentic</b>.</p>
 
-Consentic is an online platform for medical, dental and financial consent. The comprehensive library of medical consent videos and interactive checklists optimise and standardise the consent process, saving you time and stress, and reducing your medicolegal risk.
+<p>Consentic is an online platform for medical, dental and financial consent. The comprehensive library of medical consent videos and interactive checklists optimise and standardise the consent process, saving you time and stress, and reducing your medicolegal risk.</p>
 </h3>
             </div>
         </section>
@@ -204,14 +205,13 @@ Consentic is an online platform for medical, dental and financial consent. The c
                     <div class="column-content"><h2 class="title is-spaced is-bold has-tint" style="text-align: center;">Ongoing research</h2>
                         <div class="subtitle">
                             <p style="text-align: center;">Consentic is undertaking clinical studies to evaluate video consent compared with traditional doctor patient consent at a number of centres, including:
-									</br></br>	
-								(i) Orthopaedic Surgery, Columbia University Medical Centre, NYC</br>
-								(ii) Dermatology, Royal North Shore Hospital and The Skin Hospital, Sydney Australia </br>
-								(iii) Orthopaedic Surgery, Campbelltown Private Hospital, Sydney Australia </br>
-								(iv) Cardiology, The Austin Hospital, Melbourne Australia </br>
-</br></br>
-								The studies are ongoing, but we’ll be sure to post details of our findings when they are complete.
-</p>
+									</p>
+								<p>(i) Orthopaedic Surgery, Columbia University Medical Centre, NYC</p>
+								<p>(ii) Dermatology, Royal North Shore Hospital and The Skin Hospital, Sydney Australia </p>
+								<p>(iii) Orthopaedic Surgery, Campbelltown Private Hospital, Sydney Australia </p>
+								<p>(iv) Cardiology, The Austin Hospital, Melbourne Australia </p>
+
+								<p>The studies are ongoing, but we’ll be sure to post details of our findings when they are complete.</p>
                         </div></div>
                 </div></div>
             <div class="row-actions" style="display: none;">
