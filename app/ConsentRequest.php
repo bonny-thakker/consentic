@@ -122,9 +122,11 @@ class ConsentRequest extends Model implements Commentable
         foreach($this->consentRequestQuestions()->where([
             'consent_request_questionable_type' => 'App\Question'
         ])->get() as $consentRequestQuestion){
-
-            if(!isset($consentRequestQuestion->consentRequestQuestionAnswer->answer) || $consentRequestQuestion->consentRequestQuestionAnswer->answer->correct == 0){
-                return false;
+            
+            if($consentRequestQuestion->consentRequestQuestionable->answers()->where('answers.correct',1)->first()){
+                if(!isset($consentRequestQuestion->consentRequestQuestionAnswer->answer) || $consentRequestQuestion->consentRequestQuestionAnswer->answer->correct == 0){
+                    return false;
+                }
             }
 
         }
