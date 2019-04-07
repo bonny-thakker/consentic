@@ -33,11 +33,14 @@ class UpdateActiveTeamSubscription
             'current_billing_plan' => $currentPlan,
         ])->save();
 
+        // FIX!
+        $team = \App\Team::find($event->team->id);
+
         switch($event->team->current_billing_plan){
 
             case "consent-10":
 
-                $event->team->update([
+                $team->update([
                     'credit' => 10
                 ]);
 
@@ -45,7 +48,7 @@ class UpdateActiveTeamSubscription
 
             case "consent-30":
 
-                $event->team->update([
+                $team->update([
                     'credit' => 30
                 ]);
 
@@ -53,7 +56,7 @@ class UpdateActiveTeamSubscription
 
             case "consent-50":
 
-                $event->team->update([
+                $team->update([
                     'credit' => 50
                 ]);
 
