@@ -67,6 +67,15 @@ class ConsentRequestDoctorQuestionController extends Controller
 
         $patient = $consentRequest->patient;
 
+        if($consentRequest->isUserSigned()){
+
+            return view('app.consent-request.doctor-question.edit-complete', compact(
+                'consentRequest',
+                'patient'
+            ));
+
+        }
+
         return view('app.consent-request.doctor-question.edit', compact(
             'consentRequest',
             'patient'

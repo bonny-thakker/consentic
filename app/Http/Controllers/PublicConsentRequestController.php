@@ -54,10 +54,21 @@ class PublicConsentRequestController extends Controller
     public function show(ConsentRequest $consentRequest)
     {
 
+
         parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
         $videoId = $videoParams['v'] ?? '';
 
         $patient = $consentRequest->patient;
+
+        if($consentRequest->isPatientSigned()){
+
+            return view('app.p.consent-request.complete-already',compact(
+                'consentRequest',
+                'videoId',
+                'patient'
+            ));
+
+        }
 
         return view('app.p.consent-request.show',compact(
             'consentRequest',

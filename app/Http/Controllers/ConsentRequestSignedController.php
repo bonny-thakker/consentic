@@ -69,7 +69,17 @@ class ConsentRequestSignedController extends Controller
      */
     public function edit(ConsentRequest $consentRequest)
     {
+
         $patient = $consentRequest->patient;
+
+        if($consentRequest->isUserSigned()){
+
+            return view('app.consent-request.signed.edit-complete', compact(
+                'consentRequest',
+                'patient'
+            ));
+
+        }
 
         return view('app.consent-request.signed.edit' , compact(
             'consentRequest',
