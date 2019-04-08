@@ -180,6 +180,10 @@ const App = function() {
                     .append(`<iframe height="350px" width="100%" height="auto" src="${videoURL.replace('watch?v=', 'embed/')}" allowfullscreen></iframe>`);
             });
 
+            $('#user-list').select2({
+                searchInputPlaceholder: 'Type to search doctors'
+            });
+
             $('#patient-list').select2({
                 searchInputPlaceholder: 'Type to search patients'
             });

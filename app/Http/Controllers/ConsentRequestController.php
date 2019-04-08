@@ -109,13 +109,14 @@ class ConsentRequestController extends Controller
     public function create(Patient $patient, Consent $consent)
     {
 
-        if(!auth()->user()->currentTeam->subscribed() && !auth()->user()->currentTeam->onGenericTrial()){
+        if(env('APP_ENV')!='local' && !auth()->user()->currentTeam->subscribed() && !auth()->user()->currentTeam->onGenericTrial()){
             return view('app.consent-request.subscribe');
         }
 
         return view('app.consent-request.create', [
             'createForPatient' => $patient ?? null,
-            'createForConsent' => $consent ?? null
+            'createForConsent' => $consent ?? null,
+            'createForUser' => auth()->user()
         ]);
     }
 
@@ -130,14 +131,16 @@ class ConsentRequestController extends Controller
 
         $validatedData = $request->validate([
             'patient' => 'required',
-            'consent' => 'required'
+            'consent' => 'required',
+            'user' => 'required'
         ]);
         
         $patient = \App\Patient::find($request->patient);
         $consent = \App\Consent::find($request->consent);
+        $user = \App\User::find($request->user);
 
         $consentRequest = \App\ConsentRequest::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
             'in_office' => $request->in_office,
@@ -229,13 +232,16 @@ class ConsentRequestController extends Controller
 
         $validatedData = $request->validate([
             'patient' => 'required',
-            'consent' => 'required'
+            'consent' => 'required',
+            'user' => 'required'
         ]);
 
         $patient = \App\Patient::find($request->patient);
         $consent = \App\Consent::find($request->consent);
+        $user = \App\User::find($request->user);
 
         $consentRequest->update([
+            'user_id' => $user->id,
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
             'in_office' => $request->in_office,

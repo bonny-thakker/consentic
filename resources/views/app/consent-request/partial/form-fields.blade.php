@@ -1,7 +1,18 @@
-<div class="select is-fullwidth{{ $errors->has('patient') ? ' is-danger' : '' }}">
+<div class="select is-fullwidth{{ $errors->has('user') ? ' is-danger' : '' }}">
+    <select name="user" id="user-list">
+        <option disabled selected>Select Doctor</option>
+        @foreach (\App\User::orderBy('name', 'ASC')->get() as $user)
+            <option value="{{ $user->id }}" {{ (old('user') == $user->id || (isset($consentRequest) && $consentRequest->user->id == $user->id) || (isset($createForUser) && $createForUser->id == $user->id)) ? 'selected' : null }}>{{ $user->fullName() }}</option>
+        @endforeach
+    </select>
+</div>
+@if ($errors->has('user'))
+    <p class="help is-danger">{{ $errors->first('user') }}</p>
+@endif
+<div class="select is-fullwidth m-t-md{{ $errors->has('patient') ? ' is-danger' : '' }}">
     <select name="patient" id="patient-list">
         <option disabled selected>Select Patient</option>
-        @foreach (\App\Patient::all() as $patient)
+        @foreach (\App\Patient::orderBy('first_name', 'ASC')->get() as $patient)
             <option value="{{ $patient->id }}" {{ (old('patient') == $patient->id || (isset($consentRequest) && $consentRequest->patient->id == $patient->id) || (isset($createForPatient) && $createForPatient->id == $patient->id)) ? 'selected' : null }}>{{ $patient->fullName() }}
                 - {{ \Carbon\Carbon::parse($patient->birthday)->format('d/m/Y') }}</option>
         @endforeach
