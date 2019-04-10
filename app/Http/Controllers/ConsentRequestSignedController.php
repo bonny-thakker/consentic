@@ -154,8 +154,10 @@ class ConsentRequestSignedController extends Controller
         ]);
 
         // Send notification
-        Mail::to($consentRequest->patient->email->address, $consentRequest->patient->fullName())
-              ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'patient', $pdfPath));
+        if($consentRequest->patient->email && $consentRequest->patient->email->address){
+            Mail::to($consentRequest->patient->email->address, $consentRequest->patient->fullName())
+                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'patient', $pdfPath));
+        }
 
         Mail::to($consentRequest->user->email, $consentRequest->user->name)
              ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));

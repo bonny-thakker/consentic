@@ -134,10 +134,17 @@ class ConsentRequestController extends Controller
             'consent' => 'required',
             'user' => 'required'
         ]);
-        
+
         $patient = \App\Patient::find($request->patient);
         $consent = \App\Consent::find($request->consent);
         $user = \App\User::find($request->user);
+
+        if($request->in_office == 0  && !$patient->email){
+
+            notify()->error('Sending email consent to patient failed as patient has no registered email address');
+            return back()->withInput($request->all());
+
+        }
 
         $consentRequest = \App\ConsentRequest::create([
             'user_id' => $user->id,
