@@ -24,7 +24,7 @@
                     <div class="navbar-item p-r-none">
                         <div class="field is-grouped">
                             <div class=control>
-                                <a href="{{ url('register') }}" class="button is-primary" id="button-signup">
+                                <a href="{{ url('pricing') }}" class="button is-primary" id="button-signup">
                                     @if(env('TRIAL_ENABLED'))
                                         30 Day Free Trial, Join Now!
                                     @else
