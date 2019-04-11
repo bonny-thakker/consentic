@@ -1,6 +1,7 @@
 @extends('layouts.web')
 
-@section('title', 'Contact Us')
+@section('title', 'Contact | Discover more about online medical consent')
+@section('description', 'Streamlined, standardised consent solutions for practitioners, practices and institutions. Contact us today.')
 
 @section('styles')
 

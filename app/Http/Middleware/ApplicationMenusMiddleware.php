@@ -19,11 +19,12 @@ class ApplicationMenusMiddleware
 
         Menu::make('webMainMenu', function ($menu) use ($request) {
 
-            $menu->add('Home', '');
+          /*  $menu->add('Home', '');*/
             $menu->add('About', 'about');
-            $menu->add('Features', 'features');
-
+            $menu->add('Our Team', 'team');
+            $menu->add('Benefits', 'benefits');
             $menu->add('Pricing', 'pricing');
+
 
             if(in_array($request->route()->getName(),[
                 'web.individual-pricing',
@@ -31,6 +32,8 @@ class ApplicationMenusMiddleware
             ])){
                 $menu->get('pricing')->active();
             }
+
+            $menu->add('FAQ', 'faq');
 
             $menu->add('Contact Us', 'contact-cc');
 

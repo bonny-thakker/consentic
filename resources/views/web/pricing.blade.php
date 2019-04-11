@@ -1,6 +1,7 @@
 @extends('layouts.web')
 
-@section('title', 'Pricing')
+@section('title', 'Informed consent solutions for patients and practitioners')
+@section('description', 'Reduce your medicolegal risk and improve your practice with our affordable medical software solutions for informed consent. Packages available. No contracts.')
 
 @section('styles')
 
@@ -28,8 +29,17 @@
 
         <section class="section section-title is-highlight">
             <div class="container">
-                <h2 class="title">Pricing</h2>
-                <h3 class="subtitle">Our pricing is simple and affordable.</h3>
+                <h2 class="title">Simple and affordable pricing </h2>
+                <h3 class="subtitle">Informed consent solutions for individuals, group practices and institutions</h3>
+            </div>
+        </section>
+        <section class="section ui-sortable-handle bg-grey">
+            <div class="container">
+                <div class="columns rows ui-sortable">
+                    <div class="column">
+                        <p class="subtitle">Our pricing is simple and affordable, with no ongoing obligation.</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section ui-sortable-handle" data-background-image="" data-background-color="">

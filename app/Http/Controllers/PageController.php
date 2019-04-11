@@ -17,9 +17,20 @@ class PageController extends Controller
         return view('web.about');
     }
 
+    public function team()
+    {
+        return view('web.team');
+    }
+
     public function features()
     {
-        return view('web.features');
+        return redirect('benefits', 301);
+    }
+
+
+    public function benefits()
+    {
+        return view('web.benefits');
     }
 
     public function pricing()
@@ -53,5 +64,11 @@ class PageController extends Controller
         return redirect('pricing', 301);
         return view('web.group-pricing');
     }
+
+    public function faq()
+    {
+        return view('web.faq');
+    }
+
 
 }

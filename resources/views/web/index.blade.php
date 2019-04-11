@@ -1,6 +1,7 @@
 @extends('layouts.web')
 
-@section('title', 'Home')
+@section('title', 'Simplify medical consent with Australia’s only online platform ')
+@section('description', 'Streamline the process around consent for medical procedures with our online platform of comprehensive, medicolegally reviewed and patient-tested animations')
 
 @section('styles')
     <style>
@@ -365,7 +366,47 @@
             </div>
         </div>
         </section>
-
+        <section class="section ui-sortable-handle" data-background-image="/images/about-bg.jpg">
+            <div class="container">
+                <div class="columns rows ui-sortable">
+                    <div class="column">
+                        <div class="column-actions" style="display: none;">
+                            <button class="button page-action is-circle is-primary is-outlined tooltip"
+                                    data-tooltip="Edit Content" data-action="edit" data-toggle="modal"
+                                    data-modal-id="#edit-content">
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            </button>
+                            <button class="button page-action is-circle is-primary is-outlined tooltip"
+                                    data-tooltip="Remove Column" data-action="remove">
+                            <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                            </button>
+                        </div>
+                        <div class="column-content"><a href="/about">
+                                <div style="text-align: center; margin-top:25px"><b class="title is-3"
+                                                                                    style="color: rgb(255, 255, 255);">We are trialing Consentic in formal randomised controlled trials at a number of institutions. <u>Find out more</u> </b></div>
+                            </a></div>
+                    </div>
+                </div>
+                <div class="row-actions" style="display: none;">
+                    <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Settings"
+                            data-action="settings" data-toggle="modal" data-modal-id="#edit-property">
+                                <span class="icon is-small">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                    </button>
+                    <button class="button page-action is-circle is-black is-outlined tooltip" data-tooltip="Remove Row"
+                            data-action="remove">
+                                <span class="icon is-small">
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                    </button>
+                </div>
+            </div>
+        </section>
 
     </main>
 

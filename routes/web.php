@@ -18,13 +18,16 @@ Route::get('/home', function () {
 /* Public */
 Route::get('/', 'PageController@index')->name('web.index');
 Route::get('/about', 'PageController@about')->name('web.about');
+Route::get('/team', 'PageController@team')->name('web.team');
 Route::get('/features', 'PageController@features')->name('web.features');
+Route::get('/benefits', 'PageController@benefits')->name('web.benefits');
 Route::get('/pricing', 'PageController@pricing')->name('web.pricing');
 Route::get('/contact-cc', 'PageController@contact')->name('web.contact');
 Route::get('/terms-and-conditions', 'PageController@termsAndConditions')->name('web.terms-and-conditions');
 Route::get('/privacy-policy', 'PageController@privacyPolicy')->name('web.privacy-policy');
 Route::get('/individual-pricing', 'PageController@individualPricing')->name('web.individual-pricing');
 Route::get('/group-pricing', 'PageController@groupPricing')->name('web.group-pricing');
+Route::get('/faq', 'PageController@faq')->name('web.faq');
 
 /* Forms */
 Route::post('/form/newsletter', 'MailchimpController@store')->name('web.form.mailchimp.store');
