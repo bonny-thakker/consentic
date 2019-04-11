@@ -70,7 +70,9 @@
                         <div class="column-content"><h2 class="title is-spaced is-bold has-tint"
                                                         style="text-align: left;">Dr Rebecca Saunderson — CEO</h2>
                             <div class="subtitle">
-                                <p style="text-align: left;">Julia is a practising dermatologist and Cofounder of Consentic. She has a passion for advancing healthcare through evidence-based innovation in technology, and in doing so, improving the healthcare experience for patients. Through her experience over more than 10 years of clinical practice, Julia has accumulated a comprehensive understanding of the unique challenges associated with medical consent.</p>
+                                <p style="text-align: left;">Rebecca is a practicing dermatologist, researcher, lecturer and entrepreneur, working in both public and private sectors. After completing her physicians training at Royal Prince Alfred Hospital, she studied her MPhil at the University of Cambridge on a prestigious Gates Cambridge Scholarship, where she undertook a course at the Judge Business School. She met her Cofounder, Dr Julia Rhodes, in East Timor where they worked together to eradicate scabies in a remote village.
+
+                                    She is passionate about improving the patient journey through the healthcare system, and changing medical consent for the better. Rebecca has published in local and international journals. </p>
                             </div>
                         </div>
                     </div>
