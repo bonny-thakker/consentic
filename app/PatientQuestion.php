@@ -17,4 +17,12 @@ class PatientQuestion extends Model
         return $this->morphMany(Answer::class, 'answerable');
     }
 
+    /**
+     * Get the consent that owns the patient question.
+     */
+    public function consent()
+    {
+        return $this->belongsTo('App\Consent');
+    }
+
 }

@@ -40,6 +40,14 @@ class Consent extends Model
         return $this->hasMany('App\Question');
     }
 
+    /**
+     * Get the patient questions for the consent.
+     */
+    public function patientQuestions()
+    {
+        return $this->hasMany('App\PatientQuestion');
+    }
+
     public function videoThumbnail()
     {
 

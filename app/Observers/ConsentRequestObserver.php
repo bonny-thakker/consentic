@@ -32,10 +32,11 @@ class ConsentRequestObserver
 
         }
 
-        foreach(\App\PatientQuestion::all() as $patientQuestion){
+        // UPDATE
+        foreach($consentRequest->consent->patientQuestions as $patientQuestion){
 
             // Remove blood transfusion from skin exclusion
-            if($patientQuestion->id == 1 && in_array($consentRequest->consent->id, [20,23,24])){
+            /*if($patientQuestion->id == 1 && in_array($consentRequest->consent->id, [20,23,24])){
 
                 // Do nothing, needs work.
 
@@ -49,7 +50,17 @@ class ConsentRequestObserver
                 \App\ConsentRequestQuestionAnswer::create([
                     'consent_request_question_id' => $consentRequestQuestion->id
                 ]);
-            }
+            }*/
+
+            $consentRequestQuestion = \App\ConsentRequestQuestion::create([
+                'consent_request_id' => $consentRequest->id,
+                'consent_request_questionable_id' => $patientQuestion->id,
+                'consent_request_questionable_type' => 'App\PatientQuestion'
+            ]);
+
+            \App\ConsentRequestQuestionAnswer::create([
+                'consent_request_question_id' => $consentRequestQuestion->id
+            ]);
 
         }
 
