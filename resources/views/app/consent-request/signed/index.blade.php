@@ -107,7 +107,7 @@
                            </figure>
 
                            <p>{{ $consentRequest->user->fullName() }}</p>
-                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->format('F dS Y') }}</p>
+                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->timezone(auth()->user()->time_zone)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->timezone(auth()->user()->time_zone)->format('F dS Y') }}</p>
 
                        @else
                            <span class="has-text-warning">Doctor signature pending</span>
@@ -127,7 +127,7 @@
                            </figure>
 
                            <p>{{ $consentRequest->patient->fullName() }}</p>
-                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('F dS Y') }}</p>
+                           <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->timezone(auth()->user()->time_zone)->format('g:iA') }} on {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->timezone(auth()->user()->time_zone)->format('F dS Y') }}</p>
                        @else
                            <span class="has-text-warning">Patient signature pending</span>
                        @endif

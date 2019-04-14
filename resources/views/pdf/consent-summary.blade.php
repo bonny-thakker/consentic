@@ -281,13 +281,13 @@
                     <td align="center" style="padding-top: 40px;" width="50%">
                         @if ($consentRequest->patient_signature)
                             <p>{{ $consentRequest->patient->title . ' ' . $consentRequest->patient->fullName() }}</p> <br>
-                            <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('l dS F Y H:i') }}</p>
+                            <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->timezone($consentRequest->user->time_zone)->format('l dS F Y H:i') }}</p>
                         @endif
                     </td>
                     <td align="center" style="padding-top: 40px;" width="50%">
                         @if ($consentRequest->user_signature)
                             <p>Dr. {{ $consentRequest->user->fullName() }}</p> <br>
-                            <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->format('l dS F Y H:i') }}</p>
+                            <p>Signed at {{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->timezone($consentRequest->user->time_zone)->format('l dS F Y H:i') }}</p>
                         @endif
                     </td>
                 </tr>

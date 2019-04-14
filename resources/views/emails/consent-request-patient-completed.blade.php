@@ -295,7 +295,7 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                             <td style="padding: 40px; text-align: left; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #ffffff;">
-                                <p style="margin: 0;">You’re receiving this email because {{ $consentRequest->user->fullName() }} has indicated that you are a patient of theirs. If you believe this is an error, please reply to this email letting us know and we’ll rectify the issue.</p>
+                                <p style="margin: 0;">You’re receiving this email because you are using consentic.com to manage your patient medicial consent requests. If you believe this is an error, please reply to this email letting us know and we’ll rectify the issue.</p>
                             </td>
                         </tr>
                     </table>

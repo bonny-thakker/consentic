@@ -238,7 +238,7 @@
                 </div>
 
                 <p class="decor">{{ $consentRequest->patient->fullName() }}</p>
-                <p class="signed-date">{{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->format('l dS F Y H:i') }}</p>
+                <p class="signed-date">{{ \Carbon\Carbon::parse($consentRequest->patient_signed_ts)->timezone($consentRequest->user->time_zone)->format('l dS F Y H:i') }}</p>
             </div>
 
             <div class="sign-sec">
@@ -250,7 +250,7 @@
                 </div>
 
                 <p class="decor">{{ $consentRequest->user->fullName() }}</p>
-                <p class="signed-date">{{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->format('l dS F Y H:i') }}</p>
+                <p class="signed-date">{{ \Carbon\Carbon::parse($consentRequest->user_signed_ts)->timezone($consentRequest->user->time_zone)->format('l dS F Y H:i') }}</p>
             </div>
 
         </div>

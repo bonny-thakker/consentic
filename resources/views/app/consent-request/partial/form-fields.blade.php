@@ -1,7 +1,7 @@
 <div class="select is-fullwidth{{ $errors->has('user') ? ' is-danger' : '' }}">
     <select name="user" id="user-list">
         <option disabled selected>Select Doctor</option>
-        @foreach (\App\User::orderBy('name', 'ASC')->get() as $user)
+        @foreach (Auth::user()->currentTeam->users()->orderBy('name', 'ASC')->get() as $user)
             <option value="{{ $user->id }}" {{ (old('user') == $user->id || (isset($consentRequest) && $consentRequest->user->id == $user->id) || (isset($createForUser) && $createForUser->id == $user->id)) ? 'selected' : null }}>{{ $user->fullName() }}</option>
         @endforeach
     </select>
