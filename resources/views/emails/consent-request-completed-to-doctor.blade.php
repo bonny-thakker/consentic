@@ -250,34 +250,53 @@
         <!-- Hero Image, Flush : END -->
 
         <!-- 1 Column Text + Button : BEGIN -->
-        <tr>
+        {{-- <tr>
             <td bgcolor="#ffffff" style="padding: 40px 40px 20px; text-align: center;">
-                <h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">Consent Request Complete by Patient</h1>
+                <h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">Consent Completed.</h1>
             </td>
-        </tr>
+        </tr> --}}
         <tr>
-            <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
+            <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
+                @switch ($recipient)
+                    @case ('doctor')
+                    <p>Hi {{ $consentRequest->user->fullName() }}</p>
 
-                <p style="margin: 0;"><strong>{{ $consentRequest->patient->fullName() }}</strong> has compeleted the consent request for {{ $consentRequest->consent->name }}.</p>
-                <p style="margin: 0;">Please complete this consent request by answering the questions and signing.</p>
+                    <p><b>{{ $consentRequest->patient->fullName() }}</b> has now given their consent for their {{ $consentRequest->consent->name }}.</p>
+
+                    <p>A copy of the procedure explanation (video), your questions and answers, your discussions with your patient, your signature and your patient's signature have been attached to this email as a PDF.</p>
+                    @break
+
+                    @case ('patient')
+                    <p>Hi {{ $consentRequest->patient->first_name }}</p>
+                    <p>You have now given your consent to Dr. {{ $consentRequest->user->last_name }} to proceed with your {{ $consentRequest->consent->name }} procedure.</p>
+
+                    @if ($consentRequest->consent->info_link)
+                        <p>Additional information about your procedure can be found on <a href="{{ $consentRequest->consent->info_link }}">this website</a>, which we encourage you to read. All information on this site is provided by a third party and no guarantees as to its accuracy or recency can be made by Consentic.</p>
+                    @endif
+
+                    <p>A copy of the procedure explanation (video), your questions and answers, your discussions with your doctor, your signature and your doctor’s signature have been attached to this email as a PDF.</p>
+
+                   {{-- <p>Remember you can revoke your consent at any time by visiting the <br><a href="https://portal.consentic.com/consent-requests/show/{{ $consentRequest->id }}">Consentic Portal</a>.</p>--}}
+                    @break
+                @endswitch
             </td>
         </tr>
-        <tr>
-            <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
-                <!-- Button : BEGIN -->
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
-                    <tr>
-                        <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
-                            <a href="{{ url('app/consent-requests') . '/' . $consentRequest->id }}/doctor-questions/edit" style="background: #222222; border: 15px solid #222222; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a" target="__blank">
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Complete & sign the consent request</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <!-- Button : END -->
-            </td>
-        </tr>
-        <!-- 1 Column Text + Button : END -->
+    {{-- <tr>
+        <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+            <!-- Button : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
+                <tr>
+                    <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
+                        <a href="{{ url('consent-requests/show') . '/' . $consentRequest->id }}" style="background: #222222; border: 15px solid #222222; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a" target="__blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Let me see</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!-- Button : END -->
+        </td>
+    </tr> --}}
+    <!-- 1 Column Text + Button : END -->
 
     </table>
     <!-- Email Body : END -->

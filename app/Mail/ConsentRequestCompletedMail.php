@@ -35,8 +35,23 @@ class ConsentRequestCompletedMail extends Mailable
      */
     public function build()
     {
+
+        switch($this->recipient){
+
+            case "doctor":
+                $view = 'emails.consent-request-completed-to-doctor';
+                break;
+
+            case "patient":
+                $view = 'emails.consent-request-completed-to-patient';
+                break;
+
+
+        }
+
+
         return $this->subject('Consent Request Completed')
-            ->view('emails.consent-request-completed')
+            ->view($view)
             ->attach($this->pdfFile, [
                 'as' => basename($this->pdfFile),
                 'mime' => 'application/pdf',
