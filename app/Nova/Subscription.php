@@ -2,8 +2,10 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Subscription extends Resource
@@ -41,6 +43,8 @@ class Subscription extends Resource
     {
         return [
             ID::make()->sortable(),
+            BelongsTo::make('Practice'),
+            Text::make('stripe_plan'),
         ];
     }
 
