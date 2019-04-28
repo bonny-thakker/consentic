@@ -13,7 +13,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\User' => 'App\Policies\UserPolicy',
+        'App\Team' => 'App\Policies\TeamPolicy',
+        'Laravel\Spark\TeamSubscription' => 'App\Policies\TeamSubscriptionPolicy',
     ];
 
     /**

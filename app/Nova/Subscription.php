@@ -43,8 +43,8 @@ class Subscription extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Practice'),
-            Text::make('stripe_plan'),
+          /*  BelongsTo::make('Practice'),
+            Text::make('stripe_plan'),*/
         ];
     }
 
