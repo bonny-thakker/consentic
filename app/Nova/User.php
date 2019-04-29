@@ -8,6 +8,8 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\MorphToMany;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\DateTime;
 
 class User extends Resource
 {
@@ -64,6 +66,9 @@ class User extends Resource
 
             MorphToMany::make('Roles', 'roles', \Insenseanalytics\LaravelNovaPermission\Role::class),
             MorphToMany::make('Permissions', 'permissions', \Insenseanalytics\LaravelNovaPermission\Permission::class),
+
+            Date::make('Created At'),
+            Date::make('Updated At'),
 
         ];
     }

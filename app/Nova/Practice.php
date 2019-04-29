@@ -2,12 +2,15 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Spark\TeamSubscription;
+use Saumini\Count\RelationshipCount;
 
 class Practice extends Resource
 {
@@ -23,7 +26,7 @@ class Practice extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -46,7 +49,10 @@ class Practice extends Resource
             ID::make()->sortable(),
             Text::make('name')->sortable(),
             BelongsTo::make('Owner', 'owner', 'App\Nova\User'),
-            HasMany::make('Subscription')
+            RelationshipCount::make('Subscriptions', 'subscriptions','App\Nova\Subscription'),
+            HasMany::make('Subscriptions', 'subscriptions','App\Nova\Subscription'),
+            Date::make('Created At'),
+            Date::make('Updated At'),
         ];
     }
 

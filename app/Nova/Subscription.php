@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -43,8 +44,12 @@ class Subscription extends Resource
     {
         return [
             ID::make()->sortable(),
-          /*  BelongsTo::make('Practice'),
-            Text::make('stripe_plan'),*/
+            BelongsTo::make('Practice','team','App\Nova\Practice'),
+            Text::make('Stripe Plan' , function () {
+                return str_replace('-', ' ',ucfirst($this->stripe_plan));
+            }),
+            Date::make('Created At'),
+            Date::make('Updated At'),
         ];
     }
 

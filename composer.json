@@ -25,6 +25,7 @@
         "lavary/laravel-menu": "^1.7",
         "mpdf/mpdf": "^7.0",
         "riclep/spark-single-payment": "^1.2",
+        "saumini/count": "^1.0",
         "spatie/laravel-newsletter": "^4.2",
         "spatie/laravel-permission": "^2.31",
         "teamtnt/laravel-scout-tntsearch-driver": "^7.0",

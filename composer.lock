@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ee3ced7be27f0530b0cd012392b40d4",
+    "content-hash": "d6331e12cd0d3be0ff58a9dad8b4935b",
     "packages": [
         {
             "name": "actuallymab/laravel-comment",
@@ -1854,8 +1854,7 @@
             "dist": {
                 "type": "path",
                 "url": "./spark",
-                "reference": "94676e574eba34c957215b986490e257adf6e0c4",
-                "shasum": null
+                "reference": "94676e574eba34c957215b986490e257adf6e0c4"
             },
             "require": {
                 "erusev/parsedown": "~1.0",
@@ -3496,6 +3495,47 @@
             "time": "2016-07-19T19:14:21+00:00"
         },
         {
+            "name": "saumini/count",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nsaumini/nova-field-count.git",
+                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nsaumini/nova-field-count/zipball/55db5d804cf5489ccb077b0cef3e2d4202b1acda",
+                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Saumini\\Count\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Saumini\\Count\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-11-16T16:28:19+00:00"
+        },
+        {
             "name": "setasign/fpdi",
             "version": "1.6.2",
             "source": {
@@ -5134,7 +5174,7 @@
                 }
             ],
             "description": "A library for Venture Drake laravel projects",
-            "time": "2019-01-28 22:42:51"
+            "time": "2019-01-28T22:42:51+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
