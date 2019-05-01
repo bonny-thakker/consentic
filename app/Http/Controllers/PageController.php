@@ -70,5 +70,30 @@ class PageController extends Controller
         return view('web.faq');
     }
 
+    public function registerCoupon(Request $request)
+    {
+        switch($request->id){
+
+            case "coupon50":
+
+                // Add the coupon to the session
+                session(['coupon' => 'coupon50']);
+                return redirect('register');
+
+                break;
+
+            default:
+
+                abort(404);
+
+        }
+    }
+
+    public function registerCouponUnset(Request $request)
+    {
+        session()->forget('coupon');
+        return redirect('register');
+    }
+
 
 }

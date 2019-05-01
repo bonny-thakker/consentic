@@ -29,6 +29,9 @@ Route::get('/individual-pricing', 'PageController@individualPricing')->name('web
 Route::get('/group-pricing', 'PageController@groupPricing')->name('web.group-pricing');
 Route::get('/faq', 'PageController@faq')->name('web.faq');
 
+Route::get('/register/{id}', 'PageController@registerCoupon')->name('web.coupon');
+Route::get('/register/{id}/unset', 'PageController@registerCouponUnset')->name('web.coupon.unset');
+
 /* Forms */
 Route::post('/form/newsletter', 'MailchimpController@store')->name('web.form.mailchimp.store');
 Route::post('/form/contact', 'ContactFormController@send')->name('web.form.contact.send');

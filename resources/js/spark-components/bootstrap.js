@@ -10,6 +10,7 @@ require('./notifications/notifications');
  */
 require('./auth/register-stripe');
 require('./auth/register-braintree');
+require('./auth/register-coupon');
 
 /**
  * Settings Component...

@@ -1,5 +1,11 @@
 @if (Spark::billsUsingStripe())
-    @include('spark::auth.register-stripe')
+
+    @if(Session::has('coupon'))
+        @include('spark::auth.register-coupon')
+    @else
+        @include('spark::auth.register-stripe')
+    @endif
+
 @else
     @include('spark::auth.register-braintree')
 @endif
