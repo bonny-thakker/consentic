@@ -1,6 +1,8 @@
 <section class="section section-title is-highlight">
     <div class="container-bulma">
+        @if(!isset($hideTitle))
         <h2 class="title">Terms and Conditions</h2>
+        @endif
         <h3 class="subtitle">By using our platform you agree to be bound by these terms.</h3>
     </div>
 </section>

@@ -12158,3 +12158,94 @@ body {
   margin-right: -1rem;
 }
 
+#spark-app .navbar-brand {
+  padding: 0;
+}
+
+#spark-app .navbar {
+  padding: 0;
+  letter-spacing: 0.6px !important;
+}
+
+#spark-app .navbar .container {
+  padding: 0;
+}
+
+#spark-app .navbar .btn {
+  border-width: 2px;
+  border-color: #47525E;
+}
+
+#spark-app .navbar .btn {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: white;
+  color: #47525E;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#spark-app .navbar .btn.btn-primary {
+  margin-right: 0.75rem;
+}
+
+#spark-app .navbar .btn.btn-primary {
+  background-color: #47525e;
+  border-color: transparent;
+  color: #fff;
+}
+
+#spark-app .navbar .btn.btn-primary:hover,
+#spark-app .navbar .btn.btn-primary.is-hovered {
+  background-color: #16B1BA;
+  border-color: transparent;
+  color: #fff;
+}
+
+#spark-app .navbar .btn.btn-primary:focus,
+#spark-app .navbar .btn.btn-primary.is-focused {
+  border-color: transparent;
+  color: #fff;
+}
+
+#spark-app .navbar .btn:focus,
+#spark-app .navbar .btn.is-focused,
+#spark-app .navbar .btn:active,
+#spark-app .navbar .btn.is-active {
+  outline: none;
+}
+
+#spark-app .btn.btn-outline-success {
+  border-color: #00d1b2 !important;
+  color: #00d1b2 !important;
+}
+
+#spark-app .btn.btn-outline-success:hover,
+#spark-app .btn.btn-outline-success:active {
+  background-color: #00d1b2 !important;
+  color: #fff !important;
+}
+

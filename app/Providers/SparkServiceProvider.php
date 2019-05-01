@@ -59,7 +59,8 @@ class SparkServiceProvider extends ServiceProvider
             Spark::useStripe()->noCardUpFront()->teamTrialDays(14);
             // Spark::useStripe()->noCardUpFront()->trialDays(14);
         }else{
-            Spark::useStripe()->noCardUpFront();
+            // Spark::useStripe()->noCardUpFront();
+           Spark::useStripe();
         }
 
        /* Spark::promotion('demo2019');*/
@@ -139,23 +140,37 @@ class SparkServiceProvider extends ServiceProvider
         });
 
         Spark::createUsersWith(function ($request) {
-            $user = Spark::user();
 
+            $user = Spark::user();
             $data = $request->all();
 
-            $user->forceFill([
-                'name' => trim($data['first_name'].' '.$data['last_name']),
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'email' => $data['email'],
-                'phone_number' => $data['phone_number'],
-                'title' => $data['title'],
-                'password' => bcrypt($data['password']),
-                'last_read_announcements_at' => Carbon::now(),
-                'trial_ends_at' => Carbon::now()->addDays(Spark::trialDays()),
-            ])->save();
+            if(env('TRIAL_ENABLED')){
+                $user->forceFill([
+                    'name' => trim($data['first_name'].' '.$data['last_name']),
+                    'first_name' => $data['first_name'],
+                    'last_name' => $data['last_name'],
+                    'email' => $data['email'],
+                    'phone_number' => $data['phone_number'],
+                    'title' => $data['title'],
+                    'password' => bcrypt($data['password']),
+                    'last_read_announcements_at' => Carbon::now(),
+                    'trial_ends_at' => Carbon::now()->addDays(Spark::trialDays()),
+                ])->save();
+            }else {
+                $user->forceFill([
+                    'name' => trim($data['first_name'] . ' ' . $data['last_name']),
+                    'first_name' => $data['first_name'],
+                    'last_name' => $data['last_name'],
+                    'email' => $data['email'],
+                    'phone_number' => $data['phone_number'],
+                    'title' => $data['title'],
+                    'password' => bcrypt($data['password']),
+                    'last_read_announcements_at' => Carbon::now()
+                ])->save();
+            }
 
             return $user;
+
         });
 
     }

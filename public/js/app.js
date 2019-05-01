@@ -69714,10 +69714,229 @@ Vue.component('spark-register-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! auth/register-stripe */ "./spark/resources/assets/js/auth/register-stripe.js");
+/*var base = require('auth/register-stripe');
 
 Vue.component('spark-register-stripe', {
-  mixins: [base]
+    mixins: [base]
+});*/
+Vue.component('spark-register-stripe', {
+  /**
+   * Load mixins for the component.
+   */
+  mixins: [__webpack_require__(/*! mixins/register */ "./spark/resources/assets/js/mixins/register.js"), __webpack_require__(/*! mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! mixins/vat */ "./spark/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
+
+  /**
+   * The component's data.
+   */
+  data: function data() {
+    return {
+      query: null,
+      cardElement: null,
+      coupon: null,
+      invalidCoupon: false,
+      country: null,
+      taxRate: 0,
+      registerForm: $.extend(true, new SparkForm({
+        stripe_token: '',
+        plan: '',
+        team: '',
+        team_slug: '',
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        address: '',
+        address_line_2: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: 'AU',
+        vat_id: '',
+        terms: false,
+        coupon: null,
+        invitation: null
+      }), Spark.forms.register),
+      cardForm: new SparkForm({
+        name: '',
+        number: '',
+        cvc: '',
+        month: '',
+        year: ''
+      })
+    };
+  },
+  watch: {
+    /**
+     * Watch for changes on the entire billing address.
+     */
+    'currentBillingAddress': function currentBillingAddress(value) {
+      if (!Spark.collectsEuropeanVat) {
+        return;
+      }
+
+      this.refreshTaxRate(this.registerForm);
+    },
+
+    /**
+     * Watch the team name for changes.
+     */
+    'registerForm.team': function registerFormTeam(val, oldVal) {
+      if (this.registerForm.team_slug == '' || this.registerForm.team_slug == oldVal.toLowerCase().replace(/[\s\W-]+/g, '-')) {
+        this.registerForm.team_slug = val.toLowerCase().replace(/[\s\W-]+/g, '-');
+      }
+    },
+
+    /**
+     * Watch for changes on the selected plan.
+     */
+    selectedPlan: function selectedPlan(val) {
+      var _this = this;
+
+      if (!val || val.price == 0) {
+        this.cardElement = null;
+        return;
+      }
+
+      if (!this.cardElement) {
+        this.$nextTick(function () {
+          _this.cardElement = _this.createCardElement('#card-element');
+        });
+      }
+    }
+  },
+
+  /**
+   * The component has been created by Vue.
+   */
+  created: function created() {
+    this.getPlans();
+    this.guessCountry();
+    this.query = URI(document.URL).query(true);
+
+    if (this.query.coupon) {
+      this.getCoupon();
+      this.registerForm.coupon = this.query.coupon;
+    }
+
+    if (this.query.invitation) {
+      this.getInvitation();
+      this.registerForm.invitation = this.query.invitation;
+    }
+  },
+  methods: {
+    /**
+     * Attempt to guess the user's country.
+     */
+    guessCountry: function guessCountry() {
+      var _this2 = this;
+
+      axios.get('/geocode/country').then(function (response) {
+        if (response.data != 'ZZ') {
+          _this2.registerForm.country = response.data;
+        }
+      }).catch(function (response) {//
+      });
+    },
+
+    /**
+     * Get the coupon specified in the query string.
+     */
+    getCoupon: function getCoupon() {
+      var _this3 = this;
+
+      axios.get('/coupon/' + this.query.coupon).then(function (response) {
+        _this3.coupon = response.data;
+      }).catch(function (response) {
+        _this3.invalidCoupon = true;
+      });
+    },
+
+    /**
+     * Attempt to register with the application.
+     */
+    register: function register() {
+      var _this4 = this;
+
+      this.cardForm.errors.forget();
+      this.registerForm.busy = true;
+      this.registerForm.errors.forget();
+
+      if (!Spark.cardUpFront || this.registerForm.invitation || this.selectedPlan.price == 0) {
+        return this.sendRegistration();
+      } // Here we will build out the payload to send to Stripe to obtain a card token so
+      // we can create the actual subscription. We will build out this data that has
+      // this credit card number, CVC, etc. and exchange it for a secure token ID.
+
+
+      var payload = {
+        name: this.cardForm.name,
+        address_line1: this.registerForm.address || '',
+        address_line2: this.registerForm.address_line_2 || '',
+        address_city: this.registerForm.city || '',
+        address_state: this.registerForm.state || '',
+        address_zip: this.registerForm.zip || '',
+        address_country: this.registerForm.country || ''
+      };
+      this.stripe.createToken(this.cardElement, payload).then(function (response) {
+        if (response.error) {
+          _this4.cardForm.errors.set({
+            card: [response.error.message]
+          });
+
+          _this4.registerForm.busy = false;
+        } else {
+          _this4.registerForm.stripe_token = response.token.id;
+
+          _this4.sendRegistration();
+        }
+      });
+    },
+
+    /*
+     * After obtaining the Stripe token, send the registration to Spark.
+     */
+    sendRegistration: function sendRegistration() {
+      Spark.post('/register', this.registerForm).then(function (response) {
+        window.location = response.redirect;
+      });
+    },
+    showTerms: function showTerms() {
+      $('#modal-terms').modal('show');
+    },
+    showPrivacy: function showPrivacy() {
+      $('#modal-privacy').modal('show');
+    }
+  },
+  computed: {
+    /**
+     * Determine if the selected country collects European VAT.
+     */
+    countryCollectsVat: function countryCollectsVat() {
+      return this.collectsVat(this.registerForm.country);
+    },
+
+    /**
+     * Get the displayable discount for the coupon.
+     */
+    discount: function discount() {
+      if (this.coupon) {
+        if (this.coupon.percent_off) {
+          return this.coupon.percent_off + '%';
+        } else {
+          return Vue.filter('currency')(this.coupon.amount_off / 100);
+        }
+      }
+    },
+
+    /**
+     * Get the current billing address from the register form.
+     *
+     * This used primarily for watching.
+     */
+    currentBillingAddress: function currentBillingAddress() {
+      return this.registerForm.address + this.registerForm.address_line_2 + this.registerForm.city + this.registerForm.state + this.registerForm.zip + this.registerForm.country + this.registerForm.vat_id;
+    }
+  }
 });
 
 /***/ }),
@@ -70808,229 +71027,6 @@ module.exports = {
       if (this.coupon) {
         return Vue.filter('currency')(this.coupon.amount_off);
       }
-    }
-  }
-};
-
-/***/ }),
-
-/***/ "./spark/resources/assets/js/auth/register-stripe.js":
-/*!***********************************************************!*\
-  !*** ./spark/resources/assets/js/auth/register-stripe.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = {
-  /**
-   * Load mixins for the component.
-   */
-  mixins: [__webpack_require__(/*! ./../mixins/register */ "./spark/resources/assets/js/mixins/register.js"), __webpack_require__(/*! ./../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../mixins/vat */ "./spark/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! ./../mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
-
-  /**
-   * The component's data.
-   */
-  data: function data() {
-    return {
-      query: null,
-      cardElement: null,
-      coupon: null,
-      invalidCoupon: false,
-      country: null,
-      taxRate: 0,
-      registerForm: $.extend(true, new SparkForm({
-        stripe_token: '',
-        plan: '',
-        team: '',
-        team_slug: '',
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        address: '',
-        address_line_2: '',
-        city: '',
-        state: '',
-        zip: '',
-        country: 'US',
-        vat_id: '',
-        terms: false,
-        coupon: null,
-        invitation: null
-      }), Spark.forms.register),
-      cardForm: new SparkForm({
-        name: '',
-        number: '',
-        cvc: '',
-        month: '',
-        year: ''
-      })
-    };
-  },
-  watch: {
-    /**
-     * Watch for changes on the entire billing address.
-     */
-    'currentBillingAddress': function currentBillingAddress(value) {
-      if (!Spark.collectsEuropeanVat) {
-        return;
-      }
-
-      this.refreshTaxRate(this.registerForm);
-    },
-
-    /**
-     * Watch the team name for changes.
-     */
-    'registerForm.team': function registerFormTeam(val, oldVal) {
-      if (this.registerForm.team_slug == '' || this.registerForm.team_slug == oldVal.toLowerCase().replace(/[\s\W-]+/g, '-')) {
-        this.registerForm.team_slug = val.toLowerCase().replace(/[\s\W-]+/g, '-');
-      }
-    },
-
-    /**
-     * Watch for changes on the selected plan.
-     */
-    selectedPlan: function selectedPlan(val) {
-      var _this = this;
-
-      if (!val || val.price == 0) {
-        this.cardElement = null;
-        return;
-      }
-
-      if (!this.cardElement) {
-        this.$nextTick(function () {
-          _this.cardElement = _this.createCardElement('#card-element');
-        });
-      }
-    }
-  },
-
-  /**
-   * The component has been created by Vue.
-   */
-  created: function created() {
-    this.getPlans();
-    this.guessCountry();
-    this.query = URI(document.URL).query(true);
-
-    if (this.query.coupon) {
-      this.getCoupon();
-      this.registerForm.coupon = this.query.coupon;
-    }
-
-    if (this.query.invitation) {
-      this.getInvitation();
-      this.registerForm.invitation = this.query.invitation;
-    }
-  },
-  methods: {
-    /**
-     * Attempt to guess the user's country.
-     */
-    guessCountry: function guessCountry() {
-      var _this2 = this;
-
-      axios.get('/geocode/country').then(function (response) {
-        if (response.data != 'ZZ') {
-          _this2.registerForm.country = response.data;
-        }
-      }).catch(function (response) {//
-      });
-    },
-
-    /**
-     * Get the coupon specified in the query string.
-     */
-    getCoupon: function getCoupon() {
-      var _this3 = this;
-
-      axios.get('/coupon/' + this.query.coupon).then(function (response) {
-        _this3.coupon = response.data;
-      }).catch(function (response) {
-        _this3.invalidCoupon = true;
-      });
-    },
-
-    /**
-     * Attempt to register with the application.
-     */
-    register: function register() {
-      var _this4 = this;
-
-      this.cardForm.errors.forget();
-      this.registerForm.busy = true;
-      this.registerForm.errors.forget();
-
-      if (!Spark.cardUpFront || this.registerForm.invitation || this.selectedPlan.price == 0) {
-        return this.sendRegistration();
-      } // Here we will build out the payload to send to Stripe to obtain a card token so
-      // we can create the actual subscription. We will build out this data that has
-      // this credit card number, CVC, etc. and exchange it for a secure token ID.
-
-
-      var payload = {
-        name: this.cardForm.name,
-        address_line1: this.registerForm.address || '',
-        address_line2: this.registerForm.address_line_2 || '',
-        address_city: this.registerForm.city || '',
-        address_state: this.registerForm.state || '',
-        address_zip: this.registerForm.zip || '',
-        address_country: this.registerForm.country || ''
-      };
-      this.stripe.createToken(this.cardElement, payload).then(function (response) {
-        if (response.error) {
-          _this4.cardForm.errors.set({
-            card: [response.error.message]
-          });
-
-          _this4.registerForm.busy = false;
-        } else {
-          _this4.registerForm.stripe_token = response.token.id;
-
-          _this4.sendRegistration();
-        }
-      });
-    },
-
-    /*
-     * After obtaining the Stripe token, send the registration to Spark.
-     */
-    sendRegistration: function sendRegistration() {
-      Spark.post('/register', this.registerForm).then(function (response) {
-        window.location = response.redirect;
-      });
-    }
-  },
-  computed: {
-    /**
-     * Determine if the selected country collects European VAT.
-     */
-    countryCollectsVat: function countryCollectsVat() {
-      return this.collectsVat(this.registerForm.country);
-    },
-
-    /**
-     * Get the displayable discount for the coupon.
-     */
-    discount: function discount() {
-      if (this.coupon) {
-        if (this.coupon.percent_off) {
-          return this.coupon.percent_off + '%';
-        } else {
-          return Vue.filter('currency')(this.coupon.amount_off / 100);
-        }
-      }
-    },
-
-    /**
-     * Get the current billing address from the register form.
-     *
-     * This used primarily for watching.
-     */
-    currentBillingAddress: function currentBillingAddress() {
-      return this.registerForm.address + this.registerForm.address_line_2 + this.registerForm.city + this.registerForm.state + this.registerForm.zip + this.registerForm.country + this.registerForm.vat_id;
     }
   }
 };
