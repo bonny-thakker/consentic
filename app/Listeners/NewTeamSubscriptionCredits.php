@@ -44,10 +44,10 @@ class NewTeamSubscriptionCredits
 
                 break;
 
-            case "consent-50":
+            case "consent-60":
 
                 $event->team->update([
-                    'credit' => 50
+                    'credit' => 60
                 ]);
 
                 break;

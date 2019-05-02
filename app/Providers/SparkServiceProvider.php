@@ -118,11 +118,11 @@ class SparkServiceProvider extends ServiceProvider
                 '$2.50 for each additional consent'
             ]);
 
-        Spark::teamPlan('Consent 50', 'consent-50')
+        Spark::teamPlan('Consent 60', 'consent-60')
             ->price(100)
             ->features([
                 'Unlimited Account Users',
-                '50 Consent Requests Per Month',
+                '60 Consent Requests Per Month',
                 '24/7 Support',
                 '$2.50 for each additional consent'
             ]);
