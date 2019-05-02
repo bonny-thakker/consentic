@@ -131,7 +131,7 @@
                             </div>
                             <div class="pricing-plan column">
                                 <div class="plan-header">
-                                    Consent 50
+                                    Consent 60
                                 </div>
                                 <div class="plan-price">
                                     <span class="plan-price-amount"><span class="plan-price-currency">$</span>100</span>/ month
@@ -141,7 +141,7 @@
                                         Unlimited Account Users
                                     </div>
                                     <div class="plan-item">
-                                        50 Consent Requests Per Month
+                                        60 Consent Requests Per Month
                                     </div>
                                     <div class="plan-item">
                                         24/7 Support
