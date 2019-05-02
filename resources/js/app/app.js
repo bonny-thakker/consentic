@@ -251,6 +251,22 @@ const App = function() {
             App.loadSignature();
             App.animations();
 
+            $(document).on('click','input[name="selectAll"]', function(e) {
+
+                if($(this).prop("checked") == true){
+                    $(this).closest('form').find('select').each(function(){
+                        $(this).find("option[data-html='Yes']").prop('selected', true);
+                    });
+                }
+
+                else if($(this).prop("checked") == false){
+                    $(this).closest('form').find('select').each(function() {
+                        $(this).find("option[data-html='No']").prop('selected', true);
+                    })
+                }
+
+            });
+
         },
 
         handleNavbar: function() {

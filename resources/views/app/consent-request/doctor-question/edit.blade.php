@@ -82,6 +82,13 @@
                        <form method="POST" action="/app/consent-requests/{{ $consentRequest->id }}/doctor-questions/update" name="consentRequestQuestions" id="consentRequestQuestions">
                        @csrf
 
+                       <label class="checkbox button label">
+                           <input type="checkbox" name="selectAll" id="select-all">
+                           Select all answers below as correct
+                       </label>
+
+                           <hr />
+
                        @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\UserQuestion')->get() as $consentRequestQuestion)
                            @include('app.partial.question', [
                             'consentRequestQuestion' => $consentRequestQuestion,

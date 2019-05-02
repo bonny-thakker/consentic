@@ -22,7 +22,7 @@
                                 @elseif ($consentRequestQuestionAnswer)
                                 {{ ($consentRequestQuestionAnswer->id == $answer->id) ? 'selected' : '' }}
                                 @endif
-                                value="{{ $answer->id }}">{{ $answer->text }}
+                                value="{{ $answer->id }}" data-html="{{ $answer->text }}">{{ $answer->text }}
                         </option>
                     @endforeach
                 </select>
@@ -52,7 +52,7 @@
                                 @elseif ($consentRequestQuestionAnswer)
                                 {{ ($consentRequestQuestionAnswer->id == $answer->id) ? 'selected' : '' }}
                                 @endif
-                                value="{{ $answer->id }}">{{ $answer->text }}
+                                value="{{ $answer->id }}" data-html="{{ $answer->text }}">{{ $answer->text }}
                         </option>
                     @endforeach
                 </select>

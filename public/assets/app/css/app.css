@@ -11700,3 +11700,10 @@ ul.list-unstyled .comment-link {
   border-color: #23d160 !important;
 }
 
+.checkbox.label {
+  display: inline;
+  border-width: 1px !important;
+  border-color: #dbdbdb !important;
+  color: #363636;
+}
+

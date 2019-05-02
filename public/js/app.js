@@ -69712,13 +69712,13 @@ Vue.component('spark-register-braintree', {
   !*** ./resources/js/spark-components/auth/register-coupon.js ***!
   \***************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('spark-register-coupon', {
   /**
    * Load mixins for the component.
    */
-  mixins: [],
+  mixins: [__webpack_require__(/*! mixins/register */ "./spark/resources/assets/js/mixins/register.js")],
 
   /**
    * The component's data.
