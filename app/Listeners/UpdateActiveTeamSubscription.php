@@ -26,6 +26,13 @@ class UpdateActiveTeamSubscription
      */
     public function handle($event)
     {
+
+        \App\TeamBillingCycle::create([
+            'team_id' => $event->team->id,
+            'plan' => $event->team->subscription()->provider_plan ?? null,
+            'credit' => $event->team->credit,
+        ]);
+
         $currentPlan = $event instanceof SubscriptionCancelled
             ? null : $event->team->subscription()->provider_plan;
 
