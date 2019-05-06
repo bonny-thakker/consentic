@@ -67,6 +67,12 @@ class ConsentRequestDoctorQuestionController extends Controller
 
         $patient = $consentRequest->patient;
 
+        if(auth()->user()->currentTeam->id != $consentRequest->team->id){
+
+            return view('app.consent-request.doctor-question.edit-team-mismatch');
+
+        }
+
         if($consentRequest->isUserSigned()){
 
             return view('app.consent-request.doctor-question.edit-complete', compact(
