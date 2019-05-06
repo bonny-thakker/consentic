@@ -172,14 +172,29 @@ class PatientController extends Controller
             'birthday' => $request->birthday
         ]);
 
-        if( $request->email){
+        if($request->email){
 
-            $patient->email->update([
-                'address' => $request->email
-            ]);
+            if(!$patient->email){
 
-        }else{
+                $email = \App\Email::create([
+                    'address' => $request->email
+                ]);
+
+                $patient->email()->save($email);
+
+            }else{
+
+                $patient->email->update([
+                    'address' => $request->email
+                ]);
+
+            }
+
+
+        }elseif($patient->email){
+
             $patient->email->delete();
+
         }
 
         if($request->mobile){
