@@ -182,14 +182,28 @@ class PatientController extends Controller
             $patient->email->delete();
         }
 
-        if( $request->mobile){
+        if($request->mobile){
 
-            $patient->phoneNumber->update([
-                'number' => $request->mobile
-            ]);
+            if(!$patient->phoneNumber){
 
-        }else{
+                $phoneNumber = \App\PhoneNumber::create([
+                    'number' => $request->mobile
+                ]);
+
+                $patient->phoneNumber()->save($phoneNumber);
+
+            }else{
+
+                $patient->phoneNumber->update([
+                    'number' => $request->mobile
+                ]);
+
+            }
+
+        }elseif($patient->phoneNumber){
+
             $patient->phoneNumber->delete();
+
         }
 
         $patient->address->update([
