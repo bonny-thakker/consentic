@@ -18,7 +18,7 @@ class ConsentRequestObserver
 
         event(new \App\Events\ConsentRequestCreated($consentRequest));
 
-        foreach(\App\UserQuestion::orderBy('order', 'ASC')->get() as $userQuestion){
+        foreach(\App\UserQuestion::where('archived',0)->orderBy('order', 'ASC')->get() as $userQuestion){
 
             $consentRequestQuestion = \App\ConsentRequestQuestion::create([
                 'consent_request_id' => $consentRequest->id,
@@ -33,7 +33,7 @@ class ConsentRequestObserver
         }
 
         // UPDATE
-        foreach($consentRequest->consent->patientQuestions as $patientQuestion){
+        foreach($consentRequest->consent->patientQuestions()->where('archived',0)->get() as $patientQuestion){
 
             // Remove blood transfusion from skin exclusion
             /*if($patientQuestion->id == 1 && in_array($consentRequest->consent->id, [20,23,24])){
@@ -64,7 +64,7 @@ class ConsentRequestObserver
 
         }
 
-        foreach($consentRequest->consent->questions as $question){
+        foreach($consentRequest->consent->questions()->where('archived',0)->get()  as $question){
 
             $consentRequestQuestion = \App\ConsentRequestQuestion::create([
                 'consent_request_id' => $consentRequest->id,
