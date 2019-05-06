@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\Laravel\Spark\Events\Teams\Subscription\SubscriptionCancelled;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -26,11 +27,18 @@ class NewTeamSubscriptionCredits
     public function handle($event)
     {
 
+        $currentPlan = $event instanceof SubscriptionCancelled
+            ? null : $event->team->subscription()->provider_plan;
+
+        $event->team->forceFill([
+            'current_billing_plan' => $currentPlan,
+        ])->save();
+
         switch($event->team->current_billing_plan){
 
             case "consent-10":
 
-                $event->team->update([
+                $event->team->forceFill([
                     'credit' => 10
                 ]);
 
@@ -38,7 +46,7 @@ class NewTeamSubscriptionCredits
 
             case "consent-30":
 
-                $event->team->update([
+                $event->team->forceFill([
                     'credit' => 30
                 ]);
 
@@ -46,7 +54,7 @@ class NewTeamSubscriptionCredits
 
             case "consent-60":
 
-                $event->team->update([
+                $event->team->forceFill([
                     'credit' => 60
                 ]);
 

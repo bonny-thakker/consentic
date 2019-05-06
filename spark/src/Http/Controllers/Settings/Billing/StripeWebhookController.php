@@ -118,4 +118,5 @@ class StripeWebhookController extends WebhookController
 
         return new Response('Webhook Handled', 200);
     }
+
 }

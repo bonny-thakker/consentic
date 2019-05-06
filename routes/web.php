@@ -51,6 +51,7 @@ Route::prefix('p')->group( function () {
 // Auth::routes();
 // Overwrite spark routes
 /*Route::get('logout', 'App\Http\Controllers\Auth\LogoutController@logout')->name('logout');*/
+Route::post('/webhook/stripe', 'Spark\StripeWebhookController@handleWebhook');
 
 /* Private */
 Route::middleware(['auth'])->prefix('app')->group( function () {
