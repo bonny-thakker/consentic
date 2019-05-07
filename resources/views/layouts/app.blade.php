@@ -70,10 +70,8 @@
 <script src="/assets/plugins/jsignature/flashcanvas.js"></script>
 <script src="/assets/plugins/jsignature/jSignature.min.js"></script>
 <script src="/assets/plugins/plyr/dist/plyr.polyfilled.min.js"></script>
-{{--<script src="/assets/js/patient.js"></script>--}}
 <script src="{{ url('assets/app/js/app.js') }}"></script>
-<script src="{{ url('js/newsletter.js') }}"></script>
-{{--<script src="{{ url('assets/js/socket.js') }}"></script>--}}
+
 @notify_js
 @notify_render
 

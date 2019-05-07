@@ -58,7 +58,6 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="{{ url('assets/web/js/app.js') }}"></script>
-<script src="{{ url('js/newsletter.js') }}"></script>
 
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="/js/sweetalert.min.js"></script>

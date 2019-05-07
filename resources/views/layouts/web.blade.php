@@ -49,7 +49,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert2@7.15.1/dist/sweetalert2.all.min.js"></script>
 <script src="{{ url('assets/web/js/app.js') }}"></script>
-<script src="{{ url('js/newsletter.js') }}"></script>
 
 
 @yield('scripts')

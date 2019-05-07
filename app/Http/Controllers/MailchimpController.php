@@ -19,11 +19,11 @@ class MailchimpController extends Controller
         if ($validator->fails())
             return ['message' => $validator->errors()->all()];
 
-     /*   if (Newsletter::isSubscribed(request('email')))
+        if (Newsletter::isSubscribed(request('email')))
             return ['message' => 'You already subscribed.', 'action' => 'info'];
 
         if (! Newsletter::subscribe(request('email')))
-            return ['message' => Newsletter::getLastError(), 'action' => 'error'];*/
+            return ['message' => Newsletter::getLastError(), 'action' => 'error'];
 
         return [
             'message' => 'You have successfully subscribed to the newsletter!',
