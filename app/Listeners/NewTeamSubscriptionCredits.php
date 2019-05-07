@@ -27,14 +27,14 @@ class NewTeamSubscriptionCredits
     public function handle($event)
     {
 
-        $currentPlan = $event instanceof SubscriptionCancelled
+       $currentPlan = $event instanceof SubscriptionCancelled
             ? null : $event->team->subscription()->provider_plan;
 
         $event->team->forceFill([
             'current_billing_plan' => $currentPlan,
         ])->save();
 
-        switch($event->team->current_billing_plan){
+        /*switch($event->team->current_billing_plan){
 
             case "consent-10":
 
@@ -60,7 +60,7 @@ class NewTeamSubscriptionCredits
 
                 break;
 
-        }
+        }*/
 
     }
 
