@@ -34,34 +34,6 @@ class NewTeamSubscriptionCredits
             'current_billing_plan' => $currentPlan,
         ])->save();
 
-        /*switch($event->team->current_billing_plan){
-
-            case "consent-10":
-
-                $event->team->forceFill([
-                    'credit' => 10
-                ]);
-
-                break;
-
-            case "consent-30":
-
-                $event->team->forceFill([
-                    'credit' => 30
-                ]);
-
-                break;
-
-            case "consent-60":
-
-                $event->team->forceFill([
-                    'credit' => 60
-                ]);
-
-                break;
-
-        }*/
-
     }
 
 }

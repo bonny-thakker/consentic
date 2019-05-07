@@ -55,25 +55,22 @@ class StripeWebhookController extends SparkStripeWebhookController
 
             case "consent-10":
 
-                $team->forceFill([
-                    'credit' => 10
-                ]);
+                $team->credit = 10;
+                $team->save();
 
                 break;
 
             case "consent-30":
 
-                $team->forceFill([
-                    'credit' => 30
-                ]);
+                $team->credit = 30;
+                $team->save();
 
                 break;
 
             case "consent-60":
 
-                $team->forceFill([
-                    'credit' => 60
-                ]);
+                $team->credit = 60;
+                $team->save();
 
                 break;
 
