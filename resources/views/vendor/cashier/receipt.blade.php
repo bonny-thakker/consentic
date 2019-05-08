@@ -11,6 +11,7 @@
             background: #fff;
             background-image: none;
             font-size: 12px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
         }
         address{
             margin-top:15px;
@@ -54,8 +55,8 @@
 <body>
 <div class="container">
     <table style="margin-left: auto; margin-right: auto" width="550">
-        <tr>
-            <td width="160">
+        <tr valign="top">
+            <td align="left">
                 <p>
                 &nbsp;  <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
                 </p>
@@ -94,9 +95,9 @@
         </tr>
         <tr valign="top">
             <!-- Organization Details -->
-            <td style="font-size:9px;">
+            <td>
                 <p>
-                PRACWAY PTY LTD t/as Consentic<br>
+                PRACWAY PTY LTD<br> t/as Consentic<br>
                 @if (isset($street))
                     {{ $street }}<br>
                 @endif
@@ -151,7 +152,7 @@
                     <!-- Display The Subscriptions -->
                     @foreach ($invoice->subscriptions() as $subscription)
                         <tr>
-                            <td>({{ $subscription->current_billing_plan }})</td>
+                            <td>({{ print_r($subscription->asStripeInvoiceItem()) }})</td>
                             <td>
                                 {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
                                 {{ $subscription->endDateAsCarbon()->formatLocalized('%B %e, %Y') }}
