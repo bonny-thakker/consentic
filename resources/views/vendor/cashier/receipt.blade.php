@@ -56,32 +56,40 @@
 <div class="container">
     <table style="margin-left: auto; margin-right: auto" width="550">
         <tr valign="top">
-            <td align="left">
-                <p>
-                &nbsp;  <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
-                </p>
-            </td>
-
             <!-- Organization Name / Image -->
             <td align="right">
                 <p>
                 <img src="images/logo-dark-sm.png" width="200"/>
                 </p>
-                {{  $owner->name  }}<br />
-                {{ $owner->email ?? null }}
             </td>
         </tr>
         <tr valign="top">
+            <td align="left">
+                <p>
+                    &nbsp;  <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
+                </p>
+                {{  $owner->name  }}<br />
+                {{ $owner->email ?? null }}
+
+            <!-- Extra / VAT Information -->
+                @if (isset($vat))
+                    <p>
+                        {{ $vat }}
+                    </p>
+                @endif
+
+                <br><br>
+            </td>
             <!-- Organization Name / Date -->
             <td>
 
-              {{--  <strong>To:</strong> {{ $owner->email ?: $owner->name }}
-                <br>--}}
+                {{--  <strong>To:</strong> {{ $owner->email ?: $owner->name }}
+                  <br>--}}
                 <p>
-                <strong>Invoice Date:</strong><br />
-                {{ $invoice->date()->toFormattedDateString() }}
+                    <strong>Invoice Date:</strong><br />
+                    {{ $invoice->date()->toFormattedDateString() }}
                 </p>
-              <!-- Invoice Info -->
+                <!-- Invoice Info -->
                 <p>
                     {{--  <strong>Product:</strong> {{ $product }}<br>--}}
                     <strong>Invoice Number:</strong><br />
@@ -92,40 +100,33 @@
                     92 623 589 284
                 </p>
             </td>
-        </tr>
-        <tr valign="top">
-            <!-- Organization Details -->
+            <td>
+                <!-- Organization Details -->
             <td>
                 <p>
-                PRACWAY PTY LTD<br> t/as Consentic<br>
-                @if (isset($street))
-                    {{ $street }}<br>
-                @endif
-                @if (isset($location))
-                    {{ $location }}<br>
-                @endif
-                @if (isset($phone) && $phone !='')
-                    <strong>T</strong> {{ $phone }}<br>
-                @endif
-                @if (isset($vendorVat))
-                    {{ $vendorVat }}<br>
-                @endif
-                @if (isset($url))
-                    <a href="{{ $url }}">{{ $url }}</a>
-                @endif
+                    PRACWAY PTY LTD<br> t/as Consentic<br>
+                    @if (isset($street))
+                        {{ $street }}<br>
+                    @endif
+                    @if (isset($location))
+                        {{ $location }}<br>
+                    @endif
+                    @if (isset($phone) && $phone !='')
+                        <strong>T</strong> {{ $phone }}<br>
+                    @endif
+                    @if (isset($vendorVat))
+                        {{ $vendorVat }}<br>
+                    @endif
+                    @if (isset($url))
+                        <a href="{{ $url }}">{{ $url }}</a>
+                    @endif
                 </p>
             </td>
+
+        </tr>
+
+        <tr valign="top">
             <td>
-
-                <!-- Extra / VAT Information -->
-                @if (isset($vat))
-                    <p>
-                        {{ $vat }}
-                    </p>
-                @endif
-
-                <br><br>
-
                 <!-- Invoice Table -->
                 <table width="100%" class="table" border="0">
                     <tr>
