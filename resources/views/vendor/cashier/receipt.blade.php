@@ -66,11 +66,10 @@
                 <tr valign="top">
                     <td align="left">
                         <p>
-                            &nbsp;  <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
+                           <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
+                            {{ $owner->name  }}<br />
+                            {{ $owner->email ?? null }}
                         </p>
-                        {{  $owner->name  }}<br />
-                        {{ $owner->email ?? null }}
-
                     <!-- Extra / VAT Information -->
                         @if (isset($vat))
                             <p>
@@ -81,45 +80,47 @@
                     </td>
                     <!-- Organization Name / Date -->
                     <td>
-
-                        {{--  <strong>To:</strong> {{ $owner->email ?: $owner->name }}
-                          <br>--}}
-                        <p>
-                            <strong>Invoice Date:</strong><br />
-                            {{ $invoice->date()->toFormattedDateString() }}
-                        </p>
-                        <!-- Invoice Info -->
-                        <p>
-                            {{--  <strong>Product:</strong> {{ $product }}<br>--}}
-                            <strong>Invoice Number:</strong><br />
-                            INV-{{ $id ?? $invoice->id }}<br>
-                        </p>
-                        <p>
-                            <strong>ABN:</strong><br />
-                            92 623 589 284
-                        </p>
+                        <table width="100%" class="table" border="0">
+                            <tr>
+                                <td>
+                                    <p>
+                                        <strong>Invoice Date:</strong><br />
+                                        {{ $invoice->date()->toFormattedDateString() }}
+                                    </p>
+                                    <!-- Invoice Info -->
+                                    <p>
+                                        {{--  <strong>Product:</strong> {{ $product }}<br>--}}
+                                        <strong>Invoice Number:</strong><br />
+                                        INV-{{ $id ?? $invoice->id }}<br>
+                                    </p>
+                                    <p>
+                                        <strong>ABN:</strong><br />
+                                        92 623 589 284
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        PRACWAY PTY LTD<br> t/as Consentic<br>
+                                        @if (isset($street))
+                                            {{ $street }}<br>
+                                        @endif
+                                        @if (isset($location))
+                                            {{ $location }}<br>
+                                        @endif
+                                        @if (isset($phone) && $phone !='')
+                                            <strong>T</strong> {{ $phone }}<br>
+                                        @endif
+                                        @if (isset($vendorVat))
+                                            {{ $vendorVat }}<br>
+                                        @endif
+                                        @if (isset($url))
+                                            <a href="{{ $url }}">{{ $url }}</a>
+                                        @endif
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
-                    <td>
-                        <p>
-                            PRACWAY PTY LTD<br> t/as Consentic<br>
-                            @if (isset($street))
-                                {{ $street }}<br>
-                            @endif
-                            @if (isset($location))
-                                {{ $location }}<br>
-                            @endif
-                            @if (isset($phone) && $phone !='')
-                                <strong>T</strong> {{ $phone }}<br>
-                            @endif
-                            @if (isset($vendorVat))
-                                {{ $vendorVat }}<br>
-                            @endif
-                            @if (isset($url))
-                                <a href="{{ $url }}">{{ $url }}</a>
-                            @endif
-                        </p>
-                    </td>
-
                 </tr>
 
                 <tr valign="top">
@@ -190,8 +191,5 @@
                 </tr>
             </table>
         </div>
-
-
-
 </body>
 </html>
