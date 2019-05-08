@@ -152,7 +152,7 @@
                     <!-- Display The Subscriptions -->
                     @foreach ($invoice->subscriptions() as $subscription)
                         <tr>
-                            <td>({{ print_r($subscription->asStripeInvoiceItem()) }})</td>
+                            <td>{{ $subscription->asStripeInvoiceItem()->description }}</td>
                             <td>
                                 {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
                                 {{ $subscription->endDateAsCarbon()->formatLocalized('%B %e, %Y') }}
