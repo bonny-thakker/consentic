@@ -64,7 +64,7 @@
             <!-- Organization Name / Image -->
             <td align="right">
                 <p>
-                <img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>
+                <img src="images/logo-dark-sm.png" width="200"/>
                 </p>
                 {{  $owner->name  }}<br />
                 {{ $owner->email ?? null }}
@@ -151,7 +151,7 @@
                     <!-- Display The Subscriptions -->
                     @foreach ($invoice->subscriptions() as $subscription)
                         <tr>
-                            <td>({{ print_r($subscription) }})</td>
+                            <td>({{ $subscription->current_billing_plan }})</td>
                             <td>
                                 {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
                                 {{ $subscription->endDateAsCarbon()->formatLocalized('%B %e, %Y') }}
