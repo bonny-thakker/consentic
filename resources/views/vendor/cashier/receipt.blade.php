@@ -56,13 +56,17 @@
     <table style="margin-left: auto; margin-right: auto" width="550">
         <tr>
             <td width="160">
-                &nbsp;  TAX INVOICE
+                <p>
+                &nbsp;  <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
+                </p>
             </td>
 
             <!-- Organization Name / Image -->
             <td align="right">
+                <p>
                 Consentic
                {{--<img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>--}}
+                </p>
             </td>
         </tr>
         <tr valign="top">
@@ -90,14 +94,15 @@
         <tr valign="top">
             <!-- Organization Details -->
             <td style="font-size:9px;">
-                {{ $vendor }}<br>
+                <p><
+                PRACWAY PTY LTD t/as Consentic<br>
                 @if (isset($street))
                     {{ $street }}<br>
                 @endif
                 @if (isset($location))
                     {{ $location }}<br>
                 @endif
-                @if (isset($phone))
+                @if (isset($phone) && $phone !='')
                     <strong>T</strong> {{ $phone }}<br>
                 @endif
                 @if (isset($vendorVat))
@@ -106,6 +111,7 @@
                 @if (isset($url))
                     <a href="{{ $url }}">{{ $url }}</a>
                 @endif
+                </p>
             </td>
             <td>
 
@@ -179,7 +185,7 @@
                     <tr style="border-top:2px solid #000;">
                         <td>&nbsp;</td>
                         <td style="text-align: right;"><strong>Total</strong></td>
-                        <td><strong>{{ $invoice->total() }} (PAID)</strong></td>
+                        <td><strong>{{ $invoice->total() }} <span style="color: green;">(PAID)</span></strong></td>
                     </tr>
                 </table>
             </td>
