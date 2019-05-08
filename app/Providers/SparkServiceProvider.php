@@ -16,9 +16,9 @@ class SparkServiceProvider extends ServiceProvider
     protected $details = [
         'vendor' => 'Consentic',
         'product' => 'Consentic',
-        'street' => '',
-        'location' => '',
-        'phone' => '',
+        'street' => '110 George St',
+        'location' => 'Sydney, NSW 2016',
+        'phone' => '+61 497 104 241',
         'abn' => '92 623 589 284',
     ];
 
