@@ -61,12 +61,12 @@
 
             <!-- Organization Name / Image -->
             <td align="right">
-                <strong>{{ $header ?? $vendor }}</strong>
+               <img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>
             </td>
         </tr>
         <tr valign="top">
             <td style="font-size:28px;color:#cccccc;">
-                    Receipt
+                Consentic Invoice`
             </td>
 
             <!-- Organization Name / Date -->
@@ -139,7 +139,7 @@
                     <!-- Display The Subscriptions -->
                     @foreach ($invoice->subscriptions() as $subscription)
                         <tr>
-                            <td>Subscription ({{ $subscription->quantity }})</td>
+                            <td>({{ $subscription->name }})</td>
                             <td>
                                 {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
                                 {{ $subscription->endDateAsCarbon()->formatLocalized('%B %e, %Y') }}
@@ -174,7 +174,7 @@
                     <tr style="border-top:2px solid #000;">
                         <td>&nbsp;</td>
                         <td style="text-align: right;"><strong>Total</strong></td>
-                        <td><strong>{{ $invoice->total() }}</strong></td>
+                        <td><strong>{{ $invoice->total() }} (PAID)</strong></td>
                     </tr>
                 </table>
             </td>

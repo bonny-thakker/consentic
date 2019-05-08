@@ -15,7 +15,7 @@ class SparkServiceProvider extends ServiceProvider
      */
     protected $details = [
         'vendor' => 'Consentic',
-        'product' => 'Medical Consent Requests',
+        'product' => 'Consentic',
         'street' => '',
         'location' => '',
         'phone' => '',
