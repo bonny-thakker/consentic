@@ -57,7 +57,7 @@
             <table width="550" style="margin-left: auto; margin-right: auto">
                 <tr valign="top">
                     <!-- Organization Name / Image -->
-                    <td align="right" style="text-align: right" colspan="3">
+                    <td align="right" style="text-align: right" colspan="4">
                         <p>
                             <img src="images/logo-dark-sm.png" width="200"/>
                         </p>
@@ -66,7 +66,7 @@
                 <tr valign="top">
                     <td align="left">
                         <p>
-                           <span style="font-size: 22px"><strong>TAX INVOICE</strong></span>
+                           <span style="font-size: 22px"><strong>TAX INVOICE</strong></span><br /><br />
                             {{ $owner->name  }}<br />
                             {{ $owner->email ?? null }}
                         </p>
@@ -122,7 +122,7 @@
                 </tr>
 
                 <tr valign="top">
-                    <td colspan="3">
+                    <td colspan="4">
                         <table width="100%" class="table" border="0">
                             <tr>
                                 <th align="left">Description</th>
