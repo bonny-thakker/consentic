@@ -78,49 +78,47 @@
                         @endif
 
                     </td>
+                    <td align="left">
+                        &nbsp;
+                    </td>
                     <!-- Organization Name / Date -->
                     <td>
-                        <table width="100%" class="table" border="0">
-                            <tr>
-                                <td>
-                                    <p>
-                                        <strong>Invoice Date:</strong><br />
-                                        {{ $invoice->date()->toFormattedDateString() }}
-                                    </p>
-                                    <!-- Invoice Info -->
-                                    <p>
-                                        {{--  <strong>Product:</strong> {{ $product }}<br>--}}
-                                        <strong>Invoice Number:</strong><br />
-                                        INV-{{ $id ?? $invoice->id }}<br>
-                                    </p>
-                                    <p>
-                                        <strong>ABN:</strong><br />
-                                        92 623 589 284
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        PRACWAY PTY LTD<br> t/as Consentic<br>
-                                        @if (isset($street))
-                                            {{ $street }}<br>
-                                        @endif
-                                        @if (isset($location))
-                                            {{ $location }}<br>
-                                        @endif
-                                        @if (isset($phone) && $phone !='')
-                                            <strong>T</strong> {{ $phone }}<br>
-                                        @endif
-                                        @if (isset($vendorVat))
-                                            {{ $vendorVat }}<br>
-                                        @endif
-                                        @if (isset($url))
-                                            <a href="{{ $url }}">{{ $url }}</a>
-                                        @endif
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
+                        <p>
+                            <strong>Invoice Date:</strong><br />
+                            {{ $invoice->date()->toFormattedDateString() }}
+                        </p>
+                        <!-- Invoice Info -->
+                        <p>
+                            {{--  <strong>Product:</strong> {{ $product }}<br>--}}
+                            <strong>Invoice Number:</strong><br />
+                            INV-{{ $id ?? $invoice->id }}<br>
+                        </p>
+                        <p>
+                            <strong>ABN:</strong><br />
+                            92 623 589 284
+                        </p>
                     </td>
+                    <td>
+                        <p>
+                            PRACWAY PTY LTD<br> t/as Consentic<br>
+                            @if (isset($street))
+                                {{ $street }}<br>
+                            @endif
+                            @if (isset($location))
+                                {{ $location }}<br>
+                            @endif
+                            @if (isset($phone) && $phone !='')
+                                <strong>T</strong> {{ $phone }}<br>
+                            @endif
+                            @if (isset($vendorVat))
+                                {{ $vendorVat }}<br>
+                            @endif
+                            @if (isset($url))
+                                <a href="{{ $url }}">{{ $url }}</a>
+                            @endif
+                        </p>
+                    </td>
+
                 </tr>
 
                 <tr valign="top">
