@@ -21,7 +21,7 @@
             color:#cccccc;
         }
         .container {
-            padding-top:30px;
+            padding-top:15px;
         }
         .invoice-head td {
             padding: 0 8px;
@@ -57,7 +57,7 @@
     <table style="margin-left: auto; margin-right: auto" width="550">
         <tr valign="top">
             <!-- Organization Name / Image -->
-            <td align="right">
+            <td align="right" style="text-align: right">
                 <p>
                 <img src="images/logo-dark-sm.png" width="200"/>
                 </p>
@@ -78,7 +78,6 @@
                     </p>
                 @endif
 
-                <br><br>
             </td>
             <!-- Organization Name / Date -->
             <td>
@@ -100,8 +99,6 @@
                     92 623 589 284
                 </p>
             </td>
-            <td>
-                <!-- Organization Details -->
             <td>
                 <p>
                     PRACWAY PTY LTD<br> t/as Consentic<br>
