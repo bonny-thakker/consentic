@@ -19,6 +19,7 @@ class SparkServiceProvider extends ServiceProvider
         'street' => '',
         'location' => '',
         'phone' => '',
+        'abn' => '92 623 589 284',
     ];
 
     /**

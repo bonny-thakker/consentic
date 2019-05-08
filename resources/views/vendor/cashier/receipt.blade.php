@@ -56,25 +56,35 @@
     <table style="margin-left: auto; margin-right: auto" width="550">
         <tr>
             <td width="160">
-                &nbsp;
+                &nbsp;  TAX INVOICE
             </td>
 
             <!-- Organization Name / Image -->
             <td align="right">
-               <img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>
+                Consentic
+               {{--<img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>--}}
             </td>
         </tr>
         <tr valign="top">
-            <td style="font-size:28px;color:#cccccc;">
-                Consentic Invoice`
-            </td>
-
             <!-- Organization Name / Date -->
             <td>
-                <br><br>
-                <strong>To:</strong> {{ $owner->email ?: $owner->name }}
-                <br>
-                <strong>Date:</strong> {{ $invoice->date()->toFormattedDateString() }}
+
+              {{--  <strong>To:</strong> {{ $owner->email ?: $owner->name }}
+                <br>--}}
+                <p>
+                <strong>Invoice Date:</strong><br />
+                {{ $invoice->date()->toFormattedDateString() }}
+                </p>
+              <!-- Invoice Info -->
+                <p>
+                    {{--  <strong>Product:</strong> {{ $product }}<br>--}}
+                    <strong>Invoice Number:</strong><br />
+                    INV-{{ $id ?? $invoice->id }}<br>
+                </p>
+                <p>
+                    <strong>ABN:</strong><br />
+                    92 623 589 284
+                </p>
             </td>
         </tr>
         <tr valign="top">
@@ -98,11 +108,6 @@
                 @endif
             </td>
             <td>
-                <!-- Invoice Info -->
-                <p>
-                    <strong>Product:</strong> {{ $product }}<br>
-                    <strong>Invoice Number:</strong> {{ $id ?? $invoice->id }}<br>
-                </p>
 
                 <!-- Extra / VAT Information -->
                 @if (isset($vat))
