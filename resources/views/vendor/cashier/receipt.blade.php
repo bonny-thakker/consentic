@@ -64,9 +64,10 @@
             <!-- Organization Name / Image -->
             <td align="right">
                 <p>
-                Consentic
-               {{--<img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>--}}
+                <img src="https://consentic.com/images/logo-dark-sm.png" width="200"/>
                 </p>
+                {{  $owner->name  }}<br />
+                {{ $owner->email ?? null }}
             </td>
         </tr>
         <tr valign="top">
@@ -94,7 +95,7 @@
         <tr valign="top">
             <!-- Organization Details -->
             <td style="font-size:9px;">
-                <p><
+                <p>
                 PRACWAY PTY LTD t/as Consentic<br>
                 @if (isset($street))
                     {{ $street }}<br>
@@ -150,7 +151,7 @@
                     <!-- Display The Subscriptions -->
                     @foreach ($invoice->subscriptions() as $subscription)
                         <tr>
-                            <td>({{ $subscription->name }})</td>
+                            <td>({{ print_r($subscription) }})</td>
                             <td>
                                 {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
                                 {{ $subscription->endDateAsCarbon()->formatLocalized('%B %e, %Y') }}
