@@ -100,15 +100,15 @@
                     </td>
                     <td>
                         <p>
-                            PRACWAY PTY LTD<br> t/as Consentic<br>
+                            PRACWAY PTY LTD<br> t/as Consentic<br><br>
                             @if (isset($street))
                                 {{ $street }}<br>
                             @endif
                             @if (isset($location))
                                 {{ $location }}<br>
                             @endif
-                            @if (isset($phone) && $phone !='')
-                                <strong>T</strong> {{ $phone }}<br>
+                            @if (isset($phone) && $phone !='')<br>
+                                <strong>Phone</strong> {{ $phone }}<br>
                             @endif
                             @if (isset($vendorVat))
                                 {{ $vendorVat }}<br>
