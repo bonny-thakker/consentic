@@ -150,7 +150,7 @@
                                 <tr>
                                     <td>
                                         {{ $subscription->asStripeInvoiceItem()->description }}
-                                        Plan: {{ $subscription->asStripeInvoiceItem()->metadata->plan ?? null }}
+                                        Plan: {{ $subscription->asStripeInvoiceItem()->metadata ?? null }}
                                     </td>
                                     <td>
                                         {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
@@ -183,7 +183,7 @@
                             <tr>
                                 <td>GST 10%</td>
                                 <td>&nbsp;</td>
-                                <td>{{ print_r($invoice) }}</td>
+                                <td>{{ print_r($invoice->total()) }}</td>
                             </tr>
 
                             @endif
