@@ -150,7 +150,7 @@
                                 <tr>
                                     <td>
                                         {{ $subscription->asStripeInvoiceItem()->description }}<br />
-                                        Plan: {{ $subscription->asStripeInvoiceItem()->plan ?? null }}
+                                        Plan: {{ $subscription->asStripeInvoiceItem()->plan->nickname ?? null }}
                                     </td>
                                     <td>
                                         {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
@@ -172,7 +172,15 @@
                                 </tr>
                             @endif
 
-                        <!-- Display The Tax Amount -->
+
+                        <!-- Display The Final Total -->
+                            <tr style="border-top:2px solid #000;">
+                                <td>&nbsp;</td>
+                                <td style="text-align: right;"><strong>Total</strong></td>
+                                <td><strong>{{ $invoice->total() }} inc GST</strong></td>
+                            </tr>
+
+                            <!-- Display The Tax Amount -->
                             @if ($invoice->tax_percent)
                                 <tr>
                                     <td>Tax ({{ $invoice->tax_percent }}%)</td>
@@ -188,12 +196,6 @@
 
                             @endif
 
-                        <!-- Display The Final Total -->
-                            <tr style="border-top:2px solid #000;">
-                                <td>&nbsp;</td>
-                                <td style="text-align: right;"><strong>Total</strong></td>
-                                <td><strong>{{ $invoice->total() }} inc GST</strong></td>
-                            </tr>
                             <tr style="border-top:2px solid #000;">
                                 <td>&nbsp;</td>
                                 <td style="text-align: right; color: green;"><strong>Paid</strong></td>
