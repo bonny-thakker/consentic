@@ -149,8 +149,8 @@
                             @foreach ($invoice->subscriptions() as $subscription)
                                 <tr>
                                     <td>
-                                        {{ $subscription->asStripeInvoiceItem()->description }}
-                                        Plan: {{ $subscription->asStripeInvoiceItem()->metadata[0]->plan ?? null }}
+                                        {{ $subscription->asStripeInvoiceItem()->description }}<br />
+                                        Plan: {{ $subscription->asStripeInvoiceItem()->plan ?? null }}
                                     </td>
                                     <td>
                                         {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
