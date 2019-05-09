@@ -36,6 +36,17 @@
                                     </span>
         @endif
     </td>
+    <td class="has-text-centered">
+        @if($consentRequest->user_signed_ts)
+            <span class="icon has-text-success">
+                                        <i class="mdi mdi-24px mdi-check-circle"></i>
+                                    </span>
+        @else
+            <span class="icon has-text-danger">
+                                        <i class="mdi mdi-24px mdi-close-circle"></i>
+                                    </span>
+        @endif
+    </td>
     @include('app.consent-request.partial.actions', [
         'consentRequest' => $consentRequest
     ])

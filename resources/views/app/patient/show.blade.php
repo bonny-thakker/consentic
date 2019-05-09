@@ -223,7 +223,8 @@
                                     <th class="has-text-centered">Watched</th>
                                     <th class="has-text-centered">Answered</th>
                                     <th class="has-text-centered">Signed</th>
-                                    <th class="has-text-centered">Action</th>
+                                    <th class="has-text-centered">Complete</th>
+                                    <th class="has-text-centered">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -259,6 +260,17 @@
                                         </td>
                                         <td class="has-text-centered">
                                             @if($consentRequest->patient_signed_ts)
+                                                <span class="icon has-text-success">
+                                        <i class="mdi mdi-24px mdi-check-circle"></i>
+                                    </span>
+                                            @else
+                                                <span class="icon has-text-danger">
+                                        <i class="mdi mdi-24px mdi-close-circle"></i>
+                                    </span>
+                                            @endif
+                                        </td>
+                                        <td class="has-text-centered">
+                                            @if($consentRequest->user_signed_ts)
                                                 <span class="icon has-text-success">
                                         <i class="mdi mdi-24px mdi-check-circle"></i>
                                     </span>

@@ -25,7 +25,13 @@ class ConsentRequestController extends Controller
     public function index()
     {
 
-        $consentRequests = \App\ConsentRequest::orderBy('created_at', 'DESC')->get();
+        $consentRequests = \App\ConsentRequest::orderBy('created_at', 'DESC')
+            ->when(request()->filter, function($query) {
+
+                return $query->whereNull('consent_requests.user_signed_ts');
+
+            })
+            ->get();
 
         return view('app.consent-request.index',[
             'consentRequests' => $consentRequests

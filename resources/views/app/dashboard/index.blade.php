@@ -47,9 +47,10 @@
                             <th>Date Created</th>
                             <th>Patient Name</th>
                             <th>Procedure</th>
-                            <th>Type</th>
-                            <th class="has-text-centered">Video Watched</th>
+                            <th class="has-text-centered">Watched</th>
+                            <th class="has-text-centered">Answered</th>
                             <th class="has-text-centered">Signed</th>
+                            <th class="has-text-centered">Complete</th>
                             <th class="has-text-centered">Actions</th>
                         </tr>
                         </thead>
