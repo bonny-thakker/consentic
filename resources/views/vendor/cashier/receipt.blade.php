@@ -148,7 +148,7 @@
                         <!-- Display The Subscriptions -->
                             @foreach ($invoice->subscriptions() as $subscription)
                                 <tr>
-                                    <td>{{ $subscription->asStripeInvoiceItem()->description }}</td>
+                                    <td>{{ print_r($subscription->asStripeInvoiceItem()) }}</td>
                                     <td>
                                         {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
                                         {{ $subscription->endDateAsCarbon()->formatLocalized('%B %e, %Y') }}
@@ -176,13 +176,30 @@
                                     <td>&nbsp;</td>
                                     <td>{{ Laravel\Cashier\Cashier::formatAmount($invoice->tax) }}</td>
                                 </tr>
-                        @endif
+                            @else   <!-- Display GST Manually for now -->
+                            <tr>
+                                <td>GST 10%</td>
+                                <td>&nbsp;</td>
+                                <td>{{ Laravel\Cashier\Cashier::formatAmount($invoice->total() - ($invoice->total() / 1.1)) }}</td>
+                            </tr>
+
+                            @endif
 
                         <!-- Display The Final Total -->
                             <tr style="border-top:2px solid #000;">
                                 <td>&nbsp;</td>
                                 <td style="text-align: right;"><strong>Total</strong></td>
-                                <td><strong>{{ $invoice->total() }} <span style="color: green;">(PAID)</span></strong></td>
+                                <td><strong>{{ $invoice->total() }} inc GST</strong></td>
+                            </tr>
+                            <tr style="border-top:2px solid #000;">
+                                <td>&nbsp;</td>
+                                <td style="text-align: right; color: green;"><strong>Paid</strong></td>
+                                <td style="color: green;"><strong>{{ $invoice->total() }} inc GST</strong></td>
+                            </tr>
+                            <tr style="border-top:2px solid #000;">
+                                <td>&nbsp;</td>
+                                <td style="text-align: right;"><strong>Total Due</strong></td>
+                                <td><strong>{{ Laravel\Cashier\Cashier::formatAmount(0) }} inc GST</strong></td>
                             </tr>
                         </table>
                     </td>
