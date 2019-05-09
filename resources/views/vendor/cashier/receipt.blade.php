@@ -180,7 +180,7 @@
                             <tr>
                                 <td>GST 10%</td>
                                 <td>&nbsp;</td>
-                                <td>{{ Laravel\Cashier\Cashier::formatAmount($invoice->total() - ($invoice->total() / 1.1)) }}</td>
+                                <td>{{ print_r($invoice) }}</td>
                             </tr>
 
                             @endif
@@ -199,7 +199,7 @@
                             <tr style="border-top:2px solid #000;">
                                 <td>&nbsp;</td>
                                 <td style="text-align: right;"><strong>Total Due</strong></td>
-                                <td><strong>{{ Laravel\Cashier\Cashier::formatAmount(0) }} inc GST</strong></td>
+                                <td><strong>${{ 0.00 }} inc GST</strong></td>
                             </tr>
                         </table>
                     </td>
