@@ -150,7 +150,7 @@
                                 <tr>
                                     <td>
                                         {{ $subscription->asStripeInvoiceItem()->description }}<br />
-                                        Plan: {{ $subscription->asStripeInvoiceItem()->plan->nickname ?? null }}
+                                        <span style="font-size: 11px">Plan: {{ $subscription->asStripeInvoiceItem()->plan->nickname ?? null }}</span>
                                     </td>
                                     <td>
                                         {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
@@ -177,7 +177,7 @@
                             <tr style="border-top:2px solid #000;">
                                 <td>&nbsp;</td>
                                 <td style="text-align: right;"><strong>Total</strong></td>
-                                <td><strong>{{ $invoice->total() }} inc GST</strong></td>
+                                <td><strong>{{ $invoice->total() }}</strong></td>
                             </tr>
 
                             <!-- Display The Tax Amount -->
@@ -190,7 +190,7 @@
                             @else   <!-- Display GST Manually for now -->
                             <tr>
                                 <td></td>
-                                <td style="text-align: right;"><strong>GST 10%</strong></td>
+                                <td style="text-align: right;"><strong>GST 10% Included in Total</strong></td>
                                 <td>{{ Laravel\Cashier\Cashier::formatAmount($invoice->rawTotal() - ( $invoice->rawTotal()/ 1.1)) }}</td>
                             </tr>
 
