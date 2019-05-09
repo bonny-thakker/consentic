@@ -46,6 +46,41 @@ class StripeWebhookController extends SparkStripeWebhookController
     }
 
     /**
+     * Handle invoice payment failed from a Stripe subscription.
+     *
+     * @param  array  $payload
+     * @return \Illuminate\Http\Response
+     */
+    protected function handleInvoicePaymentFailed(array $payload)
+    {
+
+        $user = $this->getUserByStripeId(
+            $payload['data']['object']['customer']
+        );
+
+        if (is_null($user)) {
+            return $this->teamInvoicePaymentFailed($payload);
+        }
+
+        // We are team billing
+
+    }
+
+    /**
+     * Handle invoice payment failed from a Stripe subscription.
+     *
+     * @param  array  $payload
+     * @return \Illuminate\Http\Response
+     */
+    protected function teamInvoicePaymentFailed(array $payload)
+    {
+
+        // TBC
+        // Send notification to user
+
+    }
+
+    /**
      * Handle a successful invoice payment from a Stripe subscription.
      *
      * By default, this e-mails a copy of the invoice to the customer.

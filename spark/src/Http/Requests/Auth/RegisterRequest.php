@@ -28,6 +28,11 @@ class RegisterRequest extends FormRequest
      */
     protected function registerValidator(array $paymentAttributes)
     {
+
+        if(session()->has('coupon')){
+            Spark::useStripe()->noCardUpFront();
+        }
+
         $validator = $this->baseValidator();
 
         // If a paid plan is selected, we will validate the given required fields which

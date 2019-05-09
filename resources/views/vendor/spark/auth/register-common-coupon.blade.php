@@ -3,7 +3,7 @@
 
         @if(Session::has('coupon'))
         <div class="alert alert-success">
-            Your <strong>coupon50</strong> will be applied when you register below
+            Your <strong>{{ Session::get('coupon') }}</strong> coupon will be applied when you register below
         </div>
         @endif
 

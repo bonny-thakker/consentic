@@ -109,7 +109,7 @@ class ConsentRequestController extends Controller
     public function create(Patient $patient, Consent $consent)
     {
 
-        if(env('APP_ENV')!='local' && !auth()->user()->currentTeam->subscribed() && !auth()->user()->currentTeam->onGenericTrial()){
+        if(env('APP_ENV')!='local' && !auth()->user()->currentTeam->subscribed() && !auth()->user()->currentTeam->onGenericTrial() && auth()->user()->currentTeam->credit <= 0){
             return view('app.consent-request.subscribe');
         }
 

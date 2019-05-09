@@ -24,7 +24,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-
         $this->redirectTo = Spark::afterLoginRedirect();
     }
 
@@ -36,6 +35,11 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm(Request $request)
     {
+
+        if(session()->has('coupon')){
+            Spark::useStripe()->noCardUpFront();
+        }
+
         if (Spark::promotion() && ! $request->filled('coupon')) {
             // If the application is running a site-wide promotion, we will redirect the user
             // to a register URL that contains the promotional coupon ID, which will force
@@ -56,6 +60,7 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+
         Auth::login($user = Spark::interact(
             Register::class, [$request]
         ));

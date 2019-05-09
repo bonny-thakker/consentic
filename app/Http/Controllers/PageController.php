@@ -74,10 +74,10 @@ class PageController extends Controller
     {
         switch($request->id){
 
-            case "coupon50":
+            case "consent60":
 
                 // Add the coupon to the session
-                session(['coupon' => 'coupon50']);
+                session(['coupon' => 'consent60']);
                 return redirect('register');
 
                 break;
