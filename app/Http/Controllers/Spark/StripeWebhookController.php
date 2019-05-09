@@ -16,9 +16,62 @@ class StripeWebhookController extends SparkStripeWebhookController
      * @param  array  $payload
      * @return \Illuminate\Http\Response
      */
+    protected function handleInvoiceCreated(array $payload)
+    {
+
+        $user = $this->getUserByStripeId(
+            $payload['data']['object']['customer']
+        );
+
+        if (is_null($user)) {
+            return $this->teamInvoiceCreated($payload);
+        }
+
+        // We are team billing
+
+    }
+
+    /**
+     * Handle invoice created from a Stripe subscription.
+     *
+     * @param  array  $payload
+     * @return \Illuminate\Http\Response
+     */
     protected function teamInvoiceCreated(array $payload)
     {
+
         // TBC
+        // Check for overusages, add to invoice
+
+    }
+
+    /**
+     * Handle a successful invoice payment from a Stripe subscription.
+     *
+     * By default, this e-mails a copy of the invoice to the customer.
+     *
+     * @param  array  $payload
+     * @return \Illuminate\Http\Response
+     */
+    protected function handleInvoicePaymentSucceeded(array $payload)
+    {
+        $user = $this->getUserByStripeId(
+            $payload['data']['object']['customer']
+        );
+
+        if (is_null($user)) {
+            return $this->teamInvoicePaymentSucceeded($payload);
+        }
+
+        $invoice = $user->findInvoice($payload['data']['object']['id']);
+
+        app(LocalInvoiceRepository::class)->createForUser($user, $invoice);
+
+        $this->sendInvoiceNotification(
+            $user, $invoice
+        );
+
+        return new Response('Webhook Handled', 200);
     }
 
     /**
