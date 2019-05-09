@@ -54,7 +54,7 @@
 
 <body>
         <div class="container">
-            <table width="550" style="margin-left: auto; margin-right: auto">
+            <table width="550" style="margin-left: auto; margin-right: auto" cellspacing="0">
                 <tr valign="top">
                     <!-- Organization Name / Image -->
                     <td align="right" style="text-align: right" colspan="4">
@@ -150,7 +150,7 @@
                                 <tr>
                                     <td>
                                         {{ $subscription->asStripeInvoiceItem()->description }}
-                                        Plan: {{ $subscription->asStripeInvoiceItem()->metadata ?? null }}
+                                        Plan: {{ $subscription->asStripeInvoiceItem()->metadata[0]->plan ?? null }}
                                     </td>
                                     <td>
                                         {{ $subscription->startDateAsCarbon()->formatLocalized('%B %e, %Y') }} -
@@ -181,9 +181,9 @@
                                 </tr>
                             @else   <!-- Display GST Manually for now -->
                             <tr>
-                                <td>GST 10%</td>
-                                <td>&nbsp;</td>
-                                <td>{{ print_r($invoice->total()) }}</td>
+                                <td></td>
+                                <td style="text-align: right;"><strong>GST 10%</strong></td>
+                                <td>{{ Laravel\Cashier\Cashier::formatAmount($invoice->rawTotal() - ( $invoice->rawTotal()/ 1.1)) }}</td>
                             </tr>
 
                             @endif
@@ -197,12 +197,12 @@
                             <tr style="border-top:2px solid #000;">
                                 <td>&nbsp;</td>
                                 <td style="text-align: right; color: green;"><strong>Paid</strong></td>
-                                <td style="color: green;"><strong>{{ $invoice->total() }} inc GST</strong></td>
+                                <td style="color: green;"><strong>{{ $invoice->total() }}</strong></td>
                             </tr>
                             <tr style="border-top:2px solid #000;">
                                 <td>&nbsp;</td>
                                 <td style="text-align: right;"><strong>Total Due</strong></td>
-                                <td><strong>${{ 0.00 }} inc GST</strong></td>
+                                <td><strong>${{ 0.00 }}</strong></td>
                             </tr>
                         </table>
                     </td>
