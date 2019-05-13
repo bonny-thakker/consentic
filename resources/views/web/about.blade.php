@@ -231,20 +231,6 @@
                             </span>
                         </button>
                     </div>
-                    <div class="column-content">
-                        <div class="image-list" id="partner-image-list">
-                            <div class="image">
-                                <a target="__blank" href="https://www.hcf.com.au/">
-                                    <img alt="HCF" src="/images/logo_hcf1.png">
-                                </a>
-                            </div>
-                            <div class="image">
-                                <a target="__blank" href="http://slingshotters.com/">
-                                    <img alt="Slingshot" src="/images/slingshot.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="row-actions" style="display: none;">
