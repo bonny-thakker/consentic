@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
             \Laravel\Spark\Http\Middleware\CreateFreshApiToken::class,
             \App\Http\Middleware\ApplicationMenusMiddleware::class,
             \App\Http\Middleware\LandlordTeamMiddleware::class,
+            \App\Http\Middleware\CheckResourceAccessMiddlware::class
         ],
 
         'api' => [
