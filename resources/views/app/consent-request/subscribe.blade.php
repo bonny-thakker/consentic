@@ -28,7 +28,7 @@
     <section class="section">
         <div class="container">
             <h1 class="title">Subscription Required</h1>
-            <p>Unforunately your free trial period has come to an end. Please <a href="/settings/practice/{{ auth()->user()->currentTeam->id }}#/subscription">select a membership plan </a> to continue using Consentic.</p>
+            <p>Unfortunately your free trial period has come to an end. Please <a href="/settings/practice/{{ auth()->user()->currentTeam->id }}#/subscription">select a membership plan </a> to continue using Consentic.</p>
 
         </div>
     </section>
