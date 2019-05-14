@@ -7,11 +7,11 @@
         </p>
         <p class="control">
             @if($consentRequest->isPatientSigned() && $consentRequest->isUserSigned())
-                <a class="button is-secondary tooltip " href="/app/consent-requests/{{ $consentRequest->id }}/download" data-tooltip="Download" data-id="">
+                <a class="button is-secondary tooltip " href="/app/consent-requests/{{ $consentRequest->id }}/download" data-tooltip="Download completed consent" data-id="">
                     <i class="fas fa-file-alt"></i>
                 </a>
             @else
-                <a class="button is-secondary tooltip " data-tooltip="Download" data-id="" disabled="">
+                <a class="button is-secondary tooltip " data-tooltip="Download completed consent" data-id="" disabled="">
                     <i class="fas fa-file-alt"></i>
                 </a>
             @endif
