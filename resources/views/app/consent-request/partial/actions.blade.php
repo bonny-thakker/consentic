@@ -17,7 +17,7 @@
             @endif
         </p>
         <p class="control">
-            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" href="{{ ($consentRequest->isPatientSigned()) ? '#' : url('app/consent-requests/'.$consentRequest->id.'/edit') }}" {{ ($consentRequest->isPatientSigned()) ? 'disabled="disabled"' : null }}>
+            <a class="button is-warning has-text-white tooltip action-edit" data-tooltip="Edit" href="{{ ($consentRequest->video_watched == 1) ? '#' : url('app/consent-requests/'.$consentRequest->id.'/edit') }}" {{ ($consentRequest->video_watched == 1) ? 'disabled="disabled"' : null }}>
                 <i class="fas fa-edit"></i>
             </a>
         </p>
@@ -33,7 +33,7 @@
             @endif
         </p>
         <p class="control">
-            <a class="button is-danger tooltip {{ ($consentRequest->isPatientSigned()) ?  : 'action-delete delete-button' }} " data-tooltip="Delete" {{ ($consentRequest->isPatientSigned()) ? 'disabled="disabled"' : null }} >
+            <a class="button is-danger tooltip {{ ($consentRequest->video_watched == 1) ?  : 'action-delete delete-button' }} " data-tooltip="Delete" {{ ($consentRequest->video_watched == 1) ? 'disabled="disabled"' : null }} >
                 <i class="fas fa-trash"></i>
             </a>
         </p>
