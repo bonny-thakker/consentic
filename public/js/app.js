@@ -70451,10 +70451,178 @@ Vue.component('spark-update-payment-method-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/payment-method/update-payment-method-stripe */ "./spark/resources/assets/js/settings/payment-method/update-payment-method-stripe.js");
-
+/*var base = require('settings/payment-method/update-payment-method-stripe');*/
 Vue.component('spark-update-payment-method-stripe', {
-  mixins: [base]
+  props: ['user', 'team', 'billableType'],
+
+  /**
+   * Load mixins for the component.
+   */
+  mixins: [__webpack_require__(/*! mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
+
+  /**
+   * The component's data.
+   */
+  data: function data() {
+    return {
+      cardElement: null,
+      form: new SparkForm({
+        stripe_token: '',
+        address: '',
+        address_line_2: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: 'AU'
+      }),
+      cardForm: new SparkForm({
+        name: ''
+      })
+    };
+  },
+
+  /**
+   * Prepare the component.
+   */
+  mounted: function mounted() {
+    this.cardElement = this.createCardElement('#payment-card-element');
+    this.initializeBillingAddress();
+  },
+  methods: {
+    /**
+     * Initialize the billing address form for the billable entity.
+     */
+    initializeBillingAddress: function initializeBillingAddress() {
+      if (!Spark.collectsBillingAddress) {
+        return;
+      }
+
+      this.form.address = this.billable.billing_address;
+      this.form.address_line_2 = this.billable.billing_address_line_2;
+      this.form.city = this.billable.billing_city;
+      this.form.state = this.billable.billing_state;
+      this.form.zip = this.billable.billing_zip;
+      this.form.country = this.billable.billing_country || 'AU';
+    },
+
+    /**
+     * Update the billable's card information.
+     */
+    update: function update() {
+      var _this = this;
+
+      this.form.busy = true;
+      this.form.errors.forget();
+      this.form.successful = false;
+      this.cardForm.errors.forget(); // Here we will build out the payload to send to Stripe to obtain a card token so
+      // we can create the actual subscription. We will build out this data that has
+      // this credit card number, CVC, etc. and exchange it for a secure token ID.
+
+      var payload = {
+        name: this.cardForm.name,
+        address_line1: this.form.address || '',
+        address_line2: this.form.address_line_2 || '',
+        address_city: this.form.city || '',
+        address_state: this.form.state || '',
+        address_zip: this.form.zip || '',
+        address_country: this.form.country || ''
+      }; // Once we have the Stripe payload we'll send it off to Stripe and obtain a token
+      // which we will send to the server to update this payment method. If there is
+      // an error we will display that back out to the user for their information.
+
+      this.stripe.createToken(this.cardElement, payload).then(function (response) {
+        if (response.error) {
+          _this.cardForm.errors.set({
+            card: [response.error.message]
+          });
+
+          _this.form.busy = false;
+        } else {
+          _this.sendUpdateToServer(response.token.id);
+        }
+      });
+    },
+
+    /**
+     * Send the credit card update information to the server.
+     */
+    sendUpdateToServer: function sendUpdateToServer(token) {
+      var _this2 = this;
+
+      this.form.stripe_token = token;
+      Spark.put(this.urlForUpdate, this.form).then(function () {
+        Bus.$emit('updateUser');
+        Bus.$emit('updateTeam');
+        _this2.cardForm.name = '';
+        _this2.cardForm.number = '';
+        _this2.cardForm.cvc = '';
+        _this2.cardForm.month = '';
+        _this2.cardForm.year = '';
+
+        if (!Spark.collectsBillingAddress) {
+          _this2.form.zip = '';
+        }
+      });
+    }
+  },
+  computed: {
+    /**
+     * Get the billable entity's "billable" name.
+     */
+    billableName: function billableName() {
+      return this.billingUser ? this.user.name : this.team.owner.name;
+    },
+
+    /**
+     * Get the URL for the payment method update.
+     */
+    urlForUpdate: function urlForUpdate() {
+      return this.billingUser ? '/settings/payment-method' : "/settings/".concat(Spark.teamsPrefix, "/").concat(this.team.id, "/payment-method");
+    },
+
+    /**
+     * Get the proper brand icon for the customer's credit card.
+     */
+    cardIcon: function cardIcon() {
+      if (!this.billable.card_brand) {
+        return 'fa-cc-stripe';
+      }
+
+      switch (this.billable.card_brand) {
+        case 'American Express':
+          return 'fa-cc-amex';
+
+        case 'Diners Club':
+          return 'fa-cc-diners-club';
+
+        case 'Discover':
+          return 'fa-cc-discover';
+
+        case 'JCB':
+          return 'fa-cc-jcb';
+
+        case 'MasterCard':
+          return 'fa-cc-mastercard';
+
+        case 'Visa':
+          return 'fa-cc-visa';
+
+        default:
+          return 'fa-cc-stripe';
+      }
+    },
+
+    /**
+     * Get the placeholder for the billable entity's credit card.
+     */
+    placeholder: function placeholder() {
+      if (this.billable.card_last_four) {
+        return "************".concat(this.billable.card_last_four);
+      }
+
+      return '';
+    }
+  }
 });
 
 /***/ }),
@@ -70698,10 +70866,194 @@ Vue.component('spark-subscribe-braintree', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var base = __webpack_require__(/*! settings/subscription/subscribe-stripe */ "./spark/resources/assets/js/settings/subscription/subscribe-stripe.js");
-
+/*var base = require('settings/subscription/subscribe-stripe');*/
 Vue.component('spark-subscribe-stripe', {
-  mixins: [base]
+  props: ['user', 'team', 'plans', 'billableType'],
+
+  /**
+   * Load mixins for the component.
+   */
+  mixins: [__webpack_require__(/*! mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js"), __webpack_require__(/*! mixins/vat */ "./spark/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
+
+  /**
+   * The component's data.
+   */
+  data: function data() {
+    return {
+      taxRate: 0,
+      cardElement: null,
+      form: new SparkForm({
+        use_existing_payment_method: this.hasPaymentMethod() ? '1' : '0',
+        stripe_token: '',
+        plan: '',
+        coupon: null,
+        address: '',
+        address_line_2: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: 'AU',
+        vat_id: ''
+      }),
+      cardForm: new SparkForm({
+        name: ''
+      })
+    };
+  },
+  watch: {
+    /**
+     * Watch for changes on the entire billing address.
+     */
+    'currentBillingAddress': function currentBillingAddress(value) {
+      if (!Spark.collectsEuropeanVat) {
+        return;
+      }
+
+      this.refreshTaxRate(this.form);
+    }
+  },
+
+  /**
+   * Prepare the component.
+   */
+  mounted: function mounted() {
+    this.cardElement = this.createCardElement('#subscription-card-element');
+    this.initializeBillingAddress();
+
+    if (this.onlyHasYearlyPaidPlans) {
+      this.showYearlyPlans();
+    }
+  },
+  methods: {
+    /**
+     * Initialize the billing address form for the billable entity.
+     */
+    initializeBillingAddress: function initializeBillingAddress() {
+      this.form.address = this.billable.billing_address;
+      this.form.address_line_2 = this.billable.billing_address_line_2;
+      this.form.city = this.billable.billing_city;
+      this.form.state = this.billable.billing_state;
+      this.form.zip = this.billable.billing_zip;
+      this.form.country = this.billable.billing_country || 'US';
+      this.form.vat_id = this.billable.vat_id;
+    },
+
+    /**
+     * Mark the given plan as selected.
+     */
+    selectPlan: function selectPlan(plan) {
+      this.selectedPlan = plan;
+      this.form.plan = this.selectedPlan.id;
+    },
+
+    /**
+     * Subscribe to the specified plan.
+     */
+    subscribe: function subscribe() {
+      var _this = this;
+
+      this.cardForm.errors.forget();
+      this.form.startProcessing();
+
+      if (this.form.use_existing_payment_method == '1') {
+        return this.createSubscription();
+      } // Here we will build out the payload to send to Stripe to obtain a card token so
+      // we can create the actual subscription. We will build out this data that has
+      // this credit card number, CVC, etc. and exchange it for a secure token ID.
+
+
+      var payload = {
+        name: this.cardForm.name,
+        address_line1: this.form.address || '',
+        address_line2: this.form.address_line_2 || '',
+        address_city: this.form.city || '',
+        address_state: this.form.state || '',
+        address_zip: this.form.zip || '',
+        address_country: this.form.country || ''
+      }; // Next, we will send the payload to Stripe and handle the response. If we have a
+      // valid token we can send that to the server and use the token to create this
+      // subscription on the back-end. Otherwise, we will show the error messages.
+
+      this.stripe.createToken(this.cardElement, payload).then(function (response) {
+        if (response.error) {
+          _this.cardForm.errors.set({
+            card: [response.error.message]
+          });
+
+          _this.form.busy = false;
+        } else {
+          _this.createSubscription(response.token.id);
+        }
+      });
+    },
+
+    /*
+     * After obtaining the Stripe token, create subscription on the Spark server.
+     */
+    createSubscription: function createSubscription(token) {
+      this.form.stripe_token = token;
+      Spark.post(this.urlForNewSubscription, this.form).then(function (response) {
+        Bus.$emit('updateUser');
+        Bus.$emit('updateTeam');
+      });
+    },
+
+    /**
+     * Determine if the user has subscribed to the given plan before.
+     */
+    hasSubscribed: function hasSubscribed(plan) {
+      return !!_.filter(this.billable.subscriptions, {
+        provider_plan: plan.id
+      }).length;
+    },
+
+    /**
+     * Show the plan details for the given plan.
+     *
+     * We'll ask the parent subscription component to display it.
+     */
+    showPlanDetails: function showPlanDetails(plan) {
+      this.$parent.$emit('showPlanDetails', plan);
+    },
+
+    /**
+     * Determine if the user/team has a payment method defined.
+     */
+    hasPaymentMethod: function hasPaymentMethod() {
+      return this.team ? this.team.card_last_four : this.user.card_last_four;
+    }
+  },
+  computed: {
+    /**
+     * Get the billable entity's "billable" name.
+     */
+    billableName: function billableName() {
+      return this.billingUser ? this.user.name : this.team.owner.name;
+    },
+
+    /**
+     * Determine if the selected country collects European VAT.
+     */
+    countryCollectsVat: function countryCollectsVat() {
+      return this.collectsVat(this.form.country);
+    },
+
+    /**
+     * Get the URL for subscribing to a plan.
+     */
+    urlForNewSubscription: function urlForNewSubscription() {
+      return this.billingUser ? '/settings/subscription' : "/settings/".concat(Spark.teamsPrefix, "/").concat(this.team.id, "/subscription");
+    },
+
+    /**
+     * Get the current billing address from the subscribe form.
+     *
+     * This used primarily for watching.
+     */
+    currentBillingAddress: function currentBillingAddress() {
+      return this.form.address + this.form.address_line_2 + this.form.city + this.form.state + this.form.zip + this.form.country + this.form.vat_id;
+    }
+  }
 });
 
 /***/ }),
@@ -73748,188 +74100,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./spark/resources/assets/js/settings/payment-method/update-payment-method-stripe.js":
-/*!*******************************************************************************************!*\
-  !*** ./spark/resources/assets/js/settings/payment-method/update-payment-method-stripe.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = {
-  props: ['user', 'team', 'billableType'],
-
-  /**
-   * Load mixins for the component.
-   */
-  mixins: [__webpack_require__(/*! ./../../mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
-
-  /**
-   * The component's data.
-   */
-  data: function data() {
-    return {
-      cardElement: null,
-      form: new SparkForm({
-        stripe_token: '',
-        address: '',
-        address_line_2: '',
-        city: '',
-        state: '',
-        zip: '',
-        country: 'US'
-      }),
-      cardForm: new SparkForm({
-        name: ''
-      })
-    };
-  },
-
-  /**
-   * Prepare the component.
-   */
-  mounted: function mounted() {
-    this.cardElement = this.createCardElement('#payment-card-element');
-    this.initializeBillingAddress();
-  },
-  methods: {
-    /**
-     * Initialize the billing address form for the billable entity.
-     */
-    initializeBillingAddress: function initializeBillingAddress() {
-      if (!Spark.collectsBillingAddress) {
-        return;
-      }
-
-      this.form.address = this.billable.billing_address;
-      this.form.address_line_2 = this.billable.billing_address_line_2;
-      this.form.city = this.billable.billing_city;
-      this.form.state = this.billable.billing_state;
-      this.form.zip = this.billable.billing_zip;
-      this.form.country = this.billable.billing_country || 'US';
-    },
-
-    /**
-     * Update the billable's card information.
-     */
-    update: function update() {
-      var _this = this;
-
-      this.form.busy = true;
-      this.form.errors.forget();
-      this.form.successful = false;
-      this.cardForm.errors.forget(); // Here we will build out the payload to send to Stripe to obtain a card token so
-      // we can create the actual subscription. We will build out this data that has
-      // this credit card number, CVC, etc. and exchange it for a secure token ID.
-
-      var payload = {
-        name: this.cardForm.name,
-        address_line1: this.form.address || '',
-        address_line2: this.form.address_line_2 || '',
-        address_city: this.form.city || '',
-        address_state: this.form.state || '',
-        address_zip: this.form.zip || '',
-        address_country: this.form.country || ''
-      }; // Once we have the Stripe payload we'll send it off to Stripe and obtain a token
-      // which we will send to the server to update this payment method. If there is
-      // an error we will display that back out to the user for their information.
-
-      this.stripe.createToken(this.cardElement, payload).then(function (response) {
-        if (response.error) {
-          _this.cardForm.errors.set({
-            card: [response.error.message]
-          });
-
-          _this.form.busy = false;
-        } else {
-          _this.sendUpdateToServer(response.token.id);
-        }
-      });
-    },
-
-    /**
-     * Send the credit card update information to the server.
-     */
-    sendUpdateToServer: function sendUpdateToServer(token) {
-      var _this2 = this;
-
-      this.form.stripe_token = token;
-      Spark.put(this.urlForUpdate, this.form).then(function () {
-        Bus.$emit('updateUser');
-        Bus.$emit('updateTeam');
-        _this2.cardForm.name = '';
-        _this2.cardForm.number = '';
-        _this2.cardForm.cvc = '';
-        _this2.cardForm.month = '';
-        _this2.cardForm.year = '';
-
-        if (!Spark.collectsBillingAddress) {
-          _this2.form.zip = '';
-        }
-      });
-    }
-  },
-  computed: {
-    /**
-     * Get the billable entity's "billable" name.
-     */
-    billableName: function billableName() {
-      return this.billingUser ? this.user.name : this.team.owner.name;
-    },
-
-    /**
-     * Get the URL for the payment method update.
-     */
-    urlForUpdate: function urlForUpdate() {
-      return this.billingUser ? '/settings/payment-method' : "/settings/".concat(Spark.teamsPrefix, "/").concat(this.team.id, "/payment-method");
-    },
-
-    /**
-     * Get the proper brand icon for the customer's credit card.
-     */
-    cardIcon: function cardIcon() {
-      if (!this.billable.card_brand) {
-        return 'fa-cc-stripe';
-      }
-
-      switch (this.billable.card_brand) {
-        case 'American Express':
-          return 'fa-cc-amex';
-
-        case 'Diners Club':
-          return 'fa-cc-diners-club';
-
-        case 'Discover':
-          return 'fa-cc-discover';
-
-        case 'JCB':
-          return 'fa-cc-jcb';
-
-        case 'MasterCard':
-          return 'fa-cc-mastercard';
-
-        case 'Visa':
-          return 'fa-cc-visa';
-
-        default:
-          return 'fa-cc-stripe';
-      }
-    },
-
-    /**
-     * Get the placeholder for the billable entity's credit card.
-     */
-    placeholder: function placeholder() {
-      if (this.billable.card_last_four) {
-        return "************".concat(this.billable.card_last_four);
-      }
-
-      return '';
-    }
-  }
-};
-
-/***/ }),
-
 /***/ "./spark/resources/assets/js/settings/payment-method/update-vat-id.js":
 /*!****************************************************************************!*\
   !*** ./spark/resources/assets/js/settings/payment-method/update-vat-id.js ***!
@@ -74473,204 +74643,6 @@ module.exports = {
      */
     urlForNewSubscription: function urlForNewSubscription() {
       return this.billingUser ? '/settings/subscription' : "/settings/".concat(Spark.teamsPrefix, "/").concat(this.team.id, "/subscription");
-    }
-  }
-};
-
-/***/ }),
-
-/***/ "./spark/resources/assets/js/settings/subscription/subscribe-stripe.js":
-/*!*****************************************************************************!*\
-  !*** ./spark/resources/assets/js/settings/subscription/subscribe-stripe.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = {
-  props: ['user', 'team', 'plans', 'billableType'],
-
-  /**
-   * Load mixins for the component.
-   */
-  mixins: [__webpack_require__(/*! ./../../mixins/plans */ "./spark/resources/assets/js/mixins/plans.js"), __webpack_require__(/*! ./../../mixins/subscriptions */ "./spark/resources/assets/js/mixins/subscriptions.js"), __webpack_require__(/*! ./../../mixins/vat */ "./spark/resources/assets/js/mixins/vat.js"), __webpack_require__(/*! ./../../mixins/stripe */ "./spark/resources/assets/js/mixins/stripe.js")],
-
-  /**
-   * The component's data.
-   */
-  data: function data() {
-    return {
-      taxRate: 0,
-      cardElement: null,
-      form: new SparkForm({
-        use_existing_payment_method: this.hasPaymentMethod() ? '1' : '0',
-        stripe_token: '',
-        plan: '',
-        coupon: null,
-        address: '',
-        address_line_2: '',
-        city: '',
-        state: '',
-        zip: '',
-        country: 'US',
-        vat_id: ''
-      }),
-      cardForm: new SparkForm({
-        name: ''
-      })
-    };
-  },
-  watch: {
-    /**
-     * Watch for changes on the entire billing address.
-     */
-    'currentBillingAddress': function currentBillingAddress(value) {
-      if (!Spark.collectsEuropeanVat) {
-        return;
-      }
-
-      this.refreshTaxRate(this.form);
-    }
-  },
-
-  /**
-   * Prepare the component.
-   */
-  mounted: function mounted() {
-    this.cardElement = this.createCardElement('#subscription-card-element');
-    this.initializeBillingAddress();
-
-    if (this.onlyHasYearlyPaidPlans) {
-      this.showYearlyPlans();
-    }
-  },
-  methods: {
-    /**
-     * Initialize the billing address form for the billable entity.
-     */
-    initializeBillingAddress: function initializeBillingAddress() {
-      this.form.address = this.billable.billing_address;
-      this.form.address_line_2 = this.billable.billing_address_line_2;
-      this.form.city = this.billable.billing_city;
-      this.form.state = this.billable.billing_state;
-      this.form.zip = this.billable.billing_zip;
-      this.form.country = this.billable.billing_country || 'US';
-      this.form.vat_id = this.billable.vat_id;
-    },
-
-    /**
-     * Mark the given plan as selected.
-     */
-    selectPlan: function selectPlan(plan) {
-      this.selectedPlan = plan;
-      this.form.plan = this.selectedPlan.id;
-    },
-
-    /**
-     * Subscribe to the specified plan.
-     */
-    subscribe: function subscribe() {
-      var _this = this;
-
-      this.cardForm.errors.forget();
-      this.form.startProcessing();
-
-      if (this.form.use_existing_payment_method == '1') {
-        return this.createSubscription();
-      } // Here we will build out the payload to send to Stripe to obtain a card token so
-      // we can create the actual subscription. We will build out this data that has
-      // this credit card number, CVC, etc. and exchange it for a secure token ID.
-
-
-      var payload = {
-        name: this.cardForm.name,
-        address_line1: this.form.address || '',
-        address_line2: this.form.address_line_2 || '',
-        address_city: this.form.city || '',
-        address_state: this.form.state || '',
-        address_zip: this.form.zip || '',
-        address_country: this.form.country || ''
-      }; // Next, we will send the payload to Stripe and handle the response. If we have a
-      // valid token we can send that to the server and use the token to create this
-      // subscription on the back-end. Otherwise, we will show the error messages.
-
-      this.stripe.createToken(this.cardElement, payload).then(function (response) {
-        if (response.error) {
-          _this.cardForm.errors.set({
-            card: [response.error.message]
-          });
-
-          _this.form.busy = false;
-        } else {
-          _this.createSubscription(response.token.id);
-        }
-      });
-    },
-
-    /*
-     * After obtaining the Stripe token, create subscription on the Spark server.
-     */
-    createSubscription: function createSubscription(token) {
-      this.form.stripe_token = token;
-      Spark.post(this.urlForNewSubscription, this.form).then(function (response) {
-        Bus.$emit('updateUser');
-        Bus.$emit('updateTeam');
-      });
-    },
-
-    /**
-     * Determine if the user has subscribed to the given plan before.
-     */
-    hasSubscribed: function hasSubscribed(plan) {
-      return !!_.filter(this.billable.subscriptions, {
-        provider_plan: plan.id
-      }).length;
-    },
-
-    /**
-     * Show the plan details for the given plan.
-     *
-     * We'll ask the parent subscription component to display it.
-     */
-    showPlanDetails: function showPlanDetails(plan) {
-      this.$parent.$emit('showPlanDetails', plan);
-    },
-
-    /**
-     * Determine if the user/team has a payment method defined.
-     */
-    hasPaymentMethod: function hasPaymentMethod() {
-      return this.team ? this.team.card_last_four : this.user.card_last_four;
-    }
-  },
-  computed: {
-    /**
-     * Get the billable entity's "billable" name.
-     */
-    billableName: function billableName() {
-      return this.billingUser ? this.user.name : this.team.owner.name;
-    },
-
-    /**
-     * Determine if the selected country collects European VAT.
-     */
-    countryCollectsVat: function countryCollectsVat() {
-      return this.collectsVat(this.form.country);
-    },
-
-    /**
-     * Get the URL for subscribing to a plan.
-     */
-    urlForNewSubscription: function urlForNewSubscription() {
-      return this.billingUser ? '/settings/subscription' : "/settings/".concat(Spark.teamsPrefix, "/").concat(this.team.id, "/subscription");
-    },
-
-    /**
-     * Get the current billing address from the subscribe form.
-     *
-     * This used primarily for watching.
-     */
-    currentBillingAddress: function currentBillingAddress() {
-      return this.form.address + this.form.address_line_2 + this.form.city + this.form.state + this.form.zip + this.form.country + this.form.vat_id;
     }
   }
 };
