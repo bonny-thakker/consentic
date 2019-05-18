@@ -6,6 +6,8 @@
     <meta name="description" content="@yield('description')">
     <meta content="width=device-width, initial-scale=1.0" name=viewport />
 
+    <meta property="og:title" content="Simplify medical consent with Consentic" />
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
