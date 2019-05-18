@@ -208,12 +208,12 @@
 
         <div class="watch-video">
             <div class="play-icon">
-                <img src="{{ $consentRequest->consent->videoThumbnail() }}" alt="logo">
+                <a target="_blank" href="{{ $signedVideoLink }}"><img src="{{ $consentRequest->consent->videoThumbnail() }}" alt="logo"></a>
             </div>
 
             <div class="video-text">
                 <h2>{{ $consentRequest->consent->name }}</h2>
-                <a href="{{ $consentRequest->consent->video_url }}" target="_blank">Click to watch video</a>
+                <a href="{{ $signedVideoLink }}" target="_blank">Click to watch video</a>
                 <p>This link will be active for a limited time following signing the consent. For ongoing access, please contact your doctor.</p>
             </div>
         </div>

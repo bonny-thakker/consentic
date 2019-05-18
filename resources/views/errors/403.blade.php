@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.web')
 
 @section('code', '403')
 @section('title', __('Forbidden'))
@@ -33,8 +33,16 @@
 
                     <div class="tab-content">
 
-                        <p>You may be trying to access a resource that is owned by another practice.</p>
-                        <p>If you have access please switch into the correct practice and try again.</p>
+                        @if(!auth()->guest())
+
+                            <p>You may be trying to access a resource that is owned by another practice.</p>
+                            <p>If you have access please switch into the correct practice and try again.</p>
+
+                        @else
+
+                            <p>This link no longer exists.</p>
+
+                        @endif
 
                     </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Consent;
 use Illuminate\Http\Request;
 use App\ConsentRequest;
+use Illuminate\Support\Facades\URL;
 use Storage;
 use Carbon\Carbon;
 use Mail;
@@ -113,7 +114,12 @@ class ConsentRequestSignedController extends Controller
         parse_str( parse_url( $consentRequest->consent->video_url, PHP_URL_QUERY ), $videoParams );
         $videoId = $videoParams['v'] ?? '';
 
-        $html = view('pdf.consent-summary', compact('consentRequest', 'videoId'))->render();
+        // Signed url for video link
+        $signedVideoLink = URL::temporarySignedRoute('public.consent.show',now()->addDays(28), [
+            'consent' => $consentRequest->consent->id
+        ]);
+
+        $html = view('pdf.consent-summary', compact('consentRequest', 'signedVideoLink'))->render();
 
         $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];

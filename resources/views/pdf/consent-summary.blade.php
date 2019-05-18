@@ -128,11 +128,11 @@
                 <tr>
                     <td colspan="2" style="padding: 0px; padding-bottom: 20px;" align="center">
                         <br>
-                        <a target="_blank" href="{{ $consentRequest->consent->video_url }}">
+                        <a target="_blank" href="{{ $signedVideoLink }}">
                             <img width="100%" height="400" src="{{ $consentRequest->consent->videoThumbnail() }}">
                         </a>
                         <p style="text-align: center;">
-                            <a target="_blank" href="{{ $consentRequest->consent->video_url }}">Click to open video</a>
+                            <a target="_blank" href="{{ $signedVideoLink  }}">Click to open video <span style="font-size:10px">(Expires in 28 days)</span></a>
                         </p>
                     </td>
                 </tr>

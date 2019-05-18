@@ -36,13 +36,19 @@ Route::get('/register/{id}/unset', 'PageController@registerCouponUnset')->name('
 Route::post('/form/newsletter', 'MailchimpController@store')->name('web.form.mailchimp.store');
 Route::post('/form/contact', 'ContactFormController@send')->name('web.form.contact.send');
 
-/* Public Consent Requests */
+/* Public */
 Route::prefix('p')->group( function () {
 
     Route::middleware(['signed'])->prefix('consent-request')->group( function () {
 
         Route::get('{consentRequest}', 'PublicConsentRequestController@show')->name('public.consent-request.show');
         Route::post('{consentRequest}', 'PublicConsentRequestController@update')->name('public.consent-request.update');
+
+    });
+
+    Route::middleware(['signed'])->prefix('consent')->group( function () {
+
+        Route::get('{consent}', 'PublicConsentController@show')->name('public.consent.show');
 
     });
 
