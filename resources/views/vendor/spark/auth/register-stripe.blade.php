@@ -83,6 +83,7 @@
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" v-model="registerForm.terms">
                                                 I consent that I have read and agree to be bound by the  <a href="#terms" @click="showTerms()">Terms & Conditions</a> of Consentic. I also agree that I have read and understand the <a href="#privacy" @click="showPrivacy()">Privacy Policy</a> and understand that both these agreements may change at any time without notice.
+                                                <br /><span style="font-size: 0.9375rem; margin-top: 10px; display: block">Please note that your subscription will be automatically renewed each month on your subscription billing date.</span>
 
                                                 {{--{!! __('I Accept :linkOpen The Terms Of Service :linkClose', ['linkOpen' => '<a href="/terms" target="_blank">', 'linkClose' => '</a>']) !!}--}}
                                             </label>
