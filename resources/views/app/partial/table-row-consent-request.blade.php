@@ -3,6 +3,13 @@
     <td>{{ $consentRequest->patient->fullName() }}</td>
     <td>{{ $consentRequest->consent->name }}<br />
         <small>{{ $consentRequest->consent->consentType->name }}</small></td>
+    <td>
+        @if($consentRequest->in_office == 1)
+            <a href="/app/consent-requests/{{ $consentRequest->id }}/office">Office</a>
+        @else
+            Email
+        @endif
+    </td>
     <td class="has-text-centered">
         @if($consentRequest->video_watched)
             <span class="icon has-text-success">

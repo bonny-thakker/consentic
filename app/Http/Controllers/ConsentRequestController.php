@@ -323,4 +323,22 @@ class ConsentRequestController extends Controller
         return response()->download(storage_path('app/public/pdf/').basename($consentRequest->pdf), basename($consentRequest->pdf));
 
     }
+
+    public function office(ConsentRequest $consentRequest){
+
+        if($consentRequest->in_office == 1){
+
+            $signedLink = URL::signedRoute('public.consent-request.show', [
+                'consentRequest' => $consentRequest->id
+            ]);
+
+            return redirect($signedLink);
+
+        }else{
+            notify()->error('Consent request is not in office workflow');
+            return back();
+        }
+
+    }
+
 }

@@ -107,6 +107,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
         Route::post('/{consentRequest}/signed/update', 'ConsentRequestSignedController@update')->name('app.consent-requests.signed.update');
 
         Route::get('/{consentRequest}/download', 'ConsentRequestController@download')->name('app.consent-requests.download');
+        Route::get('/{consentRequest}/office', 'ConsentRequestController@office')->name('app.consent-requests.office');
 
     });
 

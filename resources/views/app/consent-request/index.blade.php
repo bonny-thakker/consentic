@@ -146,6 +146,7 @@
                             <th>Created</th>
                             <th>Patient</th>
                             <th>Procedure</th>
+                            <th>Workflow</th>
                             <th class="has-text-centered">
                                 Watched
                             </th>
