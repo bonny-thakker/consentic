@@ -213,6 +213,9 @@
 
             <div class="video-text">
                 <h2>{{ $consentRequest->consent->name }}</h2>
+                @if($consentRequest->datetime)
+                    <h3>on {{ \Carbon\Carbon::parse($consentRequest->datetime)->format('l jS \\of F Y') }}</h3>
+                @endif
                 <a href="{{ $signedVideoLink }}" target="_blank">Click to watch video</a>
                 <p>This link will be active for a limited time following signing the consent. For ongoing access, please contact your doctor.</p>
             </div>

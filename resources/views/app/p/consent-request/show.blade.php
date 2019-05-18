@@ -25,7 +25,9 @@
            </nav>
            <h1 class="title">Hi <strong>{{ $patient->fullName() }}</strong>,</h1>
            <p class="subtitle is-4">
-               Please complete the consent request <strong>{{ $consentRequest->consent->name }}</strong> requested by <strong>{{ $consentRequest->user->fullName() }}</strong>.
+               Please complete the consent request for the <strong>{{ $consentRequest->consent->name }}</strong> procedure @if($consentRequest->datetime)
+                   on <strong>{{ \Carbon\Carbon::parse($consentRequest->datetime)->format('l jS \\of F Y') }}</strong>
+           @endif requested by <strong>{{ $consentRequest->user->fullName() }}</strong>.
            </p>
            <hr />
            <div class="columns">

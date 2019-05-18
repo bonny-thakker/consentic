@@ -138,7 +138,8 @@ class ConsentRequestController extends Controller
         $validatedData = $request->validate([
             'patient' => 'required',
             'consent' => 'required',
-            'user' => 'required'
+            'user' => 'required',
+            'datetime' => 'nullable|date_format:d/m/Y',
         ]);
 
         $patient = \App\Patient::find($request->patient);
@@ -157,6 +158,7 @@ class ConsentRequestController extends Controller
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
             'in_office' => $request->in_office,
+            'datetime' => $request->datetime ?? null
         ]);
 
         // Check uploaded file
@@ -246,7 +248,8 @@ class ConsentRequestController extends Controller
         $validatedData = $request->validate([
             'patient' => 'required',
             'consent' => 'required',
-            'user' => 'required'
+            'user' => 'required',
+            'datetime' => 'nullable|date_format:d/m/Y',
         ]);
 
         $patient = \App\Patient::find($request->patient);
@@ -258,6 +261,7 @@ class ConsentRequestController extends Controller
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
             'in_office' => $request->in_office,
+            'datetime' => $request->datetime ?? null
         ]);
 
         // Check uploaded file

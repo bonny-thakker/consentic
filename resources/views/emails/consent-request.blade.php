@@ -258,7 +258,10 @@
         <tr>
             <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
 
-                <p style="margin: 0;"><strong>{{ $consentRequest->user->fullName() }}</strong> has requested your consent for {{ $consentRequest->consent->name }}.</p>
+                <p style="margin: 0;"><strong>{{ $consentRequest->user->fullName() }}</strong> has requested your consent for {{ $consentRequest->consent->name }}
+                @if($consentRequest->datetime)
+                    on {{ \Carbon\Carbon::parse($consentRequest->datetime)->format('l jS \\of F Y') }}
+                    @endif .</p>
                 </p>
             </td>
         </tr>

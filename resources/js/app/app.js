@@ -129,6 +129,7 @@ const App = function() {
 
             // Load jquery-mask
             $('input[name="birthday"]').mask('00/00/0000', {placeholder: "__/__/____"});
+            $('input[name="datetime"]').mask('00/00/0000', {placeholder: "Optional procedure date"});
 
             App.handleNavbar();
             App.handleDropdown();

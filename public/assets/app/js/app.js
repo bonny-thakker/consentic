@@ -203,6 +203,9 @@ var App = function () {
       $('input[name="birthday"]').mask('00/00/0000', {
         placeholder: "__/__/____"
       });
+      $('input[name="datetime"]').mask('00/00/0000', {
+        placeholder: "Enter procedure date"
+      });
       App.handleNavbar();
       App.handleDropdown(); // Check for uploaded files
 

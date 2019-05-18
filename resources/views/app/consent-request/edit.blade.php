@@ -16,11 +16,9 @@
 
     </style>
 
-
 @endsection
 
 @section('scripts')
-
 
 @endsection
 

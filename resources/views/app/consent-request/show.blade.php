@@ -17,7 +17,10 @@
 
    <section class="section">
        <div class="container">
-           <h1 class="title">Consent Request - {{ $consentRequest->consent->name }}</h1>
+           <h1 class="title">Consent Request - {{ $consentRequest->consent->name }} @if($consentRequest->datetime)
+                   - {{ \Carbon\Carbon::parse($consentRequest->datetime)->format('l jS \\of F Y') }}
+               @endif</h1>
+
            <div class="columns is-variable is-8">
                <div class="column is-4 patient-profile-card">
                    <div class="p-lg" style="border: 2px solid #47525E; border-radius: 6px; min-height: 400px;">

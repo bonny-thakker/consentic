@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model;
+use Carbon\Carbon;
 use HipsterJazzbo\Landlord\BelongsToTenants;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
@@ -16,6 +17,15 @@ class ConsentRequest extends Model implements Commentable
     use SoftDeletes;
     use Searchable;
     use HasComments;
+
+    public function setDatetimeAttribute($value)
+    {
+        if ($value) {
+            $this->attributes['datetime'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
+        } else {
+            $this->attributes['datetime'] = null;
+        }
+    }
 
     /**
      * Get the indexable data array for the model.

@@ -1,8 +1,13 @@
 <tr>
     <td>{{ $consentRequest->created_at->format('d/m/Y') }}</td>
     <td>{{ $consentRequest->patient->fullName() }}</td>
-    <td>{{ $consentRequest->consent->name }}<br />
-        <small>{{ $consentRequest->consent->consentType->name }}</small></td>
+    <td>{{ $consentRequest->consent->name }}
+        @if($consentRequest->datetime)
+            <small><br />{{ \Carbon\Carbon::parse($consentRequest->datetime)->format('l dS F Y') }}</small>
+        @endif
+        <br /><small>{{ $consentRequest->consent->consentType->name }}</small>
+
+    </td>
     <td>
         @if($consentRequest->in_office == 1)
             <a href="/app/consent-requests/{{ $consentRequest->id }}/office">Office</a>

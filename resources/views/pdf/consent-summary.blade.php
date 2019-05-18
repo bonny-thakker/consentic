@@ -122,6 +122,9 @@
                     <td colspan="2" align="center">
                         <img src="https://consentic.com/images/logo-dark-sm.png" style="width:100%; max-width:250px;"> <br>
                         <h2>Consent Summary: {{ $consentRequest->consent->name }}</h2>
+                        @if($consentRequest->datetime)
+                        <h3>on {{ \Carbon\Carbon::parse($consentRequest->datetime)->format('l jS \\of F Y') }}</h3>
+                        @endif
                     </td>
                 </tr>
 

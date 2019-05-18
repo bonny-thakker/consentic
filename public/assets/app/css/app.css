@@ -11711,3 +11711,15 @@ ul.list-unstyled .comment-link {
   font-size: 1.1rem !important;
 }
 
+input[name=datetime]::-webkit-input-placeholder,
+input[name=datetime]:-ms-input-placeholder,
+input[name=datetime]::-webkit-input-placeholder {
+  color: #444;
+}
+
+input[name=datetime]::-webkit-input-placeholder,
+input[name=datetime]:-ms-input-placeholder,
+input[name=datetime]::placeholder {
+  color: #444;
+}
+

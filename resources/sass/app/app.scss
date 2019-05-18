@@ -71,3 +71,9 @@ ul.list-unstyled .comment-link{
 #list-table {
   font-size: 1.1rem !important;
 }
+
+input[name='datetime']::-webkit-input-placeholder,
+input[name='datetime']:-ms-input-placeholder,
+input[name='datetime']::placeholder {
+  color: #444;
+}

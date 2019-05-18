@@ -9,6 +9,7 @@
 @if ($errors->has('user'))
     <p class="help is-danger">{{ $errors->first('user') }}</p>
 @endif
+
 <div class="select is-fullwidth m-t-md{{ $errors->has('patient') ? ' is-danger' : '' }}">
     <select name="patient" id="patient-list">
         <option disabled selected>Select Patient</option>
@@ -34,4 +35,12 @@
 </div>
 @if ($errors->has('consent'))
     <p class="help is-danger">{{ $errors->first('consent') }}</p>
+@endif
+
+<div class="field s-fullwidth m-t-md{{ $errors->has('datetime') ? ' is-danger' : '' }}">
+    <input id="datetime" type="text" name="datetime" class="input is-medium{{ $errors->has('datetime') ? ' is-danger' : '' }}" placeholder="DD/MM/YYYY" value="{{ old('datetime') ?? ((isset($consentRequest->datetime)) ? \Carbon\Carbon::parse($consentRequest->datetime)->format('d/m/Y') : '') ?? null }}" autocomplete="off">
+</div>
+
+@if ($errors->has('datetime'))
+    <p class="help is-danger">{{ $errors->first('datetime') }}</p>
 @endif
