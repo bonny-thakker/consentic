@@ -278,6 +278,11 @@
             </td>
         </tr>
         <!-- 1 Column Text + Button : END -->
+        <tr>
+            <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
+                <p style="margin: 0;"> If you have any questions about your procedure, please do not reply to this email, instead please contact your doctor directly.</p>
+            </td>
+        </tr>
 
     </table>
     <!-- Email Body : END -->
