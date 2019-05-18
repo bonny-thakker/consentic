@@ -61,12 +61,21 @@
                         </div>
                         <div class="columns is-mobile">
                             <div class="column">
+                                <span class="icon"><i class="mdi mdi-36px mdi-linkedin-box"></i></span>
+                            </div>
+                            <div class="column is-11">
+                                <p class="subtitle"><a href="https://www.linkedin.com/company/consentic" target="_blank">linkedin.com/company/consentic</a></p>
+                            </div>
+                        </div>
+                        <div class="columns is-mobile">
+                            <div class="column">
                                 <span class="icon"><i class="mdi mdi-36px mdi-facebook-box"></i></span>
                             </div>
                             <div class="column is-11">
                                 <p class="subtitle"><a href="https://www.facebook.com/consentic/" target="_blank">facebook.com/consentic</a></p>
                             </div>
                         </div>
+
                         <div class="columns is-mobile">
                             <div class="column">
                                 <span class="icon"><i class="mdi mdi-36px mdi-instagram"></i></span>
