@@ -75,7 +75,7 @@
                                 <div class="plan-footer">
                                     <a class="button is-medium is-primary is-fullwidth" href="/register">
                                         @if(env('TRIAL_ENABLED'))
-                                            30 Day Free Trial, Join Now!
+                                            14 Day Free Trial, Join Now!
                                         @else
                                             Sign Up Now
                                         @endif
@@ -106,7 +106,7 @@
                                 <div class="plan-footer">
                                     <a class="button is-medium is-primary is-fullwidth" href="/register">
                                         @if(env('TRIAL_ENABLED'))
-                                            30 Day Free Trial, Join Now!
+                                            14 Day Free Trial, Join Now!
                                         @else
                                             Sign Up Now
                                         @endif

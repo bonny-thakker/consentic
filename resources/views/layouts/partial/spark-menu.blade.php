@@ -35,6 +35,10 @@
                     <i class="fa fa-fw fa-btn fa-cog"></i> Your Settings
                 </a>
 
+                <a href="/settings/practice/{{ Auth::user()->currentTeam->id }}" class="dropdown-item">
+                    <i class="fa fa-fw fa-btn fa-cog"></i> Practice Settings
+                </a>
+
             @if (Spark::usesTeams() && (Spark::createsAdditionalTeams() || Spark::showsTeamSwitcher()))
             <!-- Team Settings -->
                 @include('spark::nav.blade.teams-bulma')

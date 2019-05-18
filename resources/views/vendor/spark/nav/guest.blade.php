@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a id="button-signup" class="btn btn-primary" href="/register">
                         @if(env('TRIAL_ENABLED'))
-                            30 Day Free Trial, Join Now!
+                            14 Day Free Trial, Join Now!
                         @else
                             Sign Up Now
                         @endif

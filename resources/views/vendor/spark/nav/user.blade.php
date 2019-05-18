@@ -85,6 +85,10 @@
                                 <i class="fa fa-fw text-left fa-btn fa-cog"></i> {{__('Your Settings')}}
                             </a>
 
+                            <a class="dropdown-item" href="/settings/practice/{{ Auth::user()->currentTeam->id }}">
+                                <i class="fa fa-fw text-left fa-btn fa-cog"></i> {{__('Practice Settings')}}
+                            </a>
+
                             <div class="dropdown-divider"></div>
 
                             @if (Spark::usesTeams() && (Spark::createsAdditionalTeams() || Spark::showsTeamSwitcher()))

@@ -214,7 +214,7 @@
                                                            class="button submit is-secondary is-fullwidth"
                                                            style="width: 300px">
                                                             @if(env('TRIAL_ENABLED'))
-                                                                Sign Up for a Free 30 Day Trial
+                                                                Sign Up for a Free 14 Day Trial
                                                             @else
                                                                 Sign Up Now
                                                             @endif
