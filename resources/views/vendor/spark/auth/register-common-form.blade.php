@@ -16,7 +16,7 @@
 
             </select>
 
-            <span class="invalid-feedback" v-show="registerForm.errors.has('name')">
+            <span class="invalid-feedback" v-show="registerForm.errors.has('title')">
             @{{ registerForm.errors.get('name') }}
             </span>
         </div>
@@ -58,6 +58,25 @@
             <span class="invalid-feedback" v-show="registerForm.errors.has('last_name')">
                         @{{ registerForm.errors.get('last_name') }}
                     </span>
+        </div>
+    </div>
+
+    <!-- Speciality -->
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label text-md-right">{{__('Speciality')}}</label>
+
+        <div class="col-md-6">
+            <select class="form-control" name="speciality" v-model="registerForm.speciality"
+                    :class="{'is-invalid': registerForm.errors.has('speciality')}" autofocus>
+                <option></option>
+                @foreach (\App\ConsentSpeciality::where('id','<>',1)->get() as $speciality)
+                    <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                @endforeach
+            </select>
+
+            <span class="invalid-feedback" v-show="registerForm.errors.has('speciality')">
+            @{{ registerForm.errors.get('speciality') }}
+            </span>
         </div>
     </div>
 

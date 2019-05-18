@@ -68,6 +68,24 @@
                     </div>
                 </div>
 
+                <!-- Speciality -->
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right">{{__('Speciality')}}</label>
+
+                    <div class="col-md-6">
+                        <select class="form-control" v-model="form.speciality" :class="{'is-invalid is-danger': form.errors.has('speciality')}">
+                            <option value="" selected="" disabled="">Speciality</option>
+                            @foreach (\App\ConsentSpeciality::where('id','<>',1)->get() as $speciality)
+                                <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                            @endforeach
+                        </select>
+
+                        <span class="invalid-feedback" v-show="form.errors.has('speciality')">
+                            @{{ form.errors.get('speciality') }}
+                        </span>
+                    </div>
+                </div>
+
                 <!-- E-Mail Address -->
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label text-md-right">{{__('E-Mail Address')}}</label>

@@ -17,4 +17,12 @@ class ConsentSpeciality extends Model
         return $this->hasMany('App\Consent');
     }
 
+    /**
+     * Get the users for the consent speciality.
+     */
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
 }

@@ -14,6 +14,7 @@ Vue.component('spark-update-contact-information', {
                 title: '',
                 first_name: '',
                 last_name: '',
+                speciality: '',
                 phone_number: ''
             }), Spark.forms.updateContactInformation)
         };
@@ -29,6 +30,7 @@ Vue.component('spark-update-contact-information', {
         this.form.title = this.user.title;
         this.form.first_name = this.user.first_name;
         this.form.last_name = this.user.last_name;
+        this.form.speciality = this.user.consent_speciality_id;
         this.form.phone_number = this.user.phone_number;
     },
 

@@ -91,4 +91,12 @@ class User extends SparkUser
 
     }
 
+    /**
+     * Get the consent speciality that owns the user.
+     */
+    public function consentSpeciality()
+    {
+        return $this->belongsTo('App\ConsentSpeciality');
+    }
+
 }

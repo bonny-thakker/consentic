@@ -78,7 +78,8 @@ class UserController extends Controller
             'title' => $request->title,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'phone_number' => $request->phone_number
+            'phone_number' => $request->phone_number,
+            'consent_speciality_id' => $request->speciality
         ])->save();
     }
 

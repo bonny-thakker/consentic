@@ -47,6 +47,7 @@
                             <th>Date Created</th>
                             <th>Patient Name</th>
                             <th>Procedure</th>
+                            <th>Workflow</th>
                             <th class="has-text-centered">Watched</th>
                             <th class="has-text-centered">Answered</th>
                             <th class="has-text-centered">Signed</th>
