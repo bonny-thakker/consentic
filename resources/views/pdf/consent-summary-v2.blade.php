@@ -11,7 +11,7 @@
     <title>Consent Summary: {{ $consentRequest->consent->name }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/assets/pdf/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    {{--<link href="/assets/pdf/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
 
     <!-- Custom fonts for this template -->
     <link href="/assets/pdf/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="/assets/pdf/css/custom.min.css" rel="stylesheet">
+   {{-- <link href="/assets/pdf/css/custom.min.css" rel="stylesheet">--}}
 
     <style>
 
@@ -38,7 +38,11 @@
 
         .invoice-box table {
             width: 100%;
-            line-height: inherit;
+            line-height: 24px;
+            text-align: left;
+        }
+
+        .invoice-box table td{
             text-align: left;
         }
 
@@ -92,30 +96,34 @@
 
 <div id="details-section">
     <div class="container-invoice">
-        <div class="table-responsive">
-
-            <h2>Patient Details</h2>
+        <div>
             <table id="patient-details" class="table">
-
+                <thead>
+                <tr>
+                    <th colspan="2">
+                        <h2>Patient Details</h2>
+                    </th>
+                </tr>
+                </thead>
                 <tbody>
                 <tr>
                     <th>Title</th>
-                    <td colspan="2">{{ $consentRequest->patient->title ?? null }}</td>
+                    <td>{{ $consentRequest->patient->title ?? null }}</td>
                 </tr>
 
                 <tr>
                     <th>Given name(s)</th>
-                    <td colspan="2">{{ $consentRequest->patient->first_name ?? null }} {{ $consentRequest->patient->middle_name ?? null }}</td>
+                    <td>{{ $consentRequest->patient->first_name ?? null }} {{ $consentRequest->patient->middle_name ?? null }}</td>
                 </tr>
 
 
                 <tr>
                     <th>Surname</th>
-                    <td colspan="2">{{ $consentRequest->patient->last_name ?? null }}</td>
+                    <td>{{ $consentRequest->patient->last_name ?? null }}</td>
                 </tr>
                 <tr>
                     <th>Date of Birth</th>
-                    <td colspan="2">
+                    <td>
                         @if($consentRequest->patient->birthday)
                             {{ \Carbon\Carbon::parse($consentRequest->patient->birthday)->format('d/m/Y')  }}
                         @endif
@@ -125,10 +133,14 @@
             </table>
         </div>
 
-        <div id="contact-details" class="table-responsive">
+        <div id="contact-details">
             <table class="table">
                 <thead>
-                <tr><h2>Contact Details</h2></tr>
+                <tr>
+                    <th colspan="6">
+                        <h2>Contact Details</h2>
+                    </th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -148,8 +160,6 @@
                     <th>Postcode</th>
                     <td>{{ $consentRequest->patient->address->postcode  }}</td>
                 </tr>
-
-
                 <tr>
                     <th>Phone Number</th>
                     <td colspan="5">{{ $consentRequest->patient->phoneNumber->number ?? null }}</td>
@@ -159,16 +169,21 @@
             </table>
         </div>
 
-        <div id="other-details" class="table-responsive">
-
-            <h2>Other Details</h2>
+        <div id="other-details">
 
             <table id="patient-details" class="table">
+                <thead>
+                <tr>
+                    <th colspan="2">
+                        <h2>Other Details</h2>
+                    </th>
+                </tr>
+                </thead>
 
                 <tbody>
                 <tr>
                     <th>Doctor</th>
-                    <td colspan="2">{{ $consentRequest->user->fullName() }}</td>
+                    <td>{{ $consentRequest->user->fullName() }}</td>
                 </tr>
 
                 <tr>
@@ -185,9 +200,7 @@
 
                 <tr>
                     <th>Side (if relevant)</th>
-                    <td>
-
-                    </td>
+                    <td>&nbsp;</td>
                 </tr>
                 </tbody>
             </table>
