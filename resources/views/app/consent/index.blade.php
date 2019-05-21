@@ -141,7 +141,7 @@
                             @foreach($consents as $consent)
                                <tr>
                                    <td>
-                                       <a target="_blank" href="{{ url('app/consents/'.$consent->id) }}" class="consent-video-modal">
+                                       <a target="_blank" href="{{ url('app/consents/'.$consent->id) }}" class="consent-video-modal" data-title="{{ $consent->name }}">
                                            <figure class="image is-4by3">
                                            <img width="100%" height="400" src="{{ $consent->videoThumbnail() }}">
                                            </figure>
@@ -160,7 +160,7 @@
 
                                        <div class="field has-addons is-pulled-right action" style="margin-bottom: 0">
                                        <p class="control">
-                                           <a href="{{ url('app/consents/'.$consent->id) }}" class="button is-info tooltip consent-video-modal" data-tooltip="Watch Animation">
+                                           <a href="{{ url('app/consents/'.$consent->id) }}" class="button is-info tooltip consent-video-modal" data-title="{{ $consent->name }}" data-tooltip="Watch Animation">
                                         <span class="icon">
                                             <i class="fas fa-eye"></i>
                                         </span>

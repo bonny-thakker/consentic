@@ -204,7 +204,7 @@ var App = function () {
         placeholder: "__/__/____"
       });
       $('input[name="datetime"]').mask('00/00/0000', {
-        placeholder: "Enter procedure date"
+        placeholder: "Optional procedure date"
       });
       App.handleNavbar();
       App.handleDropdown(); // Check for uploaded files
@@ -456,7 +456,7 @@ var App = function () {
         var modalTitle = modal.find('.modal-title');
         var modalBody = modal.find('.modal-body'); // Set modal title
 
-        modalTitle.text('Animations'); // Show loader
+        modalTitle.text($(this).data('title')); // Show loader
 
         modalBody.addClass('is-loading'); // Get modal content
 

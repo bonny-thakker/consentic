@@ -460,7 +460,7 @@ const App = function() {
                 let modalBody = modal.find('.modal-body');
 
                 // Set modal title
-                modalTitle.text('Animations');
+                modalTitle.text($(this).data('title'));
 
                 // Show loader
                 modalBody.addClass('is-loading');
