@@ -52,6 +52,17 @@ Route::prefix('p')->group( function () {
 
     });
 
+    Route::prefix('file')->group( function () {
+
+        Route::get('{file}', function($file){
+
+            $file = \App\File::findOrFail($file);
+            return response()->download(storage_path('app/'.$file->file), $file->name);
+
+        })->name('public.consent.show');
+
+    });
+
 });
 
 // Auth::routes();

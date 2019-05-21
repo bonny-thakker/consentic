@@ -221,6 +221,15 @@
             </div>
         </div>
 
+        @if($consentRequest->note)
+
+            <div class="patient-declaration">
+                <h2>Note from Doctor</h2>
+                {!! $consentRequest->note !!}
+            </div>
+
+        @endif
+
         <div class="patient-declaration">
             <h2>Patient Declaration</h2>
             <ul>

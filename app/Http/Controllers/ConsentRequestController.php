@@ -158,7 +158,8 @@ class ConsentRequestController extends Controller
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
             'in_office' => $request->in_office,
-            'datetime' => $request->datetime ?? null
+            'datetime' => $request->datetime ?? null,
+            'note' => $request->note
         ]);
 
         // Check uploaded file
@@ -261,7 +262,8 @@ class ConsentRequestController extends Controller
             'patient_id' => $patient->id,
             'consent_id' => $consent->id,
             'in_office' => $request->in_office,
-            'datetime' => $request->datetime ?? null
+            'datetime' => $request->datetime ?? null,
+            'note' => $request->note
         ]);
 
         // Check uploaded file

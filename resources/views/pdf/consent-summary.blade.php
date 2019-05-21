@@ -140,6 +140,24 @@
                     </td>
                 </tr>
 
+                @if($consentRequest->note)
+
+                    <tr>
+                        <td colspan="2">
+                            <br>
+                            <h2 class="section-title">Note from Doctor</h2>
+                            <br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" style="padding-top: 20px;">
+                            {!! $consentRequest->note !!}
+                        </td>
+                    </tr>
+
+                @endif
+
                 <tr>
                     <td colspan="2">
                         <br>
@@ -148,7 +166,9 @@
                     </td>
                 </tr>
 
-                @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
+
+
+            @foreach($consentRequest->consentRequestQuestions()->with('consentRequestQuestionable')->where('consent_request_questionable_type','App\Question')->get() as $consentRequestQuestion)
 
                     <tr class="item">
                         <td colspan="2" style="padding-top: 20px;">{{ $consentRequestQuestion->consentRequestQuestionable->text }}</td>

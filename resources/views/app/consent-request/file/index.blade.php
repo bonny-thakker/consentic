@@ -109,7 +109,7 @@
                                     </span>
                                        <span class="filename" title="{{ $file->name }}">{{ preg_replace('/^[^_]+[_]/', '', $file->name) }}<br>
                                         <a
-                                                href="#"
+                                                href="{{ url('p/file/'.$file->id) }}"
                                                 class="has-text-secondary consent-file-download"
                                         >Download</a>
                                     </span>

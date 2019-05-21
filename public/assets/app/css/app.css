@@ -10827,8 +10827,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
-  height: 400px;
+  min-height: 100px;
   overflow: auto;
+}
+
+.consent-request-file-no-border {
+  border: none;
+  padding: 0;
 }
 
 .consent-request-file .file-item:not(:first-of-type) {

@@ -34,9 +34,37 @@
                <div class="column">
                    <div class="tab-content">
                        <div id="consent-request-tab" class="{{ (\Session::get('consentRequestStage') == null) ? '' : 'is-hidden' }}">
-                         <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}" data-url-signature="{{ request()->input('signature') }}">
-                            <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
-                        </span>
+                           <div class="columns is-variable">
+                               <div class="column {{ $consentRequest->note ? 'is-9' : 'is-12' }}">
+                                <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}" data-url-signature="{{ request()->input('signature') }}">
+                                    <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
+                                </span>
+                               </div>
+                               @if($consentRequest->note || $consentRequest->files->count() > 0)
+                               <div class="column is-3">
+                                   @if($consentRequest->note)
+                                       <h3 class="subtitle is-4" style="margin-bottom: 10px">Note from Doctor</h3>
+                                        {!! $consentRequest->note !!}
+                                       <hr />
+                                   @endif
+                                   @if($consentRequest->files->count() > 0)
+                                       <h3 class="subtitle is-4" style="margin: 10px 0">Additional Information</h3>
+                                           <div class="consent-request-file consent-request-file-no-border content">
+                                           @foreach($consentRequest->files as $file)
+                                                   <div class="file-item">
+                                                    <span class="icon is-medium">
+                                                        <i class="far fa-file-alt"></i>
+                                                    </span>
+                                                        <span class="filename" title="{{ $file->name }}">{{ preg_replace('/^[^_]+[_]/', '', $file->name) }}<br>
+                                                        <a  href="{{ url('p/file/'.$file->id) }}" class="has-text-secondary consent-file-download">Download</a>
+                                                    </span>
+                                                   </div>
+                                           @endforeach
+                                           </div>
+                                   @endif
+                               </div>
+                               @endif
+                           </div>
                        </div>
                        <div id="consent-questions-tab" class="{{ (\Session::get('consentRequestStage') == 'questions') ? '' : 'is-hidden' }}">
                            <form method="POST" action="{{ url()->current() }}?signature={{ request()->input('signature') }}" name="publicConsentRequestQuestions" id="publicConsentRequestQuestions">

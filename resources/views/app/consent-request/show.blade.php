@@ -89,10 +89,20 @@
                    </div>
 
                    <div class="tab-content">
-                       <div>
-                         <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}">
-                            <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
-                         </span>
+                       <div class="columns is-variable">
+                           <div class="column {{ $consentRequest->note ? 'is-8' : 'is-12' }}">
+                                <span id="consent-video-player-container" data-videos-watched="{{ $consentRequest->video_watched }}" data-id="{{ $consentRequest->id }}">
+                                    <div id="consent-video-player" class="plyr__video-embed" data-plyr-provider="youtube" data-plyr-embed-id="{{ $videoId }}"></div>
+                                 </span>
+                           </div>
+                           @if($consentRequest->note)
+                               <div class="column is-4">
+                                   @if($consentRequest->note)
+                                       <h3 class="subtitle is-4" style="margin-bottom: 10px">Note from Doctor</h3>
+                                       {!! $consentRequest->note !!}
+                                   @endif
+                               </div>
+                           @endif
                        </div>
                    </div>
 

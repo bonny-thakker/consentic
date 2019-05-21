@@ -44,3 +44,11 @@
 @if ($errors->has('datetime'))
     <p class="help is-danger">{{ $errors->first('datetime') }}</p>
 @endif
+
+<div class="field s-fullwidth m-t-md{{ $errors->has('note') ? ' is-danger' : '' }}">
+    <textarea id="note" type="text" name="note" class="textarea is-medium{{ $errors->has('datetime') ? ' is-danger' : '' }}" placeholder="Optional notes..." rows="5">{{ old('note') ?? ((isset($consentRequest->note)) ? $consentRequest->note : '') ?? null }}</textarea>
+</div>
+
+@if ($errors->has('note'))
+    <p class="help is-danger">{{ $errors->first('note') }}</p>
+@endif
