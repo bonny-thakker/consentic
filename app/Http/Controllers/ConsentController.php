@@ -58,6 +58,16 @@ class ConsentController extends Controller
         return view('app.consent.show', compact(
             'videoId'
         ));
+
+    }
+
+    public function questions(Consent $consent)
+    {
+
+        return view('app.consent.questions', compact(
+            'consent'
+        ));
+
     }
 
     /**

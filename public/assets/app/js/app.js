@@ -478,6 +478,24 @@ var App = function () {
         });
         e.preventDefault();
       });
+      $('a.consent-questions-modal').click(function (e) {
+        var modal = App.loadModal('large');
+        var modalTitle = modal.find('.modal-title');
+        var modalBody = modal.find('.modal-body'); // Set modal title
+
+        modalTitle.text($(this).data('title')); // Show loader
+
+        modalBody.addClass('is-loading'); // Get modal content
+
+        App.ajax($(this).attr('href'), 'get', 'html').fail(function (err) {
+          modal.find('.modal-close').click();
+        }).done(function (data) {
+          modalBody.html(data); // Remove loader
+
+          modalBody.removeClass('is-loading');
+        });
+        e.preventDefault();
+      });
     },
     toggleModal: function toggleModal(modalId) {
       var modal = $(modalId);

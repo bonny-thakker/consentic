@@ -97,6 +97,7 @@ Route::middleware(['auth'])->prefix('app')->group( function () {
     Route::prefix('consents')->group( function () {
         Route::get('/', 'ConsentController@index')->name('app.consents.index');
         Route::get('/{consent}', 'ConsentController@show')->name('app.consents.show');
+        Route::get('/{consent}/questions', 'ConsentController@questions')->name('app.consents.questions');
     });
 
     Route::prefix('consent-requests')->group( function () {

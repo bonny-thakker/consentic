@@ -11728,3 +11728,17 @@ input[name=datetime]::placeholder {
   color: #444;
 }
 
+.question-label {
+  color: #363636;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.question-label span {
+  font-size: 1rem;
+  display: block;
+  padding-left: 12px;
+  margin-top: 15px;
+}
+

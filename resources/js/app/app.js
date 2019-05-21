@@ -493,6 +493,38 @@ const App = function() {
                 e.preventDefault();
             });
 
+            $('a.consent-questions-modal').click(function(e) {
+
+                let modal = App.loadModal('large');
+                let modalTitle = modal.find('.modal-title');
+                let modalBody = modal.find('.modal-body');
+
+                // Set modal title
+                modalTitle.text($(this).data('title'));
+
+                // Show loader
+                modalBody.addClass('is-loading');
+
+                // Get modal content
+                App.ajax($(this).attr('href'), 'get', 'html')
+
+                    .fail(function(err) {
+                        modal.find('.modal-close').click();
+                    })
+
+                    .done(function(data) {
+
+                        modalBody.html(data);
+
+                        // Remove loader
+                        modalBody.removeClass('is-loading');
+
+                    });
+
+                e.preventDefault();
+
+            });
+
 
         },
 

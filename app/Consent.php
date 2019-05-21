@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model;
+use Exception;
 use Image;
 
 class Consent extends Model
@@ -55,15 +56,24 @@ class Consent extends Model
         $videoId = $videoParams['v'] ?? '';
 
         // create new Intervention Image
-        $img = Image::make("https://img.youtube.com/vi/$videoId/0.jpg");
+        try{
 
-        // create a new Image instance for inserting
-        $watermark = Image::make(public_path('/images/video-play-button.png'))
-            ->resize(300, null, function($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img = Image::make("https://img.youtube.com/vi/$videoId/0.jpg");
 
-        $img->insert($watermark, 'center');
+            // create a new Image instance for inserting
+            $watermark = Image::make(public_path('/images/video-play-button.png'))
+                ->resize(300, null, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+
+            $img->insert($watermark, 'center');
+
+        } catch (Exception $e) {
+
+            return null;
+
+        }
+
         return $img->encode('data-url');
 
     }

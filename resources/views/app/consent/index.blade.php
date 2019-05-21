@@ -141,7 +141,7 @@
                             @foreach($consents as $consent)
                                <tr>
                                    <td>
-                                       <a target="_blank" href="{{ url('app/consents/'.$consent->id) }}" class="consent-video-modal" data-title="{{ $consent->name }}">
+                                       <a target="_blank" href="{{ url('app/consents/'.$consent->id) }}" class="consent-video-modal" data-title="{{ $consent->name }} - Patient Questions">
                                            <figure class="image is-4by3">
                                            <img width="100%" height="400" src="{{ $consent->videoThumbnail() }}">
                                            </figure>
@@ -166,6 +166,13 @@
                                         </span>
                                            </a>
                                        </p>
+                                           <p class="control">
+                                               <a href="{{ url('app/consents/'.$consent->id) }}/questions" class="button is-secondary tooltip consent-questions-modal" data-title="{{ $consent->name }}" data-tooltip="Preview Questions">
+                                        <span class="icon">
+                                            <i class="fas fa-question"></i>
+                                        </span>
+                                               </a>
+                                           </p>
                                        <p class="control">
                                            <a href="{{ url('app/consent-requests/create/consent/'.$consent->id) }}" class="button is-success has-text-white tooltip add-consent-request-button" data-tooltip="Add Consent Request">
                                                <i class="fas fa-plus"></i>
