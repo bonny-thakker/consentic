@@ -35,16 +35,9 @@
                 <input type="hidden" name="in_office" value="0" />
 
                 <div class="columns is-variable is-8">
-                    <div class="column is-4">
+                    <div class="column is-6">
                         <h4 class="title is-4">New Consent</h4>
                         @include('app.consent-request.partial.form-fields')
-                    </div>
-                    <div class="column">
-                        <h4 class="title is-4">Preview</h4>
-                        <div id="consent-video">
-                            <iframe height="350px" width="100%" height="auto"
-                                    src="https://www.youtube.com/embed/H7ZUhSB_6Xs" allowfullscreen></iframe>
-                        </div>
                     </div>
                 </div>
 
