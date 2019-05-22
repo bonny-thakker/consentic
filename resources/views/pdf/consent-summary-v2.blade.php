@@ -18,7 +18,7 @@
     <!-- Custom styles for this template -->
     <!-- Custom styles for this template -->
     <link href="/assets/pdf/css/normalize.css" rel="stylesheet">
-    <link href="/assets/pdf/css/custom-3.css" rel="stylesheet">
+    <link href="/assets/pdf/css/custom.css" rel="stylesheet">
 
 </head>
 
