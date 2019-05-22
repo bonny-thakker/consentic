@@ -120,7 +120,7 @@ class ConsentRequestSignedController extends Controller
             'consent' => $consentRequest->consent->id
         ]);
 
-        $html = view('pdf.consent-summary-v3', compact('consentRequest', 'signedVideoLink'))->render();
+        $html = view('pdf.consent-summary-v2', compact('consentRequest', 'signedVideoLink'))->render();
 
         $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];
@@ -156,12 +156,11 @@ class ConsentRequestSignedController extends Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output($pdfPath);
 
-        dd('complete');
-
        /* PDF::loadHtml($html)->save($pdfPath);*/
 
         $consentRequest->update([
             'pdf' => 'app/pdf/'.$pdfFileName,
+            'pdf_template' => 'consent-summary-v2'
         ]);
 
         // Send notification
