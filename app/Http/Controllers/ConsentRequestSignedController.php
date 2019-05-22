@@ -169,8 +169,14 @@ class ConsentRequestSignedController extends Controller
                 ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'patient', $pdfPath));
         }
 
-        Mail::to($consentRequest->user->email, $consentRequest->user->name)
-             ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));
+        if($consentRequest->team->consent_email){
+            Mail::to($consentRequest->user->email, $consentRequest->user->name)
+                ->cc($consentRequest->team->consent_email, $consentRequest->team->name)
+                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));
+        }else{
+            Mail::to($consentRequest->user->email, $consentRequest->user->name)
+                ->send(new \App\Mail\ConsentRequestCompletedMail($consentRequest, 'doctor', $pdfPath));
+        }
 
         event(new \App\Events\ConsentUserSigned($consentRequest));
 

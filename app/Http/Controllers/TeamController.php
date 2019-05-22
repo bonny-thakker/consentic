@@ -82,6 +82,7 @@ class TeamController extends Controller
             'city' => $request->city,
             'state' => $request->state,
             'zip' => $request->zip,
+            'consent_email' => $request->consent_email,
         ])->save();
 
     }

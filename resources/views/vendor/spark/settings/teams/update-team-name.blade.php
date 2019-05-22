@@ -90,6 +90,19 @@
                     </div>
                 </div>
 
+                <!-- Consent Email -->
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right">{{__('Consent Requests Email')}}</label>
+
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="consent_email" v-model="form.consent_email" :class="{'is-invalid': form.errors.has('consent_email')}">
+                        <small class="form-text text-muted">Send a copy of completed consent request emails & PDF forms to this email address.</small>
+                        <span class="invalid-feedback" v-show="form.errors.has('consent_email')">
+                            @{{ form.errors.get('consent_email') }}
+                        </span>
+                    </div>
+                </div>
+
 
 
                 <!-- Update Button -->

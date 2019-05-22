@@ -71247,7 +71247,8 @@ Vue.component('spark-update-team-name', {
         address: '',
         state: '',
         city: '',
-        zip: ''
+        zip: '',
+        consent_email: ''
       })
     };
   },
@@ -71262,6 +71263,7 @@ Vue.component('spark-update-team-name', {
     this.form.state = this.team.state;
     this.form.city = this.team.city;
     this.form.zip = this.team.zip;
+    this.form.consent_email = this.team.consent_email;
   },
   methods: {
     /**
