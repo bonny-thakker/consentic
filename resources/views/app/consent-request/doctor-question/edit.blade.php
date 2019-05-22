@@ -82,7 +82,7 @@
                        <form method="POST" action="/app/consent-requests/{{ $consentRequest->id }}/doctor-questions/update" name="consentRequestQuestions" id="consentRequestQuestions">
                        @csrf
 
-                       <label class="checkbox button label">
+                       <label class="checkbox">
                            <input type="checkbox" name="selectAll" id="select-all">
                            Select all answers below as correct
                        </label>

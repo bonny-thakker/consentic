@@ -19,7 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-   {{-- <link href="/assets/pdf/css/custom.min.css" rel="stylesheet">--}}
+    <link href="/assets/pdf/css/normalize.css" rel="stylesheet">
+    <link href="/assets/pdf/css/custom.min.css" rel="stylesheet">
 
     <style>
 

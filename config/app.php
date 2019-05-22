@@ -183,6 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -235,6 +236,7 @@ return [
         'Menu' => Lavary\Menu\Facade::class,
         'Landlord' => HipsterJazzbo\Landlord\Facades\Landlord::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

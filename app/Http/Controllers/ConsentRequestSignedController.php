@@ -12,6 +12,7 @@ use Mail;
 use Image;
 use Mpdf\Mpdf;
 use Validator;
+use PDF;
 
 class ConsentRequestSignedController extends Controller
 {
@@ -119,7 +120,7 @@ class ConsentRequestSignedController extends Controller
             'consent' => $consentRequest->consent->id
         ]);
 
-        $html = view('pdf.consent-summary', compact('consentRequest', 'signedVideoLink'))->render();
+        $html = view('pdf.consent-summary-v3', compact('consentRequest', 'signedVideoLink'))->render();
 
         $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];
@@ -154,6 +155,10 @@ class ConsentRequestSignedController extends Controller
 
         $mpdf->WriteHTML($html);
         $mpdf->Output($pdfPath);
+
+        dd('complete');
+
+       /* PDF::loadHtml($html)->save($pdfPath);*/
 
         $consentRequest->update([
             'pdf' => 'app/pdf/'.$pdfFileName,

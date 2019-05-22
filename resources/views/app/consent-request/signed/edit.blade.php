@@ -85,6 +85,14 @@
                            <textarea class="textarea is-hidden" name="consentDoctorSignature"></textarea>
                            {{ csrf_field() }}
 
+
+                           {{--<div class="field s-fullwidth m-t-md">
+                               <label class="checkbox">
+                                   <input type="checkbox" name="save" id="save">
+                                   Save signature for future use
+                               </label>
+                           </div>--}}
+
                            <button id="clear-signature" class="button is-warning" style="height: 3em;">Clear</button>
                            <button class="button submit is-primary">Sign Consent</button>
 
