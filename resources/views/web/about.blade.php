@@ -10,7 +10,7 @@
     <style>
         .section-title {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/98a9c904e789042df4096dcfb4af30ac_doctssss.png");
-            background-attachment: fixed;
+       /*     background-attachment: fixed;*/
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
