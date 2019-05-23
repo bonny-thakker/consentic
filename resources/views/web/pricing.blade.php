@@ -15,6 +15,11 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        @media screen and (max-width: 1024px) {
+            .section-title {
+                background-attachment: initial;
+            }
+        }
     </style>
 
 @endsection
